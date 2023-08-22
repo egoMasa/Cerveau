@@ -1,0 +1,3 @@
+- Cloud natif
+- Lift and shift (soulève et déplace)
+- Hybridation

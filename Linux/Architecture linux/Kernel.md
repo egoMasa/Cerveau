@@ -1,0 +1,2 @@
+- Compilation et installation d'un nouveau noyau.
+- Gestion des modules du noyau.

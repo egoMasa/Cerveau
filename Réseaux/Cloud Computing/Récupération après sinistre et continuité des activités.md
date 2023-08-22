@@ -1,0 +1,3 @@
+- Sauvegardes dans le cloud
+- Réplication de données
+- Plans de reprise après sinistre

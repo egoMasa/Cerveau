@@ -1,0 +1,1 @@
+(Câblé: Ethernet, Coaxial, Fibre optique; Sans fil: Wi-Fi, Bluetooth)

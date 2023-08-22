@@ -1,0 +1,2 @@
+- Modèles tarifaires (Pay-as-you-go, réservations, etc.)
+- Outils de gestion des coûts (par exemple, AWS Cost Explorer)

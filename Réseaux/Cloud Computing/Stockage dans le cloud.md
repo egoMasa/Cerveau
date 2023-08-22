@@ -1,0 +1,4 @@
+- Stockage objet (par exemple, Amazon S3, Google Cloud Storage)
+- Stockage bloc
+- Stockage fichier
+- Bases de données gérées (par exemple, Amazon RDS, Azure Cosmos DB)

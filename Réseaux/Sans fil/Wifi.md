@@ -1,0 +1,4 @@
+* WPA
+* WPA 2
+* WPA 3
+* WPS

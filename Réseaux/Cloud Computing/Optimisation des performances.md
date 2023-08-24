@@ -1,3 +1,0 @@
-- Mise en cache (par exemple, Content Delivery Networks ou CDNs)
-- Équilibrage de charge
-- Optimisation des bases de données

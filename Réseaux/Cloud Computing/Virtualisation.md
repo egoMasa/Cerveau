@@ -1,2 +1,0 @@
-- Hyperviseurs (par exemple, VMware, Hyper-V, KVM)
-- Conteneurs (par exemple, Docker, Kubernetes)

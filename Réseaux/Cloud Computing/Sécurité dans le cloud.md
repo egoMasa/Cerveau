@@ -1,4 +1,0 @@
-- Gestion des identités et des accès
-- Sécurité des données et chiffrement
-- Sécurité du réseau
-- Conformité et réglementations

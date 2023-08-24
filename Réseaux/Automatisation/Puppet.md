@@ -1,0 +1,3 @@
+- **Type** : Outil de gestion de configuration.
+- **Fonction** : Automatise la mise en place, la configuration et la gestion des serveurs.
+- **Caractéristiques** : Basé sur une architecture maître/agent, décrit l'état souhaité des ressources système à l'aide d'un langage déclaratif.

@@ -1,0 +1,3 @@
+- **Type** : Outil d'infrastructure sous forme de code (IaC, Infrastructure as Code).
+- **Fonction** : Crée, modifie et versionne de manière sécurisée et prévisible des infrastructures cloud.
+- **Caractéristiques** : Indépendant du fournisseur de cloud, utilise un langage de configuration appelé HCL (HashiCorp Configuration Language).

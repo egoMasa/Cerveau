@@ -1,0 +1,2 @@
+
+* ISO/IEC 27701 is an extension to ISO/IEC 27001 and ISO/IEC 27002 that provides a framework for managing the **privacy of personal information**. This standard helps organizations to comply with data protection laws and regulations, such as the General Data Protection Regulation (GDPR). Key elements include data minimization, data subject access, data breach notification, and third-party management.

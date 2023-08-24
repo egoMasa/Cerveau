@@ -1,0 +1,1 @@
+* mécanisme permettant d'isoler le routage pour différents réseaux sur le même appareil

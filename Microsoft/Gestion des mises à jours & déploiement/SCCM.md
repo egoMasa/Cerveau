@@ -1,0 +1,2 @@
+* SCCM va plus loin que WSUS. Il s'agit d'une solution de gestion complète permettant non seulement de gérer les mises à jour, mais aussi de déployer des applications, des systèmes d'exploitation et d'exécuter la gestion des configurations et la protection des points de terminaison.
+* SCCM peut être utilisé pour déployer des applications sur les ordinateurs de votre réseau. Vous pouvez créer des packages d'application, les tester dans des environnements pilotes, puis les déployer sur l'ensemble de votre parc d'ordinateurs.

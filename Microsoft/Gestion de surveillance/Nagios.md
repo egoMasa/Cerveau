@@ -1,0 +1,1 @@
+* solution populaire qui peut être utilisée pour surveiller les systèmes Windows. Elle peut vous montrer quelles machines sont en ligne, surveiller l'utilisation des ressources, etc.

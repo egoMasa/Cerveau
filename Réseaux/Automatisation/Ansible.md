@@ -1,3 +1,0 @@
-- **Type** : Outil d'automatisation et de gestion de configuration.
-- **Fonction** : Permet d'automatiser le déploiement d'applications, la configuration des systèmes et la gestion des tâches courantes telles que le redémarrage de services ou l'installation de paquets.
-- **Caractéristiques**: Agentless (sans agent), utilise SSH pour communiquer avec les noeuds.

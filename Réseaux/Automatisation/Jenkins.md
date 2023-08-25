@@ -1,3 +1,0 @@
-- **Type** : Outil d'intégration continue (CI) et de déploiement continu (CD).
-- **Fonction** : Automatise les étapes du cycle de vie du développement logiciel, telles que la construction, le test et le déploiement.
-- **Caractéristiques** : Très extensible avec une large gamme de plugins, intégrable avec de nombreux autres outils.

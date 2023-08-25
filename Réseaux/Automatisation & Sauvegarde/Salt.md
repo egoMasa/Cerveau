@@ -1,0 +1,3 @@
+- **Type** : Outil de gestion de configuration et d'automatisation.
+- **Fonction** : Gestion des configurations à grande échelle, orchestration des services.
+- **Caractéristiques** : Utilise un modèle maître/agent.

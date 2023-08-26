@@ -65,10 +65,27 @@
 
 # III) Encapsulation et décapsulation
 
-* Lors d’une communication, chaque donnée suit une route identique où l’on va ajouter différentes informations de chaque couche dans l’autre afin que les données arrivent à destination et soit lisible.
+* Lorsque qu'on communique sur un réseau, les données que vous envoyez ne sont pas simplement transmises telles quelles. Elles sont traitées, emballées et transmises à travers les différentes couches du modèle OSI ou TCP/IP. Ce processus d'emballage s'appelle l'encapsulation. À l'arrivée, le processus inverse a lieu : la décapsulation.
+* L'encapsulation et la décapsulation permettent une **modularité** dans les réseaux. Si une technologie évolue dans une couche, elle peut être mise à jour sans affecter les autres couches.
+- Cela garantit également une **séparation des responsabilités**, où chaque couche se concentre sur une fonction spécifique sans se préoccuper des détails des autres couches.
+- Cela facilite le **dépannage**. Si un problème survient, les administrateurs réseau peuvent déterminer rapidement à quelle couche du modèle OSI ou TCP/IP il appartient.
+## Encapsulation
+* L'encapsulation est le processus par lequel une couche du modèle OSI ou TCP/IP ajoute son propre en-tête (et éventuellement un pied de page) aux données qu'elle reçoit de la couche supérieure. Cette opération s'effectue de la couche applicative jusqu'à la couche physique lors de l'envoi d'informations.
 
-* Chaque paquet IP contient l’IP source et l’IP destination  Les routeurs acheminent donc les paquets vers leur destination, de proche en proche.
+* ***Étapes de l'encapsulation** :
+1. **Couche Applicative** : Les données sont créées et prêtes à être envoyées.
+2. **Couche Transport** : L'en-tête de transport est ajouté (comme TCP ou UDP) transformant les données en segments.
+3. **Couche Réseau** : L'en-tête IP est ajouté, transformant les segments en paquets.
+4. **Couche Liaison de Données** : L'en-tête de la liaison de données est ajouté, et les paquets deviennent des trames.
+5. **Couche Physique** : Les trames sont converties en bits pour être envoyées sur le média.
 
-# IV) Encapsulation et décapsulation
+## Décapsulation
 
-* Lors d’une communication, chaque donnée suit une route identique où l’on va ajouter différentes informations de chaque couche dans l’autre afin que les données arrivent à destination et soit lisible.
+* La décapsulation est le processus inverse de l'encapsulation. Lorsque les données encapsulées atteignent leur destination, chaque couche du modèle OSI ou TCP/IP retire son en-tête (et pied de page si nécessaire) pour récupérer les données originales. Cette opération se déroule de la couche physique à la couche applicative lors de la réception d'informations.
+
+* ***Étapes de la décapsulation** :
+1. **Couche Physique** : Les bits sont reçus.
+2. **Couche Liaison de Données** : Les en-têtes de la liaison de données sont retirés, transformant les bits en paquets.
+3. **Couche Réseau** : L'en-tête IP est retiré, transformant les paquets en segments.
+4. **Couche Transport** : L'en-tête de transport est retiré, transformant les segments en données.
+5. **Couche Applicative** : Les données sont présentées à l'application utilisateur.

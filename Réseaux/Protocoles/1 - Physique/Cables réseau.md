@@ -50,6 +50,9 @@ Le câble console est conçu pour une connexion directe entre un ordinateur (gé
 **Protocoles associés** :
 - **Ethernet** : Cette norme définit comment les données sont formatées et transmises sur des réseaux locaux. Elle joue un rôle crucial dans la structuration et le transport des trames de données.
 
+**Variations** :
+- **Câble droit (patch)** : Typiquement utilisé pour connecter des dispositifs de types différents, comme un ordinateur à un switch.
+- **Câble croisé** : Conçu pour connecter deux dispositifs du même type, par exemple, un ordinateur à un autre ordinateur. L'utilisation de cette variante est moins courante avec la technologie Auto-MDI/MDIX des équipements modernes qui peuvent s'adapter automatiquement au type de câble.
 # Comparatif entre RJ-45 et RS 232
 
 - **Application** : Tandis que le câble série a historiquement été préféré pour les connexions WAN point à point, le câble Ethernet est le choix de prédilection pour les réseaux LAN modernes en raison de sa capacité à transmettre des données à des débits élevés sur de courtes distances.

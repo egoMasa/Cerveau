@@ -1,1 +1,0 @@
-(Bus, Anneau, Étoile, Maille, etc.)

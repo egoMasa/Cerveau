@@ -34,7 +34,7 @@ Le câble console est conçu pour une connexion directe entre un ordinateur (gé
 **Protocoles associés** :
 - **PPP (Point-to-Point Protocol)** : Employé pour établir une connexion directe entre deux dispositifs, il prend en charge la communication entre différents protocoles et intègre des fonctions telles que l'authentification et la sécurité.
 
-## ## 3. **Câble Ethernet** (RJ45) :
+## 3. **Câble Ethernet** (RJ45) :
 
 **Description** : L'ubiquité du câble Ethernet dans les réseaux LAN le rend essentiel pour la plupart des réseaux modernes. Il existe en plusieurs versions, notamment Cat5e, Cat6, et Cat7, chacune offrant des performances et des capacités distinctes.
 

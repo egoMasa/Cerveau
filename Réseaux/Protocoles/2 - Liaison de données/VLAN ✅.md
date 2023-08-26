@@ -145,15 +145,15 @@ R(config-if)#ip add @ip_gw_vlanX @masque      # Définir l'adresse IP de la pass
     - Peut avoir des interfaces VLAN SVI avec des adresses IP qui agissent comme des passerelles par défaut pour les hôtes dans chaque VLAN.
     - N'a pas besoin d'un routeur externe pour le routage inter-VLAN (mais peut travailler avec des routeurs pour des topologies plus complexes).
 
-## VIII) Switch MLS (Switch Multi-Couche)
-### Étape 1: Création des VLANs
+# VIII) Configuration Switch MLS (Switch Multi-Couche)
+## Étape 1: Création des VLANs
 ```
 MLS(config)#vlan 10     
 			name N1 
 MLS(config)#vlan 20     
 			name N2
 ```
-### Étape 2: Création des interfaces VLAN SVI
+## Étape 2: Création des interfaces VLAN SVI
 * Ces interfaces représentent des interfaces virtuelles qui offrent une interface de routage pour chaque VLAN.
 ```
 MLS(config)#interface vlan 10     
@@ -165,7 +165,7 @@ MLS(config)#interface vlan 20
 				ip add X.X.X.X @masque     
 				no shut
 ```
-### Étape 3: Configuration des ports d'accès
+## Étape 3: Configuration des ports d'accès
 
 ```
 MLS(config)#int G0/0     
@@ -175,11 +175,11 @@ MLS(config)#int G0/1
 				switchport mode access     
 				switchport access vlan 20
 ```
-### Étape 4: Active le routage entre les VLANs
+## Étape 4: Active le routage entre les VLANs
 ```
 MLS(config)#ip routing
 ```
-### Étape 5 (cas particulier): Configuration d'un port routé, pour la connexion à un autre routeur
+## Étape 5 (cas particulier): Configuration d'un port routé, pour la connexion à un autre routeur
 * Définir les routes nécessaires (si nécessaire) pour assurer une communication appropriée avec d'autres réseaux ou routeurs.
 ```
 MLS(config)#int G0/2     

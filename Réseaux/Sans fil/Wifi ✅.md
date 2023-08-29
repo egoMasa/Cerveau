@@ -20,9 +20,6 @@ Le Wi-Fi est omniprésent dans de nombreux scénarios d'utilisation, parmi lesqu
 * **Villes intelligentes**: Pour offrir un accès Internet dans des espaces publics comme les parcs ou les places.
 * **Transport**: Dans les trains, bus ou avions, pour offrir une connectivité pendant le voyage.
 * **Événements**: Dans les conventions, salons ou festivals pour connecter les participants.
-
-# Le Wi-Fi (Suite)
-
 ## 4. Comment fonctionne le protocole?
 Le Wi-Fi opère principalement dans les bandes de fréquences 2,4 GHz et 5 GHz. Les points d'accès (routeurs sans fil) diffusent un identifiant de réseau, appelé SSID (Service Set Identifier). Lorsqu'un appareil souhaite se connecter à un réseau Wi-Fi, il scanne les ondes radio à la recherche de SSID disponibles, puis établit une connexion en utilisant un protocole d'échange appelé "handshake", qui inclut généralement une forme d'authentification comme un mot de passe.
 

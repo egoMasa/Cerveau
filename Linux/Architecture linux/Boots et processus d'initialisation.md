@@ -1,2 +1,0 @@
-- Comprendre le processus de démarrage (`GRUB`, `initramfs`, `systemd`).
-- Gérer les services au démarrage.

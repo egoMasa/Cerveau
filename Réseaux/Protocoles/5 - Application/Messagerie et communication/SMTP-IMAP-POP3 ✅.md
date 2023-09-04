@@ -1,4 +1,15 @@
-# # Guide sur les emails
+# Guide sur les emails
+
+# Résume 
+
+1. **SMTP (Simple Mail Transfer Protocol) :** C'est le protocole utilisé pour envoyer des e-mails. Si vous voulez considérer la messagerie électronique comme un service postal, SMTP serait le facteur qui livre le courrier.
+    
+2. **POP3 (Post Office Protocol version 3) :** Il permet à un client de messagerie électronique de télécharger les e-mails depuis un serveur de messagerie vers l'ordinateur de l'utilisateur. Une fois téléchargés, les e-mails sont généralement supprimés du serveur. Pensez-y comme à une boîte postale : une fois que vous avez pris le courrier, il n'y reste plus.
+    
+3. **IMAP (Internet Message Access Protocol) :** Il permet également à un client de messagerie électronique de récupérer des e-mails depuis un serveur, mais contrairement à POP3, IMAP laisse les e-mails sur le serveur. Cela permet à plusieurs appareils (comme un téléphone et un ordinateur) d'accéder aux mêmes e-mails. Pensez-y comme à une boîte postale transparente : vous pouvez voir et lire le courrier, mais il reste dans la boîte pour que d'autres puissent également le voir.
+    
+
+En somme, SMTP est pour envoyer, tandis que POP3 et IMAP sont pour recevoir, chacun avec une manière différente de traiter les e-mails reçus.
 
 # 1) SMTP (Simple Mail Transfer Protocol)
 

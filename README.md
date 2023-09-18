@@ -1,7 +1,9 @@
 # Présentation 
 
 🎯 Cette section est destiné à de l'apprentissage et à pour but de résumer et répertorier toutes les notions et concepts abordé lors de mes études en cybersécurité, que ce soit en réseau avec de la configuration Cisco, du pentesting ou de l'administration système 
+
 🗂 Toutes les notions sont triés par sections en fonction de leur intérêt et de leur famille, ci dessous l'arborescence actuelle 
+
 ✅ Les lecons avec cette marque sont considéres comme partiellement complet, certaines modifications pourront être apportés.
 # Sommaire 
 ```

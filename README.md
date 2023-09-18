@@ -34,17 +34,95 @@ Cerveau
 │   │   │   ├── Méthodologie de reconnaissance active.md
 │   │   │   ├── Méthodologie reconnaissance passive.md
 │   │   │   ├── Phase active
+│   │   │   │   ├── Méthodes
+│   │   │   │   │   ├── Detection de WAF.md
+│   │   │   │   │   ├── Enumération de services.md
+│   │   │   │   │   ├── Enumération DNS.md
+│   │   │   │   │   ├── Enumération SMB.md
+│   │   │   │   │   ├── Enumération SMTP.md
+│   │   │   │   │   └── Enumération SNMP.md
+│   │   │   │   └── Outils
+│   │   │   │       ├── Dirb.md
+│   │   │   │       ├── Dirbuster.md
+│   │   │   │       ├── Gobuster.md
+│   │   │   │       ├── Masscan.md
+│   │   │   │       ├── Nessus.md
+│   │   │   │       ├── Netcat.md
+│   │   │   │       ├── Nmap.md
+│   │   │   │       └── Socat.md
 │   │   │   └── Phase passive
+│   │   │       ├── Censys.md
+│   │   │       ├── Email Haversting.md
+│   │   │       ├── Enumération Whois.md
+│   │   │       ├── Maltego.md
+│   │   │       ├── Netcraft.md
+│   │   │       ├── OSINT Framework.md
+│   │   │       ├── Outils reseaux sociaux.md
+│   │   │       ├── Password Dumps.md
+│   │   │       ├── Pastebin.md
+│   │   │       ├── Reconnaissance de sites.md
+│   │   │       ├── Recon-ng.md
+│   │   │       ├── Scanner security headers.md
+│   │   │       ├── Shodan.md
+│   │   │       ├── StackOverflow.md
+│   │   │       └── TheHarvester.md
 │   │   ├── 2 - Recherche de vulnérabilités
 │   │   │   ├── Liste de vulnérabilités
+│   │   │   │   ├── Exploit-db.md
+│   │   │   │   ├── Metasploit.md
+│   │   │   │   └── Searchsploit.md
 │   │   │   ├── Outils
+│   │   │   │   ├── Nessus.md
+│   │   │   │   ├── Nexpose.md
+│   │   │   │   ├── Nikto.md
+│   │   │   │   ├── Nmap.md
+│   │   │   │   ├── OpenVAS.md
+│   │   │   │   └── OWASP ZAP.md
 │   │   │   └── Sites
+│   │   │       ├── CVEdetails.com.md
+│   │   │       └── OWASP.md
 │   │   ├── 3 - Exploitation
 │   │   │   ├── Active Directory
+│   │   │   │   ├── Active Directory Authentication.md
+│   │   │   │   ├── Active Directory Basic.md
+│   │   │   │   ├── Active Directory Enumeration.md
+│   │   │   │   ├── Active Directory Lateral Movement.md
+│   │   │   │   ├── Active Directory Persistence.md
+│   │   │   │   └── Active Directory Theory.md
 │   │   │   ├── Attaques web
+│   │   │   │   ├── Notion
+│   │   │   │   │   ├── Attaque Proxy.md
+│   │   │   │   │   ├── Buffer Overflows.md
+│   │   │   │   │   ├── Fuzzing URL.md
+│   │   │   │   │   ├── Méthodologie Web.md
+│   │   │   │   │   └── Path Transerval.md
+│   │   │   │   ├── Outils
+│   │   │   │   │   ├── BurpSuite.md
+│   │   │   │   │   ├── Dirb.md
+│   │   │   │   │   ├── Dirbuster.md
+│   │   │   │   │   ├── Gobuster.md
+│   │   │   │   │   ├── Nikto.md
+│   │   │   │   │   ├── SQLmap.md
+│   │   │   │   │   └── XAMPP.md
+│   │   │   │   └── Types d'attaques
+│   │   │   │       ├── Admin Consoles.md
+│   │   │   │       ├── Directory Traversal.md
+│   │   │   │       ├── File Inclusion.md
+│   │   │   │       ├── SQL Injection.md
+│   │   │   │       └── XSS.md
 │   │   │   ├── Bruteforce
+│   │   │   │   ├── Hashcat.md
+│   │   │   │   ├── Hydra.md
+│   │   │   │   ├── John The Ripper.md
+│   │   │   │   └── Medusa.md
 │   │   │   ├── Partage de fichiers
+│   │   │   │   ├── Non-Interractive Shell.md
+│   │   │   │   └── Pure-FTPd.md
 │   │   │   └── Réseaux
+│   │   │       ├── NETSH.md
+│   │   │       ├── Plink.md
+│   │   │       ├── Redirection de port.md
+│   │   │       └── SSH Tunneling.md
 │   │   ├── 4 - Elevation de privilèges
 │   │   │   ├── Linux Privilege Esacalation.md
 │   │   │   └── Windows Privileges escalation.md
@@ -302,10 +380,32 @@ Cerveau
     │   │   └── VLAN ✅.md
     │   ├── 3 - Réseau
     │   │   ├── Acheminement
+    │   │   │   └── MPLS ✅.md
     │   │   ├── Controle
+    │   │   │   └── ICMP ✅.md
     │   │   ├── Gestion d'adresse IP
+    │   │   │   ├── ARP ✅.md
+    │   │   │   ├── IGMP ✅.md
+    │   │   │   ├── IPV4 ✅.md
+    │   │   │   ├── IPV6 ✅.md
+    │   │   │   ├── Localhost et Loopback ✅.md
+    │   │   │   ├── Masque réseau ✅.md
+    │   │   │   ├── NAT PAT ✅.md
+    │   │   │   └── VLSM.md
     │   │   ├── MLS ✅.md
     │   │   ├── Routage
+    │   │   │   ├── EGP
+    │   │   │   │   └── BGP ✅.md
+    │   │   │   ├── IGP
+    │   │   │   │   ├── Etat de liaison
+    │   │   │   │   │   ├── ISIS.md
+    │   │   │   │   │   └── OSPF ✅.md
+    │   │   │   │   └── Vecteurs de distance
+    │   │   │   │       ├── EIGRP ✅.md
+    │   │   │   │       └── RIP ✅.md
+    │   │   │   ├── Redistribution de routes ✅.md
+    │   │   │   ├── Routage dynamique ✅.md
+    │   │   │   └── Routage statique ✅.md
     │   │   └── VRF ✅.md
     │   ├── 4 - Transport
     │   │   ├── RTP ✅.md
@@ -313,11 +413,32 @@ Cerveau
     │   │   └── UDP ✅.md
     │   └── 5 - Application
     │       ├── Connexion
+    │       │   ├── RDP ✅.md
+    │       │   ├── SSH ✅.md
+    │       │   ├── Telnet ✅.md
+    │       │   └── VNC ✅.md
     │       ├── Gestion réseau
+    │       │   ├── NTP ✅.md
+    │       │   └── SNMP ✅.md
     │       ├── Liaison IP
+    │       │   ├── DHCP ✅.md
+    │       │   └── DNS ✅.md
     │       ├── Messagerie et communication
+    │       │   ├── MQTT ✅.md
+    │       │   ├── SIP ✅.md
+    │       │   ├── SMTP-IMAP-POP3 ✅.md
+    │       │   └── XMPP ✅.md
     │       ├── Transferts de fichiers
+    │       │   ├── FTP-FTPS-SFTP.md
+    │       │   ├── FTP ✅.md
+    │       │   ├── NFS ✅.md
+    │       │   ├── NFS.md
+    │       │   ├── SFTP ✅.md
+    │       │   ├── SMB ✅.md
+    │       │   └── SMB-SAMBA.md
     │       └── Web
+    │           ├── HTTP-HTTPS ✅.md
+    │           └── HTTP-HTTPS.md
     ├── Sans fil
     │   ├── 5G ✅.md
     │   ├── Bluetooth ✅.md
@@ -351,5 +472,4 @@ Cerveau
         └── Protocoles de sécurité
             ├── IPsec ✅.md
             └── TLS ✅.md
-
 ```

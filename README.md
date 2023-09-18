@@ -23,134 +23,61 @@ Cerveau
 │   │   ├── SIEM.md
 │   │   ├── SOAR.md
 │   │   └── SOC.md
-│   ├── NOTES PENTEST.md
+│   ├── Forensic
+│   │   └── test.md
 │   ├── Pentesting
-│   │   ├── 0 - Environnement Kali
-│   │   │   ├── Commandes kali.md
-│   │   │   ├── PowerShell & Powercat.md
-│   │   │   ├── TCPDump.md
-│   │   │   └── WireShark.md
-│   │   ├── 1 - Reconnaissance
-│   │   │   ├── Méthodologie de reconnaissance active.md
-│   │   │   ├── Méthodologie reconnaissance passive.md
-│   │   │   ├── Phase active
-│   │   │   │   ├── Méthodes
-│   │   │   │   │   ├── Detection de WAF.md
-│   │   │   │   │   ├── Enumération de services.md
-│   │   │   │   │   ├── Enumération DNS.md
-│   │   │   │   │   ├── Enumération SMB.md
-│   │   │   │   │   ├── Enumération SMTP.md
-│   │   │   │   │   └── Enumération SNMP.md
-│   │   │   │   └── Outils
-│   │   │   │       ├── Dirb.md
-│   │   │   │       ├── Dirbuster.md
-│   │   │   │       ├── Gobuster.md
-│   │   │   │       ├── Masscan.md
-│   │   │   │       ├── Nessus.md
-│   │   │   │       ├── Netcat.md
-│   │   │   │       ├── Nmap.md
-│   │   │   │       └── Socat.md
-│   │   │   └── Phase passive
-│   │   │       ├── Censys.md
-│   │   │       ├── Email Haversting.md
-│   │   │       ├── Enumération Whois.md
-│   │   │       ├── Maltego.md
-│   │   │       ├── Netcraft.md
-│   │   │       ├── OSINT Framework.md
-│   │   │       ├── Outils reseaux sociaux.md
-│   │   │       ├── Password Dumps.md
-│   │   │       ├── Pastebin.md
-│   │   │       ├── Reconnaissance de sites.md
-│   │   │       ├── Recon-ng.md
-│   │   │       ├── Scanner security headers.md
-│   │   │       ├── Shodan.md
-│   │   │       ├── StackOverflow.md
-│   │   │       └── TheHarvester.md
-│   │   ├── 2 - Recherche de vulnérabilités
-│   │   │   ├── Liste de vulnérabilités
-│   │   │   │   ├── Exploit-db.md
-│   │   │   │   ├── Metasploit.md
-│   │   │   │   └── Searchsploit.md
-│   │   │   ├── Outils
-│   │   │   │   ├── Nessus.md
-│   │   │   │   ├── Nexpose.md
-│   │   │   │   ├── Nikto.md
-│   │   │   │   ├── Nmap.md
-│   │   │   │   ├── OpenVAS.md
-│   │   │   │   └── OWASP ZAP.md
-│   │   │   └── Sites
-│   │   │       ├── CVEdetails.com.md
-│   │   │       └── OWASP.md
-│   │   ├── 3 - Exploitation
-│   │   │   ├── Active Directory
-│   │   │   │   ├── Active Directory Authentication.md
-│   │   │   │   ├── Active Directory Basic.md
-│   │   │   │   ├── Active Directory Enumeration.md
-│   │   │   │   ├── Active Directory Lateral Movement.md
-│   │   │   │   ├── Active Directory Persistence.md
-│   │   │   │   └── Active Directory Theory.md
-│   │   │   ├── Attaques web
-│   │   │   │   ├── Notion
-│   │   │   │   │   ├── Attaque Proxy.md
-│   │   │   │   │   ├── Buffer Overflows.md
-│   │   │   │   │   ├── Fuzzing URL.md
-│   │   │   │   │   ├── Méthodologie Web.md
-│   │   │   │   │   └── Path Transerval.md
-│   │   │   │   ├── Outils
-│   │   │   │   │   ├── BurpSuite.md
-│   │   │   │   │   ├── Dirb.md
-│   │   │   │   │   ├── Dirbuster.md
-│   │   │   │   │   ├── Gobuster.md
-│   │   │   │   │   ├── Nikto.md
-│   │   │   │   │   ├── SQLmap.md
-│   │   │   │   │   └── XAMPP.md
-│   │   │   │   └── Types d'attaques
-│   │   │   │       ├── Admin Consoles.md
-│   │   │   │       ├── Directory Traversal.md
-│   │   │   │       ├── File Inclusion.md
-│   │   │   │       ├── SQL Injection.md
-│   │   │   │       └── XSS.md
-│   │   │   ├── Bruteforce
-│   │   │   │   ├── Hashcat.md
-│   │   │   │   ├── Hydra.md
-│   │   │   │   ├── John The Ripper.md
-│   │   │   │   └── Medusa.md
-│   │   │   ├── Partage de fichiers
-│   │   │   │   ├── Non-Interractive Shell.md
-│   │   │   │   └── Pure-FTPd.md
-│   │   │   └── Réseaux
-│   │   │       ├── NETSH.md
-│   │   │       ├── Plink.md
-│   │   │       ├── Redirection de port.md
-│   │   │       └── SSH Tunneling.md
-│   │   ├── 4 - Elevation de privilèges
-│   │   │   ├── Linux Privilege Esacalation.md
-│   │   │   └── Windows Privileges escalation.md
-│   │   ├── 5 - Maintien d'accès
-│   │   │   ├── Backdoor.md
-│   │   │   └── Création de comptes.md
-│   │   ├── 6 - CleanUp
-│   │   │   ├── Effacement de backdoor.md
-│   │   │   ├── Effacement de compte à privilèges.md
-│   │   │   └── Effacement de webshells.md
-│   │   ├── 7 - Propagation
-│   │   │   ├── Empire.md
-│   │   │   └── Mimikatz.md
-│   │   ├── 8 - Rapport
-│   │   │   └── Méthodologie de rapport.md
-│   │   └── Framework
-│   │       ├── Diamond Model.md
-│   │       ├── Kill Chain.md
-│   │       └── MITRE.md
-│   └── Réglementation
-│       ├── ISO 27001 - Information Security Management.md
-│       ├── ISO 27001.md
-│       ├── ISO 27032 Cyber Security.md
-│       ├── ISO 27035 Incident Management.md
-│       ├── ISO 27701 - Privacy Information Management.md
-│       ├── NISE.md
-│       ├── NIS.md
-│       └── RGPD.md
+│   │   ├── 1) Reconnaissance
+│   │   │   ├── Enumération par services
+│   │   │   │   ├── DNS.md
+│   │   │   │   ├── Enumération.md
+│   │   │   │   ├── FTP.md
+│   │   │   │   ├── HTTP.md
+│   │   │   │   ├── LDAP.md
+│   │   │   │   ├── NFS.md
+│   │   │   │   ├── SMB.md
+│   │   │   │   ├── SMTP.md
+│   │   │   │   └── SSH.md
+│   │   │   ├── Méthodologie de reconnaissance.md
+│   │   │   └── Outils
+│   │   │       ├── Autorecon.md
+│   │   │       ├── Dirb.md
+│   │   │       ├── Dirbuster.md
+│   │   │       ├── Enum4Linux.md
+│   │   │       ├── Gobuster.md
+│   │   │       ├── Masscan.md
+│   │   │       └── Nmap.md
+│   │   ├── 2) Détection et exploitation de vulnérabilités
+│   │   │   ├── 2.1) Détection de vulnérabilités.md
+│   │   │   ├── 2.2) Exploitation de vulnérabilités.md
+│   │   │   ├── Méthodologie de détection et exploitation de vulnérabilités.md
+│   │   │   └── Outils
+│   │   │       ├── Burpsuite.md
+│   │   │       ├── Exploit-DB.md
+│   │   │       ├── Metasploit.md
+│   │   │       ├── Nessus.md
+│   │   │       ├── NSE Scripts.md
+│   │   │       ├── OpenVAS.md
+│   │   │       ├── OWASP ZAP.md
+│   │   │       └── Rapid7.md
+│   │   ├── 3) Elévation de privilèges
+│   │   │   ├── Elevation de privilèges Linux.md
+│   │   │   └── Elevation de privilèges Windows.md
+│   │   ├── 4) Mouvement latéral et persistance
+│   │   │   └── test.md
+│   │   ├── 5) Rapport d'intrusion
+│   │   │   └── test.md
+│   │   └── Notes CTF.md
+│   ├── Réglementation
+│   │   ├── ISO 27001 - Information Security Management.md
+│   │   ├── ISO 27001.md
+│   │   ├── ISO 27032 Cyber Security.md
+│   │   ├── ISO 27035 Incident Management.md
+│   │   ├── ISO 27701 - Privacy Information Management.md
+│   │   ├── NISE.md
+│   │   ├── NIS.md
+│   │   └── RGPD.md
+│   └── Steganographie
+│       └── Analyse d'images.md
 ├── Linux
 │   ├── Administration système
 │   │   ├── Configuration générale.md
@@ -295,47 +222,7 @@ Cerveau
 │   └── Virtualisation
 │       ├── Hyper-V.md
 │       └── VMware.md
-├── Pentesting_2
-│   ├── 1) Reconnaissance
-│   │   ├── Enumération par services
-│   │   │   ├── DNS.md
-│   │   │   ├── Enumération.md
-│   │   │   ├── FTP.md
-│   │   │   ├── HTTP.md
-│   │   │   ├── LDAP.md
-│   │   │   ├── NFS.md
-│   │   │   ├── SMB.md
-│   │   │   ├── SMTP.md
-│   │   │   └── SSH.md
-│   │   ├── Méthodologie de reconnaissance.md
-│   │   └── Outils
-│   │       ├── Autorecon.md
-│   │       ├── Dirb.md
-│   │       ├── Dirbuster.md
-│   │       ├── Enum4Linux.md
-│   │       ├── Gobuster.md
-│   │       ├── Masscan.md
-│   │       └── Nmap.md
-│   ├── 2) Détection et exploitation de vulnérabilités
-│   │   ├── 2.1) Détection de vulnérabilités.md
-│   │   ├── 2.2) Exploitation de vulnérabilités.md
-│   │   ├── Méthodologie de détection et exploitation de vulnérabilités.md
-│   │   └── Outils
-│   │       ├── Burpsuite.md
-│   │       ├── Exploit-DB.md
-│   │       ├── Metasploit.md
-│   │       ├── Nessus.md
-│   │       ├── NSE Scripts.md
-│   │       ├── OpenVAS.md
-│   │       ├── OWASP ZAP.md
-│   │       └── Rapid7.md
-│   ├── 3) Elévation de privilèges
-│   │   ├── Elevation de privilèges Linux.md
-│   │   └── Elevation de privilèges Windows.md
-│   ├── 4) Mouvement latéral et persistance.md
-│   ├── 5) Rapport d'intrusion.md
-│   ├── CHATGPT.md
-│   └── NOTES PENTEST.md
+├── README.md
 └── Réseaux
     ├── Automatisation & Sauvegarde
     │   ├── Ansible.md

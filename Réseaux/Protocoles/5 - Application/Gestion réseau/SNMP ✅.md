@@ -1,106 +1,130 @@
 # Guide SNMP
 
-SNMP est un protocole centralisé conçu pour gérer et surveiller les dispositifs de réseau tels que les routeurs, les commutateurs et les serveurs. SNMP est largement utilisé dans les réseaux pour collecter des informations et configurer à distance des dispositifs. La compréhension du SNMP est essentielle pour tout administrateur réseau ou ingénieur.
+SNMP est un protocole conçu pour gérer et surveiller les dispositifs de réseau tels que les routeurs, les commutateurs et les serveurs. SNMP est largement utilisé dans les réseaux pour collecter des informations et configurer à distance des dispositifs.
 
-### **Introduction au SNMP**
+# Généralités SNMP
+* Mode de transport : UDP
+* Ports de communication 
+	* 161 : Utilisé par les agents SNMP pour écouter les requêtes provenant des managers SNMP
+	* 162 : Utilisé par les managers pour écouter les notifications (souvent appelées traps) envoyées par les agents SNMP.
 
-- **Définition** : SNMP, ou Simple Network Management Protocol, est un protocole standardisé utilisé pour surveiller et administrer des dispositifs de réseau et pour collecter des informations sur ces dispositifs à travers un réseau IP.
-    
-- **Versions** : SNMP a plusieurs versions, notamment SNMPv1, SNMPv2c et SNMPv3. SNMPv3 est actuellement la version la plus sécurisée, offrant des fonctionnalités d'authentification et de chiffrement.
-    
+# Composants clés du SNMP
 
-### **Composants clés du SNMP**
-
-1. **Agent SNMP** : Il s'agit d'un programme qui s'exécute sur les dispositifs de réseau. Il collecte et stocke des informations concernant le dispositif sur lequel il s'exécute.
+1. **Agent SNMP** : Equipements réseaux (routeurs, switchs, serveurs, imprimantes, ordi) Il s'agit d'un programme qui s'exécute sur les dispositifs de réseau. Il collecte et stocke des informations concernant le dispositif sur lequel il s'exécute.
     
 2. **Gestionnaire SNMP (ou SNMP Manager)** : Il s'agit du système centralisé utilisé pour surveiller ou administrer des dispositifs SNMP. Il envoie des requêtes à l'agent et attend des réponses.
     
-3. **MIB (Management Information Base)** : Une base de données hiérarchisée qui décrit les informations disponibles sur le dispositif. Elle est organisée en objets, chacun ayant un identifiant unique (par exemple, 1.3.6.1.4.1.9.2.1.58.0). Les MIB sont constituées de groupes standards, y compris IP, TCP, UDP, ICMP, AT, ISO, entre autres.
+3. **MIB (Management Information Base)** : La MIB est un schéma (et non une base de données) de structure hiérarchique, un peu comme une langue, où chaque type d'information de l'agent est défini par un OID. Cet OID est ce qu'utilise le manager lorsqu'il souhaite obtenir une information de l'agent. Ni l'agent ni le manager ne stockent une base de données complète. Au lieu de cela, la MIB sert de schéma commun pour s'assurer que l'information fournie par l'agent correspond à l'OID demandé par le manager
     
 4. **Traps** : Les traps sont des notifications ou des alertes envoyées par un agent au gestionnaire en cas d'événement spécifique.
     
+# Types de messages SNMP
+* Les messages SNMP (ou commandes) définissent la manière dont les gestionnaires SNMP et les agents interagissent entre eux
+* Les PDUs SNMP encapsulent les commandes (comme GET, SET, TRAP) ainsi que les informations associées (comme les OIDs et les valeurs). 
 
-### **Fonctionnement du SNMP**
+Le format de PDU pour SNMP est spécifiquement conçu pour transmettre des informations relatives à la gestion du réseau. Les types de PDU dans SNMP incluent:
 
-- Le gestionnaire envoie une requête SNMP à un dispositif.
-- L'agent du dispositif reçoit la requête, récupère les informations nécessaires depuis la MIB, et renvoie une réponse au gestionnaire.
-- **Protocole** : SNMP est une application non orientée connexion, ce qui signifie qu'elle n'établit pas de session permanente entre le client et le serveur. Il utilise UDP (User Datagram Protocol) pour ses communications.
-- **Ports** : SNMP utilise principalement les ports 161 (pour les requêtes) et 162 (pour les traps).
-- **Messages** :
-	- **GET** : Utilisé pour récupérer la valeur des objets MIB à partir de l'agent.
-	- **SET** : Utilisé pour définir ou modifier la valeur des objets MIB au niveau de l'agent.
-	- **TRAP** : Utilisé par l'agent pour notifier le gestionnaire d'événements significatifs.
-### **Versions du SNMP**
+1. **GET Request PDU** : Utilisé pour interroger des informations.
+2. **GETNEXT Request PDU** : Utilisé pour récupérer la valeur du prochain OID.
+3. **SET Request PDU** : Utilisé pour modifier une valeur.
+4. **GETBULK Request PDU** : Utilisé pour récupérer des volumes importants d'informations.
+5. **RESPONSE PDU** : Une réponse à une demande du gestionnaire.
+6. **TRAP PDU** : Utilisé par l'agent pour notifier le gestionnaire d'un événement.
 
-- **SNMPv1** : Première version avec une sécurité minimale basée sur des "community strings".
-- **SNMPv2c** : Améliorations fonctionnelles par rapport à SNMPv1 avec des capacités de sécurité similaires.
-- **SNMPv3** : Version la plus récente et la plus sécurisée, offrant des fonctionnalités d'authentification et de chiffrement.
+# Exemple d'un GET REQUEST entre manager et agent 
+
+## **Étape 1: Gestionnaire → Agent**
+```
+Type de PDU: GET Request PDU  
+OID demandé: `1.3.6.1.2.1.1.1.0`  
+Message: "Fournissez-moi la description du système pour l'OID 1.3.6.1.2.1.1.1.0."`
+```
+## **Étape 2: Agent → Gestionnaire**
+Après avoir reçu la demande, l'agent consulte sa MIB pour trouver la valeur associée à cet OID. Supposons que cet agent gère un routeur Cisco.
+
+```
+Type de PDU: RESPONSE PDU  
+OID renvoyé: `1.3.6.1.2.1.1.1.0`  
+Valeur renvoyée: "Cisco IOS Software, 3700 Software (C3700-ADVENTERPRISEK9-M), Version 12.4(15)T7, RELEASE SOFTWARE (fc3)"  
+Message: "La description du système pour l'OID 1.3.6.1.2.1.1.1.0 est 'Cisco IOS Software, 3700 Software (C3700-ADVENTERPRISEK9-M), Version 12.4(15)T7, RELEASE SOFTWARE (fc3)'."
+````
+# Différents scénarios d'échanges de PDU
+
+| Type de PDU    | Message (Envoyé par le Gestionnaire)                      | Réponse Attendue (de l'Agent)                           |
+|----------------|------------------------------------------------------------|---------------------------------------------------------|
+| **GET REQUEST**| "Donnez-moi la valeur pour l'OID X."                       | RESPONSE PDU avec la valeur de l'OID X.                 |
+| **GET NEXT**   | "Donnez-moi la valeur de l'OID qui vient après l'OID X."   | RESPONSE PDU avec la valeur de l'OID qui suit X.        |
+| **SET**        | "Définissez la valeur de l'OID X à Y."                     | RESPONSE PDU indiquant succès ou erreur.                |
+| **GET BULK**   | "Donnez-moi les valeurs pour un ensemble d'OID depuis X."  | RESPONSE PDU avec valeurs pour une série d'OID depuis X.|
+| **GET RESPONSE**| (Pas envoyé par le Gestionnaire, c'est une réponse.)     | N/A (c'est déjà une réponse).                           |
+| **TRAP**       | "Un événement spécifique s'est produit (ex: interface down)." | Aucune réponse attendue pour un TRAP.                   |
+
+# Versions du SNMP
+
+**SNMPv2 (Version 2)**
+	- **Authentification** : Tentative d'introduire une méthode party-based, mais elle s'est avérée trop complexe et n'a pas été largement adoptée.
+	- **Confidentialité** : Pas de chiffrement des messages, donc aucune garantie de confidentialité.
+	- **Intégrité** : Pas de garantie de l'intégrité des messages, car il n'y a pas de mécanisme de vérification des messages.
+
+**SNMPv2c (Version 2 communauté)**
+	- **Authentification** : Utilise un "community string" pour l'authentification, qui est transmis en clair dans le réseau.
+	- **Confidentialité** : Pas de chiffrement, donc les données peuvent être lues en transit par quiconque capture les paquets.
+	- **Intégrité** : Comme le "community string" est transmis en clair, il est vulnérable à l'interception, ce qui peut compromettre l'intégrité des données.
+
+**SNMPv3 (Version 3)**
+	- **Authentification** : Introduit une authentification des utilisateurs avec un mécanisme de mot de passe, ce qui est plus sûr que le simple "community string". Plusieurs méthodes d'authentification sont supportées, comme HMAC-MD5 et HMAC-SHA.
+	- **Confidentialité** : Offre la capacité de chiffrer les messages pour garantir la confidentialité des données en transit. DES, 3DES, AES sont parmi les algorithmes de chiffrement pris en charge.
+	- **Intégrité** : Grâce à l'authentification des utilisateurs et au chiffrement, SNMPv3 garantit que les données n'ont pas été altérées en transit.
+	- **Contrôle d'accès** : Offre des capacités étendues de contrôle d'accès basées sur l'utilisateur, permettant une gestion fine de ce que chaque utilisateur peut voir ou modifier.
+
+# Configuration SNMPv2
+1. On active le service SNMP
+```
+router(config)# snmp-server enable
+```
+2. On renseigne le Community string (mot de passe) pour intéragir et le type d'actions (RO ou RW). Dans un environnement de production on ne met jamais des community simple avec RW ! 
+```
+router(config)# snmp-server community [NOM_COMMUNAUTE] RO
+router(config)# snmp-server community [NOM_COMMUNAUTE] RW
+
+# Le manager qui communique avec le community RW pourra appliquer des modificiations
+```
+3. On peut autorisé l'accès SNMP à certaines IP seulement
+```
+router(config)# snmp-server host [IP] community [NOM_COMMUNAUTE]
+```
+4. On peut configurer l'envoi automatique de notification (TRAPS) au gestionnaire 
+```
+router(config)# snmp-server host [IP] traps version {2c,3} [NOM_COMMUNAUTE]
+router(config)# snmp-server enable traps
+```
+5. On sauvegarde la configuration
+```
+router(config)# end
+router# write memory
+```
+
+# Configuration SNMPv3 
+* SNMPv3 rajoute une couche de sécurité en ajoutant des mécanismes d'authentifications et de chiffrement
+* On utilise plus de Community strings mais des comptes de connexions
+1. Créer un utilisateur SNMPv3 sur l'agent
+```
+snmp-server user [USER] [GROUP] v3 {md5,sha} {des,aes}
+```
+2. Créer un groupe SNMPv3
+```
+snmp-server group [GROUP] v3 [priv|auth|noauth] [read vue_lecture] [write vue_ecriture]
+
+[priv|auth|noauth] : Détermine le niveau de sécurité pour le groupe :
+	- noauth : Pas d'authentification ni de chiffrement
+	- auth : Authentification mais pas de chiffrement
+	- priv : Authentification et chiffrement
+
+[read vue_lecture] : Définit la "vue" SNMP que le groupe est autorisé à lire. Une "vue" est essentiellement un sous-ensemble de la MIB
     
-### **Sécurité et Meilleures Pratiques**
-
-1. **Utiliser SNMPv3** : En raison de ses mécanismes de sécurité renforcés.
-2. **Modifier les community strings par défaut** : Évitez d'utiliser les "community strings" par défaut comme "public" ou "private".
-3. **Restriction d'accès** : Utilisez des listes de contrôle d'accès pour limiter l'accès aux dispositifs SNMP.
-4. **Surveillance** : Surveillez régulièrement les journaux SNMP pour toute activité suspecte.
-
-## Configuration Cisco
-### Agent 
-La mise en place d'un agent SNMP nécessite de paramétrer correctement les équipements réseau afin qu'ils puissent communiquer avec le gestionnaire SNMP. Voici un résumé simplifié et corrigé des étapes à suivre :
-
-1. **Configuration de Base** :
-   - Chaque équipement réseau doit être configuré pour qu'il puisse répondre aux requêtes du gestionnaire SNMP.
-
-2. **Spécification de l'identifiant de communauté** :
-   - Pour la lecture seule (Agent) :
-     ```
-     snmp-server community [NOM_COMMUNAUTE] ro
-     ```
-   - Pour la lecture et écriture (Agent) :
-     ```
-     snmp-server community [NOM_COMMUNAUTE] rw
-     ```
-
-3. **Spécification de l'emplacement et du contact principal** :
-   - Pour définir l'emplacement de l'équipement géré :
-     ```
-     snmp-server location [EMPLACEMENT]
-     ```
-   - Pour définir le contact principal de l'équipement :
-     ```
-     snmp-server contact [CONTACT]
-     ```
-
-4. **Configuration des syslogs** :
-   - Activer la journalisation :
-     ```
-     logging on
-     ```
-   - Spécifier l'hôte ou l'IP pour l'envoi des journaux :
-     ```
-     logging [NOM_HOTE ou ADRESSE_IP]
-     ```
-   - Définir le service de journalisation :
-     ```
-     logging facility local7
-     ```
-   - Configurer le niveau de gravité des messages à capturer :
-     ```
-     logging trap informational
-     ```
-   - Spécifier l'interface à utiliser pour envoyer des messages syslog :
-     ```
-     logging source-interface loopback0
-     ```
-   - Activer les horodatages sur les messages de journal :
-     ```
-     logging timestamps log datetime
-     ```
-### Serveur 
-Le gestionnaire SNMP est le composant central du système SNMP qui communique avec les agents SNMP pour surveiller ou gérer les équipements réseau.
-- Obtenir valeur à partir de la MIB
+[write vue_ecriture] : Définit la vue SNMP que le groupe est autorisé à modifier
 ```
-snmp get {v1|v2c|v3} @ip_agent @communaute oid @oid_value
+3. Définir les parties accessibles de la MIB (vue)
 ```
-### **Conclusion**
-
-SNMP est un outil précieux pour la gestion des réseaux. Toutefois, comme pour tout protocole ou outil, une compréhension approfondie, associée à une mise en œuvre sécurisée, est essentielle pour maximiser son efficacité tout en minimisant les risques potentiels.
+snmp-server view [NOM] [OID_MIB] [included|excluded]
+```

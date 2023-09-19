@@ -62,20 +62,20 @@ Message: "La description du système pour l'OID 1.3.6.1.2.1.1.1.0 est 'Cisco IOS
 # Versions du SNMP
 
 **SNMPv2 (Version 2)**
-	- **Authentification** : Tentative d'introduire une méthode party-based, mais elle s'est avérée trop complexe et n'a pas été largement adoptée.
-	- **Confidentialité** : Pas de chiffrement des messages, donc aucune garantie de confidentialité.
-	- **Intégrité** : Pas de garantie de l'intégrité des messages, car il n'y a pas de mécanisme de vérification des messages.
+- **Authentification** : Tentative d'introduire une méthode party-based, mais elle s'est avérée trop complexe et n'a pas été largement adoptée.
+- **Confidentialité** : Pas de chiffrement des messages, donc aucune garantie de confidentialité.
+- **Intégrité** : Pas de garantie de l'intégrité des messages, car il n'y a pas de mécanisme de vérification des messages.
 
 **SNMPv2c (Version 2 communauté)**
-	- **Authentification** : Utilise un "community string" pour l'authentification, qui est transmis en clair dans le réseau.
-	- **Confidentialité** : Pas de chiffrement, donc les données peuvent être lues en transit par quiconque capture les paquets.
-	- **Intégrité** : Comme le "community string" est transmis en clair, il est vulnérable à l'interception, ce qui peut compromettre l'intégrité des données.
+- **Authentification** : Utilise un "community string" pour l'authentification, qui est transmis en clair dans le réseau.
+- **Confidentialité** : Pas de chiffrement, donc les données peuvent être lues en transit par quiconque capture les paquets.
+- **Intégrité** : Comme le "community string" est transmis en clair, il est vulnérable à l'interception, ce qui peut compromettre l'intégrité des données.
 
 **SNMPv3 (Version 3)**
-	- **Authentification** : Introduit une authentification des utilisateurs avec un mécanisme de mot de passe, ce qui est plus sûr que le simple "community string". Plusieurs méthodes d'authentification sont supportées, comme HMAC-MD5 et HMAC-SHA.
-	- **Confidentialité** : Offre la capacité de chiffrer les messages pour garantir la confidentialité des données en transit. DES, 3DES, AES sont parmi les algorithmes de chiffrement pris en charge.
-	- **Intégrité** : Grâce à l'authentification des utilisateurs et au chiffrement, SNMPv3 garantit que les données n'ont pas été altérées en transit.
-	- **Contrôle d'accès** : Offre des capacités étendues de contrôle d'accès basées sur l'utilisateur, permettant une gestion fine de ce que chaque utilisateur peut voir ou modifier.
+- **Authentification** : Introduit une authentification des utilisateurs avec un mécanisme de mot de passe, ce qui est plus sûr que le simple "community string". Plusieurs méthodes d'authentification sont supportées, comme HMAC-MD5 et HMAC-SHA.
+- **Confidentialité** : Offre la capacité de chiffrer les messages pour garantir la confidentialité des données en transit. DES, 3DES, AES sont parmi les algorithmes de chiffrement pris en charge.
+- **Intégrité** : Grâce à l'authentification des utilisateurs et au chiffrement, SNMPv3 garantit que les données n'ont pas été altérées en transit.
+- **Contrôle d'accès** : Offre des capacités étendues de contrôle d'accès basées sur l'utilisateur, permettant une gestion fine de ce que chaque utilisateur peut voir ou modifier.
 
 # Configuration SNMPv2
 1. On active le service SNMP

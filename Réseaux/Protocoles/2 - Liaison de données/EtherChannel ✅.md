@@ -69,7 +69,7 @@ Switch(config-if-range)# channel-group 1 mode {active|passive|on}
 ```
 Switch(config)# interface port-channel 1
 ```
-* Configurer comme un port trunk, si nécessaire:
+* Configurer comme ports trunks les interfaces:
 ```
 Switch(config-if)# switchport mode trunk 
 Switch(config-if)# switchport trunk allowed vlan {VLAN range} 

@@ -44,6 +44,12 @@ R1(config)#ip route @réseau_desti @masque_desti @ip_saut_suivant`
 R1(config)#ipv6 route @réseau_desti/@masque_desti @ip_saut_suivant`
 ```
 
+- Ajouter une host static route
+
+```shell
+R1(config)#ip route @IPCIBLE 255.255.255.255 @ip_saut_suivant`
+R1(config)#ipv6 route @réseau_desti/128 @ip_saut_suivant`
+```
 - Afficher table de routage (les routes)
 
 ```shell

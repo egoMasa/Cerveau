@@ -69,7 +69,7 @@ R1(config-rtr)#network @mon_reseau mask @masque
 ```
 * Annoncer ses voisins (ASN)
 ```
-R1(config-rtr)#neighbor @IP_ASN_VOISIN remote-as @ASN_voisin
+R1(config-rtr)#neighbor @IP_INT_VOISIN remote-as @ASN_voisin
 ```
 * Modifier router-id BGP
 ```
@@ -80,5 +80,5 @@ R1(config-rtr)#bgp router-id X.X.X.X
 R1(config)#router bgp 65329
 R1(config-rtr)#bgp router-id 1.1.1.1
 R1(config-rtr)#network 192.168.1.0 mask 255.255.255.0
-R1(config-rtr)#neighbor 10.0.0.0 remote-as 65330
+R1(config-rtr)#neighbor 10.0.0.2 remote-as 65330
 ```

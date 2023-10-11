@@ -1,0 +1,8 @@
+- le renforcement des capacités nationales de cybersécurité. Les Etat membres devront notamment se doter d’autorités nationales compétentes en matière de cybersécurité, d’équipes nationales de réponse aux incidents informatiques (CSIRT) et de stratégies nationales de cybersécurité. Respectivement en France, l’ANSSI, le [CERT-FR](http://www.cert.ssi.gouv.fr/) et [la stratégie nationale pour la sécurité du numérique](https://www.ssi.gouv.fr/uploads/2015/10/strategie_nationale_securite_numerique_fr.pdf) ;
+- l’établissement d’un cadre de coopération volontaire entre Etats membres de l’UE via la création de
+    - un « groupe de coopération » des Etats membres sur les aspects politiques de la cybersécurité ;
+    - un « réseau européen des CSIRT » des Etats membres. Ce dernier visera notamment à faciliter le partage d’informations techniques sur les risques, vulnérabilités ;
+- le renforcement par chaque Etat de la cybersécurité d’« opérateurs de services essentiels » au fonctionnement de l’économie et de la société via
+    - la définition au niveau national de règles de cybersécurité auxquels ces derniers devront se conformer ;
+    - l’obligation pour les opérateurs de notifier les incidents ayant un impact sur la continuité de leurs services essentiels.
+- l’instauration de règles européennes communes en matière de cybersécurité des prestataires de services numériques dans les domaines de l’informatique en nuage, des moteurs de recherche et places de marché en ligne.

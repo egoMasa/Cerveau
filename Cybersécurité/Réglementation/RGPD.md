@@ -1,0 +1,4 @@
+- Principes fondamentaux (minimisation des données, limitation de la finalité, exactitude, etc.)
+- Droits des individus (accès, rectification, suppression, etc.)
+- Obligations des contrôleurs et processeurs
+- Transferts internationaux de données

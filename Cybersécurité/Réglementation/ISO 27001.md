@@ -1,3 +1,0 @@
-- Principes de la gestion de la sécurité de l'information
-- Méthodologies d'évaluation des risques
-- Mesures de sécurité en fonction des résultats de l'évaluation des risques

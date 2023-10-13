@@ -4,6 +4,15 @@
 * Répartie en plusieurs 
 * Agit comme une check-list en cas d'audit
 # Sécurité Physique 
+## Points à aborder 
+* Identification des zones sensibles et les obstacles d'accès
+* Emplacement des équipements
+* Procédures de gestions de clefs et des combinaison
+* Contrôle d'accès au zone sensibles et les modalités aux personnes non habilités
+* Mesures pour contrôler des équipement et s'assurer de leur bon fonctionnement
+* Procédures de gestion des alarmes et détection d'intrusion
+* Procédures mises en place en dehors des heures de travail
+## Questions à poser 
 1. **Localisation des données** :
 	1. Où sont situés physiquement les serveurs et autres dispositifs de stockage de données ?
 2. **Contrôle d'accès aux locaux** :
@@ -15,7 +24,7 @@
 	6. Qui est responsable de leur distribution et de leur recueil ?
 	7. Certaines zones sont-elles limitées à un nombre restreint de personnes ? Qui sont ces personnes et comment sont-elles désignées ?
 3. **Surveillance et détection** :
-	1. Y a-t-il des caméras de surveillance ? Où sont-elles situées ?
+	1. Y a-t-il des caméras de surveillance ? Où sont-elles situées ? Qui a accès au enregistrement
 	2. Quels dispositifs de détection d'intrusion sont mis en place ?
 	3. Comment sont sécurisées les entrées et sorties des locaux ?
 	4. Y a-t-il des clôtures, barrières ou autres dispositifs périphériques de sécurité ?
@@ -43,7 +52,8 @@
 1. **Gestion des changements** :
 	1. Comment sont gérées les modifications apportées aux systèmes et aux applications ?
 	2. Existe-t-il un processus formalisé de demande, d'approbation et de documentation des changements ?
-	3. Comment sont testés les changements avant leur mise en production ?
+	3. Garder-vous un journal de bord des modifications ? 
+	4. Comment sont testés les changements avant leur mise en production ?
 2. **Mises à jour et patches** :
 	1. Comment sont gérées les mises à jour et les patches des systèmes et des applications ?
 	2. À quelle fréquence les systèmes sont-ils patchés ?
@@ -125,7 +135,7 @@ La sécurité des flux concerne principalement la manière dont les données son
 	1. Quels systèmes, bases de données ou solutions de stockage sont utilisés pour stocker les données ?
 	2. Qui a accès à ces données stockées ?
 	3. Comment est gérée la segmentation des données (séparation des données sensibles et non sensibles) ?
-	4. Comment est géré le chiffrement des données au repos ?
+	4. Comment est géré le chiffrement des données ?
 3. **Durée de conservation** :
 	1. Quelle est la politique de rétention des données ? Pourquoi cette durée a-t-elle été choisie ?
 	2. Comment est mise en œuvre la suppression ou l'archivage des données après cette période ?
@@ -134,7 +144,8 @@ La sécurité des flux concerne principalement la manière dont les données son
 	2. Combien de temps sont conservées ces sauvegardes ?
 	3. Où sont stockées les sauvegardes (emplacement géographique, sur site/hors site) ?
 	4. Comment sont protégées ces sauvegardes (chiffrement, contrôle d'accès...) ?
-	5. À quelle fréquence les restaurations de sauvegarde sont-elles testées ?
+	5. Qui à accès au backups et via quel moyen ? 
+	6. À quelle fréquence les restaurations de sauvegarde sont-elles testées ?
 5. **Chiffrement et hashing** :
 	1. Quels algorithmes de chiffrement et de hachage sont utilisés pour protéger les données ?
 	2. Comment sont gérées et protégées les clés de chiffrement ?
@@ -147,15 +158,9 @@ La sécurité des flux concerne principalement la manière dont les données son
 8. **Sensibilisation et formation** :
 	1. Comment le personnel est-il formé à la manipulation sécurisée des données ?
 	2. Existe-t-il des rappels ou des formations continues sur la protection des données ?
-9. **Évaluation des risques** :
-	1. Comment les risques associés aux données sont-ils évalués ?
-	2. Comment sont gérées les vulnérabilités ou les menaces identifiées ?
-10. **Réponse aux incidents** :
+9. **Réponse aux incidents** :
 	1. Comment réagissez-vous en cas de violation ou de fuite de données ?
 	2. Y a-t-il un plan de réponse aux incidents spécifique pour les incidents liés aux données ?
-11. **Conformité réglementaire** :
-	1. Comment assurez-vous la conformité avec les réglementations relatives à la protection des données (par exemple, RGPD, CCPA...) ?
-	2. Avez-vous des audits réguliers pour vous assurer de cette conformité ?
 
 # Sécurité des Réseaux
 
@@ -193,10 +198,7 @@ La sécurité des flux concerne principalement la manière dont les données son
 10. **Réponse aux incidents** :
 	1. Comment réagissez-vous en cas d'incident réseau ?
 	2. Disposez-vous d'un plan de réponse spécifique pour les incidents liés au réseau ?
-11. **Formation et sensibilisation** :
-	1. Comment le personnel technique est-il formé aux meilleures pratiques de sécurité réseau ?
-	2. Comment les utilisateurs finaux sont-ils sensibilisés aux risques liés au réseau ?
-12. **Politiques et procédures** :
+11. **Politiques et procédures** :
 	1. Avez-vous des politiques et des procédures spécifiques pour la sécurité des réseaux ?
 	2. Comment sont-elles régulièrement revues et mises à jour ?
 13. **Évaluation et tests** :
@@ -204,3 +206,58 @@ La sécurité des flux concerne principalement la manière dont les données son
 	2. Comment les résultats de ces tests sont-ils traités et intégrés dans vos processus de sécurité ?
 
 
+
+
+
+##########################################################################
+
+# Sécurité Physique 
+* Identification des zones sensibles et les obstacles d'accès
+* Emplacement des équipements
+* Procédures de gestions de clefs et des combinaison
+* Contrôle d'accès au zone sensibles et les modalités aux personnes non habilités
+* Mesures pour contrôler des équipement et s'assurer de leur bon fonctionnement
+* Procédures de gestion des alarmes et détection d'intrusion
+* Procédures mises en place en dehors des heures de travail
+# Sécurité des personnes 
+* Liste du personnel intervenants sur le système et leurs niveau de droits (admin, user, technicien)
+* Besoins d'habilitation selon le type de personnel ? 
+	* Niveaux d'habilitations définis
+	* Processus d'habilitation
+	* Critères d'habilitation 
+	* Les restrictions en fonction du niveau d'habilitation 
+* Formations sur la sécurité en fonction des niveaux d'habilitation
+* Procédures de gestion des personnel de maintenance et d'entretien
+
+# Sécurité des documents 
+* Identification des documents stockés relatif au SI (journaux d'audit, les journaux d'événements, les fichiers de configuration, les politiques et procédures de sécurité)
+* Documents sur les mesures de sécurité actuellement déployés 
+* Documents sur le fonctionnent du système et son stockage
+* Procédures d'inspections des enregistrement et les responsabilités
+* Mesures de contrôle, stockage et marquage des documents
+* Procédures de création des documents techniques et leur diffusion dans l'équipe
+* Procédures d'accès aux documents et enregistrement 
+* Procédures de suppression des anciens documents et support
+
+# Sécurité du SI
+* Description de l'environnement système (?)
+* Mesures de protections du matériel contre 
+	* perte
+	* endommagement
+	* vol
+	* compromission
+	* Emplacement, stockage, prise en compte et manipulation
+* Procédure d'arrêt et démarrage des postes et machines
+* Mesures de protection des services généraux contre les coupures
+* Procédures de contrôle d'équipements et leur intégrité
+* Maintenance du système
+	* Préventive ou curative
+	* procédures selon le type de maintenance
+	* effectuer par un interne  ou un externe
+	* périodicité et méthodes appliquer
+
+# Sécurité logiciel
+* Procédures de contrôle d'accès au système 
+* Procédures de gestion des comptes utilisateurs
+* Procédures de d'installation de nouveau logiciel 
+* Procédures 

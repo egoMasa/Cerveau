@@ -1,0 +1,159 @@
+# EBIOS RM 
+
+# 1) Présentation méthode EBIOS RM
+* Il s'agit d'une méthode de gestion des risques en sécurité de l'information
+* Permet d’identifier, d’analyser et de traiter les risques liés à la sécurité de l’information au sein d’une organisation
+* La méthode EBIOS RM est composé de 5 étapes différentes 
+	1. Cadrage/socle de sécurité
+		1. Identifie l'objet de l'étude
+		2. Identifie les participants 
+		3. Recenser les missions, valeurs métiers et bien supports
+		4. Identifier les événements redoutés et l'impact des dégâts
+		5. Définir le socle de sécurité et les écarts avec la réalité 
+	2. Sources de risque
+	3. Scénarios stratégiques
+	4. Scénarios opérationnels
+	5. Traitement du risque
+		1. 
+# 1) Cadrage et socle de sécurité
+## Objectifs
+1. Identifie l'objet de l'étude
+2. Identifie les participants 
+3. Recenser les missions, valeurs métiers et bien supports
+4. Identifier les événements redoutés et leur niveau de gravité
+5. Définir le socle de sécurité et les écarts avec la réalité 
+## Terminologie 
+* **Participants** : Personnes impliqués dans l'étude (employé, responsable)
+* **Missions** : Objectifs et fonctions du système étudié
+- **Valeurs métiers** : Informations et processus essentiels qui définissent le cœur de l'activité d'une entreprise et qu'il est impératif de protéger. En gros tout ce qui a de la valeur pour un organisme
+	- **Exemple** : Service spécifique, type de données, résultats de travaux, stratégie de développement ... 
+- **Biens supports** : Actifs qui soutiennent et permettent la réalisation des missions et la protection des valeurs métier de l'entreprise
+* **Socle de sécurité et écarts** : Ecart entre les mesures de sécurité nécessaires (ou souhaitées) et la réalité du SI actuel.
+## Eléments à produire 
+1. Cadrage de l'étude
+	* Participants avec matrice RACI
+	* Périmètre métier : Les métiers et personnes qui dépendent de ce SI
+	* Périmètre technique : L'architecture, technologies, flux
+2. Evènements redoutés et leur niveau de gravité
+3. Socle de sécurité : 
+	* Mesures de sécurité applicables pour limiter les risques
+	* Etat du SI
+	* Identification des écarts
+## Etape 1 : Cadrage de l'étude 
+
+### Périmètre métier et technique 
+| MISSIONS                                        | MISSION 1         |
+|-------------------------------------------------|-------------------|
+| DÉNOMINATION DE LA VALEUR MÉTIER                | DEPARTEMENT,SI,Objectifs   |            |
+| NATURE DE LA VALEUR MÉTIER  |              PROCESSES/INFORMATION
+| DESCRIPTION                                     |OBJECTIFS VALEUR METIER (listing)                   |                 |                  |
+| ENTITÉ OU PERSONNE RESPONSABLE (INTERNE / EXTERNE)  | RESPONSABLE MISSION             |                 |                  |
+| DÉNOMINATION DU / DES BIEN(S) SUPPORT(S) ASSOCIÉ(S) | SERVEUR/SYSTEME |
+| DESCRIPTION                                     | UTILITE DU BIEN SUPPORT DANS MISSION                  |                 |                  |
+| ENTITÉ OU PERSONNE RESPONSABLE (INTERNE / EXTERNE)  | RESPONSABLE BIEN SUPPORT              |                 |                  |
+
+### Questions à poser 
+1. A quoi sert l'objet de l'étude dans l'organisme
+2. Quels sont les processus et informations permettant à l'objet d'étude de fonctionner
+3. Quels sont les services/applications/réseaux/structures/personnes qui permettent de mener à bien le processus de l'objet d'étude
+## Etape 2 : Evènements redoutés et leur niveau de gravité
+
+### Echelles de gravité 
+
+| Niveau de Gravité | Capacité opérationnelle | Performances de l'activité | Sécurité des personnes et des biens | Facilité de surmontabilité | Dégradation du fonctionnement |
+|-------------------|-------------------------|----------------------------|------------------------------------|-----------------------------|-------------------------------|
+| CRITIQUE (4)      | Incapacité              | Impacts majeurs           | Impacts majeurs                    | Difficilement surmontable   | Forte dégradation             |
+| GRAVE (3)         | Assurée avec impacts    | Forte dégradation         | Éventuels impacts                  | Surmontable                 | Dégradation                   |
+| SIGNIFICATIVE (2) | Assurée                | Dégradation               | Aucun impact                       | Quelques difficultés        | Fonctionnement dégradé        |
+| MINEURE (1)       | Assurée                | Aucun impact              | Aucun impact                       | Sans grandes difficultés    | Aucune dégradation            |
+
+1. **Capacité opérationnelle de la société** : Capacité de la société à continuer à fonctionner normalement ou à assurer son activité.
+2. **Performances de l'activité** : Niveau de performance ou d'efficacité de l'activité de l'entreprise.
+3. **Sécurité des personnes et des biens** : Sécurité physique des individus et des propriétés matérielles.
+4. **Facilité de surmontabilité** : Facilité avec laquelle la société peut surmonter la situation ou les défis présentés.
+5. **Dégradation du fonctionnement** : Façon dont le fonctionnement normal de la société est affecté, que ce soit légèrement ou gravement.
+
+### Catégories d'impact 
+
+| Catégorie d'impact                                       | Conséquences types                                                                                                                                      | Exemples |
+|------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| Impacts sur les missions et services de l'organismes | Conséquences sur la réalisation des missions et services.      | Incapacité à fournir un service, dégradation de performances opérationnelles, retards, etc. |
+| Impacts sur la capacité de développement ou de décision | Conséquences sur la liberté de décider.                         | Perte de souveraineté, limitation de l'indépendance de jugement, etc. |
+| Impacts sur le lien social interne                   | Conséquences sur la qualité des liens sociaux.                          | Perte de confiance des employés, exacerbation de tensions, etc. |
+| Impacts sur le patrimoine intellectuel ou culturel   | Conséquences sur les connaissances non-explicites.                  | Perte de mémoire de l'entreprise, perte de savoir-faire, etc. |
+| Impacts sur la sécurité ou sur la santé des personnes | Conséquences sur l'intégrité physique de personnes.                                        | Accident du travail, maladie professionnelle, etc. |
+| Impacts matériels                                    | Dégâts matériels ou destruction de biens supports.                        | Destruction de locaux, endommagement de moyens de production, etc. |
+| Impacts sur l'environnement                          | Conséquences écologiques.                                        | Contamination radiologique, rejet de polluants, etc. |
+| Impacts financiers                                   | Conséquences pécuniaires.                                                                 | Perte de chiffre d'affaire, dépenses imprévues, etc. |
+| Impacts juridiques                                   | Conséquences suite à une non-conformité.                                                     | Procès, amende, condamnation d'un dirigeant, etc. |
+| Impacts sur l'image et la confiance                  | Conséquences sur l'image de l’organisation.                                        | Publication d’articles négatifs, perte de crédibilité, etc. |
+
+
+### Evénements redoutés 
+| Valeurs Métier          | Événements Redoutés                | Catégorie d'impacts       | Gravité  |
+|-------------------------|------------------------------------|----------------------------|----------|
+| Base de données clients | Altération des informations                | Sécurité ou la santé des personnes            | 1   |
+| Site Web                | Fuite d'informations                       | Image et confiance              | 2  |
+| Processus de facturation| Perte/Destruction d'informations | Financier               | 3   |
+| R&D                     | Interruption des services    | Missions et services de l'organismes            | 4 |
+| Système de paiement     | Fraude                             | Coûts de developpement                  | 4 |
+| Système de paiement     | Fraude                             | Juridiques                  | 4 |
+
+### Tableau final 
+| VALEUR MÉTIER | ÉVÉNEMENT REDOUTÉ | CATÉGORIES D'IMPACT | GRAVITÉ |
+|---------------|-------------------|---------------------|---------|
+| **Département**      | Description de l'événement 1 | - Impact type 1<br>- Impact type 2<br>- Impact type 3 | X |
+| **Système cible**      | Description de l'événement 2 | - Impact type 4<br>- Impact type 5 | X |
+| **Type d'informations**      | Description de l'événement 3 | - Impact type 6<br>- Impact type 7 | X |
+| **Objectifs**      | Description de l'événement 4 | - Impact type 6<br>- Impact type 5 | X |
+
+## Etape 3 : Déterminer socle de sécurité 
+
+### Pyramide du risque numérique 
+1. Lister les principes de base et hygiène
+	* [Recommandation ANSSI](https://www.ssi.gouv.fr/administration/bonnes-pratiques/)
+	* Règles sécurité interne à l'organisation
+1. Lister les mesures réglementaire et normatif
+	* Normes ISO 27000
+	* [NIS2](https://www.ssi.gouv.fr/directive-nis-2/)
+	* [RGPD](https://www.ssi.gouv.fr/administration/reglementation/rgpd-renforcer-la-securite-des-donnees-a-caractere-personnel/)
+1. Lister les mesures de sécurité à mettre en place spécifiques à l'objet de l'étude et aux scénarios redoutés
+### Tableau socle de sécurité 
+| TYPE DE RÉFÉRENTIEL | NOM DU RÉFÉRENTIEL | ÉTAT D'APPLICATION | ÉCARTS | JUSTIFICATION DES ÉCARTS |
+|--------------------|-------------------|-------------------|-------|-------------------------|
+| Règles d'hygiène informatique et bonnes pratiques | Guide d'hygiène informatique de l'ANSSI | Appliqué avec restrictions | - Règle 8 : Identifier nommément chaque personne accédant au système et distinguer les rôles<br>- Règle 37 : définir et appliquer une politique de sauvegarde des composants critiques | - Existence d'un compte admin non nommément pour l'administration de l'ERP (solution propriétaire ne permettant pas l'administration par un autre compte)<br>- Politique de sauvegarde en cours de rédaction par un groupe de travail |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

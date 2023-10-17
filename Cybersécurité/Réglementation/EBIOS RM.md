@@ -1,6 +1,6 @@
 # EBIOS RM 
 
-# 1) Présentation méthode EBIOS RM
+# 0) Présentation méthode EBIOS RM
 * Il s'agit d'une méthode de gestion des risques en sécurité de l'information
 * Permet d’identifier, d’analyser et de traiter les risques liés à la sécurité de l’information au sein d’une organisation
 * La méthode EBIOS RM est composé de 5 étapes différentes 
@@ -14,7 +14,10 @@
 	3. Scénarios stratégiques
 	4. Scénarios opérationnels
 	5. Traitement du risque
-		1. 
+		1. Synthétiser les scénarios à risque
+		2. Définir stratégie de traitement du risques et les mesures déployer
+		3. Evaluer et documenter les risques résiduels
+		4. Mettre en place un cadre et suivi des risques
 # 1) Cadrage et socle de sécurité
 ## Objectifs
 1. Identifie l'objet de l'étude
@@ -123,37 +126,65 @@
 |--------------------|-------------------|-------------------|-------|-------------------------|
 | Règles d'hygiène informatique et bonnes pratiques | Guide d'hygiène informatique de l'ANSSI | Appliqué avec restrictions | - Règle 8 : Identifier nommément chaque personne accédant au système et distinguer les rôles<br>- Règle 37 : définir et appliquer une politique de sauvegarde des composants critiques | - Existence d'un compte admin non nommément pour l'administration de l'ERP (solution propriétaire ne permettant pas l'administration par un autre compte)<br>- Politique de sauvegarde en cours de rédaction par un groupe de travail |
 
+# 5) Traitement du risque 
+## Objectifs
+1. Synthétiser les scénarios à risques et les décisions de traitement avec les mesures
+2. Evaluer et documenter les risques résiduels
+3. Mettre en place un cadre et suivi des risques
+## Etape 1 : Synthétiser les scénarios à risques et les décisions de traitement avec les mesures
+
+### Niveaux de risques et les actions relier 
+
+| NIVEAU DE RISQUE | ACCEPTABILITÉ DU RISQUE       | INTITULÉ DES DÉCISIONS ET DES ACTIONS                                                                 |
+|------------------|-------------------------------|-------------------------------------------------------------------------------------------------------|
+| Faible           | Acceptable en l'état          | Aucune action n'est à entreprendre                                                                     |
+| Moyen            | Tolérable sous contrôle      | Un suivi en termes de gestion du risque est à mener et des actions sont à mettre en place dans le cadre d'une amélioration continue sur le moyen et long terme |
+| Élevé            | Inacceptable                  | Des mesures de réduction du risque doivent impérativement être prises à court terme. Dans le cas contraire, tout ou partie de l'activité sera refusé          |
+
+### Scénarios de risques 
+* Représenter sur un graphique différents scénarios en fonction de 2 échelles : gravité et vraisemblance
+* Ajouter le niveau de risques par couleurs (vert, orange, rouge) au tableau de synthèse des scénarios de risque
+
+| GRAVITÉ \ VRAISEMBLANCE | 1 | 2 | 3 | 4 |
+|-------------------------|---|---|---|---|
+| 4                       |   |   | R4| R5|
+| 3                       | R2| R1| R3|   |
+| 2                       |   |   |   |   |
+| 1                       |   |   |   |   |
+* **R1** : Description d'un scénario 
+* **R2** : Description d'un scénario 
+* **R3** : Description d'un scénario 
+* **R4** : Description d'un scénario 
+* **R5** : Description d'un scénario 
+### Plan d’amélioration continue de la sécurité (PACS)
+
+* Produire 3 tableau différents 
+	* Mesures de sécurité concernant la gouvernance
+	* Mesures de sécurité concernant la protection
+	* Mesures de sécurité concernant la défense
+	* Mesures de sécurité concernant la résilience
+
+| MESURE DE SÉCURITÉ                                                                                   | SCÉNARIOS DE RISQUES ASSOCIÉS | RESPONSABLE       | FREINS ET DIFFICULTÉS DE MISE EN ŒUVRE                                   | COÛT / COMPLEXITÉ | ÉCHEANCE | STATUT    |
+|------------------------------------------------------------------------------------------------------|-------------------------------|--------------------|------------------------------------------------------------------------|------------------|----------|-----------|
+| Mesure 1                            | R1                           | RSSI              | FREINS POSSIBLES                                        | + - +++             | 6 mois   | {En cours| Terminé |A lancer}  |
 
 
+## Etape 2 : Evaluer et documenter les risques résiduels
 
+### Résumé du risque résiduel:
 
+| Catégories                                                    | Éléments                                                                                         |
+|---------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| **Description et analyse du risque résiduel**                 | - **Description sommaire (dont impacts à craindre)**<br>- **Vulnérabilités résiduelles susceptibles d'être exploitées par la source de risque**<br>- **Autres causes ou facteurs aggravants (négligence, erreur, concours de circonstance, etc.)** |
+| **Événements redoutés concernés**                             | - Événement redouté 1<br>- Événement redouté 2                                                    |
+| **Mesures de traitement du risque existantes et complémentaires** | - Mesure 1<br>- Mesure 2                                                                           |
+| **Gestion du risque résiduel**                                | - Mesures particulières de suivi et de contrôle du risque résiduel.                                |
 
+### Évaluation du risque résiduel:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+|                          | Initiale | Résiduelle |
+|--------------------------|:--------:|:----------:|
+| **Gravité**              |          |            |
+| **Vraisemblance**        |          |            |
+| **Niveau de risque**     |          |            |
 

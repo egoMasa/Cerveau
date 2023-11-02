@@ -4,6 +4,7 @@
 - [ ] Trouver la première et dernière adresse utilisable d'un réseau
 - [ ] Déterminer combien d'adresses IP uniques peuvent être attribuées aux hôtes dans un réseau ou un sous-réseau donné
 - [ ] Déterminer combien de sous-réseaux logiques distincts peuvent être créés à partir d'une plage d'adresses IP
+- [ ] Faire le résumé de routes entre plusieurs réseaux 
 
 # 1) Trouver la première et dernière adresse utilisable d'un réseau
 ## Cas simple : 10.0.0.0/24
@@ -52,3 +53,24 @@
 * On prend la valeur du masque réseau de la plage : N
 * On soustrait pour obtenir le nombre de bits disponibles pour les sous-réseaux : Y = 32-N
 * On calcule le nombre de sous-réseaux possibles : 2^Y
+
+# 4) Faire le résumé de routes entre plusieurs réseaux 
+* Réseau 1 : 192.168.1.0/26
+* Réseau 2 :192.168.1.64/26
+* Réseau 3 :192.168.1.128/26
+1. Traduire les adresses IP en binaire
+```
+192.168.1.0   -> 11000000.10101000.00000001.00000000
+192.168.1.64  -> 11000000.10101000.00000001.01000000
+192.168.1.128 -> 11000000.10101000.00000001.10000000
+```
+2. Définir le nombre de bits en commun
+```
+11000000.10101000.00000001.|00|000000
+11000000.10101000.00000001.|01|000000
+11000000.10101000.00000001.|10|000000
+```
+3. Définir la route résumée finale
+* Adresse binaire : `11000000.10101000.00000001.xx000000`
+* Adresse IP : `192.168.1.0/24`
+* Le résumé de route pour ces trois réseaux est donc 192.168.1.0/24

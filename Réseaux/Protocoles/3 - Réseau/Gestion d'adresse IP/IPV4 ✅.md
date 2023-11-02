@@ -26,11 +26,14 @@
 
 ## **V) Classes d'adresses**
 
-- **Classe A** : 0-127 (127 est réservé pour loopback)
-- **Classe B** : 128-191
-- **Classe C** : 192-223
-- **Classe D** : 224-239 (Réservé pour le multicast)
-- **Classe E** : 240-255 (Réservé pour l'expérimentation et la recherche, non utilisé dans les réseaux publics)
+| Classe | Modèle de bit de départ | Masque de sous-réseau par défaut | Plage d'adresses  | Nombre d'adresses par réseau |
+|-------|-------------------------|-----------------------------|-----------------|---------------------------|
+| A     | 0                       | 255.0.0.0                   | 1.0.0.0–126.255.255.255 | 16,777,214             |
+| B     | 10                      | 255.255.0.0                 | 128.0.0.0–191.255.255.255 | 65,534              |
+| C     | 110                     | 255.255.255.0               | 192.0.0.0–223.255.255.255 | 254                 |
+| D     | 1110                    | Aucun                      | 224.0.0.0–239.255.255.255 | Multidiffusion       |
+| E     | 1111                    | Aucun                      | 240.0.0.0–255.255.255.255 | Expérimental         |
+
 
 ## **VI) Adresses privées**
 

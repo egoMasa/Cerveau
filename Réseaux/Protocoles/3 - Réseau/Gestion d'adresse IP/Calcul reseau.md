@@ -2,8 +2,8 @@
 
 # Sommaire 
 - [ ] Trouver la première et dernière adresse utilisable d'un réseau
-- [ ] Trouver le nombre d'adresses disponibles dans un réseau/sous-réseau
-- [ ] Trouver le nombre de sous réseaux possible selon une plage
+- [ ] Déterminer combien d'adresses IP uniques peuvent être attribuées aux hôtes dans un réseau ou un sous-réseau donné
+- [ ] Déterminer combien de sous-réseaux logiques distincts peuvent être créés à partir d'une plage d'adresses IP
 
 # 1) Trouver la première et dernière adresse utilisable d'un réseau
 ## Cas simple : 10.0.0.0/24
@@ -42,6 +42,13 @@
 11111111 11111111 11111111 1111|1111
 1+2+4+8 = 14
 ```
-# 2) Trouver le nombre d'adresses disponibles dans un réseau/sous-réseau
+# 2) Déterminer combien d'adresses IP uniques peuvent être attribuées aux hôtes dans un réseau ou un sous-réseau donné
+* Une adresse IPV4 est sur 32
+* On prend la valeur du masque réseau de la plage : N
+* On soustrait pour obtenir le nombre de bits disponibles pour les hôtes : X = 32-N
+* On calcul le nombre d'adresses disponibles : 2^X
 
 # 3) Trouver le nombre de sous réseaux possible selon une plage
+* On prend la valeur du masque réseau de la plage : N
+* On soustrait pour obtenir le nombre de bits disponibles pour les sous-réseaux : Y = 32-N
+* On calcule le nombre de sous-réseaux possibles : 2^Y

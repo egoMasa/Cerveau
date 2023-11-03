@@ -1,11 +1,11 @@
 # Guide VXLAN
 
 # Sommaire 
-- [ ] Différence entre VLAN et VXLAN
+- [ ] Différence entre VXLAN et VLAN
 - [ ] Elements du VXLAN
 - [ ] Cas d'utilisation
 - [ ] Fonctionnement VXLAN
 - [ ] Configuration VXLAN
 
-
+# 1) Différence entre VXLAN et VLAN
 

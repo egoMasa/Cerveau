@@ -44,6 +44,9 @@
 802.1Q est un outil essentiel pour la gestion moderne des réseaux, permettant une segmentation flexible et une utilisation efficace des ressources. Cependant, comme avec tous les outils de réseau, il doit être utilisé correctement pour garantir sécurité et performance.
 ### **DTP (Dynamic Trunking Protocol)**
 * Protocole propriétaire de Cisco qui permet de négocier dynamiquement le mode trunk entre deux switches Cisco.
+* Lorsque deux équipements Cisco compatibles avec le protocole DTP sont connectés, DTP tente de négocier automatiquement si le lien entre eux doit être configuré en mode trunk ou access.
+* Par défaut, beaucoup de commutateurs Cisco ont leurs ports configurés en mode dynamique auto, ce qui signifie qu'ils essaieront de se mettre en mode trunk si l'autre extrémité est en mode trunk ou en mode dynamique désirable. Si aucune des conditions n'est remplie, ils reviendront en mode access.
+* Le mode "nonegotiate" sert à fixer la configuration d'un port de commutateur en mode trunk ou en mode access, en empêchant toute négociation automatique avec d'autres équipements par le protocole DTP (Dynamic Trunking Protocol)
 #### **Intérêt de DTP**
 1. **Configuration Automatique**: Sans DTP, si un administrateur souhaite établir une liaison trunk entre deux switches, il doit configurer manuellement chaque côté du lien. DTP automatise ce processus en permettant aux switches de négocier dynamiquement le statut de trunk.
 2. **Flexibilité**: Avec DTP, les administrateurs réseau n'ont pas besoin de changer manuellement le mode de fonctionnement de chaque port chaque fois qu'ils veulent changer la nature de la connexion (trunk ou access). Si les exigences changent, DTP peut s'adapter sans intervention manuelle.

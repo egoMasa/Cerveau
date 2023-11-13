@@ -75,7 +75,10 @@ Switch(config-if)# switchport mode trunk
 Switch(config-if)# switchport trunk allowed vlan {VLAN range} 
 Switch(config-if)# switchport trunk native vlan {VLAN ID}
 ```
-
+## Etape 3 : Activer et verifier le loadbalancing 
+```
+Switch(config)port-channel load-balance src-dst-ip
+```
 ## Étape 3: Vérification de la configuration EtherChannel
 
 - Pour afficher un résumé des groupes EtherChannel:

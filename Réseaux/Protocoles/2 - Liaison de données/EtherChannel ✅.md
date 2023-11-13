@@ -81,9 +81,13 @@ Switch(config)port-channel load-balance src-dst-ip
 ```
 ## Étape 3: Vérification de la configuration EtherChannel
 
-- Pour afficher un résumé des groupes EtherChannel:
+- Pour afficher un résumé des groupes EtherChannel (si SU des 2 cotés, c'est bon):
 ```
 Switch# show etherchannel summary
+Group  Port-channel  Protocol    Ports
+------+-------------+-----------+----------------------------------------------
+
+1      Po1(SU)           PAgP   Gig0/1(P) Gig0/2(P) 
 ```
 - Pour afficher la configuration de l'interface Port-Channel:
 ```

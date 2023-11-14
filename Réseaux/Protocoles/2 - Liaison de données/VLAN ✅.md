@@ -96,11 +96,14 @@ Bien que les VLANs soient conçus pour isoler le trafic, il peut être nécessai
 
 1. **Création du VLAN** :
 ```
-SW(config)#vlan @numero   SW(config-vlan)#name @nom
+SW(config)#vlan @numero
+SW(config-vlan)#name @nom
 ```
 2. **Affectation du VLAN aux interfaces** (en mode access) :
 ```
-SW(config)#interface range fastEthernet 0/0-5   SW(config-if)#switchport mode access SW(config-if)#switchport access vlan @num
+SW(config)#interface range fastEthernet 0/0-5
+SW(config-if)#switchport mode access
+SW(config-if)#switchport access vlan @num
 ```
 3. **Configuration d'une interface en mode Trunk** :
 ```
@@ -111,7 +114,8 @@ SW(config-if)#switchport trunk allowed vlan XX,XX,XX  # Indiquer la liste des VL
 ```
 4. **Configuration de l'interface du switch connectée au routeur** :
 ```
-SW(config)#int @interface SW(config-if)#switchport mode trunk 
+SW(config)#int @interface
+SW(config-if)#switchport mode trunk 
 SW(config-if)#switchport trunk allowed vlan XX,XX,XX
 ```
 5. **Définir la passerelle par défaut sur le switch** (pour renvoyer le paquet vers le routeur pour le routage inter-VLAN) :
@@ -152,31 +156,31 @@ R(config-if)#ip add @ip_gw_vlanX @masque      # Définir l'adresse IP de la pass
 ## Étape 1: Création des VLANs
 ```
 MLS(config)#vlan 10     
-			name N1 
+	name N1 
 MLS(config)#vlan 20     
-			name N2
+	name N2
 ```
 ## Étape 2: Création des interfaces VLAN SVI
 * Ces interfaces représentent des interfaces virtuelles qui offrent une interface de routage pour chaque VLAN.
 ```
 MLS(config)#interface vlan 10     
-				description Default Gateway SVI for Network 1     
-				ip add X.X.X.X @masque     
-				no shut 
+	description Default Gateway SVI for Network 1     
+	ip add X.X.X.X @masque     
+	no shut 
 MLS(config)#interface vlan 20     
-				description Default Gateway SVI for Network 2     
-				ip add X.X.X.X @masque     
-				no shut
+	description Default Gateway SVI for Network 2     
+	ip add X.X.X.X @masque     
+	no shut
 ```
 ## Étape 3: Configuration des ports d'accès
 
 ```
 MLS(config)#int G0/0     
-				switchport mode access     
-				switchport access vlan 10 
+	switchport mode access     
+	switchport access vlan 10 
 MLS(config)#int G0/1     
-				switchport mode access     
-				switchport access vlan 20
+	switchport mode access     
+	switchport access vlan 20
 ```
 ## Étape 4: Active le routage entre les VLANs
 ```
@@ -186,7 +190,7 @@ MLS(config)#ip routing
 * Définir les routes nécessaires (si nécessaire) pour assurer une communication appropriée avec d'autres réseaux ou routeurs.
 ```
 MLS(config)#int G0/2     
-				no switchport     
-				ip address X.X.X.X @masque     
-				no shut
+	no switchport     
+	ip address X.X.X.X @masque     
+	no shut
 ```

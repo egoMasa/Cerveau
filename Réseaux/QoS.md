@@ -1,34 +1,5 @@
 # Guide QoS 
 
-# Sommaire 
-- [x] Principe et objectifs QoS
-- [x] Bande passante, Latence, Perte, Gigue, Echo, 
-- [x] Différents modèle de QoS (Best Effort, IntServ, DiffServ)
-- [x] Marquage Ethernet CoS L2 (entête trame 802.1Q, Cos 0-7)
-- [x] Marquage IP ToS L3 et DSCP
-- [ ] Valeurs de QoS (AF,IPP,CS,DP,ECN)
-- [x] Algorithme de files d'attente 
-	- [ ] Gestion de congestion classique
-		- [ ] FIFO (Hardware queue, software queue, scheduler)
-		- [ ] PQ
-			- [ ] 4 file statique non configurable 
-			- [ ] Files haute priorités sont vidés en premier
-			- [ ] Files basses priorités potentiellement jamais vidé 
-		- [ ] CQ
-			- [ ] Rotation entre les files hautes et basses
-			- [ ] Nombre d'octets par cycle/file définit 
-			- [ ] Toutes les files se vident
-		- [ ] WFQ
-			- [ ] Files dynamique pour chaque flux
-	- [ ] Gestion plus valorisée
-		- [ ] CBWFQ
-			- [ ] File avec pourcentage de la bande passante
-			- [ ] Reservation selon classes
-		- [ ] LLQ
-			- [ ] File supplémentaire avec priorité stricte qui passent au dessus
-		- [ ] IP RTP Priority
-- [ ] Configuration Cisco (L3 et L2)
-
 # 1) Principe et objectifs de la QoS (Quality of Service)
 
 ### Principe de base
@@ -173,7 +144,7 @@ La QoS (Quality of Service) dans les réseaux repose en grande partie sur le mar
 - **Marquage IP ToS L3 et DSCP** : S'applique aux paquets IP, utilisant le champ DSCP pour une classification plus détaillée du trafic, influençant la manière dont les paquets sont traités dans les réseaux étendus.
 
 
-# 2) Configuration Cisco 
+# 6) Configuration Cisco 
 
 ## Etape 1 : Activer QoS et l'étiquetage des interfaces sur SW
 ```
@@ -254,7 +225,7 @@ Routeur(config)#interface Serial0/0/0 service-policy output QoS
 4. **Vérification des Statistiques de QoS**
    - `show policy-map interface [INTERFACE]` : Fournit également des statistiques sur la façon dont les paquets sont traités par les différentes classes et politiques sur l'interface.
 
-# Exemple de sh run 
+# 7) Exemple de sh run 
 ## 1. Configuration switch 
 ```
 ! Configuration de base du Switch
@@ -320,70 +291,3 @@ interface Serial0/0/0
 
 
 
-1. Commande 
-```
-SW(config)#int [INTERFACE]
-SW(config-if)#mls qos trust device cisco-phone
-SW(config-if)#mls qos cos 5
-SW(config-if)#mls qos trust dscp
-```
-2. Commande 
-```
-SW(config)#int [INTERFACE]
-SW(config-if)#switchport mode access
-SW(config-if)#switchport access vlan 30
-SW(config-if)#mls qos trust cos
-SW(config-if)#mls qos cos [VALEUR]
-```
-3. Verification 
-```
-SW#show mls qos interface [INTERFACE]
-```
-4. Routeur 
-```
-Routeur(config)#class-map match-all LaClasse 
-Routeur(config)#description Classification de H323 
-Routeur(config)#match protocol h323 
-Routeur(config)#policy-map MaPolitique 
-Routeur(config)#class LaClasse 
-Routeur(config)#set ip dscp ef 
-Routeur(config)#description modification du champ dscp à la valeur ef
-```
-5. Routeur 2 
-```
-class-map match-all VoIP 
-	match protocol h323 
-class-map match-all Critique 
-	match protocol eigrp 
-class-map match-any Autre
-	match protocol http 
-	match protocol icmp 
-class-map match-all FTP 
-	match protocol ftp
-	
-policy-map QoS 
-	class VoIP 
-		set ip dscp ef 
-	class Critique 
-		set ip dscp cs6 
-	class FTP 
-		set ip dscp cs5 
-	class Autre 
-		set ip dscp default
-
-interface Serial0/0/0 service-policy output QoS
-```
-6. Routeur 3 
-```
-class-map match-all VoIP 
-	match protocol h323 
-class-map match-all Critique 
-	match protocol eigrp 
-class-map match-any Autre 
-	match protocol http 
-	match protocol icmp 
-class-map match-all FTP 
-	match protocol ftp
-
-interface Serial0/0/0 service-policy output QoS
-```

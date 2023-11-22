@@ -282,3 +282,23 @@ ipv6 router ospf
 	area X range @route_resumée  // Résumer les routes pour une zone spécifique
 
 ```
+
+
+# Lien Virtuel OSPF
+La configuration d'un lien virtuel OSPF entre deux Area Border Routers (ABRs) peut être nécessaire lorsque l'une des zones OSPF n'est pas directement connectée à la zone Backbone (Area 0). Voici les étapes générales pour configurer un lien virtuel OSPF :
+## Étapes de Configuration de Base
+1. **Identifier les ABRs** : Identifiez les deux routeurs ABR qui établiront le lien virtuel. L'un de ces ABRs doit avoir une interface dans la zone Backbone (Area 0), et l'autre ABR sera celui de la zone qui nécessite la connexion à la zone Backbone.
+2. **Accéder à la Configuration du Routeur** : Connectez-vous à chaque ABR et accédez au mode de configuration.
+3. **Configurer le Lien Virtuel** : Sur chaque ABR, configurez le lien virtuel en spécifiant le routeur ID de l'autre ABR et la zone de transit (la zone OSPF à travers laquelle le lien virtuel passera).
+### Exemple de Commandes
+Supposons que les routeurs ABR ont les router IDs `1.1.1.1` et `2.2.2.2`, et que la zone de transit est la zone 1. Voici à quoi pourrait ressembler la configuration sur chaque routeur :
+#### Sur l'ABR avec Router ID `1.1.1.1` :
+```bash
+router ospf 1
+ area 1 virtual-link 2.2.2.2
+```
+#### Sur l'ABR avec Router ID `2.2.2.2` :
+```bash
+router ospf 1
+ area 1 virtual-link 1.1.1.1
+```

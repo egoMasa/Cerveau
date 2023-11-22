@@ -1,6 +1,6 @@
 # Guide OSPF
 
-## 1) Généralités
+# 1) Généralités
 
 - Protocole de routage interne (IGP) à état de lien.
 - OSPF est un protocole standardisé, utilisé dans de grands réseaux tels que les ISP.
@@ -10,8 +10,9 @@
     - Créer des contiguïtés avec ses voisins.
     - Procéder à l'échange des informations de routage.
     - Calculer les meilleures routes.
-    - Converger.
-## 2) Composantes
+    - Converger
+- 
+# 2) Composantes
 
 - Différents types de **paquets** :
 	- **Hello** - Utilisé pour découvrir les voisins.
@@ -34,43 +35,94 @@
 		- Unique à chaque routeur.
 		- Contient des informations sur comment envoyer les paquets.
 		- Accessible via la commande `show ip route`.
-## 3) Établissement du protocole
+# 3) Types de routeurs (ABR ASBR) 
+- ASBR (Autonomous System Boundary Router)
+	- **Fonction** : Un ASBR est un routeur qui fait le lien entre OSPF et d'autres réseaux ou systèmes autonomes (AS), qui peuvent utiliser différents protocoles de routage, comme BGP.
+	- **Rôle dans OSPF** : Il introduit des informations sur les routes externes (c'est-à-dire, les routes apprenant d'autres protocoles ou AS) dans l'environnement OSPF.
+	- **Exemple** : Un routeur OSPF connecté à un réseau BGP serait considéré comme un ASBR car il apporte des informations de routage externe à OSPF.
+- ABR (Area Border Router)
+	- - **Fonction** : Un ABR est un routeur qui sert de point de connexion entre différentes zones OSPF au sein du même système autonome.
+	- **Rôle dans OSPF** : Il est responsable de la propagation des informations de routage entre les zones, y compris les résumés de route, et dans le cas des zones Stubby ou NSSA, il peut aussi introduire la route par défaut.
+	- **Exemple** : Si un routeur OSPF relie la zone Backbone (Area 0) à une autre zone OSPF (comme une zone standard ou stubby), ce routeur est un ABR.
+- Résume 
+	- **Routeur ASBR** : Connecte OSPF à d'autres systèmes autonomes ou protocoles de routage et introduit des informations sur les routes externes dans OSPF.
+	- **Routeur ABR** : Connecte différentes zones OSPF au sein du même système autonome et gère les informations de routage entre ces zones.
 
-- Chaque interface routeur possède une valeur (coût) déterminant le meilleur chemin vers la destination.
-- **Etape 1** : Établissement des liaisons de voisinage (HELLO).
-	- Les routeurs s'envoient des messages HELLO.
-	- Si un voisin est présent/compatible OSPF, un état de voisinage est établi.
-- **Etape 2** : Échange de l'état et du coût (LSA).
-	- Les routeurs s'envoient des messages LSA contenant l'état et le coût de l'interface.
-	- Les LSA sont propagés vers les autres routeurs.
-	- Continue jusqu'à ce que toutes les interfaces d'une zone aient reçu le LSA de chacune.
-- **Etape 3** : Création de la table de topologie (LSDB).
-	- Les routeurs construisent la table de topologie à partir des LSA recensés.
-- **Etape 4** : Création de l'arborescence SPF.
-	- La table de topologie est traitée par l'algorithme SPF pour créer une arborescence SPF.
-- **Etape 5** : Choix du meilleur itinéraire.
-	- Les meilleurs chemins créés par SPF sont proposés à la table de routage IP.
-	- Routes insérées sauf si une route est déjà présente avec une distance administrative plus faible (statique).
+# 4) Types de messages OSPF
 
-## 4) Zone unique et zone multiples
+## Paquets HELLO
+- **Fonction** : Ils sont utilisés pour établir et maintenir des adjacences (relations de voisinage) entre les routeurs OSPF.
+- **Processus** : Les routeurs OSPF envoient périodiquement des paquets HELLO pour découvrir et communiquer avec les routeurs voisins sur le même réseau.
+## Link State Advertisements (LSA)
+- **Rôle Général** : Les LSA sont utilisés pour partager des informations entre 2 voisins OSPF. Ils sont la base de la base de données d'état de lien (Link State Database - LSDB) qui permet à OSPF de calculer les routes les plus courtes.
+- **Types Principaux** :
+	- **Type 1 (LSA de Routeur)** : Décrit les liens d'un routeur avec ses voisins directs.
+	- **Type 2 (LSA de Réseau)** : Généré par le routeur désigné sur un réseau multi-accès, il décrit les routeurs connectés à ce réseau.
+	- **Type 3 (LSA de Résumé de Réseau)** : Utilisé pour partager des informations sur les réseaux dans d'autres zones OSPF.
+	- **Type 4 (LSA de Résumé ASBR)** : Indique comment atteindre un ASBR.
+	- **Type 5 (LSA de Route Externe)** : Partage des informations sur les routes apprenant d'autres protocoles de routage.
+	- **Type 7 (LSA NSSA Externe)** : Utilisé dans les zones NSSA pour introduire des routes externes dans la zone.
 
-- **Zone unique** :
-    - Tous les routeurs sont dans la zone de backbone (0).
-    - Temps de convergence plus long dû aux mises à jour.
-- **Zone multiples** :
-    - Routeurs séparés par zone mais forcément reliés par la zone 0.
-    - Nécessite un routeur qui relie les zones (ABR).
-    - Permet une table de routage plus petite.
-    - Réduit la fréquence de calcul de SPF.
+| Type de LSA | Description | Utilisation | Aspects Clés |
+|-------------|-------------|-------------|--------------|
+| Type 1 (LSA de Routeur) | Décrit les liens d'un routeur avec ses voisins directs. | Utilisé par chaque routeur pour partager des informations sur ses interfaces directes et leurs états. | Crucial pour construire une vue de la topologie de la zone à partir de la perspective de chaque routeur. |
+| Type 2 (LSA de Réseau) | Généré par le routeur désigné sur un réseau multi-accès, décrit les routeurs connectés à ce réseau. | Utilisé pour fournir des informations sur la structure d'un réseau multi-accès, comme un réseau Ethernet. | Important pour comprendre la connectivité entre les routeurs sur les réseaux multi-accès. |
+| Type 3 (LSA de Résumé de Réseau) | Utilisé pour partager des informations sur les réseaux dans d'autres zones OSPF. | Permet aux routeurs d'une zone OSPF de connaître les réseaux disponibles dans d'autres zones. | Fournit une connectivité inter-zones et permet la diffusion des résumés de routes entre zones. |
+| Type 4 (LSA de Résumé ASBR) | Indique comment atteindre un ASBR. | Utilisé pour communiquer l'emplacement des routeurs ASBR à travers l'AS OSPF. | Essentiel pour le routage vers des destinations en dehors de l'AS OSPF, notamment pour les routes apprenant d'autres protocoles. |
+| Type 5 (LSA de Route Externe) | Partage des informations sur les routes apprenant d'autres protocoles de routage. | Utilisé pour introduire des informations sur les routes externes dans l'OSPF. | Permet à OSPF de router le trafic vers des réseaux qui ne sont pas partie de l'AS OSPF. |
+| Type 7 (LSA NSSA Externe) | Utilisé dans les zones NSSA pour introduire des routes externes dans la zone. | Permet l'introduction de routes externes dans une zone NSSA, qui sont ensuite converties en LSA de type 5. | Crucial pour la gestion des routes externes dans les zones NSSA, offrant une flexibilité dans les environnements restreints. |
 
-## 5) Types de paquets OSPF
 
-- **Hello** - Découvre les voisins OSPF.
-- **DBD** - Vérifie la synchronisation de la BDD entre les routeurs.
-- **LSR** - Demande l'enregistrement des états spécifiques entre 2 routeurs.
-- **LSU** - Envoie les enregistrements des états demandés.
+## Link State Request (LSR)
+* **Utilisation** : Si un routeur OSPF détecte qu'il lui manque certaines informations ou qu'il a des informations obsolètes, il utilise des LSR pour demander des mises à jour spécifiques à d'autres routeurs.
+ - **Fonction** : Un LSR est envoyé par un routeur OSPF lorsqu'il a besoin d'informations plus récentes ou spécifiques qu'il n'a pas dans sa base de données d'état de lien (LSDB).
+- **Scénario d'Utilisation** : Par exemple, lorsqu'un routeur reçoit un paquet HELLO ou un LSA qui fait référence à des informations qu'il ne possède pas ou qui sont plus récentes que celles qu'il a, il envoie un LSR pour demander ces informations spécifiques.
+## Link State Update (LSU)
+- **Rôle** : Les LSU sont utilisés pour répondre aux LSR, en fournissant les informations demandées ou en diffusant des mises à jour de l'état de lien à travers le réseau.
+## Résume 
+- Les **paquets HELLO** servent à établir des voisins OSPF.
+- Les **LSA** diffusent des informations sur l'état des liens, permettant à OSPF de construire et de maintenir sa base de données et de calculer les meilleures routes.
+- Les **LSR** sont des demandes d'informations manquantes ou obsolètes.
+- Les **LSU** répondent aux LSR et diffusent des mises à jour d'état de lien.
+# 5) Établissement du protocole
 
-## 6) Différents états de liens
+### 1. Découverte des Voisins et Établissement des Adjacences
+- **Paquets HELLO** : Les routeurs OSPF envoient périodiquement des paquets HELLO sur chaque interface OSPF pour découvrir et maintenir des relations de voisinage avec les autres routeurs OSPF sur le même réseau.
+- **Établissement des Adjacences** : Lorsque deux routeurs OSPF se découvrent mutuellement (à travers les paquets HELLO), ils établissent une adjacence, c'est-à-dire une relation de voisinage plus formelle nécessaire pour l'échange d'informations de routage.
+### 2. Échange des Informations d'État de Lien
+- **LSA de Type 1 et 2** : Chaque routeur crée des LSA de type 1 (LSA de routeur) pour décrire ses propres liens et un LSA de type 2 (LSA de réseau) est généré par le routeur désigné sur les réseaux multi-accès.
+- **Inondation des LSA** : Ces LSA sont ensuite inondés (flooded) à tous les voisins OSPF pour assurer que chaque routeur dans la zone OSPF a une vue cohérente de la topologie du réseau.
+### 3. Construction de la Base de Données d'État de Lien (LSDB)
+- **Synchronisation des LSDB** : Chaque routeur reçoit et stocke les LSA inondés dans sa propre base de données d'état de lien (LSDB). Cela permet à chaque routeur d'avoir une compréhension complète de la topologie de la zone OSPF.
+### 4. Demande de Mises à Jour Spécifiques (Si Nécessaire)
+- **LSR (Link State Request)** : Si un routeur détecte des informations manquantes ou obsolètes dans sa LSDB, il envoie des LSR aux voisins pour demander des mises à jour spécifiques.
+- **LSU (Link State Update)** : Les routeurs répondent aux LSR avec des LSU, fournissant les informations d'état de lien demandées.
+### 5. Calcul des Chemins Optimaux
+- **Algorithme de Dijkstra** : Chaque routeur utilise l'algorithme de Dijkstra pour calculer le chemin le plus court vers tous les réseaux dans la zone OSPF, en se basant sur les informations contenues dans sa LSDB.
+### 6. Maintenance et Mises à Jour Continues
+- **Inondation Périodique des LSA** : Les LSA sont régulièrement mis à jour et inondés pour assurer que tous les routeurs disposent des informations les plus récentes.
+- **Paquets HELLO** : Les paquets HELLO continuent d'être échangés pour maintenir les adjacences OSPF.
+
+
+# 6) Zones OSPF
+
+## Tableau comparatif 
+
+| Type de Zone   | Routes Internes à l'OSPF | Résumés des Zones OSPF | Routes Externes |
+|----------------|--------------------------|------------------------|-----------------|
+| Backbone       | Toutes les routes internes de toutes les zones OSPF | Informations détaillées sur la topologie de toutes les autres zones OSPF | Routes apprenant d'autres protocoles de routage ou d'autres systèmes autonomes, via LSA de type 5 |
+| Standard       | Toutes les routes internes à la zone standard elle-même | Résumés des routes des autres zones OSPF, via LSA de type 3 | Routes externes à l'OSPF, si elles sont autorisées, via LSA de type 5 |
+| Stubby         | Toutes les routes internes à la zone Stubby elle-même | Résumés des routes des autres zones OSPF, via LSA de type 3 | Aucune information sur les routes externes à l'OSPF. Utilisation d'une route par défaut pour le trafic sortant |
+| Totally Stubby | Toutes les routes internes à la zone Totally Stubby elle-même | Aucun résumé des autres zones OSPF | Aucune information sur les routes externes à l'OSPF. Utilisation d'une route par défaut pour tout trafic sortant |
+| NSSA           | Toutes les routes internes à la zone NSSA elle-même | Résumés des routes des autres zones OSPF, via LSA de type 3 | Routes externes introduites dans la zone via LSA de type 7, qui sont convertis en LSA de type 5 par l'ABR lorsqu'ils quittent la zone NSSA |
+
+## Resume simplifiée
+- **Zone Backbone (Area 0)** : Le centre nerveux du réseau OSPF, elle contient des informations détaillées sur toutes les zones du réseau OSPF, y compris des résumés de routes pour l'ensemble du réseau.
+- **Zone Standard** : Une zone OSPF classique qui gère les routes internes et les résumés des autres zones OSPF, avec la possibilité d'accéder aux routes externes OSPF.
+- **Zone Stubby** : Une zone OSPF conçue pour limiter les informations de routage ; elle gère les routes internes et les résumés des autres zones OSPF mais bloque les routes externes OSPF, utilisant une route par défaut pour tout le trafic sortant.
+- **Zone Totally Stubby** : Une version plus restrictive de la zone Stubby, cette zone gère uniquement les routes internes et n'obtient pas de résumés des autres zones OSPF, s'appuyant sur une route par défaut pour tout le trafic sortant.
+- **Zone NSSA (Not-So-Stubby Area)** : Une adaptation de la zone Stubby qui permet des routes externes au réseau OSPF. Elle gère les routes internes, reçoit les résumés des autres zones OSPF et utilise des LSA de type 7 pour les routes externes, qui sont ensuite convertis en LSA de type 5 par l'ABR.
+# 7) Différents états de liens
 * Etat Down
 	* Si aucun paquet hello recu sur interface
 * Etat Init
@@ -90,14 +142,16 @@
 * Etat Full
 	* Base de données d'état entièrement synchronisé
 
-## 7) Mise à jour 
+# 8) Mise à jour 
 * Concernant les mises à jour, elles sont transmises uniquement en MULTICAST comme ceci
 	-   Les mises à jour envoyées par le DR utilisent l’adresse IP ***224.0.0.5***
 	-   Les mises à jour envoyées au DR et au BDR utilisent l’adresse IP ***224.0.0.6***
 - Les adresses MULTICAST **224.0.0.5** et **224.0.0.6** sont réservées pour l'envoi des mises à jour de routage. Ces adresses permettent une diffusion efficace des mises à jour sans surcharger le réseau.
 - Il existe un processus d'élection de deux routeurs dans chaque zone jouant le rôle de délégué et sous-délégué qui gèrent la table de routage transmise à la zone. Ce sont le **DR (Designated Router)** et le **BDR (Backup Designated Router)**. Ils sont surtout importants sur les réseaux de diffusion comme Ethernet pour réduire le volume de trafic OSPF.
 
-## 8) Commandes OSPF 
+# 9) Configuration OSPF (IPv4) 
+
+## Monozone IPv4
 1. **Activer OSPF sur le routeur** :
 - Utilisé pour démarrer le processus OSPF sur le routeur.
 ```
@@ -140,59 +194,23 @@ R1(config-router)#passive-interface @interface
 clear ip ospf process
 ```
 
-## OSPF Multizone
-
-Le protocole OSPF multizone est une extension d'OSPF qui permet de diviser un grand domaine OSPF en zones plus petites et plus gérables. Cela peut aider à améliorer l'efficacité et à réduire les temps de convergence.
-
-- **Zonage** :
-    - Le zonage OSPF permet d'effectuer un routage précis selon une zone délimitée afin de limiter les impacts des changements de topologies, réduisant ainsi les ressources nécessaires pour recalculer les tables de routage.
-
-- **LSA (Link State Advertisement)** :
-    - Son objectif principal est de maintenir une topologie commune au sein des routeurs d'une zone. Il est responsable de l'envoi des mises à jour topologiques.
-        - Types 1 et 2 sont confinés à une seule zone.
-        - Type 3 permet la communication entre zones.
-
-- **SPF (Shortest Path First)** :
-    - Il s'agit de l'algorithme utilisé par OSPF pour déterminer le chemin le plus court vers une destination. Dans le contexte multizone, l'objectif est de réduire la fréquence de ses calculs pour optimiser les performances.
-
-- **LSDB (Link State Data Base)** :
-    - C'est la base de données où OSPF stocke les informations topologiques. Chaque routeur dans une zone a une LSDB identique.
-
-- **ABR (Area Border Router)** :
-    - Routeur servant de point de passage entre deux zones, dont la zone principale appelée BackBone. Il résume et propage les LSA entre les zones.
-
-- **ASBR (Autonomous System Border Router)** :
-    - Routeur qui connecte OSPF à d'autres systèmes autonomes, souvent utilisé avec des protocoles comme BGP.
-
-- **Réduction de la table de routage** :
-    - L'un des principaux avantages d'utiliser OSPF en multizone est de réduire la taille de la table de routage, améliorant ainsi l'efficacité du routeur.
-
-- **LSU (Link State Update)** :
-    - Message utilisé pour mettre à jour les informations topologiques dans OSPF.
-
-- **LSR (Link State Request)** :
-    - Message envoyé par un routeur pour demander des mises à jour spécifiques dans OSPF.
-
-- **IA (Inside Area)** :
-    - Se réfère à des informations ou des activités qui ont lieu à l'intérieur d'une zone OSPF spécifique.
-
-### **Configuration multizone** :
+## Multizone IPv4
+## **Configuration multizone** :
 ```
-router ospf 1
-	router-id X.X.X.X
-	network @ip_voisin @masque_voisin_invert area @area_ip_voisin
+router ospf [PID]
+	router-id [X.X.X.X]
+	network [ip_voisin] [masque_voisin_invert] area [area_ip_voisin]
 ```
-### **Résumé de route en multizone** :
+## **Résumé de route en multizone** :
 - Dans une configuration multizone, les routeurs peuvent résumer ou agréger les routes pour simplifier et réduire le nombre d'entrées dans la table de routage.
 ```
 router ospf 1
 	area X range @route_resumée
 ```
 
-## OSPFv3 
+# 10) Configuration OSPFv3 (IPv6)
 
 * OSPFv3 est une évolution d'OSPF (Open Shortest Path First) conçue spécifiquement pour prendre en charge le routage IPv6. Alors que OSPFv2 est utilisé pour IPv4, OSPFv3 traite le routage pour IPv6. Voici une exploration détaillée des éléments mentionnés dans votre texte :
-
 ### Échanges entre Routeurs et Multicast
 
 - **Link-local** :
@@ -201,7 +219,7 @@ router ospf 1
     - Il s'agit de l'adresse multicast à laquelle tous les routeurs OSPFv3 écoutent. Cette adresse est utilisée pour envoyer des paquets OSPF qui sont destinés à tous les routeurs sur un réseau local.
 - **Multicast Designated Routers (FF02::6)** :
     - Cette adresse est écoutée par tous les Designated Routers (DR) et Backup Designated Routers (BDR) OSPFv3 sur un réseau local. Elle est utilisée pour optimiser la diffusion d'informations OSPF sur des réseaux tels que Ethernet.
-### Configuration OSPFv3
+### Configuration OSPFv3 monozone
 
 La configuration de base d'OSPFv3 pour IPv6 est similaire à celle d'OSPFv2 pour IPv4, mais avec des commandes spécifiques à IPv6 :
 
@@ -223,7 +241,7 @@ sh ipv6 ospf neighbor              // Voir les voisins OSPFv3
 sh ipv6 int brief                  // Résumé des interfaces IPv6
 
 ```
-### OSPFv3 Multizone
+### Configuration OSPFv3 Multizone
 * Dans un environnement multizone, OSPFv3 divise le réseau en zones pour améliorer l'efficacité et la scalabilité. Chaque zone est un domaine de diffusion séparé :
 ```
 ipv6 unicast-routing               // Activer le routage IPv6
@@ -243,8 +261,21 @@ show ipv6 ospf database           // Base de données d'état de liaison OSPFv3
 show ipv6 ospf interface          // Informations sur les interfaces OSPFv3
 show ipv6 ospf neighbor           // Informations sur les voisins OSPFv3
 ```
+# 11) OSPFv3 Dual-Stack
+* Déployer OSPF pour IPv4 et IPv6 en même temps 
+```
+R(config)#interface [INTERFACE]
+R(config-if)#ospfv3 [PID] ipv4 area [NUM]
+R(config-if)#ospfv3 [PID] ipv6 area [NUM]
 
-## Résumé de route en multizone
+R(config)#router ospfv3 [PID]
+R(config-router)#address-family ipv4 unicast
+R(config-router-af)#passive-interface [INTERFACE]
+R(config-router)#address-family ipv6 unicast
+R(config-router-af)#passive-interface [INTERFACE]
+```
+
+# Résumé de route en multizone
 * Dans un environnement OSPF multizone, le résumé des routes peut être utilisé pour consolider plusieurs routes en une seule entrée
 ```
 ipv6 router ospf 

@@ -188,3 +188,20 @@
 | **Vraisemblance**        |          |            |
 | **Niveau de risque**     |          |            |
 
+# Résume des informations à collecter 
+
+| Étape | Informations à Collecter |
+|-------|--------------------------|
+| 1. Définir les Responsables et Acteurs du Service | - Noms et fonctions des responsables (fonctionnel, technique).<br>- Contacts des acteurs clés (DSI, administrateurs de sécurité, utilisateurs principaux).<br>- Rôles et responsabilités spécifiques dans le projet. |
+| 2. Définir le Périmètre d'Analyse | - Nom et description des applications et systèmes impliqués.<br>- Nombre et nature des interconnexions avec d'autres systèmes.<br>- Thèmes et domaines fonctionnels couverts.<br>- Limites claires de l'analyse. |
+| 3. Collecter les Documentations du Système | - Plans architecturaux du système (logiques et physiques).<br>- Diagrammes des flux de données.<br>- Architecture réseau et topologie.<br>- Détails sur les applications déployées sur les serveurs.<br>- Logique de fonctionnement et séquence des processus. |
+| 4. Définir pour Chaque Système les Serveurs, Logiciels, Type de Données, Type d'Utilisateur | - Liste des serveurs (physiques et virtuels) utilisés.<br>- Détails des logiciels et applications (versions, configurations).<br>- Types de données traitées.<br>- Catégories d'utilisateurs. |
+| 5. Identifier les Menaces Potentielles et les Vulnérabilités Type du Système | - Inventaire des menaces potentielles.<br>- Liste des vulnérabilités connues ou suspectées.<br>- Historique des incidents de sécurité antérieurs. |
+| 6. Identifier les Types d'Attaques Susceptibles d'Affecter le Système | - Types d'attaques courantes dans des environnements similaires.<br>- Méthodes d'exploitation des vulnérabilités spécifiques.<br>- Rapports d'analyses de sécurité ou d'incidents précédents. |
+| 7. Classer par Ordre de Gravité les Événements Redoutés et les Probabilités | - Liste des événements redoutés avec estimation de leur gravité et probabilité.<br>- Critères d'évaluation pour la gravité et la probabilité. |
+| 8. Lister et Examiner les Mesures de Sécurité Actuelles | - Inventaire des mesures de sécurité en place.<br>- Politiques de sécurité et procédures opérationnelles.<br>- Résultats des derniers audits de sécurité. |
+| 9. Proposer des Mesures en Fonction des Vulnérabilités Non Couvertes par les Mesures Actuelles | - Analyse des lacunes dans les mesures existantes.<br>- Suggestions de mesures de sécurité complémentaires.<br>- Évaluation des coûts et de la faisabilité pour chaque mesure. |
+| 10. Définir un Responsable d'Application pour Intégrer les Mesures de Façon Progressive | - Nomination d'un responsable de projet.<br>- Planification détaillée pour l'intégration des mesures.<br>- Mécanismes de reporting et de suivi pour le responsable. |
+| 11. Définir l'Ensemble des Mesures de Sécurité Manquantes et à Déployer | - Liste complète des mesures de sécurité à mettre en place.<br>- Calendrier de déploiement.<br>- Plan de formation et de sensibilisation pour les utilisateurs. |
+| 12. Analyser la Réduction de la Probabilité des Risques avec les Nouvelles Mesures | - Méthodologie pour évaluer l'efficacité des mesures.<br>- Critères pour mesurer la réduction des risques.<br>- Plan pour le suivi continu et l'évaluation des risques résiduels. |
+

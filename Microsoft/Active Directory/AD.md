@@ -1,3 +1,132 @@
+Fonctionnement réseau AD 
+
+## 1. Windows Serveur Active Directory
+-  **Annuaire d'Entreprise** : AD sur Windows Server agit comme un annuaire centralisé listant les utilisateurs, les groupes, les machines, et les ressources. Il stocke également des attributs pour chaque objet, qui définissent les droits d'accès et d'autres propriétés.
+- **Politiques de Groupe** : Configurer des politiques (GPOs) dans AD pour appliquer divers paramètres aux ordinateurs et utilisateurs du domaine, comme les fonds d'écran, les scripts de démarrage, les paramètres de sécurité, etc.
+## 2. Contrôleurs de Domaine/Serveurs LDAP
+-  **Réplication d'AD** : Les contrôleurs de domaine contiennent une réplique complète de la base de données AD. Ils gèrent l'authentification et les requêtes d'annuaire pour les utilisateurs et les machines du domaine.
+- **Serveurs LDAP** : Les contrôleurs de domaine utilisent le protocole LDAP pour communiquer avec les applications et services qui requièrent l'accès aux données de l'annuaire.
+### Scénarios Classiques de Communication
+
+1. **Authentification de l'Utilisateur** :
+    - **Demande** : Le poste client envoie une demande d'authentification au serveur LDAP lorsqu'un utilisateur essaie de se connecter.
+    - **Réponse** : Le serveur LDAP vérifie les informations d'authentification (nom d'utilisateur et mot de passe) contre la base de données AD et renvoie une réponse indiquant si l'authentification est réussie ou non.
+2. **Accès aux Ressources Réseau** :
+    - **Demande** : Lorsqu'un utilisateur tente d'accéder à une ressource partagée sur le réseau (comme un dossier partagé ou une imprimante), le poste client peut interroger le serveur LDAP pour vérifier les droits d'accès de l'utilisateur.
+    - **Réponse** : Le serveur LDAP renvoie les informations relatives aux droits de l'utilisateur, permettant ou refusant l'accès à la ressource.
+3. **Recherche d'Informations dans l'Annuaire** :
+    - **Demande** : Les applications sur le poste client peuvent effectuer des requêtes LDAP pour obtenir des informations sur d'autres utilisateurs, groupes ou objets dans AD.
+    - **Réponse** : Le serveur LDAP renvoie les informations demandées, telles que les adresses e-mail, les numéros de téléphone, les appartenances à des groupes, etc.
+4. **Application des Politiques de Groupe (GPOs)** :
+    - **Demande** : À l'ouverture de session ou périodiquement, le poste client peut interroger le serveur LDAP pour les dernières politiques de groupe applicables.
+    - **Réponse** : Le serveur LDAP fournit les détails des GPOs, qui sont ensuite appliqués sur le poste client (par exemple, les paramètres de sécurité, les scripts de démarrage, etc.).
+5. **Mise à Jour des Informations Utilisateur ou Machine** :
+    - **Demande** : Le poste client peut envoyer des mises à jour au serveur LDAP, comme un changement de mot de passe ou la mise à jour des informations de l'utilisateur.
+    - **Réponse** : Le serveur LDAP traite ces demandes et met à jour les informations dans AD en conséquence.
+### Protocole LDAP
+Les messages LDAP (Lightweight Directory Access Protocol) sont structurés de manière à faciliter les interactions avec un service d'annuaire, tel qu'Active Directory. Les éléments clés de ces messages varient selon le type d'opération (authentification, recherche, mise à jour, etc.), mais certains composants sont couramment utilisés. Voici une explication de la logique de ces messages :
+
+#### Composants Essentiels des Messages LDAP
+
+1. **Opération (Type de Message)** :
+   - **Importance** : Détermine le type d'action demandée, par exemple, une opération de liaison (bind) pour l'authentification, une opération de recherche, une mise à jour, etc.
+   - **Exemple** : `Bind Request`, `Search Request`.
+
+2. **DN (Distinguished Name)** :
+   - **Importance** : Sert à identifier de manière unique un objet dans l'annuaire. Dans une requête de liaison, il s'agit souvent du DN de l'utilisateur qui se connecte.
+   - **Exemple** : `CN=John Doe,OU=Users,DC=example,DC=com`.
+
+3. **Attributs et Filtres (Pour les Requêtes de Recherche)** :
+   - **Importance** : Spécifient les critères de recherche et les attributs à retourner.
+   - **Exemple** : `(objectClass=user)`, `sAMAccountName=jdoe`, attributs comme `cn`, `mail`.
+
+4. **Base DN (Pour les Recherches)** :
+   - **Importance** : Indique le point de départ dans la hiérarchie de l'annuaire pour la recherche.
+   - **Exemple** : `DC=example,DC=com`.
+
+5. **Scope (Pour les Recherches)** :
+   - **Importance** : Détermine l'étendue de la recherche (par exemple, un seul objet, un niveau ou toute la sous-arborescence).
+   - **Exemple** : `Subtree`, `OneLevel`.
+
+6. **Credentials (Pour Bind Request)** :
+   - **Importance** : Les informations d'authentification, comme le mot de passe.
+   - **Exemple** : [Mot de passe crypté].
+#### Composants Facultatifs ou Contextuels
+
+1. **Port** :
+   - Utilisé pour spécifier le port de communication (par défaut, 389 pour LDAP, 636 pour LDAPS).
+2. **Version du Protocole** :
+   - Généralement la version 3 est utilisée.
+3. **Attributs Additionnels (Pour les Mises à Jour)** :
+   - Pour des opérations telles que la modification ou la suppression, des attributs spécifiques à modifier ou supprimer.
+4. **Paging Controls** :
+   - Utilisés pour gérer les résultats de recherche volumineux en plusieurs segments.
+5. **Security Controls** :
+   - Comme StartTLS, pour initier une connexion sécurisée sur un canal LDAP standard.
+
+## 3. ADFS pour l'Accès aux Ressources Externes
+- **Authentification et Fédération d'Identités** : ADFS sert de système d'authentification pour accéder aux ressources externes. Il permet l'authentification unique (SSO) pour les utilisateurs en dehors du réseau local, souvent pour des services cloud.
+- **Rôle de Passerelle** : ADFS agit comme une passerelle entre le réseau interne de l'entreprise et les fournisseurs de services externes, permettant aux utilisateurs de conserver les mêmes identifiants (nom d'utilisateur et mot de passe) sur les deux réseaux.
+
+### Scénario d'Authentification Unique (SSO)
+
+1. **Accès à une Application Fédérée**
+   - **Action de l'Utilisateur** : L'utilisateur tente d'accéder à une application fédérée (par exemple, une application cloud).
+   - **Redirection** : L'application redirige la demande d'authentification vers ADFS.
+
+2. **Demande d'Authentification auprès d'ADFS**
+   - **Contenu de la Demande** :
+ ```
+ GET /adfs/ls/ 
+ SAMLRequest=<Encodé-SAML-AuthnRequest>
+ RelayState=<État-Relais>
+ ```
+
+- **Explication** : La demande contient une `AuthnRequest` SAML encodée, indiquant que l'utilisateur souhaite s'authentifier.
+
+3. **Authentification et Réponse d'ADFS**
+   - **Contenu de la Réponse** :
+     ```xml
+     <samlp:Response>
+       <Assertion>
+         <Subject>
+           <NameID>john.doe@example.com</NameID>
+         </Subject>
+         <Conditions>
+           <AudienceRestriction>
+             <Audience>Identifiant-Audience-Application</Audience>
+           </AudienceRestriction>
+         </Conditions>
+         <AuthnStatement>...</AuthnStatement>
+         <AttributeStatement>...</AttributeStatement>
+       </Assertion>
+     </samlp:Response>
+     ```
+   - **Explication** : ADFS renvoie une réponse SAML contenant une `Assertion`, qui inclut l'identité de l'utilisateur (`NameID`), les conditions de validité de l'assertion, et des déclarations sur l'authentification et les attributs.
+
+### Scénario de Fédération d'Identités
+
+1. **Accès à une Ressource Partenaire**
+   - **Action de l'Utilisateur** : L'utilisateur tente d'accéder à une ressource offerte par un partenaire fédéré.
+   - **Redirection** : La demande est redirigée vers ADFS pour l'authentification.
+
+2. **Demande d'Authentification et Assertion SAML**
+   - **Contenu de la Demande** : Similaire à ci-dessus, une `AuthnRequest` SAML.
+   - **Réponse d'ADFS** : ADFS renvoie une `Assertion` SAML après l'authentification réussie.
+
+3. **Utilisation de l'Assertion pour Accéder à la Ressource**
+   - **Action de l'Utilisateur** : L'utilisateur présente l'assertion SAML au service partenaire.
+   - **Validation par le Partenaire** : Le partenaire valide l'assertion SAML et accorde l'accès basé sur les claims fournis.
+
+### Notes Importantes
+
+- **Format des Échanges** : Les échanges dans ADFS sont souvent basés sur XML et suivent les standards SAML pour l'authentification et les assertions.
+- **Sécurité** : Les assertions SAML sont généralement signées numériquement et, dans certains cas, chiffrées pour assurer la sécurité et l'intégrité des données.
+- **Redirections et Communications Web** : Ces interactions impliquent souvent des redirections Web et des échanges de messages HTTP/HTTPS.
+
+### Résumé
+
+En résumé, les communications dans ADFS impliquent des interactions entre l'utilisateur, ADFS, et les applications ou services fédérés, souvent en utilisant le protocole SAML pour les authentifications et les échanges d'informations d'identité. Les scénarios d'authentification unique et de fédération d'identités sont typiques, où ADFS sert de point central pour authentifier les utilisateurs et fournir des informations sécurisées sur l'identité et les droits d'accès.
 # 1) Pourquoi AD
 * Service d'annuaire pour les environnements Windows
 * Organisé via une structure hiérachique

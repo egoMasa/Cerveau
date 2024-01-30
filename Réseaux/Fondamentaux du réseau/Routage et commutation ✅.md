@@ -6,18 +6,33 @@
 - Elle connecte plusieurs périphériques sur un réseau local (LAN).
 - Les commutateurs (switches) sont responsables de cette opération.
 - Elle est basée sur l'adresse MAC de la trame.
-## Etapes d'envoi de trame
-1. Le commutateur reçoit la trame sur un de ses ports.
-2. Il extrait l'adresse MAC de destination.
-3. Il la compare avec sa MAC Address Table (table des adresses MAC).
-4. Si l'adresse MAC est trouvée, la trame est envoyée directement vers le port associé à cette adresse.
-5. Si non, la trame est diffusée sur tous les ports sauf le port d'entrée.
-6. Quand un hôte répond, le switch ajoute l'adresse MAC source de l'hôte à sa table.
-## Etapes de réponse de trame
-1. L'hôte destinataire reçoit la trame et répond.
-2. Le switch utilise les adresses MAC pour acheminer cette réponse vers l'expéditeur initial.
-## Exemple de commutation
-- Lorsqu'un hôte A envoie une trame à un hôte B sur le même réseau, le switch utilise sa table pour déterminer le port auquel est connecté l'hôte B et achemine la trame directement vers celui-ci.
+
+❗ La commutation n'est possible que pour les nœuds au sein d'un même sous réseau, si une trame est à destination d'un autre sous réseau, il faut passer par un routeur
+### 1. Processus d'Envoi d'une Trame (Cas où le Port de Destination n'est pas Connu)
+- **Transmission Initiale** :
+    - Un appareil (par exemple, PC1) envoie une trame avec une adresse MAC de destination.
+    - Si le switch auquel PC1 est connecté (disons Switch A) ne connaît pas le port associé à cette adresse MAC, il doit déterminer comment acheminer la trame.
+- **Flood** :
+    - Switch A effectue un "flood", envoyant la trame sur tous ses ports actifs, à l'exception du port sur lequel la trame a été reçue.
+    - Cela permet à la trame d'atteindre potentiellement le destinataire, même si l'emplacement exact n'est pas connu.
+### 2. Processus d'Apprentissage des Adresses MAC par les Switches Intermédiaires
+- **Apprentissage par Observation** :
+    - Chaque fois qu'un switch reçoit une trame sur un port, il enregistre l'adresse MAC source de la trame et associe cette adresse au port de réception dans sa table d'adresses MAC.
+    - Cela permet au switch de "se souvenir" de l'emplacement des appareils sur le réseau.
+- **Acheminement des Trames Futures** :
+    - Lorsque le même switch reçoit à nouveau une trame destinée à cette adresse MAC, il sait désormais sur quel port la transmettre directement, sans nécessiter un nouveau flood.
+### 3. Processus de Retour de la Trame vers son Expéditeur
+- **Trame de Réponse** :
+    - Lorsque le destinataire (disons PC2) répond, il crée une trame de réponse avec l'adresse MAC de l'expéditeur initial (PC1) comme destination.
+- **Transmission via Switches Intermédiaires** :
+    - La trame de réponse traverse les switches intermédiaires (Switch D, C, B, A). Chaque switch utilise sa table d'adresses MAC pour diriger la trame.
+    - Ces switches ont probablement appris l'adresse MAC de PC1 lors de l'acheminement initial, ce qui rend le chemin de retour plus direct et efficace.
+- **Arrivée à l'Expéditeur** :
+    - La trame de réponse atteint finalement Switch A, qui la transmet directement à PC1, l'expéditeur initial.
+### Points Clés
+- **Indépendance des Switches** : Chaque switch opère de manière indépendante, se basant sur sa propre table d'adresses MAC pour acheminer les trames.
+- **Efficacité et Apprentissage** : L'efficacité du réseau augmente avec l'apprentissage des adresses MAC, réduisant la nécessité de floods répétés.
+- **Pas de Communication Inter-Switch pour l'Acheminement** : Il n'y a pas de communication nécessaire entre les switches pour acheminer les trames; chaque switch décide de manière autonome.
 ## Table d'adresse MAC
 * Chaque commutateur possède sa propre table d'adresse MAC qui relie un port à l'adresse MAC du périphérique connecté sur ce port
 * Une table d'adresse MAC peut être configuré dans 2 modes différents : 
@@ -78,12 +93,59 @@ interface fa0/3
 - Ils utilisent les adresses IP pour prendre leurs décisions.
 - Le chemin emprunté peut être déterminé à l'aide d'algorithmes de routage.
 - Les informations de couche 2 (comme l'adresse MAC) sont remplacées à chaque saut par un routeur.
-### Fonctionnement
-1. L'hôte source construit un paquet avec une en-tête IP.
-2. Le paquet est transmis à la passerelle par défaut (souvent un routeur).
-3. Le routeur examine l'en-tête IP pour déterminer l'adresse de destination.
-4. Il utilise sa table de routage pour déterminer le prochain saut.
-5. Le paquet est ensuite envoyé à un autre routeur ou directement à l'hôte de destination.
+
+### Table de Routage
+- **Construction** : Chaque routeur maintient une table de routage qui contient des informations sur les réseaux de destination et les interfaces ou prochains sauts (next hops) associés pour y accéder.
+- **Informations Contenues** : La table de routage liste généralement le réseau de destination, le masque de sous-réseau, l'interface de sortie ou l'adresse du prochain routeur (next hop), et parfois des métriques pour déterminer le meilleur chemin.
+### Mise à Jour de la Table de Routage
+- **Routage Statique** :
+    - Dans les configurations de routage statique, un administrateur réseau configure manuellement les routes dans la table de routage.
+    - Par exemple, l'administrateur peut spécifier que pour atteindre le réseau 192.168.2.0/24, le paquet doit être envoyé vers l'adresse IP de R2.
+- **Routage Dynamique** :
+    - Dans le routage dynamique, les routeurs utilisent des protocoles de routage (comme OSPF, BGP, EIGRP) pour échanger automatiquement des informations sur les réseaux.
+    - Ces protocoles permettent aux routeurs de découvrir les réseaux disponibles et de construire dynamiquement des tables de routage qui reflètent la topologie actuelle du réseau.
+### Processus de routage de paquet
+#### 1. Envoi du Paquet par PC1
+- **Initiation de la Communication** :
+    - PC1 crée un paquet destiné à PC2. Il détermine que PC2 est sur un réseau différent car il compare l'adresse IP de destination avec son propre masque de sous-réseau.
+- **Envoi au Gateway/Routeur par Défaut** :
+    - Ne pouvant pas communiquer directement avec PC2, PC1 envoie le paquet à sa passerelle par défaut, qui est le routeur.
+#### 2. Transmission par les Switches
+- **Passage par le Premier Switch** :
+    - Le paquet passe d'abord par le switch auquel PC1 est connecté. Ce switch envoie le paquet vers le routeur sans avoir à se soucier des adresses IP, car il opère au niveau 2 (couche liaison de données).
+#### 3. Processus de Routage par le Routeur
+
+##### 3.1 Cas ou routeur directement connecté au sous-réseau de destination
+- **Réception par le Routeur** :
+    - Le routeur reçoit le paquet sur l'interface connectée au sous-réseau de PC1.
+- **Détermination du Chemin** :
+    - Le routeur examine l'adresse IP de destination du paquet (celle de PC2) et consulte sa table de routage pour déterminer sur quelle interface il doit envoyer le paquet pour atteindre le sous-réseau de PC2.
+- **Envoi vers le Deuxième Sous-réseau** :
+    - Une fois le chemin déterminé, le routeur envoie le paquet sur son interface connectée au sous-réseau de PC2.
+##### 3.2 Cas ou routeur directement non connecté au sous-réseau de destination
+- **Consultation de la Table de Routage** : Lorsque R1 reçoit un paquet destiné à un sous-réseau auquel il n'est pas directement connecté (par exemple, le sous-réseau de PC2), il consulte sa table de routage pour trouver une route vers ce sous-réseau.
+    
+- **Trouver le Prochain Saut (Next Hop)** : La table de routage indique non seulement la destination (le sous-réseau cible), mais aussi l'adresse du prochain saut (next hop) ou l'interface de sortie à utiliser pour se rapprocher de cette destination. Le prochain saut est souvent l'adresse IP d'un autre routeur (comme R2 ou R3), qui est sur le chemin vers le sous-réseau de destination.
+    - Par exemple, si R1 a un paquet destiné au sous-réseau 192.168.2.0/24 (sous-réseau de PC2) et qu'il n'est pas directement connecté à ce sous-réseau, il recherchera dans sa table de routage pour trouver un enregistrement correspondant à cette destination.
+    - La table de routage peut indiquer que le meilleur chemin pour atteindre ce sous-réseau passe par R2. Dans ce cas, le prochain saut sera l'adresse IP de R2.
+- **Acheminement du Paquet** : R1 envoie ensuite le paquet à l'adresse du prochain saut (dans cet exemple, R2) via l'interface appropriée.
+- **Processus au Routeur Suivant** : Lorsque R2 reçoit le paquet, il répète le même processus : il consulte sa propre table de routage pour déterminer comment acheminer le paquet. Si R2 est directement connecté au sous-réseau de destination, il envoie le paquet directement à ce réseau. Sinon, il le transmet au prochain saut indiqué dans sa table de routage.
+##### Points Clés
+- **Tables de Routage Interconnectées** : Chaque routeur utilise sa propre table de routage, mais ces tables sont interconnectées en termes de fonctionnalité. Elles dirigent collectivement le paquet à travers le réseau en passant de saut en saut.
+- **Métriques de Chemin** : Les routeurs choisissent les chemins basés sur des métriques qui peuvent inclure le nombre de sauts, la bande passante, la latence, ou d'autres facteurs de coût. Ceci est particulièrement vrai dans des protocoles de routage dynamiques comme OSPF.
+###### Exemple de Table de Routage pour R1
+|Destination|Masque|Prochain Saut|Interface de Sortie|Coût|
+|---|---|---|---|---|
+|192.168.1.0|255.255.255.0|Directement connecté|Eth0|0|
+|192.168.2.0|255.255.255.0|10.0.0.2|Eth1|10|
+|192.168.3.0|255.255.255.0|10.0.0.3|Eth1|20|
+Dans cet exemple, R1 est directement connecté au sous-réseau 192.168.1.0/24 (donc, le coût est de 0 et il est indiqué comme "Directement connecté"). Pour atteindre les autres sous-réseaux, il doit passer par R2 ou R3, comme indiqué dans les colonnes "Prochain Saut" et "Coût".
+
+#### 4. Transmission Finale vers PC2
+- **Passage par le Deuxième Switch** :
+    - Le paquet arrive au switch connecté au sous-réseau de PC2. Ce switch, en utilisant sa table d'adresses MAC, envoie le paquet à PC2.
+- **Réception par PC2** :
+    - PC2 reçoit le paquet et, si nécessaire, envoie une réponse qui suivra un processus similaire en sens inverse pour retourner à PC1.
 ### Cas particuliers
 - **Routage sur liaison série** : Lors d'une connexion point-à-point, le routeur encapsule le paquet dans le format de trame approprié pour l'interface de sortie (par exemple, HDLC ou PPP). Les adresses de couche 2 ne sont pas nécessaires dans ce contexte.
 - **Routage sur liaison normale** : Les adresses MAC source et destination changent à chaque passage par un routeur, tandis que les adresses IP restent constantes tout au long du chemin.

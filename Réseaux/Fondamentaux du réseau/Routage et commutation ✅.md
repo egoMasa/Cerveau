@@ -93,7 +93,7 @@ interface fa0/3
 - Ils utilisent les adresses IP pour prendre leurs décisions.
 - Le chemin emprunté peut être déterminé à l'aide d'algorithmes de routage.
 - Les informations de couche 2 (comme l'adresse MAC) sont remplacées à chaque saut par un routeur.
-
+❗ Un routeur ne peut pas avoir deux interfaces dans le même sous-réseau IP, chaque interface sur un routeur doit être connectée à un sous-réseau distinct
 ### Table de Routage
 - **Construction** : Chaque routeur maintient une table de routage qui contient des informations sur les réseaux de destination et les interfaces ou prochains sauts (next hops) associés pour y accéder.
 - **Informations Contenues** : La table de routage liste généralement le réseau de destination, le masque de sous-réseau, l'interface de sortie ou l'adresse du prochain routeur (next hop), et parfois des métriques pour déterminer le meilleur chemin.
@@ -139,6 +139,7 @@ interface fa0/3
 |192.168.1.0|255.255.255.0|Directement connecté|Eth0|0|
 |192.168.2.0|255.255.255.0|10.0.0.2|Eth1|10|
 |192.168.3.0|255.255.255.0|10.0.0.3|Eth1|20|
+
 Dans cet exemple, R1 est directement connecté au sous-réseau 192.168.1.0/24 (donc, le coût est de 0 et il est indiqué comme "Directement connecté"). Pour atteindre les autres sous-réseaux, il doit passer par R2 ou R3, comme indiqué dans les colonnes "Prochain Saut" et "Coût".
 
 #### 4. Transmission Finale vers PC2

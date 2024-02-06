@@ -1,38 +1,5 @@
 # Sommaire 
-- [x] Authentification basique d'un terminal à un point d'accès
-	- [ ] Authentification
-	- [ ] Association
-	- [ ] Echange de données
-- [x] Contrainte de sécurité
-	- [ ] Authentification
-	- [ ] Chiffrement
-	- [ ] Intégrité
-- [x] Type de trames 
-	- [ ] Trames de données
-	- [ ] Trames de controle d'accès au support
-		- [ ] RTS/CTS
-		- [ ] ACK
-	- [ ] Trame de gestion
-		- [ ] Authentification, Association, Synchronisation
-- [x] Open Authentification
-	- [ ] Sans sécurité
-	- [ ] Via filtrage MAC
-	- [ ] Via portail captif
-- [ ] Protocoles de sécurité WLAN
-	- [ ] 802.11
-	- [ ] WAP1,WAP2,WAP3
-	- [ ] 802.11i
-- [ ] Protocoles de chiffrement
-	- [ ] WEP,TKIP,AES (128-256bits)
-- [ ] Méthode d'utilisation des cléfs
-	- [ ] Meme clefs, changement périodique, cléf unique par paquet et par personne
-- [ ] Méthode de controle d'intégrité
-	- [ ] CRC, Michael, AES
-- [ ] Méthode d'authentification et gestion des cléfs
-	- [ ] Personnel
-		- [ ] PSK,PSK-SAE 802.1X
-	- [ ] Entreprise
-		- [ ] EAP, EAP-TLS,EAP-TTLS, EAP-PEAP
+
 - [ ] Protocole de controle d'accès 802.1X
 	- [ ] Différentes phases d'authentification
 	- [ ] 2 ports logique, serveur radius
@@ -66,20 +33,17 @@
 
 # 2) Type de trames 
 ## Trames de données
-Les trames de données sont les unités de base utilisées pour transporter les données de l'utilisateur (telles que les fichiers, les pages web, les e-mails, etc.) à travers le réseau sans fil. Elles contiennent non seulement le payload (les données utiles), mais aussi les adresses du destinataire et de l'expéditeur, ainsi qu'un champ de contrôle de séquence pour assurer l'ordonnancement correct des trames arrivant au destinataire. La fiabilité de la transmission est assurée par des accusés de réception (ACKs) et des mécanismes de retransmission en cas de perte de trames.
+* Transporte les données de l'utilisateur (telles que les fichiers, les pages web, les e-mails, etc.) à travers le réseau sans fil. 
+* Elles contiennent non seulement le payload (les données utiles), mais aussi les adresses du destinataire et de l'expéditeur, ainsi qu'un champ de contrôle de séquence pour assurer l'ordonnancement correct des trames arrivant au destinataire. 
+* La fiabilité de la transmission est assurée par des accusés de réception (ACKs) et des mécanismes de retransmission en cas de perte de trames.
 ## Trames de controle d'accès au support
 Les trames de contrôle d'accès au support sont utilisées pour faciliter la livraison fiable des trames de données dans un environnement sans fil, où les collisions peuvent se produire en raison du partage du médium. Voici deux exemples principaux :
-
 - **RTS/CTS (Request To Send/Clear To Send) :** Ce mécanisme aide à réduire les collisions de trames dans des environnements WLAN denses. Un terminal envoie une trame RTS pour annoncer son intention d'envoyer des données. Le point d'accès répond par une trame CTS après avoir vérifié que le canal est libre, donnant ainsi la permission à l'émetteur de commencer la transmission. Ce processus aide à réserver le canal et à informer les autres terminaux d'éviter les transmissions pendant cette période.
-    
 - **ACK (Acknowledgment) :** Après la réception réussie d'une trame de données, le destinataire envoie une trame d'accusé de réception (ACK) à l'expéditeur pour confirmer la réception. Si l'expéditeur ne reçoit pas d'ACK dans un délai spécifié, il peut supposer que la trame a été perdue et la retransmet.
 ## Trame de gestion
 Les trames de gestion sont essentielles pour établir et maintenir la communication entre les terminaux et les points d'accès. Elles couvrent une variété de fonctions, dont :
-
 - **Authentification :** Ces trames sont utilisées dans la phase initiale de connexion pour vérifier l'identité du terminal cherchant à se joindre au réseau. C'est la première étape du processus d'association.
-    
 - **Association :** Une fois l'authentification réussie, les trames d'association sont échangées pour permettre au terminal de devenir un membre actif du réseau, lui permettant ainsi d'envoyer et de recevoir des trames de données.
-    
 - **Synchronisation :** Ces trames aident à synchroniser les horloges des terminaux avec celle du point d'accès pour assurer une coordination dans l'utilisation du canal de communication.
 
 
@@ -96,17 +60,66 @@ L'authentification ouverte (Open Authentication) dans les réseaux WLAN permet a
 * Avant d'accéder à Internet, l'utilisateur doit s'authentifier ou accepter les termes et conditions d'utilisation du réseau. 
 * Ils ne chiffreront pas les données transmises sur le réseau et ne doivent pas être considérés comme une mesure de sécurité pour protéger les données transmises.
 
-# 4) Protocoles WLAN
 
-### Méthode de transport
-- **802.11a** : Effectivement, c'est une méthode de transport qui spécifie les modalités de communication dans la bande des 5 GHz avec une vitesse maximale de 54 Mbps. Cependant, le terme "méthode de transport" peut être généralisé pour inclure toutes les variantes de 802.11 (b, g, n, ac, ax) qui définissent différentes méthodes de transmission des données via des bandes de fréquence spécifiques et avec différentes technologies (comme MIMO pour 802.11n, ou OFDMA pour 802.11ax).
-### Méthode de sécurité
-- **802.11** : Ce terme désigne en réalité la famille de standards pour les réseaux sans fil, et inclut des aspects de sécurité, mais n'est pas spécifiquement une méthode de sécurité. Il serait plus précis de le mentionner comme le standard de base pour les réseaux WLAN.
-- **802.11i / WPA2** : C'est le standard qui spécifie les méthodes de sécurité pour les réseaux sans fil, offrant une base pour WPA2 avec un chiffrement renforcé par AES.
-- **WPA / WPA2 / WPA3** : Ces termes désignent les différentes versions des protocoles de sécurité Wi-Fi, avec WPA2 basé sur 802.11i et WPA3 offrant des améliorations de sécurité supplémentaires par rapport à WPA2.
-#### Méthode d'encryption des méthodes de sécurité
-- **WEP, TKIP, AES** : Ces termes sont correctement classifiés comme des méthodes d'encryption. WEP est le plus ancien et considéré comme obsolète en raison de ses faiblesses de sécurité. TKIP a été introduit avec WPA comme une amélioration par rapport à WEP, mais a également été remplacé par AES, qui est la méthode d'encryption la plus sécurisée utilisée par WPA2 et WPA3.
-### Méthode de contrôle d'accès
+# 4) Méthode d'authentification et chiffrement WPA2
+
+## 4.1) AES via PSK
+
+### Principe de chiffrement AES utilisant la PTK générée à partir de la PMK dérivée de la PSK
+* AES est un algorithme de chiffrement symétrique qui utilise une clé préétablie pour chiffrer (coder) et déchiffrer (décoder) les informations
+* PSK est juste un passphrase pour initier la création de la PKT necessaire à AES pour chiffrer
+* Dans WPA2 AES chiffre la communication entre le PA et client, pour ca il utilise la clef d'authentification créer PKT entre le client et le PA
+### Eléments cléfs de AES via PSK
+1. **PMK (Pairwise Master Key)**:
+    - Générée à partir de passphrase (PSK), le SSID comme sel, et le nombre d'itérations (4096 pour WPA/WPA2) pour produire la PMK.
+    - Considérée comme une clé de niveau supérieur à partir de laquelle d'autres clés sont générées.
+2. **PTK (Pairwise Transient Key)**:
+    - Générée à partir de la PMK lors du 4-Way Handshake
+    - Utilisée pour chiffrer les données échangées entre un dispositif client et le PA.
+3. **GTK (Group Temporal Key)**:
+    - Utilisée pour chiffrer le trafic multicast et broadcast dans le réseau WLAN.
+    - Distribuée par le PA aux clients après une authentification réussie pour assurer que tout le trafic de groupe est également sécurisé.
+## Processus d'authentification et chiffrement AES via PSK
+0. **Point d'accès (PA) et Dispositifs Clients** : La PSK est configurée sur le PA et doit être entrée sur chaque dispositif client souhaitant se connecter au réseau.
+1. **Demande de Connexion** : Un dispositif client tente de se connecter au réseau WLAN en spécifiant le SSID du PA.
+2. **Authentification** : Le dispositif et le PA s'authentifient mutuellement en utilisant la PSK. Cette étape s'assure que le client connaît la PSK.
+3. **Génération de la PMK** : Le dispositif client et le PA génèrent indépendamment la PMK à partir de la PSK en utilisant le SSID comme sel et une fonction de dérivation de clé (comme PBKDF2).
+4. **4-Way Handshake** : Processus d'établissent d'une clé de session temporaire PTK et de distribution de la GTK pour le trafic multicast/broadcast
+    - **Message 1** : Le PA envoie un nombre au client.
+    - **Message 2** : Le client génère un PTK et envoi un nombre au PA
+    - **Message 3** : Le PA génère une PTK et envoie la GTK au client
+    - **Message 4** : Le client confirme la réception de la GTK et que le 4-Way Handshake est complet.
+5. ***Utilisation de PTK et GTK*** : La PTK est utilisée pour chiffrer les données un-à-un entre le client et le PA, tandis que la GTK est utilisée pour chiffrer le trafic multicast et broadcast dans le réseau.
+6. **Chiffrement des Données** : Toutes les données échangées entre le client et le PA sont chiffrées avec AES en utilisant la clé de chiffrement issue de la PTK. Le trafic de groupe est sécurisé avec la GTK.
+## 4.2) AES via PSK-SAE
+* Introduit avec WPA3-Personnel pour fournir une méthode d'authentification plus robuste que le PSK traditionnel, offrant une protection contre les attaques offline et les tentatives de devinage du mot de passe.
+## 4.3) EAP
+* Un framework/cadre d'authentification flexible utilisé dans les configurations d'entreprise pour permettre différentes méthodes d'authentification, telles que les certificats, les mots de passe, ou les tokens.
+* **Sécurité renforcée** : EAP fournit une authentification individuelle, permettant une gestion plus fine des accès et une traçabilité des utilisateurs.
+- **Scalabilité** : Parfaitement adapté aux grands réseaux d'entreprise avec de nombreux utilisateurs, EAP s'intègre à des systèmes d'authentification existants comme RADIUS ou LDAP.
+- **Flexibilité** : EAP supporte plusieurs méthodes d'authentification, permettant aux entreprises de choisir la méthode la plus adaptée à leur politique de sécurité.
+- **Gestion des utilisateurs** : Les changements de mots de passe ou les révocations d'accès se gèrent facilement sans affecter tous les utilisateurs du réseau.
+### EAP-TLS
+### EAP-TTLS
+### EAP-PEAP
+
+# 6) Protocoles WLAN
+
+### 6.1) Méthode de transport
+| Standard      | Année de publication | Bande de fréquence  | Débit maximal théorique | Caractéristiques clés                                |
+|---------------|----------------------|---------------------|-------------------------|-----------------------------------------------------|
+| 802.11a       | 1999                 | 5 GHz               | 54 Mbps                 | Première norme à utiliser la bande des 5 GHz        |
+| 802.11b       | 1999                 | 2,4 GHz             | 11 Mbps                 | Introduit la bande des 2,4 GHz pour une plus grande portée |
+| 802.11g       | 2003                 | 2,4 GHz             | 54 Mbps                 | Combine les bandes de 2,4 GHz avec des vitesses plus élevées |
+| 802.11n (Wi-Fi 4) | 2009            | 2,4 GHz et 5 GHz    | 600 Mbps                | Introduit la technologie MIMO pour augmenter le débit |
+| 802.11ac (Wi-Fi 5) | 2013           | 5 GHz               | Plusieurs Gbps          | Successeur de 802.11n, avec des débits nettement améliorés |
+| 802.11ax (Wi-Fi 6) | 2019           | 2,4 GHz, 5 GHz , 6 GHz | Encore plus élevés que le 802.11ac | Améliorations majeures en termes de capacité, de couverture et de performances |
+### 6.2) Méthode de sécurité
+| Standard | Année d'apparition | Description et Niveau de sécurité | Chiffrement | Intégrité | Authentification |
+| ---- | ---- | ---- | ---- | ---- | :--- |
+| 802.11 | 1997 | Introduction des standards WLAN, sécurité initiale via WEP (faible) | WEP | CRC (non sécurisé) | - Open<br>- Filtrage MAC<br>- Portail Captif |
+| WPA1 | 2003 | Amélioration de la sécurité avec TKIP (meilleure que WEP) | TKIP | Michael | - Personnel : PSK<br>- Entreprise : EAP |
+| 802.11i / WPA2 | 2004 | Introduction d'AES, nette amélioration de la sécurité (élevée) | AES 128 Bits | CCMP (basé sur AES) | - Personnel : PSK <br>- Entreprise : EAP-TLS, EAP-TTLS, EAP-PEAP  |
+| WPA3 | 2018 | Améliorations de sécurité supplémentaires, la plus sécurisée | AES 192 bits | GCMP (basé sur AES) | - Personnel : PSK-SAE<br>- Entreprise : EAP-TLS, EAP-TTLS, EAP-PEAP |
+### 6.3) Méthode de contrôle d'accès
 - **802.1X** : Correctement identifié comme une méthode de contrôle d'accès, 802.1X fournit un cadre d'authentification pour les réseaux, utilisé en conjonction avec WPA et WPA2 dans les environnements d'entreprise pour sécuriser l'accès au réseau.
-
-

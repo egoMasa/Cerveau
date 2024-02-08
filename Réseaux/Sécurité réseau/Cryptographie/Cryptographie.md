@@ -1,0 +1,15 @@
+# Sommaire 
+- [ ] Principe de la cryptographie
+- [ ]  Notion de cléfs, passphrase
+- [ ] Chiffrement symétrique : AES
+	- [ ] Processus de chiffrement et de déchiffrement
+	- [ ] Processus de controle d'intégrité
+	- [ ] Processus d'authentification
+- [ ] Chiffrement asymétrique : RSA
+	- [ ] Processus de chiffrement et de déchiffrement
+	- [ ] Processus de controle d'intégrité
+	- [ ] Processus d'authentification
+- [ ] Hashage : SHA
+- [ ] Empreinte et signature et certificat
+- [ ] Confidentialité, Intégrité et Authentification
+- [ ] PKI

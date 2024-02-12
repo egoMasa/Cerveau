@@ -85,7 +85,7 @@ interface fa0/3
 	duplex [auto]
 ```
 
-![[commutation1.png]]
+![[commutation1.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/commutation1.png)
 ## II) Routage
 
 ### Principe
@@ -96,6 +96,8 @@ interface fa0/3
 - Les informations de couche 2 (comme l'adresse MAC) sont remplacées à chaque saut par un routeur.
 ❗ Un routeur ne peut pas avoir deux interfaces dans le même sous-réseau IP, chaque interface sur un routeur doit être connectée à un sous-réseau distinct
 ❗ La logique est : un switch permet de communiquer sur un seul sous réseau commun, un routeur permet de lier plusieurs sous réseau différent
+
+![[routage1.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/routage1.png)
 ### Table de Routage
 - **Construction** : Chaque routeur maintient une table de routage qui contient des informations sur les réseaux de destination et les interfaces ou prochains sauts (next hops) associés pour y accéder.
 - **Informations Contenues** : La table de routage liste généralement le réseau de destination, le masque de sous-réseau, l'interface de sortie ou l'adresse du prochain routeur (next hop), et parfois des métriques pour déterminer le meilleur chemin.

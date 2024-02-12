@@ -3,10 +3,8 @@
 ## I) Principe et explication
 
 - Les VLAN (Virtual Local Area Network) permettent de segmenter un réseau physique en plusieurs sous-réseaux logiques. Chaque VLAN est identifié par un identifiant unique, souvent appelé **VID** (VLAN ID). Cette segmentation offre plusieurs avantages tels que l'amélioration de la performance du réseau, l'augmentation de la sécurité, et la simplification de l'administration du réseau.
-    
 - L'idée principale est de regrouper des équipements réseau en fonction de critères logiques (par exemple, par département dans une entreprise) plutôt que physiques.
     
-
 ❗ **Mise en place d'un VLAN** :
 1. _**Créer le VLAN**_ : Chaque VLAN doit avoir un identifiant unique (VID) et, optionnellement, un nom pour faciliter son identification.
 2. _**Attribuer des ports/interfaces**_ à un VLAN : Chaque port d'un switch peut être assigné à un VLAN spécifique.
@@ -14,6 +12,7 @@
 ❗ **Rôles des ports sur un switch en relation avec les VLANs** :
 1. _**Port d'accès**_ : Il s'agit d'un port destiné à la connexion d'un périphérique terminal (comme un ordinateur, une imprimante ou un serveur). Ce port appartient à un seul VLAN et ne marque pas les trames avec un identifiant de VLAN lorsqu'elles quittent le switch.
 2. _**Port Trunk (ou de liaison)**_ : Ce port est conçu pour transporter les trames de plusieurs VLANs simultanément, généralement entre switches. Les trames transitant par un port trunk sont étiquetées avec un identifiant de VLAN, sauf si elles appartiennent au VLAN natif. Cela permet à l'équipement récepteur de savoir à quel VLAN appartient chaque trame.
+![VLAN1](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/VLAN1.png)
 
 ## II) Protocoles associés
 
@@ -89,6 +88,7 @@ Bien que les VLANs soient conçus pour isoler le trafic, il peut être nécessai
 * Exemple : Des utilisateurs dans un VLAN "Comptabilité" pourraient avoir besoin d'accéder à un serveur situé dans un VLAN "Data Center".
 
 ❗ **Important** : Toute communication inter-VLAN nécessite une réflexion sur la sécurité et un contrôle rigoureux pour éviter les risques.
+![VLAN_ROUTING](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/VLAN_ROUTING)
 
 # VI ) Configuration router-on-stick (inter-VLAN)
 * Router-on-stick est une méthode de routage inter-VLAN utilisant un seul lien physique. Elle est appelée ainsi car le routeur n'a qu'une seule interface physique pour gérer plusieurs VLANs, un peu comme un "bâton" avec plusieurs "branches".

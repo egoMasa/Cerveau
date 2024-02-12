@@ -85,7 +85,7 @@ interface fa0/3
 	duplex [auto]
 ```
 
-![[commutation1.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/commutation1.png)
+![commutation1.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/commutation1.png)
 ## II) Routage
 
 ### Principe

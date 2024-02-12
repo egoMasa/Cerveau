@@ -88,7 +88,7 @@ Bien que les VLANs soient conçus pour isoler le trafic, il peut être nécessai
 * Exemple : Des utilisateurs dans un VLAN "Comptabilité" pourraient avoir besoin d'accéder à un serveur situé dans un VLAN "Data Center".
 
 ❗ **Important** : Toute communication inter-VLAN nécessite une réflexion sur la sécurité et un contrôle rigoureux pour éviter les risques.
-![VLAN_ROUTING](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/VLAN_ROUTING)
+![VLAN_ROUTING](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/VLAN_ROUTING.png)
 
 # VI ) Configuration router-on-stick (inter-VLAN)
 * Router-on-stick est une méthode de routage inter-VLAN utilisant un seul lien physique. Elle est appelée ainsi car le routeur n'a qu'une seule interface physique pour gérer plusieurs VLANs, un peu comme un "bâton" avec plusieurs "branches".

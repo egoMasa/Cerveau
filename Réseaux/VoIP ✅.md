@@ -1,6 +1,173 @@
 # Sommaire 
 - [ ] VoIP et ToIP 
 - [ ] Configuration cisco VoIP
+- [ ] Ephone : Téléphone physique
+- [ ] Ephones-dn : Numéro
+
+# Topologie 
+![[Pasted image 20240220112157.png]]
+
+## Configuration de la VoIP Cisco
+## Etape 1 : Paramètres de base des équipements
+```
+host [NOM]
+no ip domain-lookup
+line console 0 
+	password cisco
+line vty 0 15 
+	password cisco
+	login
+```
+
+## Etape 2 : Créer les sous interfaces du routeur GW
+* On viens activer l'interface entre la GW et le SW sans lui renseigner d'IP
+* On viens créer autant de sous interface que 2 vlan 
+```
+int F0/0
+	no shut
+	
+int F0/0.[ID_VLAN_VOIX]
+	ip address [GW_ID_VLAN_VOIX] [MASQUE]
+	encapsulation dot1Q [ID_VLAN_VOIX]
+
+int F0/0.[ID_VLAN_DATA]
+	ip address [GW_ID_VLAN_DATA] [MASQUE]
+	encapsulation dot1Q [ID_VLAN_DATA]
+```
+## Etape 2 : Créer et attribuer les VLANs sur SW
+* On viens créer 2 VLAN : 
+	* VOIX pour les téléphones
+	* DATA pour les autres équipements
+* On peut renseigner 1 VLAN telephonie et 1 VLAN classique sur un lien en meme temps sans faire de trunk
+* On aura donc un switchport access vlan data et un switchport voice vlan voix sur un port
+* On configure un simple lien trunk entre le SW et le serveur de téléphonie
+```
+vlan 10
+	name VOIX
+vlan 20
+	name DATA
+	
+int range [VERS_EQUIP]
+	switchport mode access
+	switchport access vlan [ID_VLAN_DATA]
+	switchport voice vlan [ID_VLAN_VOIX]
+	
+int range [VERS_ROUTEUR]
+	switchport mode trunk
+```
+## Etape 2 : Configuration serveur DHCP 
+* On viens configurer deux pool DHCP, chacun s'occupe d'attribuer les IP à des VLAN spécifique (VOIX, DATA)
+* On renseigne le réseau du VLAN dans lequel le pool sera effectué
+* On renseigne les informations IP qu'auront les équipement (GW)
+* On renseigne le protocole de communication qu'utiliseront les téléphones pour communiquer (150 = Cisco SCCP, 66 = SIP)
+```
+ip dhcp pool VOICE
+ network [NET_VLAN_VOIX] [MASQUE]
+ default-router [GW_VLAN_VOIX] = sous interface vlan voix du routeur
+ option 150 ip [GW_VLAN_VOIX]  = sous interface vlan voix du routeur
+ 
+ip dhcp pool DATA
+ network [NET_VLAN_DATA] [MASQUE]
+ default-router [GW_VLAN_DATA] = sous interface vlan DATA du routeur
+ option 150 ip [GW_VLAN_DATA]  = sous interface vlan DATA du routeur
+```
+
+## Etape 3 : Configuration serveur téléphonie
+* On viens configurer le service téléphonique en renseignant des paramètres : 
+	* max-ephones : nombre maximum de téléphones IP que peut prendre en charge ce routeur
+	* max-dn : nombre maximum de numéros de téléphone que peut prendre en charge ce routeur
+	* IP et port pour l'enregistrement des IP Phones
+	* Optionnel : assignation automatique des IP Phones aux numéros (dn) disponibles
+* On viens configurer les comptes d'abonnées (numéro = ephone-dn)
+* On viens configurer les paramètres des téléphones physiques (ephone)
+* On viens créer une route (dial peer) entre 2 réseau avec chacun un routeur téléphonie et on va renseigner les numéros accessibles dans l'autre réseau et commenta accéder à eux 
+```
+telephony-service
+	device-security-mode none
+	max-ephones [NUM_MAX_TEL_RESEAU]
+	max-dn [PAREIL]
+	ip source-address [IP_GW_VOIX] port 2000
+	auto assign 4 to 6 # CAS CONFIG AUTOMATIQUE
+
+ephone-dn [X]
+	number [NUMERO]
+ephone-dn [Y]
+	number [NUMERO]
+
+ephone [X]
+	mac-address [MAC_TEL]
+	type 7960
+	button 1:1
+ephone [Y]
+	mac-address [MAC_TEL]
+	type 7960 #modele
+	button 1:2
+
+dial-peer voice 1 voip
+ destination-pattern 4...
+ session target ipv4:10.0.0.1
+	
+```
+--- 
+1. Attribuer adresse IP sur interface routeur
+```
+interface FastEthernet0/0
+ ip address [IP] 255.255.255.0
+ no shut
+```
+1. Créer sous interface avec dot1Q sur routeur
+```
+interface FastEthernet0/0.[X]
+ encapsulation dot1Q [X]
+ ip address [IP] 255.255.255.0
+```
+1. Créer route vers réseau 2
+```
+ip route 0.0.0.0 0.0.0.0 [GW_NET2]
+```
+1. Créer liaison dial-peer avec routeur voisin (route statique pour les téléphones)
+```
+dial-peer voice 1 voip
+ destination-pattern 5...
+ session target ipv4:[GW_NET2]
+```
+1. Créer service telephony et définir paramètres
+```
+telephony-service
+ max-ephones 5
+ max-dn 5
+ ip source-address 172.16.10.1 port 2000
+```
+1. Créer les ephone-dn avec un numero relié
+```
+ephone-dn 1 [OBJET DANS ANNUAAIRE]
+ number 4001 # Numéro qu'on va composer
+ephone-dn 2
+ number 4002 # Numéro qu'on va composer
+```
+1. Créer un ephone par téléphone et assigner paramètres
+```
+ephone 1 []
+ device-security-mode none
+ mac-address 0001.63A6.998E
+ type 7960
+ button 1:1
+
+ephone 2
+ device-security-mode none
+ mac-address 00D0.D383.4199
+ type 7960
+ button 1:2
+```
+## Checklist config SW
+1. Configurer nom de la machine
+2. Desactiver dns 
+3. Configurer mot de passe console et vty
+4. Créer vlan et leur nom
+5. Associer vlan aux interfaces en mode access
+6. Configurer lien vers routeur en mode trunk et switchport voice vlan 1
+7. Créer route par défaut vers routeur sur une sous interface
+--- 
 ## Switch 
 1. Créer VLAN voix pour les téléphones et créer VLAN data pour les PCs
 ```

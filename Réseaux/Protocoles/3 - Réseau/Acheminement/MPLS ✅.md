@@ -1,49 +1,39 @@
 # **Guide MPLS (Multiprotocol Label Switching)**
 
 # **1) Principe MPLS**
-
-- **Introduction**:
-    
-    - MPLS est un type de réseau privé qui offre un acheminement optimisé des paquets sur de grands réseaux.
-    - Il se distingue par l'utilisation de labels pour guider les paquets, plutôt que de se fier uniquement aux adresses IP.
-- **Caractéristiques Principales**:
-    
-    - Gestion **centralisée** et **simplifiée** par un opérateur.
-    - Fluidifie le trafic réseau et garantit une qualité de service (QoS) supérieure.
-    - Permet une mise en place facilitée de VPN à grande échelle.
-    - Réduction du temps de recherche dans les tables de routage.
+- MPLS est un type de réseau privé (généralement détenu par des ISP ou des grosses entreprises) qui offre un acheminement optimisé des paquets sur de grands réseaux.
+- Il se distingue par l'utilisation de labels pour guider les paquets, plutôt que de se fier uniquement aux adresses IP.
+## 2) Caractéristiques principales
+- Gestion **centralisée** et **simplifiée** par un opérateur.
+- Fluidifie le trafic réseau et garantit une qualité de service (QoS) supérieure.
+- Permet une mise en place facilitée de VPN à grande échelle.
+- Réduction du temps de recherche dans les tables de routage.
 - **Types de routeurs MPLS**:
-    
     - **CE (Customer Edge)** : Installé chez le client pour le connecter au réseau MPLS.
     - **PE (Provider Edge)** : Labelise en entrée du réseau les paquets IP et délabelise en sortie.
     - **P (Provider)** : Commute les paquets labelisés en utilisant la table LIB (Label Information Base).
-
+![MPLS1.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/MPLS1.png)
 # **2) Système d'étiquetage des paquets**
 
-- **But**: Utiliser des labels pour séparer différents types de trafic au sein du réseau MPLS, tels que voix, vidéo, email, et VPN.
-- **Fonctionnement**:
-    - Les routeurs analysent le label de destination pour déterminer le chemin à prendre.
-    - Le label est choisi en fonction de la destination du paquet.
-
+* MPLS utilise un système de label (tags) 
+* Les paquets entrant vers les routeur PE auront en fonction du type de flux et de leur destination un label (tags).
+* ![MPLS3.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/MPLS3.png)
 ## **Étapes de Commutation MPLS**:
 
 1. **Entrée dans le réseau**:
-    
     - Un paquet IP arrive au PE.
     - On détermine le protocole de routage IP.
     - Un label est assigné basé sur l'IP de destination.
     - L'en-tête (label) est ajouté et le paquet est envoyé au nœud suivant.
 2. **Commutation dans le réseau**:
-    
     - Le paquet labelisé arrive au routeur P.
     - Le protocole de routage est déterminé via la LIB.
     - Le label est modifié et le paquet est envoyé au nœud suivant.
 3. **Sortie du réseau**:
-    
     - Le paquet arrive au routeur PE de sortie.
     - Le label est retiré et le paquet est transmis au réseau de destination.
-
-# **3) Comparaison entre MPLS et l'Internet**
+![MPLS2.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/MPLS2.png)
+# **3) Comparaison entre MPLS et Internet**
 
 - **Performance**: MPLS est plus rapide car il utilise des labels pour acheminer le trafic directement.
 - **Sécurité**: MPLS offre une meilleure sécurité en étant géré privément et en évitant certains risques liés à l'Internet public.
@@ -66,7 +56,7 @@ ip cef
 ```
 * Assigner réseau MPLS à une interface
 ```
-int G0/0
+int [INT]
 	mpls ip
 ```
 * Afficher table de commutation (LFIB)

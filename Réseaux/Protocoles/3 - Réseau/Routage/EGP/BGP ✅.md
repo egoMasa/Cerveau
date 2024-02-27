@@ -1,79 +1,126 @@
 # Guide BGP
 
-## 1) Généralités
+# 1) Fondamentaux de BGP
+## But et généralités
+- **BGP** = **Border Gateway Protocol**
+- Protocole de routage extérieur
+- Rend possible l'interconnexion entre différents AS. 
+- Échanger les blocs d'adresses IP et leurs masques de sous-réseau associés entre AS. 
+- Prend en charge des réseaux de tailles et de topologies variées.
+- Utilise TCP sur le port 179
+- BGP est un protocole de routage de type **"path vector"** = Regarde le chemin complet pour arriver à destination plutôt que juste le meilleur prochain saut
+![BGP1.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP1.png)
+## Quand utiliser BGP
+* Contrôle du trafic sortant et la manière dont le réseau est accessible de l'extérieur
+* Annoncer des préfixes IP pour rendre accessible des services hébergés aux autres AS
+* Spécifier des politiques de routage qui influencent la sélection de chemin via des route-map(performance/sécurité)
+![BGP2.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP2.png)
+## Définition d'un AS
+* Ensemble de réseaux sous une seule et même politique de routage (IGP)
+* Contrôlé par une organisation 
+	➢ Entreprise (Thales) 
+	➢ Organismes publics (Université, Renater) 
+	➢ ISP (Free, Orange, SFR, …) 
+* Identifié par un ASN (Autonomous System Number) unique 
+	➢ Attribué par les Registres Internet Régionaux (RIR). 
+	* France (RIPE NCC) ; 
+	* USA (ARIN)
+* Plage publique ASN = AS1 – AS 64495 
+* Plage privée ASN = AS 64512 – AS 65534
+![BGP3.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP3.png)
+![BGP4.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP4.png)
 
-- **BGP** : C'est l'acronyme de _**Border Gateway Protocol**_.
-- BGP est surnommé le **"glue of the internet"** (la colle de l'Internet) car il est la charnière qui permet aux différentes parties du réseau mondial de communiquer entre elles.
-- Il est fondamental de comprendre que BGP est un protocole de type **path vector**. Cela signifie qu'il conserve un enregistrement complet du chemin d'accès vers les réseaux de destination, plutôt que de se baser uniquement sur le comptage de sauts ou d'autres métriques. Cette caractéristique permet d'éviter les boucles de routage.
-- **AS** : Signifie _**Autonomous System**_. Il s'agit d'un ensemble de réseaux IP ayant une politique de routage propre.
-- L'utilité première de BGP est de permettre la communication entre différents AS.
-- **ASN** : C'est l'identifiant unique d'un AS. BGP utilise cet identifiant pour référencer l'AS.
-    - Géré par _**IANA**_, l'ASN est composé de :
-        - 16 bits
-        - _**Réservé**_ : 64496-64534
-        - _**Privés**_ : 64512-65534
-- Il est crucial de ne jamais redistribuer de routes BGP vers d'autres protocoles au sein du LAN. Cela pourrait entraîner une explosion du tableau de routage.
-- BGP est un _**Policy Base Routing Protocol**_. Cela signifie que les paquets sont soumis à une route map avant d'être acheminés.
-- C'est le protocole standardisé pour le _**routage externe**_, c'est-à-dire en dehors du LAN. BGP connecte différents _**systèmes autonomes**_ entre eux, qui à l'intérieur, peuvent utiliser des protocoles de routage internes comme OSPF, RIP ou EIGRP.
-- En termes de BGP, une adjacence est aussi appelée relation de peering ou BGP Neighbor.
+# 2) Type de BGP
 
-## 2) Principes
+## eBGP vs iBGP
+|  | eBGP | iBGP |
+| ---- | ---- | ---- |
+| **Utilité** | Routage entre différents AS | Routage à l'intérieur d'un même AS |
+| **Informations échangées** | - Annonce les préfixes réseau internes de son propre système autonome (AS) à un autre AS | - Annonce les préfixes réseau qu'il a appris via ses liens eBGP à d'autres routeurs à l'intérieur du même AS. <br>- Échange les informations de route via un Route Reflector |
+| **Peering** | Nécessite une connexion directe entre les AS participants. | Fonctionne sans connexion directe entre tous les routeurs internes |
+| **Sélection de chemin** | Préfère généralement les chemins avec le plus petit nombre de sauts | Ne modifie pas les attributs des routes lors de leur propagation à travers le réseau interne |
+![BGP5.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP5.png)
+## Multihoming
+* Connexion d’un réseau à plus d'un fournisseur d'accès Internet (ISP) pour augmenter la redondance et la disponibilité.
+* Permet au réseau de communiquer ses préférences de routage à plusieurs fournisseurs et de choisir le meilleur chemin.
+* Réalisé avec eBGP, en établissant des sessions BGP séparées avec chaque fournisseur d'accès Internet.
+![BGP6.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP6.png)
+# 3) Fonctionnement 
 
-- BGP est le protocole responsable de la liaison entre différents systèmes autonomes.
-- Sa caractéristique principale est d'être un protocole à vecteur de chemin : il ne se contente pas de définir une destination, mais également l'ensemble du chemin (PATH) pour y parvenir.
-    - Cela permet d'éviter les boucles de routage en empruntant des chemins déjà connus.
-- BGP fonctionne au-dessus du protocole TCP.
-- La dernière version de BGP est la **version 4** qui offre le support du VLSM (Variable Length Subnet Masking).
-- **BGP-MP (MultiProtocol)** : Une extension de BGP qui supporte IPV6.
-- La **convergence** de BGP peut être plus lente que celle des IGP. Cette lenteur est souvent intentionnelle afin d'éviter des changements de routage trop rapides et potentiellement instables à l'échelle de l'Internet.
-- **BGP Sessions** : BGP établit des sessions avec d'autres pairs (peers) BGP. Ces sessions sont de deux types :
-    - **eBGP** : Entre routeurs appartenant à différents AS.
-    - **iBGP** : Entre routeurs au sein du même AS.
-- Les **attributs BGP** sont essentiels à la prise de décision en matière de routage. Ils comprennent notamment AS-PATH, NEXT-HOP, MED (Metric), LOCAL-PREFERENCE, et COMMUNITIES.
+## Peering (Session entre 2 routeurs BGP)
+* Établissement d’une connexion directe entre deux routeurs BGP pour échanger des informations de routage.
+* Sessions configurées sur eBGP entre AS différents ou sur iBGP à l'intérieur du même AS.
+* Nécessite une configuration manuelle et inclut : 
+	* ➢ l'échange des adresses des pairs ; 
+	* ➢ la configuration des politiques de routage.
+![BGP7.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP7.png)
 
-## 3) Comparaison entre IGP et BGP
+## Messages BGP (Entre 2 routeurs BGP )
+| Message      | Fonction |
+|--------------|----------|
+| **OPEN**     | - Initialisation d'une connexion BGP entre deux routeurs<br>- Sert à négocier les paramètres de la session (numéro d'AS, ID de routeur...) |
+| **UPDATE**   | - Annoncer de nouvelles routes<br>- Retirer des routes précédemment annoncées<br>- Transportent des informations sur les attributs de chemin |
+| **KEEPALIVE**| - Indiquer qu'une connexion est toujours active<br>- Maintenir la session BGP ouverte et confirme que les deux parties sont toujours disponibles |
+| **NOTIFICATION** | - Signaler des erreurs ou des problèmes dans la session BGP |
+## Attributs de chemin/routes BGP 
+| Attribut de chemin | Description |
+|--------------------|-------------|
+| **ORIGIN**         | - Indique l'origine de la mise à jour de routage<br>- Valeurs possibles : IGP (obsolète) et Incomplete (moyen non spécifié à BGP)<br>- Préférence ORIGIN IGP over EGP et EGP over Incomplete |
+| **AS_PATH**        | - Liste les numéros d'AS que la mise à jour de routage a traversé<br>- Éviter les boucles de routage sureBGP (Cluster List pour iBGP)<br>- Plus le chemin est court, plus il est préféré |
+| **NEXT_HOP**       | - Adresse du prochain routeur pour atteindre la destination annoncée<br>- eBGP : adresse de l'interface du routeur qui annonce la route<br>- iBGP : adresse du routeur d'où provient la route ou adresse du peer eBGP d'où la route a été apprise |
+| **Weight**         | - Spécifique à Cisco<br>- Appliqué localement sur le routeur et non transmis à d'autres routeurs<br>- Nombre entre 0 et 65535 (65535 étant la route la plus préférée)<br>- Les routes locales ont un poids de 32 768 (par défaut) / celles apprises de pairs ont un poids de 0 |
+# 4) Selection de chemin BGP
+* BGP donne des attributs à chacune de ses routes apprises. 
+* Certains attributs ont un priorité dans l'algorithme de BESTPATH de BGP.
+* On peut donc influencer quelles routes ou AS seront préférées par rapport à d'autre selon nos critères de politique de routage.
 
-- IGP est destiné à être utilisé à l'intérieur d'un AS, tandis que BGP est conçu pour opérer entre différents AS.
-- BGP offre une plus grande flexibilité pour définir les chemins et prendre des décisions de routage. Cette souplesse est rendue possible grâce à ses nombreux attributs, qui peuvent être modifiés pour influencer les décisions.
-- De par sa complexité et sa richesse en termes d'attributs, BGP est souvent considéré comme un protocole avancé.
-- IGP base ses décisions de routage sur la métrique du meilleur chemin.
-- BGP, en revanche, est un :
-    - _**Policy Based Routing Protocol**_
-    - Il contrôle le routage en utilisant de multiples attributs (BGP attributes)
-    - L'AS-PATH décrit la liste des ASN que le routeur doit traverser pour atteindre une destination
-    - Il peut optimiser l'utilisation de la bande passante en manipulant les attributs BGP.
-- Scénarios d'utilisation de BGP :
-    - L'AS a plusieurs connexions vers d'autres AS.
-    - L’AS autorise le trafic de transit pour atteindre d’autres AS.
-- Cas où BGP n'est pas recommandé :
-    - Connexion unique vers Internet ou vers un autre AS.
-    - Ressources hardware insuffisantes (CPU, RAM).
-    - Absence de maîtrise du fonctionnement de BGP et de sa gestion des routes et des politiques PBR.
-- Dans ces situations, il est préférable d'opter pour des routes statiques ou une route par défaut.
+| Priorité | Attribut BGP | Description |
+| ---- | ---- | ---- |
+| 1 | **Weight** | - Spécifique à Cisco, local au routeur. Préfère le chemin avec le poids le plus élevé. |
+| 2 | **Local Preference** | - Chemin au sein de l'AS. Une préférence locale plus élevée est préférée. |
+| 3 | **AS Path** | - Chemin qui traverse le moins d'AS. Liste des AS est courte : le chemin est préféré. |
+| 4 | **Origin** | - Préfère les chemins avec l'origine la plus fiable. (IGP > EGP > Incomplete) |
+| 5 | **MED (Multi Exit Discriminator)** | - Compare les chemins du même AS voisin.<br>- Le chemin avec le MED le plus bas est préféré. |
+| 6 | **eBGP vs iBGP** | - Les chemins appris via eBGP sont préférés sur ceux appris via iBGP. |
+| 7 | **Proximité IGP vers le prochain saut (Next Hop)** | - Préfère le chemin avec la métrique IGP la plus basse vers le prochain saut BGP. |
+| 8 | **Autres critères** | - Chemin le plus ancien, ID du routeur le plus bas, et l'adresse du voisin la plus basse. |
+## Exemple 1 : AS 5 vers AS 1 basé sur l'AS PATH uniquement
+![BGP8.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP81.png)
+## Exemple 2 : Extrait d'un bestpath BGP
+![BGP9.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP9.png)
+# 5) Sécurité BGP
+## Authentification
+* Authentification par mot de passe possible pour prévenir les connexions non autorisées. 
+* Utilisation de MD5 pour sécuriser les échanges entre pairs BGP 
+	* ➢ Empêche les attaques de type "man-in-the-middle". 
+	* ➢ Détournement de trafic malveillant
+![BGP10.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP10.png)
+## Améliorer la Sécurité avec des Configurations Avancées
+* Implémenter un filtrage rigoureux des annonces de routes 
+	* ➢ Éviter la propagation de routes malveillantes ou incorrectes. 
+* Utiliser des ACLs pour contrôler l'accès aux routeurs BGP et aux ressources réseau. 
+* Utiliser RPKI (Resource Public Key Infrastructure) pour valider l'origine des annonces de routes 
+	* ➢ Réduit le risque de détournement de préfixe
+![BGP11.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP11.png)
 
-## 4) Autres points à considérer
+# 6) Configuration de BGP
 
-- **BGP Route Reflectors** : Dans un réseau iBGP, chaque routeur doit établir une session avec tous les autres routeurs. Cette pleine maillage peut devenir complexe. Les "Route Reflectors" offrent une solution en permettant à certains routeurs de relayer les routes apprises aux autres routeurs de l'AS.
-- **BGP Confederations** : C'est une autre réponse au défi de la pleine connectivité iBGP. Les confédérations subdivisent un AS en plusieurs petits AS, améliorant ainsi la scalabilité.
-- **BGP Filtering** : Le filtrage est essentiel pour définir quelles routes sont acceptées et annoncées via BGP.
-- **BGP Peering** : La sécurité des sessions BGP est primordiale car BGP peut être cible d'attaques. L'utilisation de mécanismes d'authentification est recommandée pour sécuriser les sessions eBGP.
-
-## 5) Configuration BGP
+## Configuration classique d'un peering entre 2 AS
 * Activer protocole BGP 
 ```
-R1(config)#router bgp @ASN
+R1(config)#router bgp [ASN]
 ```
 * Annoncer son réseau
 ```
-R1(config-rtr)#network @mon_reseau mask @masque
+R1(config-rtr)#network [NET_LAN] mask [NETMASK]
 ```
 * Annoncer ses voisins (ASN)
 ```
-R1(config-rtr)#neighbor @IP_INT_VOISIN remote-as @ASN_voisin
+R1(config-rtr)#neighbor [IP_INT_VOISIN] remote-as [ASN_VOISIN]
 ```
 * Modifier router-id BGP
 ```
-R1(config-rtr)#bgp router-id X.X.X.X
+R1(config-rtr)#bgp router-id [X.X.X.X]
 ```
 * Exemple de configuration
 ```
@@ -82,3 +129,58 @@ R1(config-rtr)#bgp router-id 1.1.1.1
 R1(config-rtr)#network 192.168.1.0 mask 255.255.255.0
 R1(config-rtr)#neighbor 10.0.0.2 remote-as 65330
 ```
+
+## Modification des attributs de chemin dans BGP
+
+* **Modifier l'attribut ORIGIN** (indiquer l'origine de la route annoncée)
+```
+route-map [ROUTEMAP_NAME] permit 10
+	set origin [igp | egp | incomplete]
+
+router bgp [ASN]
+	network [NET_LAN] mask [NETMASK]
+	neighbor [IP_INT_VOISIN] route-map [ROUTEMAP_NAME] [in|out]
+```
+
+* **Modifier l'attribut AS_PATH** (influencer le chemin BGP)
+```
+route-map [ROUTEMAP_NAME] permit 10
+	set as-path prepend [ASN_SEQ]
+
+router bgp [ASN]
+	neighbor [IP_INT_VOISIN] route-map [ROUTEMAP_NAME] [in|out]
+```
+
+* **Modifier l'attribut NEXT_HOP** (spécifier le prochain saut pour une route BGP)
+```
+route-map [ROUTEMAP_NAME] permit 10
+	set ip next-hop [IP_NEXT_HOP]
+
+router bgp [ASN]
+	neighbor [IP_INT_VOISIN] route-map [SET_NEXTHOP] [in|out]
+```
+
+* **Modifier l'attribut WEIGHT** (influencer le choix de la route localement)
+```
+router bgp [ASN]
+	neighbor [IP_INT_VOISIN] weight [WEIGHT_VALUE]
+```
+
+* **Exemple de configuration avec modification des attributs**
+```
+route-map SET_ORIGIN permit 10
+	set origin igp
+	
+router bgp 65329
+	bgp router-id 1.1.1.1
+	network 192.168.1.0 mask 255.255.255.0
+	neighbor 10.0.0.2 remote-as 65330
+	neighbor 10.0.0.2 weight 200
+	neighbor 10.0.0.2 route-map SET_ORIGIN out
+```
+## 4) Autres points à approndir
+
+- **BGP Route Reflectors** : Dans un réseau iBGP, chaque routeur doit établir une session avec tous les autres routeurs. Cette pleine maillage peut devenir complexe. Les "Route Reflectors" offrent une solution en permettant à certains routeurs de relayer les routes apprises aux autres routeurs de l'AS.
+- **BGP Confederations** 
+- **BGP Filtering**
+

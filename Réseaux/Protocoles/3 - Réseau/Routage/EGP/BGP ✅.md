@@ -39,6 +39,7 @@
 | **Informations échangées** | - Annonce les préfixes réseau internes de son propre système autonome (AS) à un autre AS | - Annonce les préfixes réseau qu'il a appris via ses liens eBGP à d'autres routeurs à l'intérieur du même AS. <br>- Échange les informations de route via un Route Reflector |
 | **Peering** | Nécessite une connexion directe entre les AS participants. | Fonctionne sans connexion directe entre tous les routeurs internes |
 | **Sélection de chemin** | Préfère généralement les chemins avec le plus petit nombre de sauts | Ne modifie pas les attributs des routes lors de leur propagation à travers le réseau interne |
+
 ![BGP5.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP5.png)
 ## Multihoming
 * Connexion d’un réseau à plus d'un fournisseur d'accès Internet (ISP) pour augmenter la redondance et la disponibilité.
@@ -85,7 +86,7 @@
 | 7 | **Proximité IGP vers le prochain saut (Next Hop)** | - Préfère le chemin avec la métrique IGP la plus basse vers le prochain saut BGP. |
 | 8 | **Autres critères** | - Chemin le plus ancien, ID du routeur le plus bas, et l'adresse du voisin la plus basse. |
 ## Exemple 1 : AS 5 vers AS 1 basé sur l'AS PATH uniquement
-![BGP8.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP81.png)
+![BGP8.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP8.png)
 ## Exemple 2 : Extrait d'un bestpath BGP
 ![BGP9.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/BGP9.png)
 # 5) Sécurité BGP

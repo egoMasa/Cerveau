@@ -32,6 +32,7 @@
 3. **Sortie du réseau**:
     - Le paquet arrive au routeur PE de sortie.
     - Le label est retiré et le paquet est transmis au réseau de destination.
+  
 ![MPLS2.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/MPLS2.png)
 
 # **3) Comparaison entre MPLS et Internet**

@@ -1,12 +1,10 @@
 # **Guide Adressage IPV6**
 
 ## **I) Introduction et principes fondamentaux**
-
 - **IPv6** a été développé pour répondre à la pénurie d'adresses IPV4, principalement en raison de la croissance rapide d'Internet et du nombre croissant d'appareils connectés.
 - Une adresse IPv6 est composée de _**128 bits**_, contrairement à IPv4 qui en comporte _**32**_. Cette taille accrue offre un espace d'adressage presque illimité.
 
 ## **II) Structure d'une adresse IPv6**
-
 - Une adresse IPv6 typique est constituée de huit groupes de quatre chiffres hexadécimaux, comme 
 ```
 A524:72D3:2C80:DD02:0029:EC7A:002B:EA73 = 8 champs
@@ -16,7 +14,6 @@ A524:72D3:2C80:DD02:0029:EC7A:002B:EA73 = 8 champs
 - Elle est divisée entre le préfixe réseau (partie du réseau) et l'identifiant de l'interface (partie hôte).
 
 ## **III) Caractéristiques clés d'IPv6**
-
 - **Autoconfiguration** : Les appareils peuvent se configurer automatiquement en utilisant le protocole _**SLAAC**_ (Stateless Address Autoconfiguration).
 - Avec IPv6, la nécessité du **NAT** (Network Address Translation) est réduite car chaque appareil peut avoir une adresse unique.
 - IPv6 a un en-tête simplifié pour une efficacité accrue.
@@ -44,7 +41,7 @@ A524:72D3:2C80:DD02:0029:EC7A:002B:EA73 = 8 champs
 	- Exemple : _**FE80::/10**_
 - _**Loopback**_
 	- Exemple : _**::1/128**_
-### Multicast**_ (One to Many)
+### Multicast(One to Many)
 - Adresse qui permet à un paquet de données d'être envoyé à un groupe de dispositifs sur un réseau. Les dispositifs qui font partie du groupe peuvent recevoir les paquets de données en fonction de leur adhésion au groupe.
 - Well-Known Multicast Adresseses (FF00::/8)
 	- FF02::1 : All IPv6 devices
@@ -110,7 +107,7 @@ Alors que IPv4 a été la colonne vertébrale de l'Internet pendant des décenni
 
 SLAAC est une méthode pour attribuer des adresses IPv6 sans nécessiter un serveur DHCP. Le dispositif crée automatiquement sa propre adresse IPv6 en utilisant son adresse MAC et les annonces du routeur du réseau sur lequel il se trouve.
 
-### Configuration automatique via SLAAC/DHCPv6 sur les routeurs Cisco**
+### Configuration automatique via SLAAC/DHCPv6 sur les routeurs Cisco
 
 #### **1. Activer la transmission IPv6**
 

@@ -14,6 +14,8 @@
     - L'appareil sur le réseau qui possède l'adresse IP X répond avec une réponse ARP, indiquant « L'adresse IP X est à l'adresse MAC Z ». Cette réponse est envoyée directement à l'adresse MAC de PC1.
 4. **Mise à Jour de la Table ARP** :
     - PC1 met ensuite à jour sa table ARP avec cette nouvelle association entre l'adresse IP et l'adresse MAC, lui permettant d'encapsuler les paquets IP dans des trames Ethernet et de les envoyer sur le réseau local.
+
+![ARP1.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/ARP1.png)
 ## **3) Table ARP**
 - **Rôle de la Table ARP** :
     - Les terminaux utilisent la table ARP pour mapper les adresses IP des appareils sur le même réseau local (LAN) à leurs adresses MAC correspondantes.
@@ -24,6 +26,13 @@
     - Les entrées ARP sont souvent mises à jour et peuvent expirer après un certain temps d'inactivité, nécessitant des requêtes ARP fraîches pour les renouveler.
 - **Sécurité de la Table ARP** :
     - La table ARP peut être sujette à certaines attaques de sécurité, comme le ARP spoofing, nécessitant parfois des mesures de sécurité supplémentaires.
+
+| Interface | IP Address   | Physical Address   | Type    | Expiry  |
+|-----------|--------------|--------------------|---------|---------|
+| eth0      | 192.168.1.1  | 00:21:29:CC:A7:31  | Static  | -       |
+| eth0      | 192.168.1.24 | 00:17:31:BA:5C:A4  | Dynamic | 2m 27s  |
+| eth1      | 10.1.2.66    | 00:1A:70:3C:A6:3D  | Dynamic | 35s     |
+| wlan0     | 210.210.3.1  | 90:6C:AC:2D:DE:9A  | Dynamic | 1m 14s  |
 
 ## **5) Commandes cisco**
 1. **Voir la Table ARP**

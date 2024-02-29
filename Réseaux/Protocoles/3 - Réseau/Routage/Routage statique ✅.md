@@ -1,22 +1,22 @@
-## Guide sur le Routage Statique
+# Guide sur le Routage Statique
 
-### I) Principe et explication
+# I) Principe et explication
 * Le routage statique est l'une des méthodes les plus élémentaires pour guider le trafic à travers un réseau. 
 * Idéal pour les réseaux de petite taille ou dans des situations où la topologie du réseau ne change pas fréquemment
 * Se repose sur des configurations manuelles plutôt que sur des protocoles automatisés.
-#### a) Routage statique :
+# 2) Routage statique :
 * Dans un routage statique, les routes vers les réseaux ou sous-réseaux sont définies manuellement. 
 * Cette configuration, une fois mise en place, ne change pas sauf si l'administrateur la modifie. 
 * On peut lire comme ceci : Pour atteindre le réseau X il faut envoyer le paquet au saut suivant
 * Si aucunes routes statique ne correspond au réseau de destination, alors la route par défaut prendra le relais si elle est configuré, sinon le paquet sera drop.
 
 ![STATIC_ROUTE1.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/STATIC_ROUTE1.png)
-#### b) Route par défaut :
+# 3) Route par défaut :
 * La route par défaut `0.0.0.0/0` est une instruction spéciale qui indique au routeur comment gérer un paquet destiné à une adresse pour laquelle il n'a pas de route spécifique. 
 * On peut voir ca comme une sortie de secours si aucunes route statique a été configurée : "si vous ne savez pas où aller, allez par là".
 
 ![STATIC_ROUTE2.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/STATIC_ROUTE2.png)
-### II) Règles essentielles du routage statique
+# 4) Règles essentielles du routage statique
 Le routage statique, malgré sa simplicité, nécessite le respect de certaines règles essentielles pour fonctionner correctement :
 
 1. **Connaissance mutuelle** : La passerelle (ou routeur) de votre machine source doit connaître la route pour atteindre le réseau de destination. De la même manière, la passerelle (ou routeur) de la machine de destination doit avoir une route de retour vers le réseau de la machine source. Ceci est crucial pour assurer un échange bidirectionnel d'informations.
@@ -25,16 +25,16 @@ Le routage statique, malgré sa simplicité, nécessite le respect de certaines 
     
 3. **Simplicité vs Scalabilité** : Pour les petits réseaux, le routage statique peut être simple et direct. Cependant, à mesure que le réseau grandit, la gestion des routes statiques devient plus complexe et peut être difficile à gérer.
 
-### III) Avantages et inconvénients
+# 5) Avantages et inconvénients
 
-#### Avantages :
+## Avantages :
 - **Prévisibilité** : Comme les routes sont définies manuellement, il n'y a pas de surprises concernant la manière dont les paquets seront routés.
 - **Pas de surcharge du protocole** : Contrairement aux protocoles de routage dynamique, il n'y a pas de trafic supplémentaire généré par l'échange d'informations sur les routes.
-#### Inconvénients :
+## Inconvénients :
 - **Manque de résilience** : Si un lien échoue, le routeur ne peut pas rediriger le trafic à moins que l'administrateur n'intervienne.
 - **Gestion difficile à grande échelle** : Dans de grands réseaux, le maintien de routes statiques peut être une tâche ardue.
 
-## Configuration routage statique
+# 6) Configuration routage statique
 
 - Ajouter une route statique
 ```shell

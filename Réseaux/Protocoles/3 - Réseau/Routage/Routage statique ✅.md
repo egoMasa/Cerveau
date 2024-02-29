@@ -1,13 +1,19 @@
 ## Guide sur le Routage Statique
 
 ### I) Principe et explication
-Le routage statique est l'une des méthodes les plus élémentaires pour guider le trafic à travers un réseau. Idéal pour les réseaux de petite taille ou dans des situations où la topologie du réseau ne change pas fréquemment, il repose sur des configurations manuelles plutôt que sur des protocoles automatisés.
+* Le routage statique est l'une des méthodes les plus élémentaires pour guider le trafic à travers un réseau. 
+* Idéal pour les réseaux de petite taille ou dans des situations où la topologie du réseau ne change pas fréquemment
+* Se repose sur des configurations manuelles plutôt que sur des protocoles automatisés.
 #### a) Routage statique :
-Dans un routage statique, les routes vers les réseaux ou sous-réseaux sont définies manuellement. Cette configuration, une fois mise en place, ne change pas sauf si l'administrateur la modifie. Il s'agit d'une approche "définie une fois, utilisée toujours", jusqu'à ce qu'il y ait besoin d'un changement.
+* Dans un routage statique, les routes vers les réseaux ou sous-réseaux sont définies manuellement. 
+* Cette configuration, une fois mise en place, ne change pas sauf si l'administrateur la modifie. 
+* On peut lire comme ceci : Pour atteindre le réseau X il faut envoyer le paquet au saut suivant
+* Si aucunes routes statique ne correspond au réseau de destination, alors la route par défaut prendra le relais si elle est configuré, sinon le paquet sera drop.
 
 ![STATIC_ROUTE1.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/STATIC_ROUTE1.png)
 #### b) Route par défaut :
-La route par défaut, souvent dénotée `0.0.0.0/0`, est une instruction spéciale qui indique au routeur comment gérer un paquet destiné à une adresse pour laquelle il n'a pas de route spécifique. Pensez-y comme à une "sortie générale" ou à une instruction "si vous ne savez pas où aller, allez par là".
+* La route par défaut `0.0.0.0/0` est une instruction spéciale qui indique au routeur comment gérer un paquet destiné à une adresse pour laquelle il n'a pas de route spécifique. 
+* On peut voir ca comme une sortie de secours si aucunes route statique a été configurée : "si vous ne savez pas où aller, allez par là".
 
 ![STATIC_ROUTE2.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/STATIC_ROUTE2.png)
 ### II) Règles essentielles du routage statique

@@ -22,6 +22,7 @@
 | **ASBR**        | Fait le lien entre OSPF et d'autres réseaux ou systèmes autonomes, utilisant différents protocoles. | Introduit des informations sur les routes externes dans l'environnement OSPF.                                       | Un routeur OSPF connecté à un réseau BGP, introduisant des informations de routage externe à OSPF.                        |
 | **ABR**         | Sert de point de connexion entre différentes zones OSPF au sein du même système autonome.           | Propage les informations de routage entre les zones et peut introduire la route par défaut dans des zones spéciales. | Un routeur OSPF reliant la zone Backbone (Area 0) à une autre zone OSPF, gérant les informations de routage entre ces zones. |
 | **IR (Internal Router)** | Opère à l'intérieur d'une seule zone OSPF, sans connecter à d'autres zones ou systèmes autonomes.    | Transmet des paquets à l'intérieur d'une zone OSPF, en utilisant les informations de routage OSPF internes.           | Un routeur OSPF qui n'est connecté qu'à des routeurs dans la même zone OSPF, gérant le routage interne à cette zone.       |
+
 ![OSPF2.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/OSPF2.png)
 
 # 4) Messages OSPF

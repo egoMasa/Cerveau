@@ -15,7 +15,7 @@
 
 - **Problématiques courantes** : Certaines routes peuvent être privilégiées par un protocole même si elles ne sont pas les plus optimales. C'est pourquoi il est parfois nécessaire d'ajuster manuellement les distances administratives.
 
-![DYNAMIC_ROUTING1.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/DYNAMIC_ROUTING1.png)
+![DYNAMIC_ROUTING2.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/DYNAMIC_ROUTING2.png)
 
 
 # 2) Routage Intérieur (IGP)
@@ -30,4 +30,5 @@
 | **Mises à jour**                 | Fréquentes, souvent via broadcast ou multicast.                     | Immédiate en cas de changement de topologie, via multicast.                              |
 | **Exemples de protocoles**       | - EIGRP<br>- RIP/RIPv2                                              | - OSPF<br>- IS-IS                                                                        |
 | **Connaissance de la topologie** | Limitée aux informations partagées par les voisins.                 | Complète, identique sur tous les routeurs dans le même domaine de routage.               |
-![DYNAMIC_ROUTING2.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/DYNAMIC_ROUTING2.png)
+
+![DYNAMIC_ROUTING1.png](https://github.com/egoMasa/Illustrations/blob/main/Illustrations/DYNAMIC_ROUTING1.png)

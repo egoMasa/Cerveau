@@ -820,3 +820,64 @@ Dans cet exemple, la fonction `max` est un template qui peut comparer deux élé
 - **Flexibilité** : Les templates permettent aux développeurs de créer des fonctions et des classes flexibles qui ne sont pas liées à des types de données spécifiques.
 - **Réutilisation du code** : Les templates aident à réduire la duplication en gérant de multiples types de données avec une seule définition de fonction ou de classe.
 - **Performance** : Contrairement aux fonctions polymorphes à l'exécution, les templates sont résolus à la compilation, ce qui élimine le coût d'exécution du polymorphisme.
+
+# 15) Mots-clés C++
+## 15.1 Tableau récapitulatif
+
+| Mot-clé     | Description                                                                                       | Particularités                             |
+|-------------|---------------------------------------------------------------------------------------------------|--------------------------------------------|
+| `auto`      | Déduit automatiquement le type d'une variable à partir de son expression d'initialisation.        | C++11 et plus récent                       |
+| `bool`      | Définit un type booléen, vrai ou faux.                                                            |                                            |
+| `break`     | Interrompt l'exécution de la boucle la plus proche (while, do-while, for, switch).                |                                            |
+| `case`      | Définit une alternative dans un bloc switch.                                                     | Doit être suivi par une valeur constante.  |
+| `catch`     | Bloque utilisé pour capturer des exceptions levées dans un bloc try.                              | Utilisé avec try et throw.                 |
+| `char`      | Définit un type caractère.                                                                       |                                            |
+| `class`     | Définit un type de classe.                                                                       |                                            |
+| `const`     | Qualifie les types dont la valeur ne peut pas être modifiée.                                      |                                            |
+| `continue`  | Passe immédiatement à la prochaine itération de la boucle englobante.                             |                                            |
+| `default`   | Définit l'alternative par défaut dans un bloc switch.                                             | Un seul par bloc switch.                   |
+| `delete`    | Détruit des objets et libère la mémoire associée.                                                 | Correspond à l'opérateur new.              |
+| `do`        | Commence une boucle do-while.                                                                    | Boucle qui s'exécute au moins une fois.    |
+| `double`    | Définit un type à virgule flottante à double précision.                                           |                                            |
+| `else`      | Spécifie un bloc de code à exécuter si le test if est faux.                                       |                                            |
+| `enum`      | Définit un type énumération.                                                                     |                                            |
+| `explicit`  | Prévient la conversion implicite.                                                                | C++11 pour les constructeurs de conversion.|
+| `extern`    | Déclare une variable ou une fonction et spécifie qu'elle est définie ailleurs.                    |                                            |
+| `float`     | Définit un type à virgule flottante à simple précision.                                           |                                            |
+| `for`       | Définit une boucle for.                                                                          | Peut aussi être utilisé pour des boucles basées sur une plage en C++11. |
+| `friend`    | Permet à une fonction ou classe d'accéder aux membres privés d'une classe.                        |                                            |
+| `goto`      | Permet un saut non conditionnel à une étiquette.                                                  | Généralement évité en programmation moderne.|
+| `if`        | Définit une condition à tester.                                                                   |                                            |
+| `inline`    | Suggère que la fonction est intégrée, remplaçant l'appel de fonction par le corps de la fonction. |                                            |
+| `int`       | Définit un type entier.                                                                          |                                            |
+| `long`      | Définit un type entier long.                                                                     | Peut qualifier un double ou un int.        |
+| `mutable`   | Permet à un membre de classe const d'être modifié.                                                |                                            |
+| `namespace` | Définit un espace de noms.                                                                       |                                            |
+| `new`       | Alloue dynamiquement de la mémoire.                                                              | Correspond à l'opérateur delete.           |
+| `operator`  | Définit/déclare un opérateur ou une fonction de conversion de type spéciale.                      |                                            |
+| `private`   | Rend les membres accessibles uniquement depuis d'autres membres de la même classe.                |                                            |
+| `protected` | Rend les membres accessibles depuis la classe et ses dérivées.                                    |                                            |
+| `public`    | Rend les membres accessibles depuis n'importe où où l'objet est accessible.                       |                                            |
+| `register`  | Suggère que la variable soit stockée dans un registre du processeur.                              | Obsolète en C++17.                         |
+| `reinterpret_cast` | Convertit un type en un autre type de manière brute.                                     | Risqué et doit être utilisé avec prudence. |
+| `return`    | Termine une fonction et spécifie une valeur à retourner à l'appelant.                             |                                            |
+| `short`     | Définit un type entier court.                                                                    |                                            |
+| `signed`    | Qualifie un type entier comme signé.                                                             |                                            |
+| `sizeof`    | Donne la taille d'un type ou d'une variable en octets.                                            |                                            |
+| `static`    | Déclare des membres statiques ou des variables avec une durée de vie de programme entière.        |                                            |
+| `struct`    | Définit une structure de données.                                                                | Similaire à class.                         |
+| `switch`    | Permet une sélection parmi de multiples alternatives basées sur une variable.                     | Utilisé avec case et default.              |
+| `template`  | Définit un modèle pour une classe ou fonction générique.                                          |                                            |
+| `this`      | Pointeur vers l'objet courant.                                                                   |                                            |
+| `throw`     | Lance une exception.                                                                             | Utilisé avec try et catch.                 |
+| `try`       | Bloque de code dans lequel des exceptions peuvent être lancées.                                   | Utilisé avec catch et/ou finally.          |
+| `typedef`   | Donne un nom de type.                                                                            |                                            |
+| `typeid`    | Utilisé pour obtenir le type exact d'un objet polymorphe.                                         |                                            |
+| `typename`  | Spécifie que l'identificateur qui suit est un type.                                               | C++11 et plus récent.                      |
+| `union`     | Définit une union, un type spécial de structure où les membres partagent la même zone mémoire.    |                                            |
+| `unsigned`  | Qualifie un type entier comme non signé.                                                         |                                            |
+| `using`     | Déclaration pour introduire un nom de namespace ou créer un alias de type.                        | C++11 et plus récent.                      |
+| `virtual`   | Indique qu'une méthode est virtuelle et peut être redéfinie dans une classe dérivée.               |                                            |
+| `void`      | Indique l'absence de type.                                                                       |                                            |
+| `volatile`  | Indique que la valeur d'une variable peut changer à tout moment sans action du code environnant. | Souvent utilisé en programmation embarquée.|
+| `wchar_t`   | Type de caractère large.                                                                         | Utilisé pour les caractères Unicode.       |

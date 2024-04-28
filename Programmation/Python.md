@@ -52,6 +52,9 @@
 - **Style de codage** : Suivre les conventions PEP8.
 - **Documentation** : Documenter le code avec des docstrings.
 
+#### 13. Mots-clés python
+- **Tableau récapitulatif** : Mots-clés en Python et leur utilisation respective.
+
 # 1) Introduction à Python
 
 ## 1.1 Historique et philosophie
@@ -108,9 +111,31 @@ ma_fonction()
 ## 2.2 Variables et types de données
 
 Python est un langage de typage dynamique, ce qui signifie que vous n'avez pas besoin de déclarer explicitement le type d'une variable lors de sa création. Les principaux types de données en Python incluent :
-- **Nombres** : Intégraux (`int`) et à virgule flottante (`float`).
-- **Chaînes de caractères** (`str`) : Texte entouré de guillemets simples ou doubles.
-- **Booléens** (`bool`) : Valeurs logiques `True` ou `False`.
+
+| Type de données | Description                                                    | Exemples                |
+|-----------------|----------------------------------------------------------------|-------------------------|
+| `int`           | Nombres entiers sans limite de taille spécifique.              | `10`, `-3`, `42`        |
+| `float`         | Nombres à virgule flottante, pour les calculs décimaux.        | `3.14`, `-0.001`, `2.0` |
+| `str`           | Séquences de caractères encodées en texte, immuables.          | `'Hello'`, `"world"`    |
+| `bool`          | Type booléen qui ne peut être que `True` ou `False`.           | `True`, `False`         |
+
+### Détails supplémentaires :
+
+- **`int` (Nombres entiers)**
+  - Pas de limite de taille, contrairement à beaucoup d'autres langages.
+  - Peut être converti en `float` pour les besoins de calculs nécessitant des décimales.
+
+- **`float` (Nombres à virgule flottante)**
+  - Supporte des opérations telles que l'addition, la soustraction, la multiplication, etc.
+  - Peut perdre en précision lors de calculs très spécifiques et complexes.
+
+- **`str` (Chaînes de caractères)**
+  - Immuables, ce qui signifie que toute modification crée une nouvelle chaîne.
+  - Peuvent être concaténées avec `+`, répétées avec `*`, et indexées par des crochets `[]`.
+
+- **`bool` (Booléens)**
+  - Sous-classe de `int`, où `True` équivaut à `1` et `False` à `0`.
+  - Utile dans les contrôles de flux et les conditions.
 
 **Exemple en code** :
 ```python
@@ -124,10 +149,44 @@ actif = True       # Un booléen
 
 Python offre une gamme complète d'opérateurs pour effectuer des calculs arithmétiques, des comparaisons et des opérations logiques. Ces opérateurs comprennent :
 
-- **Opérateurs arithmétiques** : `+`, `-`, `*`, `/`, `//` (division entière), `%` (modulo), `**` (exponentiation).
-- **Opérateurs de comparaison** : `==`, `!=`, `<`, `>`, `<=`, `>=`.
-- **Opérateurs logiques** : `and`, `or`, `not`.
-- **Opérateurs d'assignation** : `=`, `+=`, `-=`, `*=`, `/=`, etc.
+| Catégorie               | Opérateurs                            | Description                                                                                             |
+|-------------------------|---------------------------------------|---------------------------------------------------------------------------------------------------------|
+| **Arithmétiques**       | `+`, `-`, `*`, `/`, `//`, `%`, `**`   | Utilisés pour effectuer des calculs basiques ainsi que des opérations mathématiques avancées.           |
+| **De comparaison**      | `==`, `!=`, `<`, `>`, `<=`, `>=`      | Utilisés pour comparer des valeurs entre elles, retournent un booléen.                                  |
+| **Logiques**            | `and`, `or`, `not`                    | Utilisés pour combiner des conditions logiques, retournent un booléen.                                  |
+| **D'assignation**       | `=`, `+=`, `-=`, `*=`, `/=`, etc.     | Utilisés pour assigner des valeurs aux variables ainsi que pour modifier et assigner en une opération.  |
+
+### Détails supplémentaires :
+
+- **Opérateurs arithmétiques**
+  - `+` : Addition
+  - `-` : Soustraction
+  - `*` : Multiplication
+  - `/` : Division (résultat en float)
+  - `//` : Division entière (sans les décimales)
+  - `%` : Modulo (reste de la division)
+  - `**` : Puissance
+
+- **Opérateurs de comparaison**
+  - `==` : Égal à
+  - `!=` : Différent de
+  - `<` : Inférieur à
+  - `>` : Supérieur à
+  - `<=` : Inférieur ou égal à
+  - `>=` : Supérieur ou égal à
+
+- **Opérateurs logiques**
+  - `and` : Opération ET logique
+  - `or` : Opération OU logique
+  - `not` : Négation logique
+
+- **Opérateurs d'assignation**
+  - `=` : Assignation
+  - `+=` : Ajoute à la variable et assigne
+  - `-=` : Soustrait de la variable et assigne
+  - `*=` : Multiplie la variable et assigne
+  - `/=` : Divise la variable et assigne
+  - D'autres opérateurs combinés existent pour `//`, `%`, `**`, etc., fonctionnant de manière similaire.
 
 **Exemple en code** :
 ```python
@@ -236,7 +295,6 @@ print("Carrés des nombres :", squares)
 ```
 Dans cet exemple, `multiplier` est une fonction lambda qui prend deux arguments et retourne leur produit. La fonction `map` est ensuite utilisée avec une autre lambda pour obtenir les carrés des nombres dans la liste `nombres`.
 
-
 # 5) Collections de données en Python
 
 ## 5.1 Listes
@@ -246,8 +304,69 @@ Les listes en Python sont des collections ordonnées et modifiables qui peuvent 
 **Opérations de base** :
 - **Création** : Utilisation de crochets `[]` pour créer une liste.
 - **Accès aux éléments** : Utilisation de l'indexation, commençant à zéro.
-- **Méthodes de liste** : `.append()`, `.remove()`, `.sort()`, etc.
 
+| Méthode             | Description                                                                                     |
+|---------------------|-------------------------------------------------------------------------------------------------|
+| **Création**        | `liste = []` Utilisation de crochets pour créer une liste vide.                                 |
+| **Accès aux éléments** | `liste[index]` Accès aux éléments par leur index, où l'indexation commence à zéro.              |
+| **append(x)**       | Ajoute un élément `x` à la fin de la liste.                                                     |
+| **extend(iterable)**| Étend la liste en ajoutant tous les éléments de l'itérable à la fin.                            |
+| **insert(index, x)**| Insère un élément `x` à la position donnée `index`.                                             |
+| **remove(x)**       | Supprime le premier élément dont la valeur est `x`. Lève une ValueError si l'élément n'existe pas.|
+| **pop(index=-1)**   | Supprime l'élément à la position donnée et le retourne. Par défaut, supprime et retourne le dernier élément. |
+| **clear()**         | Supprime tous les éléments de la liste.                                                         |
+| **index(x, start=0, end=len(list))** | Retourne l'index du premier élément dont la valeur est `x`. Lève une ValueError si non trouvé. |
+| **count(x)**        | Retourne le nombre de fois que `x` apparaît dans la liste.                                      |
+| **sort(key=None, reverse=False)** | Trie les éléments de la liste in situ (les modifications sont appliquées sur la liste originale).|
+| **reverse()**       | Inverse les éléments de la liste in situ.                                                       |
+| **copy()**          | Retourne une copie superficielle de la liste.                                                   |
+
+### Exemples d'utilisation
+
+```python
+liste = [3, 1, 4, 1, 5, 9, 2, 6]
+
+# Append
+liste.append(5)
+print(liste)  # [3, 1, 4, 1, 5, 9, 2, 6, 5]
+
+# Extend
+liste.extend([7, 8])
+print(liste)  # [3, 1, 4, 1, 5, 9, 2, 6, 5, 7, 8]
+
+# Insert
+liste.insert(2, 'inserted')
+print(liste)  # [3, 1, 'inserted', 4, 1, 5, 9, 2, 6, 5, 7, 8]
+
+# Remove
+liste.remove('inserted')
+print(liste)  # [3, 1, 4, 1, 5, 9, 2, 6, 5, 7, 8]
+
+# Pop
+last_item = liste.pop()
+print(last_item)  # 8
+print(liste)  # [3, 1, 4, 1, 5, 9, 2, 6, 5, 7]
+
+# Sort
+liste.sort()
+print(liste)  # [1, 1, 2, 3, 4, 5, 5, 6, 7, 9]
+
+# Reverse
+liste.reverse()
+print(liste)  # [9, 7, 6, 5, 5, 4, 3, 2, 1, 1]
+
+# Index
+print(liste.index(5))  # 3
+
+# Count
+print(liste.count(1))  # 2
+
+# Clear
+liste.clear()
+print(liste)  # []
+```
+
+```python
 **Exemple en code** :
 ```python
 # Création d'une liste
@@ -271,16 +390,47 @@ print(fruits)  # ['banane', 'orange', 'pomme']
 
 Les tuples sont des collections qui sont très similaires aux listes, mais immuables. Une fois créé, un tuple ne peut pas être modifié. Cela les rend utiles pour stocker des ensembles de valeurs qui ne doivent pas changer au cours de l'exécution du programme.
 
-**Exemple en code** :
+| Opération / Méthode  | Description                                                                                         |
+|----------------------|-----------------------------------------------------------------------------------------------------|
+| **Création**         | `mon_tuple = (1, 2, 3)` Utilisation de parenthèses pour créer un tuple.                             |
+| **Accès aux éléments** | `mon_tuple[index]` Accès aux éléments par leur index, où l'indexation commence à zéro.              |
+| **count(x)**         | Compte le nombre d'occurrences de `x` dans le tuple.                                                |
+| **index(x)**         | Trouve la première occurrence de `x` dans le tuple et retourne son index.                           |
+| **Concaténation**    | `tuple1 + tuple2` Concatène deux tuples pour en former un nouveau.                                  |
+| **Répétition**       | `tuple1 * 3` Crée un nouveau tuple qui répète les éléments de `tuple1` trois fois.                  |
+| **Longueur**         | `len(tuple1)` Retourne le nombre d'éléments dans le tuple.                                          |
+| **Min/Max**          | `min(tuple1)`, `max(tuple1)` Retourne les valeurs minimales et maximales dans le tuple.             |
+| **Immuabilité**      | Les tuples ne peuvent pas être modifiés après leur création (pas de méthodes `append`, `remove`).   |
+
+### Exemples d'utilisation
+
 ```python
 # Création d'un tuple
-dimensions = (1920, 1080)
+mon_tuple = (1, 2, 3, 2, 4)
 
-# Accès aux éléments
-print(dimensions[0])  # Affiche 1920
+# Accéder aux éléments
+print(mon_tuple[1])  # Affiche 2
 
-# Tenter de modifier un tuple générera une erreur
-# dimensions[0] = 1200  # Ceci est interdit et lève une TypeError
+# Compter les occurrences d'un élément
+print(mon_tuple.count(2))  # Affiche 2
+
+# Trouver l'index d'un élément
+print(mon_tuple.index(3))  # Affiche 2
+
+# Concaténation de tuples
+nouveau_tuple = mon_tuple + (5, 6)
+print(nouveau_tuple)  # Affiche (1, 2, 3, 2, 4, 5, 6)
+
+# Répétition de tuples
+repete_tuple = mon_tuple * 2
+print(repete_tuple)  # Affiche (1, 2, 3, 2, 4, 1, 2, 3, 2, 4)
+
+# Longueur du tuple
+print(len(mon_tuple))  # Affiche 5
+
+# Min et Max
+print(min(mon_tuple))  # Affiche 1
+print(max(mon_tuple))  # Affiche 4
 ```
 
 ## 5.3 Dictionnaires
@@ -290,7 +440,50 @@ Les dictionnaires en Python sont des collections non ordonnées de paires clé-v
 **Opérations de base** :
 - **Création** : Utilisation de `{}` ou `dict()`.
 - **Accès aux éléments** : Accès via les clés.
-- **Méthodes de dictionnaire** : `.keys()`, `.values()`, `.items()`, `.get()`, `.setdefault()`.
+
+| Méthode / Opération   | Description                                                                                                 |
+|-----------------------|-------------------------------------------------------------------------------------------------------------|
+| **Création**          | `mon_dict = {'cle1': 'valeur1', 'cle2': 'valeur2'}` Crée un dictionnaire avec des paires clé-valeur.        |
+| **Accès aux éléments**| `mon_dict['cle1']` Accède à l'élément par la clé. Si la clé n'existe pas, lève une `KeyError`.               |
+| **get(key, default=None)** | Retourne la valeur pour une clé donnée. Retourne `default` si la clé n'existe pas.                         |
+| **setdefault(key, default=None)** | Retourne la valeur de la clé si elle existe, sinon ajoute la clé avec la valeur `default`.              |
+| **update({key: value})** | Ajoute plusieurs paires clé-valeur à partir d'un autre dictionnaire ou d'un iterable de paires.           |
+| **keys()**            | Retourne un nouvel affichage des clés dans le dictionnaire.                                                  |
+| **values()**          | Retourne un nouvel affichage des valeurs dans le dictionnaire.                                               |
+| **items()**           | Retourne un nouvel affichage des paires clé-valeur sous forme de tuples.                                      |
+| **pop(key)**          | Supprime la clé et retourne la valeur associée. Si la clé n'est pas trouvée, lève une `KeyError`.            |
+| **popitem()**         | Supprime et retourne une paire (clé, valeur) arbitraire. Lève une `KeyError` si le dictionnaire est vide.    |
+| **clear()**           | Supprime tous les éléments du dictionnaire.                                                                  |
+
+### Exemples d'utilisation
+
+```python
+# Création d'un dictionnaire
+mon_dict = {'nom': 'Alice', 'age': 25}
+
+# Accéder aux éléments
+print(mon_dict['nom'])  # Affiche 'Alice'
+
+# Utilisation de get
+print(mon_dict.get('age'))  # Affiche 25
+print(mon_dict.get('adresse', 'Non spécifiée'))  # Affiche 'Non spécifiée'
+
+# Ajout / Mise à jour d'une clé
+mon_dict['adresse'] = '123 rue principale'
+mon_dict.update({'profession': 'Développeur'})
+
+# Parcourir les clés et les valeurs
+for cle, valeur in mon_dict.items():
+    print(f"{cle}: {valeur}")
+
+# Supprimer une clé
+age = mon_dict.pop('age')
+print(f"Age supprimé: {age}")
+
+# Supprimer tous les éléments
+mon_dict.clear()
+print(mon_dict)  # Affiche {}
+```
 
 **Exemple en code** :
 ```python
@@ -315,80 +508,109 @@ for cle, valeur in personne.items():
 
 Les ensembles sont des collections non ordonnées de valeurs uniques. Ils sont utilisés pour stocker des éléments sans doublons et pour effectuer des opérations mathématiques comme des unions, intersections, et différences.
 
-**Exemple en code** :
+| Méthode / Opération   | Description                                                                                              |
+|-----------------------|----------------------------------------------------------------------------------------------------------|
+| **Création**          | `mon_ensemble = {1, 2, 3}` Crée un ensemble. Les doublons sont automatiquement éliminés.                 |
+| **add(x)**            | Ajoute un élément `x` à l'ensemble, si `x` n'est pas déjà présent.                                       |
+| **update([x, y, ...])** | Ajoute plusieurs éléments à l'ensemble.                                                                 |
+| **remove(x)**         | Supprime `x` de l'ensemble. Lève une `KeyError` si `x` n'est pas trouvé.                                |
+| **discard(x)**        | Supprime `x` de l'ensemble si présent. Ne lève pas d'erreur si `x` n'est pas trouvé.                     |
+| **pop()**             | Supprime et retourne un élément arbitraire de l'ensemble. Lève une `KeyError` si l'ensemble est vide.    |
+| **clear()**           | Supprime tous les éléments de l'ensemble.                                                                |
+| **union(\*others)**   | Retourne un nouvel ensemble contenant tous les éléments de l'ensemble et de tous les `others`.           |
+| **intersection(\*others)** | Retourne un nouvel ensemble avec les éléments communs à l'ensemble et à tous les `others`.            |
+| **difference(\*others)** | Retourne un nouvel ensemble avec les éléments de l'ensemble qui ne sont pas dans les `others`.       |
+| **symmetric_difference(other)** | Retourne un nouvel ensemble avec les éléments qui sont dans l'un des ensembles mais pas dans les deux. |
+| **issubset(other)**   | Retourne `True` si l'ensemble est un sous-ensemble de `other`, sinon `False`.                            |
+| **issuperset(other)** | Retourne `True` si l'ensemble est un sur-ensemble de `other`, sinon `False`.                             |
+| **isdisjoint(other)** | Retourne `True` si l'ensemble n'a aucun élément en commun avec `other`, sinon `False`.                   |
+
+### Exemples d'utilisation
+
 ```python
 # Création d'un ensemble
-nombres = {1, 2, 3, 4, 4, 5}
+mon_ensemble = {1, 2, 3}
 
-# L'ensemble contiendra {1, 2, 3, 4, 5}
-print(nombres)
+# Ajouter un élément
+mon_ensemble.add(4)
+print(mon_ensemble)  # {1, 2, 3, 4}
 
-# Ajout d'un élément
-nombres.add(6)
+# Ajouter plusieurs éléments
+mon_ensemble.update([5, 6, 7])
+print(mon_ensemble)  # {1, 2, 3, 4, 5, 6, 7}
 
-# Suppression d'un élément
-nombres.remove(6)
+# Supprimer un élément
+mon_ensemble.remove(7)
+print(mon_ensemble)  # {1, 2, 3, 4, 5, 6}
 
-# Opérations d'ensemble
-autres = {4, 5, 6}
-print(nombres.intersection(autres))  # Affiche {4, 5}
+# Intersection d'ensembles
+autre_ensemble = {4, 5, 6, 7}
+print(mon_ensemble.intersection(autre_ensemble))  # {4, 5, 6}
+
+# Union d'ensembles
+print(mon_ensemble.union(autre_ensemble))  # {1, 2, 3, 4, 5, 6, 7}
+
+# Différence symétrique
+print(mon_ensemble.symmetric_difference(autre_ensemble))  # {1, 2, 3, 7}
+
+# Vérifier si un ensemble est sous-ensemble d'un autre
+print({1, 2}.issubset(mon_ensemble))  # True
 ```
-
 
 # 6) Manipulation de fichiers en Python
 
 ## 6.1 Lecture et écriture de fichiers
 
-La manipulation de fichiers en Python est une compétence essentielle, permettant aux programmes de lire des données depuis des fichiers et d'y écrire des données. Python simplifie la gestion des fichiers grâce à des fonctions intégrées comme `open`, `read`, `write`, et `close`.
+La manipulation de fichiers en Python est une compétence essentielle, permettant aux programmes de lire des données depuis des fichiers et d'y écrire des données. Python simplifie la gestion des fichiers grâce à des fonctions intégrées comme
 
-- **`open`** : Utilisée pour ouvrir un fichier et retourner un objet fichier. Le mode d'ouverture spécifie si le fichier est ouvert en lecture (`r`), écriture (`w`), ajout (`a`), ou d'autres modes.
-- **`read`** : Lit les données d'un fichier. Vous pouvez lire le fichier entier ou lire un nombre spécifique de caractères.
-- **`write`** : Écrit des données dans un fichier. Si le fichier n'existe pas, il sera créé.
-- **`close`** : Ferme le fichier ouvert. Il est important de fermer les fichiers pour libérer les ressources système.
-
-#### Exemple en code :
-
-**Lecture de fichier** :
-```python
-# Ouvrir un fichier en mode lecture
-f = open('exemple.txt', 'r')
-
-# Lire le contenu entier du fichier
-contenu = f.read()
-print(contenu)
-
-# Toujours fermer le fichier après utilisation
-f.close()
-```
-
-**Écriture dans un fichier** :
-```python
-# Ouvrir un fichier en mode écriture, 'w' écrase le fichier s'il existe
-f = open('nouveau.txt', 'w')
-
-# Écrire du texte dans le fichier
-f.write("Bonjour, monde!\n")
-
-# Fermer le fichier pour s'assurer que les données sont sauvegardées
-f.close()
-```
-
-**Utilisation du gestionnaire de contexte** :
-Une meilleure pratique consiste à utiliser le gestionnaire de contexte `with` qui s'assure que le fichier est correctement fermé après que son bloc de code est exécuté, même en cas d'erreur.
+| Méthode                    | Description                                                                                             |
+| -------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **read(size=-1)**          | Lit et retourne jusqu'à `size` caractères du fichier. Lit jusqu'à la fin si `size` est omis ou négatif. |
+| **readline(size=-1)**      | Lit la ligne suivante du fichier, jusqu'à `size` caractères.                                            |
+| **readlines(hint=-1)**     | Lit et retourne une liste de lignes du fichier. `hint` peut limiter le nombre de lignes retournées.     |
+| **write(string)**          | Écrit la chaîne `string` dans le fichier et retourne le nombre de caractères écrits.                    |
+| **writelines(lines)**      | Écrit une liste de `lines` dans le fichier (ne rajoute pas automatiquement de nouvelles lignes).        |
+| **seek(offset, whence=0)** | Déplace le curseur à la position `offset` relative à `whence` (0: début, 1: position actuelle, 2: fin). |
+| **tell()**                 | Retourne la position actuelle du curseur dans le fichier.                                               |
+| **flush()**                | Rafraîchit le tampon d'écriture du fichier.                                                             |
+| **close()**                | Ferme le fichier. Note : pas nécessaire avec `with`, car la fermeture est automatique.                  |
+## Exemples d'utilisation
 
 ```python
-# Utilisation de 'with' pour la lecture
+# Lecture de contenu
 with open('exemple.txt', 'r') as f:
-    contenu = f.read()
-    print(contenu)
+    content = f.read()
+    print(content)  # Affiche le contenu du fichier
 
-# Utilisation de 'with' pour l'écriture
-with open('nouveau.txt', 'w') as f:
-    f.write("Bonjour encore une fois, monde!\n")
+# Lecture ligne par ligne
+with open('exemple.txt', 'r') as f:
+    for line in f:
+        print(line, end='')  # Affiche chaque ligne du fichier
+
+# Écriture dans un fichier
+with open('output.txt', 'w') as f:
+    f.write("Bonjour monde\n")
+
+# Écriture de plusieurs lignes
+lines = ["Première ligne\n", "Deuxième ligne\n"]
+with open('output.txt', 'a') as f:
+    f.writelines(lines)
+
+# Déplacer le curseur
+with open('exemple.txt', 'r+') as f:
+    f.seek(10)  # Déplace le curseur à la position 10
+    print(f.read())  # Lit à partir de la position 10
+
+# Obtenir la position du curseur
+with open('exemple.txt', 'r') as f:
+    data = f.readline()
+    print(f"Le curseur est à la position : {f.tell()}")
+
+# Rafraîchir les écritures dans un fichier
+with open('output.txt', 'a') as f:
+    f.write("Ajout en fin de fichier")
+    f.flush()  # Assure que "Ajout en fin de fichier" est écrit avant de continuer
 ```
-
-Dans ces exemples, `with` ouvre le fichier et le ferme automatiquement à la fin du bloc indiqué, rendant le code plus sûr et plus propre.
-
 
 # 7) Gestion des erreurs en Python
 
@@ -444,6 +666,38 @@ Les modules en Python sont des fichiers contenant du code Python, typiquement d�
 
 - **Utiliser des modules standard** : Python vient avec une bibliothèque standard très riche, offrant des modules pour presque toutes les tâches (par exemple, `math`, `os`, `sys`, `datetime`).
 - **Installer et utiliser des paquets tiers** : Pour des fonctionnalités non disponibles dans la bibliothèque standard, Python permet d'installer des paquets tiers via des outils comme pip, par exemple `requests` pour les requêtes HTTP ou `numpy` pour les calculs numériques.
+
+| Module            | Description                                                         |
+|-------------------|---------------------------------------------------------------------|
+| `os`              | Interaction avec le système d'exploitation.                        |
+| `sys`             | Accès aux fonctions et objets spécifiques à l'interpréteur.         |
+| `math`            | Fonctions mathématiques.                                           |
+| `datetime`        | Manipulation des dates et des heures.                              |
+| `json`            | Encodage et décodage JSON.                                         |
+| `http`            | Gestion des requêtes HTTP.                                         |
+| `urllib`          | Manipulation d'URLs.                                               |
+| `random`          | Génération de nombres aléatoires.                                  |
+| `collections`     | Conteneurs de données alternatives.                                |
+| `functools`       | Fonctions de haut niveau : opérations sur d'autres fonctions.      |
+| `itertools`       | Création d'itérateurs pour des boucles efficaces.                  |
+| `re`              | Manipulation d'expressions régulières.                             |
+| `subprocess`      | Lancement de sous-processus.                                       |
+| `multiprocessing` | Parallélisme basé sur des processus.                               |
+| `threading`       | Gestion de threads.                                                |
+| `pickle`          | Sérialisation et désérialisation d'objets Python.                  |
+| `socket`          | Interface de bas niveau pour les communications réseau.            |
+| `ssl`             | Prise en charge de TLS/SSL pour les objets socket.                 |
+| `hashlib`         | Fonctions de hachage.                                              |
+| `sqlite3`         | Interaction avec des bases de données SQLite.                      |
+| `pathlib`         | Manipulation des chemins du système de fichiers de manière orientée objet. |
+| `argparse`        | Analyse des arguments et options de la ligne de commande.          |
+| `logging`         | Enregistrement de journaux, débogage et autres diagnostics.        |
+| `unittest`        | Framework de test unitaire.                                        |
+| `pdb`             | Débogage des programmes Python.                                    |
+| `tkinter`         | Outils pour créer des interfaces graphiques.                       |
+| `csv`             | Lecture et écriture de fichiers CSV.                               |
+| `xml.etree.ElementTree` | Manipulation simple et efficace des données XML.              |
+* Pour lister tous les modules standards disponibles : `python -m pydoc modules`
 
 **Exemple en code** :
 ```python
@@ -591,8 +845,6 @@ faire_parler(mon_chat)  # Affiche "Meow!"
 
 Dans cet exemple, bien que `Chien` et `Chat` soient des classes différentes, ils partagent une méthode commune `parler()`, et peuvent être utilisés de manière interchangeable dans la fonction `faire_parler`. Cela illustre le polymorphisme où différentes classes partagent la même interface de méthodes.
 
-
-
 # 10) Techniques avancées en Python
 
 ## 10.1 Compréhensions de liste
@@ -730,6 +982,33 @@ Dans cet exemple, `pdb.set_trace()` initie le débogueur, qui arrête l'exécuti
 - **Utiliser des assertions** : Les assertions peuvent aider à vérifier que les conditions essentielles sont remplies durant l'exécution, arrêtant le programme si une condition n'est pas respectée.
 - **Conservation des logs** : Pour les applications plus grandes, maintenir des fichiers de log peut aider à comprendre le comportement du programme et à diagnostiquer des problèmes après qu'ils se soient produits.
 
+
+# 12) Gestion de la mémoire
+
+Les programmes sur un système d'exploitation utilisent la mémoire pour stocker des instructions de programme, des données et pour gérer l'exécution des processus. Voici une explication de la manière dont cela fonctionne généralement, suivi par les spécificités de la gestion de la mémoire en Python.
+### Gestion de la mémoire dans un système d'exploitation
+1. **Allocation de mémoire** :
+   - Les systèmes d'exploitation allouent de la mémoire aux programmes à travers un espace de mémoire virtuelle, qui est séparé de la mémoire physique réelle du système. Chaque processus exécuté par le système d'exploitation dispose de son propre espace d'adressage virtuel.
+2. **Pagination et Swap** :
+   - La mémoire virtuelle est gérée en utilisant des unités appelées pages. Le système d'exploitation mappe ces pages à la mémoire physique. Lorsque la mémoire physique est pleine, le système peut transférer (swapper) certaines pages vers un espace de stockage sur le disque dur (swap) pour libérer de la mémoire.
+3. **Gestion du cache** :
+   - Les données fréquemment utilisées peuvent être stockées dans un cache de mémoire rapide pour améliorer les performances d'accès aux données.
+4. **Garbage Collection** (GC) :
+   - Certains langages de haut niveau comme Java utilisent un mécanisme appelé ramasse-miettes pour automatiser la gestion de la mémoire. Le GC se charge de libérer automatiquement la mémoire qui n'est plus utilisée par le programme.
+
+### Gestion de la mémoire en Python
+Python simplifie la gestion de la mémoire grâce à plusieurs mécanismes intégrés, principalement le comptage de références et le garbage collector.
+1. **Comptage de références** :
+   - Python utilise le comptage de références comme méthode principale pour gérer la mémoire. Chaque objet en Python a un compteur qui garde trace du nombre de références qui pointent vers cet objet. Lorsque ce nombre tombe à zéro, cela signifie qu'aucune référence n'existe plus pour cet objet, et la mémoire peut être libérée.
+2. **Garbage Collection** :
+   - Python (CPython en particulier) possède également un ramasse-miettes pour détecter et libérer des cycles de références qui ne peuvent pas être nettoyés par le comptage de références seul. Cela peut arriver lorsque deux objets ou plus se réfèrent mutuellement mais ne sont plus accessibles depuis le code.
+3. **Pools de mémoire** :
+   - Python utilise un système de pools de mémoire pour optimiser les petites allocations et désallocations. Par exemple, le gestionnaire de mémoire de Python, appelé pymalloc, alloue des blocs de mémoire en groupes pour gérer les objets de petite taille efficacement.
+4. **Fragmentation** :
+   - Python tente de minimiser la fragmentation de la mémoire en maintenant des listes de blocs libres de tailles variées et en réutilisant les blocs libérés pour des allocations futures de tailles similaires.
+
+Ces mécanismes assurent que Python, tout en étant simple d'utilisation pour le programmeur, gère efficacement la mémoire en arrière-plan, réduisant les fuites de mémoire et optimisant l'utilisation de la mémoire pour des programmes de grande taille ou longtemps en exécution. Pour les développeurs Python, cela signifie moins de soucis concernant les détails de l'allocation et la libération de mémoire, permettant de se concentrer davantage sur la logique du programme.
+
 # 12. Bonnes pratiques en Python
 
 ## 12.1 Style de codage
@@ -794,3 +1073,48 @@ Dans cet exemple, la docstring explique clairement ce que fait la fonction `addi
 - **Rédiger des docstrings pour toutes les fonctions publiques, classes, et modules** : Assurez-vous que chaque élément de l'API publique a une docstring claire.
 - **Utiliser des outils de vérification de style** : Des outils comme Flake8, Pylint, ou Black peuvent aider à vérifier la conformité de votre code avec PEP 8 et d'autres bonnes pratiques.
 - **Réviser régulièrement le code** : Organiser des revues de code entre pairs pour maintenir la qualité et la conformité aux bonnes pratiques.
+
+
+
+# 13) Mots-clés python
+## 13.1 Tableau récapitulatif
+Voici un tableau Markdown qui décrit les mots-clés en Python et leur utilisation respective. Ce tableau couvre les mots-clés les plus communs et explique brièvement la fonction de chaque mot.
+
+| Mot-clé    | Description                                                                                             | Particularités                               |
+|------------|---------------------------------------------------------------------------------------------------------|----------------------------------------------|
+| `False`    | Représente la valeur booléenne fausse.                                                                  | Une des constantes de vérité de Python.      |
+| `None`     | Représente l'absence de valeur.                                                                         | Utilisé pour signaler l'absence de valeur.   |
+| `True`     | Représente la valeur booléenne vraie.                                                                   | Une des constantes de vérité de Python.      |
+| `and`      | Opérateur logique ET.                                                                                   | Utilisé pour tester si toutes les conditions sont vraies. |
+| `as`       | Utilisé dans les instructions `with` et `import` pour renommer un module ou gérer des contextes.        | Permet un aliasing de module ou une gestion de contexte simplifiée. |
+| `assert`   | Déclaration pour aider à déboguer en vérifiant que les conditions suivantes sont vraies.                | S'il échoue, lève une `AssertionError`.      |
+| `async`    | Définit une fonction comme coroutine, utilisée avec `await`.                                            | Introduit dans Python 3.5 pour la programmation asynchrone. |
+| `await`    | Utilisé pour attendre qu'une coroutine soit terminée.                                                   | Doit être utilisé à l'intérieur d'une fonction `async`. |
+| `break`    | Interrompt la boucle englobante la plus proche.                                                         | Utilisé dans les boucles `while` et `for`.   |
+| `class`    | Utilisé pour définir une nouvelle classe.                                                               |                                              |
+| `continue` | Passe à l'itération suivante de la boucle englobante la plus proche.                                     | Utilisé dans les boucles `while` et `for`.   |
+| `def`      | Définit une fonction ou une méthode.                                                                    |                                              |
+| `del`      | Supprime un objet de Python.                                                                            | Peut être utilisé pour supprimer des variables, des éléments de liste, des clés de dictionnaire, etc. |
+| `elif`     | Abréviation de "else if". Partie d'une structure de condition `if`.                                     |                                              |
+| `else`     | Bloc qui s'exécute si les conditions `if` ou `elif` précédentes ne sont pas vraies.                     |                                              |
+| `except`   | Capture une exception si elle est levée dans le bloc `try` associé.                                     | Peut spécifier un type d'exception pour la capture sélective. |
+| `finally`  | Bloc qui s'exécute après les blocs `try` et `except`, quel que soit le résultat de ces derniers.        | Utilisé pour les actions de nettoyage.       |
+| `for`      | Définit une boucle for qui itère sur une séquence.                                                      |                                              |
+| `from`     | Utilisé avec `import` pour spécifier le module à partir duquel importer.                                |                                              |
+| `global`   | Déclare qu'une variable appartient à la portée globale.                                                 |                                              |
+| `if`       | Introduit une conditionnelle.                                                                           |                                              |
+| `import`   | Utilisé pour importer des modules ou des objets spécifiques dans le module actuel.                      |                                              |
+| `in`       | Vérifie si une valeur est dans une séquence ou itère sur une séquence dans une boucle `for`.            |                                              |
+| `is`       | Teste l'identité des objets; vérifie si deux références pointent vers le même objet.                    |                                              |
+| `lambda`   | Crée une fonction anonyme (une fonction sans nom).                                                      | Utilisé pour de petites fonctions jetables.  |
+| `nonlocal` | Déclare qu'une variable appartient à la portée englobante la plus proche, excluant la portée globale.   | Utilisé dans les fonctions imbriquées.       |
+| `not`      | Opérateur logique de négation.                                                                          |                                              |
+| `or`       | Opérateur logique OU.                                                                                   | Utilisé pour tester si au moins une condition est vraie. |
+| `pass`     | Une instruction qui ne fait rien; utilisé comme un remplisseur syntaxique.                              |                                              |
+| `raise`    | Utilisé pour lever une exception spécifiée.                                                             |                                              |
+| `return`   | Termine une fonction et éventuellement retourne une expression.                                         |                                              |
+| `try`      | Début d'un bloc de gestion d'exceptions.                                                                |                                              |
+| `while`    | Définit une boucle while.                                                                               |                                              |
+| `with`     | Simplifie l'utilisation des ressources qui nécessitent des opérations de nettoyage.                     |                                              |
+| `yield`    | Utilisé pour transformer une fonction en générateur.                                                    | Renvoie une valeur et pause l'exécution de la fonction. |
+

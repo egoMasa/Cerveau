@@ -33,6 +33,47 @@
 
 # 1) Introduction à l'assembleur
 
+## Différentes architectures de processeur
+
+Les architectures de processeur définissent comment les processeurs sont conçus pour exécuter des instructions machine. Ces architectures influencent directement la manière dont le logiciel, en particulier les systèmes d'exploitation et les applications bas niveau, est écrit et exécuté. Voici une vue d'ensemble des deux principales catégories d'architectures de processeur : RISC (Reduced Instruction Set Computer) et CISC (Complex Instruction Set Computer), ainsi que quelques architectures spécifiques notables.
+
+## Pourquoi différentes architectures existent-elles ?
+
+1. **Optimisation pour différents usages** : Certaines architectures sont optimisées pour la performance générale, d'autres pour la consommation énergétique ou le coût.
+2. **Héritage et compatibilité** : Les anciennes architectures souvent continuent d'évoluer pour maintenir la compatibilité avec les logiciels existants.
+3. **Innovation technologique** : Les nouvelles technologies peuvent mener à de nouvelles architectures ou sous-architectures pour mieux exploiter ces avancées.
+
+## CISC (Complex Instruction Set Computer)
+
+- **Caractéristiques** : Les architectures CISC ont des instructions de taille variable et des modes d'adressage complexes. Elles peuvent exécuter des commandes de haut niveau via une seule instruction.
+- **Avantages** : Moins de travail pour le compilateur, puisque les instructions sont plus proches des constructions de haut niveau.
+- **Inconvénients** : Plus complexe en termes de conception de matériel, potentiellement moins efficace en termes de cycles d'exécution par instruction.
+- **Exemple typique** : x86 (utilisé dans la plupart des PC).
+
+## RISC (Reduced Instruction Set Computer)
+
+- **Caractéristiques** : Les architectures RISC utilisent des instructions de taille fixe et un nombre limité de modes d'adressage simples. Chaque instruction est conçue pour être exécutée en un seul cycle d'horloge.
+- **Avantages** : Plus simple à implémenter au niveau du silicium, peut offrir de meilleures performances grâce à une exécution plus prévisible et rapide des instructions.
+- **Inconvénients** : Demande plus de travail du compilateur pour optimiser le code source en instructions simples.
+- **Exemple typique** : ARM (utilisé dans la plupart des smartphones), MIPS (utilisé dans des systèmes embarqués).
+
+## Comparaison entre quelques architectures spécifiques
+
+|Architecture|Type|Usage Typique|Instructions|Performance|Économie d'énergie|
+|---|---|---|---|---|---|
+|**x86**|CISC|Ordinateurs de bureau et portables, serveurs|Complexes, de taille variable|Très haute|Modérée|
+|**ARM**|RISC|Smartphones, tablettes, systèmes embarqués|Simples, de taille fixe|Haute|Excellente|
+|**MIPS**|RISC|Systèmes embarqués, académique|Simples, de taille fixe|Modérée|Bonne|
+|**PowerPC**|RISC|Serveurs, consoles de jeu, systèmes embarqués|Simples, de taille fixe|Haute|Bonne|
+
+## Pourquoi ces différences sont-elles importantes ?
+
+- **Développement logiciel** : Les programmeurs doivent comprendre les architectures pour optimiser le logiciel, particulièrement pour des applications sensibles à la performance ou à l'énergie.
+- **Sélection de matériel** : Choisir le bon type de processeur peut affecter la performance générale, le coût, et la consommation énergétique d'un système.
+- **Éducation et recherche** : Les chercheurs et étudiants en informatique étudient ces différences pour innover et améliorer les technologies existantes.
+
+Les architectures de processeur sont donc cruciales non seulement pour les concepteurs de matériel informatique mais aussi pour les développeurs de logiciels, les décideurs en technologie, et les chercheurs. Comprendre les forces et les limites de chaque architecture aide à mieux choisir et utiliser la technologie appropriée pour des besoins spécifiques.
+
 ## 1.1 Architecture du processeur
 
 L'architecture du processeur définit comment le processeur est construit et fonctionne, incluant les registres, la pile (stack), et la file d'instructions. Les registres sont des emplacements de mémoire très rapides directement dans le CPU, utilisés pour des calculs rapides et le stockage temporaire de données. La pile est une structure de données de type LIFO (Last In, First Out) utilisée pour gérer les appels de fonctions, y compris les paramètres passés et les adresses de retour. Comprendre comment ces éléments interagissent est crucial pour écrire un code assembleur efficace.

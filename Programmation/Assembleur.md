@@ -1,822 +1,468 @@
 # Sommaire 
-1. Généralités
-	1. Présentation de C et C++
-	2. Notion de compilation
-	3. Capacités de C++
-2. Bases du langage
-	1. Syntaxe de base
-	2. Variables et types de données
-	3. Opérateurs
-3. Contrôle de flux
-	1. Instructions conditionnelles
-	2. Boucles
-4. Fonctions
-	1. Définition et appel
-	2. Fonctions inline
-	3. Surcharge de fonctions
-5. Portée et espace de nommage
-	1. Portée des variables
-	2. Espaces de noms
-6. Pointeurs et références
-	1. Pointeurs
-	2. Références
-7. Programmation orientée objet
-	1. **Classes et objets**
-	2. **Encapsulation**
-	3. **Héritage**
-	4. **Polymorphisme**
-	5. **Abstraction**
-8. Gestion de la mémoire
-	1. **Allocation dynamique de mémoire**
-	2. **Gestionnaire de ressources**
-9. Collections de données
-	1. **Tableaux**
-	2. **Chaînes de caractères**
-	3. **Structures de données standard**
-10. Entrées et sorties
-	1. **Entrées/sorties standard**
-	2. **Fichiers**
-11. Exceptions
-	1. **Gestion des exceptions**
-12. Modèles (Templates)
-	1. **Templates de fonction et de classe**
-# 1) Présentation de C et C++
 
-- **C** est un langage de programmation de bas niveau 
-- Créé en 1972 par Dennis Ritchie chez Bell Labs. 
-- Il a été développé pour la reprogrammation du système d'exploitation UNIX, ce qui a permis une portabilité accrue entre les différents systèmes. 
-- C est particulièrement reconnu pour sa performance et son contrôle de bas niveau sur les ressources système, le rendant idéal pour les systèmes embarqués, les systèmes d'exploitation, et les applications nécessitant une gestion fine de la mémoire.
+1. Introduction à l'assembleur
+	- **Architecture du processeur** : Comprendre le modèle de l'architecture ciblée (registres, pile, file d'instructions, etc.).
+	- **Syntaxe de base** : Notation, conventions d'écriture, et structure des programmes en assembleur.
+ 2. Variables et Types de données
+	- **Déclaration** : Comment définir des variables en assembleur (mots, double mots, etc.).
+	- **Accès et manipulation** : Accès direct et indirect via des registres et des adresses.
+3. Opérations de base
+	- **Opérations arithmétiques** : ADD, SUB, MUL, DIV, et leurs spécificités en assembleur.
+	- **Opérations logiques** : AND, OR, XOR, NOT.
+	- **Déplacement de données** : Instructions MOV, PUSH, POP.
+4. Contrôle de flux
+	- **Instructions conditionnelles** : JMP, JE (jump if equal), JNE (jump if not equal), et autres instructions de saut conditionnel.
+	- **Boucles** : Création de boucles avec des sauts conditionnels et des étiquettes (labels).
+5. Fonctions et procédures
+	- **Définition** : Comment définir des fonctions en assembleur.
+	- **Appel et retour de fonction** : CALL, RET, et la gestion de la pile pour passer des arguments.
+6. Gestion de la mémoire
+	- **Allocation** : Réserver de l'espace mémoire avec des directives comme DB, DW, DD pour déclarer des variables de différentes tailles.
+	- **Accès mémoire** : Instructions pour lire et écrire dans la mémoire.
+7. Entrées et sorties
+	- **Accès aux périphériques** : Manipulation des ports et des interruptions pour lire et écrire des données.
+	- **Utilisation des interruptions systèmes** : Utiliser des interruptions pour les entrées/sorties avec le système d'exploitation.
+8. Debugging et optimisation
+	- **Techniques de debugging** : Suivi de l'exécution, points d'arrêt, et inspection de la pile et des registres.
+	- **Optimisation du code** : Techniques pour rendre le code assembleur plus rapide et plus compact.
+9. Aspects avancés
+	- **Programmation Inline** : Mélanger l'assembleur avec d'autres langages comme C ou C++ pour des opérations spécifiques à haute performance.
+	- **Assembleur pour différentes architectures** : Differences entre les assembleurs pour ARM, x86, x64, etc.
+10. Conclusion
+	- **Meilleures pratiques** : Conventions de codage en assembleur et conseils pour maintenir la lisibilité et la maintenabilité du code.
 
-- **C++** est une extension du langage C 
-- Développé par Bjarne Stroustrup dans les années 1980. 
-- C++ offre toutes les capacités de C avec l'ajout de la programmation orientée objet (OOP). 
-- Cela permet une structuration plus complexe des programmes à travers des classes, de l'héritage, du polymorphisme, et de l'encapsulation. 
-- C++ est souvent utilisé pour le développement de logiciels systèmes, de jeux vidéo, de moteurs de rendu graphique, et d'applications nécessitant de hautes performances.
+# 1) Introduction à l'assembleur
 
-# 2) Compilation
+## 1.1 Architecture du processeur
 
-* Processus de transformation du code écrit dans un langage de haut niveau (comme C ou C++) en langage machine, compréhensible par le processeur. 
-* Pour C et C++, cela nécessite généralement un compilateur tel que ***GCC*** ou ***Clang***. 
-* Le code source est compilé en un fichier exécutable ou en une bibliothèque, et durant ce processus, diverses optimisations sont appliquées pour améliorer la performance du programme final.
+L'architecture du processeur définit comment le processeur est construit et fonctionne, incluant les registres, la pile (stack), et la file d'instructions. Les registres sont des emplacements de mémoire très rapides directement dans le CPU, utilisés pour des calculs rapides et le stockage temporaire de données. La pile est une structure de données de type LIFO (Last In, First Out) utilisée pour gérer les appels de fonctions, y compris les paramètres passés et les adresses de retour. Comprendre comment ces éléments interagissent est crucial pour écrire un code assembleur efficace.
 
-# 3) Capacités de C++
+**Exemple en code** (x86) :
+```assembly
+; Exemple simple en assembleur x86
+section .text
+global _start
 
-- **Développement de systèmes et d'applications embarquées**: la gestion précise de la mémoire et la performance sont cruciales dans ces domaines.
-- **Jeux vidéo et réalité virtuelle**: C++ est très prisé pour son efficacité et son support étendu via des bibliothèques comme Unreal Engine.
-- **Applications de bureau et serveurs**: de nombreuses applications logicielles et serveurs web critiques sont écrits en C et C++ pour maximiser l'efficacité.
-- **Simulations scientifiques et calculs de haute performance**: la vitesse d'exécution est essentielle dans le traitement de grandes quantités de données.
+_start:
+    mov edx, len    ; Longueur de la chaîne pour l'appel système write
+    mov ecx, msg    ; Message à écrire
+    mov ebx, 1      ; Descripteur de fichier (1 pour stdout)
+    mov eax, 4      ; Numéro de l'appel système pour write
+    int 0x80        ; Interruption pour appeler le système
 
-|Caractéristique|Python|C|C++|
-|---|---|---|---|
-|**Type de Langage**|Haut niveau, interprété|Bas niveau, compilé|Bas niveau, compilé avec OOP|
-|**Gestion de la mémoire**|Automatique (Garbage Collection)|Manuelle|Manuelle|
-|**Complexité**|Simple et facile à apprendre|Plus complexe, nécessite une gestion minutieuse des ressources|Encore plus complexe avec les fonctionnalités OOP|
-|**Vitesse d'exécution**|Moins rapide (interprété)|Très rapide (compilé)|Très rapide (compilé)|
-|**Utilisation typique**|Scripting, Web, Data Science|Systèmes embarqués, OS|Applications système, jeux vidéo, simulations|
+    mov eax, 1      ; Numéro de l'appel système pour exit
+    int 0x80        ; Sortie du programme
 
-Python est excellent pour les débutants et les projets nécessitant un développement rapide, tandis que C et C++ sont préférés pour les applications nécessitant une optimisation maximale et une gestion directe de la mémoire. Les différences de paradigmes, de vitesse, et d’utilisation entre ces langages montrent bien leur diversité d’application.
-# 4) Bases du langage 
-## 4.1 Syntaxe de base 
-* La syntaxe de base de C++ inclut la structure des déclarations de fonction, la définition de variables, le corps des fonctions, les points-virgules en fin d'instruction, et les blocs de code encapsulés entre accolades `{}`.
-```cpp
-#include <iostream> 
-
-int main() { // Fonction principale d'entrée du programme
-    std::cout << "Bonjour le monde!"; // Affichage à l'écran
-    return 0; // Valeur de retour du programme
-}
-
+section .data
+msg db 'Bonjour, monde!',0xa ; Chaîne à imprimer
+len equ $ - msg             ; Calcul de la longueur de la chaîne
 ```
-## 4.2 Variables et types de données 
-* En C++, les variables doivent être déclarées avec un type spécifique qui détermine la taille et le layout de la mémoire de la variable. Les types de données de base incluent `int` (entiers), `double` (nombres à virgule flottante), `char` (caractères), et `bool` (booléens).
-**Variations possibles** :
-- **Types simples** : `int`, `float`, `double`, `char`, `bool`
-- **Types modifiés** : `unsigned int`, `long int`, `short int`
-- **Types non primitifs** : structures, unions, classes
-```cpp
-int age = 25; // Déclaration d'une variable entière
-double prix = 99.99; // Déclaration d'une variable à virgule flottante
-char lettre = 'A'; // Déclaration d'un caractère
-bool estConnecte = true; // Déclaration d'une variable booléenne
 
+## 1.2. Syntaxe de base
+
+La syntaxe de l'assembleur varie entre les différentes architectures, mais il y a des conventions communes. Les programmes en assembleur sont divisés en sections telles que `.text` (code), `.data` (données statiques), et `.bss` (données non initialisées). Les instructions elles-mêmes consistent généralement en un mnémonique suivi par des opérandes. Le mnémonique est une abréviation qui représente l'opération à effectuer, tandis que les opérandes indiquent où trouver les données à traiter ou où les stocker.
+
+**Exemple en code** (x86) :
+```assembly
+section .data
+    hello db 'Hello, world!', 0 ; Chaîne terminée par null
+
+section .text
+global _start
+
+_start:
+    mov eax, 1      ; Code de l'appel système sys_exit
+    mov ebx, 0      ; Code de sortie
+    int 0x80        ; Appel au système pour terminer le programme
 ```
-## 4.3 Opérateurs
-Les opérateurs permettent de réaliser des opérations mathématiques, de comparaison ou logiques sur des variables. Ils incluent les opérateurs arithmétiques (`+`, `-`, `*`, `/`, `%`), les opérateurs de comparaison (`==`, `!=`, `<`, `>`, `<=`, `>=`), et les opérateurs logiques (`&&`, `||`, `!`).
+
+Dans cet exemple, le programme en assembleur imprime simplement une chaîne de caractères sur la console et se termine. Les directives `mov` placent des valeurs dans des registres, et `int 0x80` est utilisé pour faire des appels système à l'OS Linux.
 
 **Variations possibles** :
-- **Opérateurs arithmétiques** : utilisés pour les calculs mathématiques simples.
-- **Opérateurs de comparaison** : utilisés pour comparer deux valeurs.
-- **Opérateurs logiques** : utilisés pour combiner des conditions booléennes.
-- **Opérateurs d'assignation** : `=`, `+=`, `-=`, `*=`, `/=`
-- **Opérateurs d'incrémentation/décrémentation** : `++`, `--` (préfixe et suffixe)
+- **Syntaxe Intel vs AT&T** : En assembleur x86, la syntaxe Intel est la plus couramment utilisée sous Windows et par NASM, tandis que la syntaxe AT&T est utilisée par les compilateurs GNU GCC sur les systèmes UNIX/Linux.
+- **Différents assembleurs** : NASM, MASM, GAS, et d'autres ont des syntaxes légèrement différentes et des directives spécifiques à l'assembleur.
 
-```cpp
-int x = 10;
-int y = 20;
-int z = x + y; // Utilisation d'un opérateur arithmétique
-bool isEqual = (x == y); // Utilisation d'un opérateur de comparaison
-bool isBothTrue = (x < y) && (z > x); // Utilisation d'opérateurs logiques
-x += 5; // Utilisation d'un opérateur d'assignation
-y++; // Incrémentation de y
+L'étude de l'architecture du processeur et de la syntaxe de l'assembleur fournit la fondation nécessaire pour écrire des programmes efficaces qui interagissent directement avec le matériel de l'ordinateur.
 
+# 2) Variables et Types de données
+
+## 2.1 Déclaration
+
+En assembleur, les variables sont déclarées en réservant explicitement de l'espace dans la mémoire. Vous pouvez définir des variables de différents types selon la taille des données que vous souhaitez stocker. Les types de données communs incluent :
+- **Byte (db)** : Pour stocker un seul octet. Utilisé pour les caractères ou de petites valeurs.
+- **Word (dw)** : Pour stocker un mot (2 octets sur les architectures 16 bits).
+- **Double word (dd)** : Pour stocker un double mot (4 octets sur les architectures 32 bits).
+- **Quad word (dq)** : Pour stocker un quad mot (8 octets sur les architectures 64 bits).
+- **Ten bytes (dt)** : Pour stocker 10 octets, souvent utilisé pour les données à virgule flottante étendues.
+
+**Exemple en code** (NASM) :
+```assembly
+section .data
+    unByte db 0x55             ; Déclare un byte
+    unMot dw 0x1234            ; Déclare un mot
+    doubleMot dd 0x789ABCDE    ; Déclare un double mot
+    quadMot dq 0x123456789ABCDEF00 ; Déclare un quad mot
+
+section .bss
+    buffer resb 64             ; Réserve 64 bytes sans initialisation
 ```
 
-# 5) Contrôle de flux
+Dans cet exemple, différentes variables sont déclarées avec différentes tailles dans la section `.data`, où les données sont initialisées, et un espace mémoire est réservé dans la section `.bss` pour un buffer sans initialisation initiale.
 
-## 5.1 Instructions conditionnelles
+## 2.2 Accès et manipulation
 
-Les instructions conditionnelles permettent d'exécuter des blocs de code selon que certaines conditions sont vraies ou fausses. Elles sont essentielles pour diriger le flux du programme en fonction des données d'entrée ou des résultats intermédiaires.
+L'accès aux données en assembleur peut être direct (en utilisant directement des adresses ou des valeurs) ou indirect (en utilisant des registres pour pointer vers des adresses). La manipulation des données peut inclure lire, écrire ou modifier les valeurs stockées dans la mémoire.
 
-**Variations possibles** :
-- **`if`** : Exécute un bloc de code si une condition est vraie.
-- **`else`** : Exécute un bloc de code si la condition précédente `if` est fausse.
-- **`else if`** : Fournit une nouvelle condition à tester si les précédentes conditions `if` ou `else if` sont fausses.
-- **`switch`** : Permet de tester une variable contre une série de valeurs et exécuter différents blocs de code en fonction de ces valeurs.
+- **Accès direct** : Spécifiez directement l'adresse ou la valeur lors de l'écriture des instructions.
+- **Accès indirect** : Utilisez des registres qui contiennent des adresses pointant vers les données. Cela permet des opérations plus dynamiques et puissantes, comme l'indexation de tableaux ou la manipulation de structures de données complexes.
 
-```cpp
-int score = 85;
+**Exemple en code** (NASM) :
+```assembly
+section .data
+    valeur dd 0x07
 
-if (score > 90) {
-    std::cout << "Excellent!";
-} else if (score > 75) {
-    std::cout << "Bien fait!";
-} else {
-    std::cout << "Vous pouvez faire mieux.";
-}
+section .text
+global _start
 
-char grade = 'B';
+_start:
+    mov eax, [valeur]    ; Accès direct à 'valeur'
+    add eax, 1           ; Incrémente la valeur
+    mov [valeur], eax    ; Stocke la valeur incrémentée
 
-switch (grade) {
-    case 'A':
-        std::cout << "Parfait!";
-        break;
-    case 'B':
-    case 'C':
-        std::cout << "Bien!";
-        break;
-    default:
-        std::cout << "Médiocre!";
-        break;
-}
+    ; Utilisation de l'accès indirect
+    lea ebx, [valeur]    ; Charge l'adresse de 'valeur' dans ebx
+    mov ecx, [ebx]       ; Move la valeur à l'adresse contenue dans ebx vers ecx
+    add ecx, 1           ; Incrémente la valeur
+    mov [ebx], ecx       ; Met à jour la valeur à l'adresse stockée dans ebx
+
+    ; Terminaison du programme (Linux)
+    mov eax, 1           ; syscall pour terminer le programme
+    xor ebx, ebx         ; status 0
+    int 0x80
 ```
 
-## 5.2 Boucles
+Dans cet exemple, `valeur` est manipulée directement puis indirectement à l'aide de registres. Ces techniques montrent comment les données peuvent être manipulées en mémoire de manière flexible et puissante en assembleur.
 
-Les boucles permettent de répéter l'exécution d'un bloc de code tant que certaines conditions sont remplies, rendant le code plus compact et évitant la duplication.
 
-**Variations possibles** :
-- **`for`** : Exécute un bloc de code un nombre prédéterminé de fois, avec une variable de boucle qui s'incrémente ou se décrémente à chaque itération.
-- **`while`** : Continue à exécuter un bloc de code tant que la condition est vraie.
-- **`do-while`** : Similaire à `while`, mais garantit l'exécution du bloc de code au moins une fois avant de vérifier la condition.
-```cpp
-// Exemple de boucle for
-for (int i = 0; i < 5; i++) {
-    std::cout << "i = " << i << "\n";
-}
+# 3) Opérations de base
 
-// Exemple de boucle while
-int count = 5;
-while (count > 0) {
-    std::cout << "Comptage: " << count << "\n";
-    count--;
-}
+## 3.1 Opérations arithmétiques
 
-// Exemple de boucle do-while
-int n;
-do {
-    std::cout << "Entrez un nombre positif: ";
-    std::cin >> n;
-} while (n <= 0);
+Les opérations arithmétiques en assembleur permettent de réaliser des calculs basiques comme l'addition, la soustraction, la multiplication, et la division. Chaque opération a ses propres spécificités, et il est important de noter que la gestion des erreurs (comme la division par zéro) doit être explicitement contrôlée par le programmeur.
+- **ADD** : Additionne deux valeurs.
+- **SUB** : Soustrait deux valeurs.
+- **MUL** : Multiplie deux valeurs. Attention, `MUL` peut rapidement générer des valeurs qui dépassent la taille des registres si on ne prend pas garde.
+- **DIV** : Divise deux valeurs. Le dividende est généralement dans `AX` (ou `EAX`, `RAX` selon la taille du registre), et le résultat est placé dans `AX` avec le reste dans `DX`.
+
+**Exemple en code** (NASM, architecture x86) :
+```assembly
+section .text
+global _start
+
+_start:
+    mov eax, 5
+    mov ebx, 2
+
+    add eax, ebx    ; eax = eax + ebx -> 5 + 2 = 7
+    sub eax, 1      ; eax = eax - 1 -> 7 - 1 = 6
+    mul ebx         ; eax = eax * ebx -> 6 * 2 = 12
+    ; Diviser dx:ax par ebx, résultat dans eax, reste dans edx
+    mov edx, 0      ; Nettoyer edx pour la division
+    div ebx         ; eax = 12 / 2 = 6, reste = 0
+
+    ; Terminaison du programme (Linux)
+    mov eax, 1      ; syscall pour terminer le programme
+    xor ebx, ebx    ; status 0
+    int 0x80
 ```
 
-# 6) Fonctions en C++
+## 3.2 Opérations logiques
 
-## 6.1 Définition et appel
+Les opérations logiques manipulent les bits des données. Ces opérations sont cruciales pour le contrôle des flux, les tests de conditions, et la manipulation de masques de bits.
+- **AND** : Effectue un ET logique bit à bit.
+- **OR** : Effectue un OU logique bit à bit.
+- **XOR** : Effectue un OU exclusif logique bit à bit.
+- **NOT** : Inverse les bits d'une valeur.
 
-Les fonctions en C++ sont des blocs de code qui effectuent une tâche spécifique et peuvent être appelées plusieurs fois dans le programme. Elles permettent de modulariser le code en regroupant des tâches logiquement cohérentes. Une fonction peut prendre des paramètres, effectuer des opérations et retourner une valeur.
+**Exemple en code** (NASM, architecture x86) :
+```assembly
+section .text
+global _start
 
-```cpp
-#include <iostream>
+_start:
+    mov eax, 0x0F        ; eax = 00001111
+    mov ebx, 0x33        ; ebx = 00110011
 
-// Définition de la fonction
-int addition(int a, int b) {
-    return a + b; // Retourne la somme de a et b
-}
+    and eax, ebx         ; eax = 00001111 AND 00110011 = 00000011
+    or eax, 0x04         ; eax = 00000011 OR 00000100 = 00000111
+    xor eax, 0x07        ; eax = 00000111 XOR 00000111 = 00000000
+    not eax              ; eax = NOT 00000000 = FFFFFFFF
 
-// Fonction principale
-int main() {
-    int result = addition(5, 3); // Appel de la fonction
-    std::cout << "Le résultat est : " << result << std::endl;
-    return 0;
-}
+    ; Terminaison du programme (Linux)
+    mov eax, 1           ; syscall pour terminer le programme
+    xor ebx, ebx         ; status 0
+    int 0x80
 ```
 
-## 6.2 Fonctions inline
+## 3.3 Déplacement de données
 
-Les fonctions `inline` sont une suggestion au compilateur pour intégrer le code de la fonction directement à l'endroit de l'appel afin de réduire le coût d'appel de la fonction (overhead). Cela peut améliorer la performance pour les petites fonctions fréquemment utilisées. Cependant, l'utilisation de `inline` est une suggestion et le compilateur peut choisir de l'ignorer.
+Les instructions de déplacement de données sont utilisées pour transférer des données d'un emplacement à un autre sans les modifier. Cela inclut les opérations de copie entre registres, de la mémoire aux registres, et vice-versa.
+- **MOV** : Copie une valeur de la source vers la destination.
+- **PUSH** : Pousse une valeur sur la pile.
+- **POP** : Retire la dernière valeur poussée de la pile et la place dans un registre.
 
-```cpp
-#include <iostream>
+**Exemple en code** (NASM, architecture x86) :
+```assembly
+section .text
+global _start
 
-// Définition d'une fonction inline
-inline int max(int x, int y) {
-    return (x > y) ? x : y;
-}
+_start:
+    mov eax, 10         ; Met 10 dans eax
+    push eax            ; Pousse la valeur de eax sur la pile
+    mov ebx, 20         ; Met 20 dans ebx
+    pop ecx             ; Passe la valeur du sommet de la pile dans ecx (10)
+    mov edx, ebx        ; Copie ebx (20) dans edx
 
-// Fonction principale
-int main() {
-    int a = 10, b = 20;
-    std::cout << "Le plus grand nombre est : " << max(a, b) << std::endl;
-    return 0;
-}
+    ; Terminaison du programme (Linux)
+    mov eax, 1          ; syscall pour terminer le
+
+ programme
+    xor ebx, ebx        ; status 0
+    int 0x80
 ```
 
-## 6.3 Surcharge de fonctions
+Ces exemples illustrent comment manipuler les données et effectuer des opérations basiques en assembleur, fondamentaux pour la programmation à ce niveau de bas niveau.
 
-La surcharge de fonctions permet à plusieurs fonctions de partager le même nom mais avec des listes de paramètres différentes (par exemple, le nombre de paramètres ou leur type). Cela permet de créer des fonctions qui accomplissent des tâches similaires pour différents types de données ou différents nombres d'arguments.
 
-```cpp
-#include <iostream>
 
-// Première version de la fonction
-void afficher(int i) {
-    std::cout << "L'entier est : " << i << std::endl;
-}
+# 4) Contrôle de flux 
 
-// Surcharge avec un paramètre de type double
-void afficher(double f) {
-    std::cout << "Le nombre à virgule flottante est : " << f << std::endl;
-}
+## 4.1 Instructions conditionnelles
 
-// Surcharge avec un paramètre de type string
-void afficher(const std::string& s) {
-    std::cout << "La chaîne est : " << s << std::endl;
-}
+Les instructions conditionnelles en assembleur sont utilisées pour contrôler le flux d'exécution du programme en fonction de l'état des flags dans le registre des flags. Ces flags sont mis à jour suite à des opérations arithmétiques ou logiques précédentes. Les sauts conditionnels permettent d'exécuter des sections de code seulement si certaines conditions sont remplies.
+- **JMP** (Jump) : Effectue un saut inconditionnel à l'adresse ou à l'étiquette spécifiée.
+- **JE/JZ** (Jump if Equal/Jump if Zero) : Saute à l'étiquette si le résultat de la dernière opération était zéro (égalité).
+- **JNE/JNZ** (Jump if Not Equal/Jump if Not Zero) : Saute à l'étiquette si le résultat de la dernière opération n'était pas zéro.
 
-// Fonction principale
-int main() {
-    afficher(10);    // Appel avec int
-    afficher(3.14159); // Appel avec double
-    afficher("Bonjour le monde!"); // Appel avec string
-    return 0;
-}
+**Exemple en code** (NASM, architecture x86) :
+```assembly
+section .text
+global _start
+
+_start:
+    mov eax, 1
+    cmp eax, 2       ; Compare eax avec 2
+    je equal         ; Saute à 'equal' si eax est égal à 2
+    jne notequal     ; Saute à 'notequal' si eax n'est pas égal à 2
+
+equal:
+    mov ebx, 1
+    jmp end
+
+notequal:
+    mov ebx, 0
+
+end:
+    ; Terminaison du programme (Linux)
+    mov eax, 1       ; syscall pour terminer le programme
+    int 0x80
 ```
 
-# 7) Portée et espace de nommage en C++
+Dans cet exemple, le programme saute aux blocs de code marqués par les étiquettes `equal` ou `notequal` en fonction du résultat de la comparaison entre `eax` et `2`.
+## 4.2 Boucles
 
-## 7.1 Portée des variables
+Les boucles en assembleur sont créées en utilisant des instructions de saut pour répéter des sections de code. Les boucles nécessitent généralement un compteur ou une condition de terminaison pour éviter que la boucle devienne infinie.
 
-La portée d'une variable détermine où elle est accessible dans le code. Cela affecte la visibilité et la durée de vie des variables. Les variables peuvent avoir une portée locale, globale, ou de bloc.
-- **Locale** : Les variables déclarées à l'intérieur d'une fonction ou d'un bloc sont accessibles uniquement dans ce contexte.
-- **Globale** : Les variables déclarées en dehors de toutes les fonctions sont accessibles de n'importe où dans le fichier de code.
-- **De bloc** : Les variables déclarées à l'intérieur d’un bloc `{}` sont accessibles uniquement à l'intérieur de ce bloc.
+**Exemple en code** (NASM, architecture x86) :
+```assembly
+section .text
+global _start
 
-```cpp
-#include <iostream>
+_start:
+    mov ecx, 5       ; Initialise le compteur à 5
 
-int varGlobale = 100;  // Variable globale
+loop_start:
+    ; Effectuer des opérations ici
+    dec ecx          ; Décrémente ecx de 1
+    jnz loop_start   ; Continue la boucle si ecx n'est pas zéro
 
-void demo() {
-    int varLocale = 10;  // Variable locale à la fonction demo
-    std::cout << "Variable locale: " << varLocale << std::endl;
-    std::cout << "Variable globale dans demo: " << varGlobale << std::endl;
-}
-
-int main() {
-    demo();
-    std::cout << "Variable globale dans main: " << varGlobale << std::endl;
-    // std::cout << "Variable locale: " << varLocale; // Ceci générerait une erreur
-    return 0;
-}
+    ; Terminaison du programme (Linux)
+    mov eax, 1       ; syscall pour terminer le programme
+    xor ebx, ebx     ; status 0
+    int 0x80
 ```
 
-## 7.2 Espaces de noms
+Dans cet exemple, la boucle continue de s'exécuter jusqu'à ce que le compteur (`ecx`) atteigne zéro. Chaque passage dans la boucle décrémente le compteur de 1. L'instruction `jnz` (Jump if Not Zero) est utilisée pour répéter la boucle tant que `ecx` n'est pas égal à zéro.
 
-Les espaces de noms en C++ permettent de regrouper des entités comme des classes, des objets et des fonctions sous un nom distinct pour éviter les conflits de noms. Cela est particulièrement utile dans de grands projets ou lors de l'utilisation de multiples bibliothèques.
-- **`namespace`** : Le mot-clé utilisé pour définir un espace de noms.
-- **`using`** : Ce mot-clé peut être utilisé pour introduire un espace de noms dans un autre contexte, permettant d'utiliser les membres de l'espace de noms sans préfixe.
 
-```cpp
-#include <iostream>
+# 5) Fonctions et procédures
 
-namespace premier {
-    void affiche() {
-        std::cout << "Dans le premier espace de noms" << std::endl;
-    }
-}
+## 5.1 Définition
 
-namespace second {
-    void affiche() {
-        std::cout << "Dans le second espace de noms" << std::endl;
-    }
-}
+En assembleur, les fonctions sont définies comme des blocs de code isolés qui peuvent être appelés depuis différentes parties du programme. Les fonctions sont utiles pour organiser le code en unités logiques réutilisables. En assembleur, les fonctions sont souvent désignées par des étiquettes et peuvent être composées de n'importe quelle séquence d'instructions terminée par un `RET` pour retourner au point d'appel.
 
-int main() {
-    premier::affiche();  // Appel de la fonction dans le premier espace de noms
-    second::affiche();   // Appel de la fonction dans le second espace de noms
-    return 0;
-}
+**Exemple en code** (NASM, architecture x86) :
+```assembly
+section .text
+global _start
+
+; Définition de la fonction
+add_numbers:
+    mov eax, [esp+4]  ; Premier argument
+    add eax, [esp+8]  ; Additionne avec le deuxième argument
+    ret               ; Retourne avec le résultat dans eax
+
+_start:
+    push 3            ; Pousse le deuxième argument
+    push 2            ; Pousse le premier argument
+    call add_numbers  ; Appelle la fonction add_numbers
+    add esp, 8        ; Nettoie la pile
+
+    ; Terminaison du programme (Linux)
+    mov eax, 1        ; syscall pour terminer le programme
+    int 0x80
 ```
 
-Dans cet exemple, deux espaces de noms `premier` et `second` contiennent chacun une fonction `affiche()`. Grâce aux espaces de noms, il n'y a pas de conflit entre ces deux fonctions malgré qu'elles partagent le même nom. La portée et l'espace de nommage sont cruciaux pour maintenir une structure de code propre et éviter les collisions et confusions dans les programmes plus grands et complexes.
+Dans cet exemple, une fonction `add_numbers` est définie pour additionner deux nombres. Les arguments sont passés par la pile et l'instruction `ret` renvoie le contrôle au point d'appel.
 
-# 8) Pointeurs et références en C++
+## 5.2 Appel et retour de fonction
 
-## 8.1 Pointeurs
+L'appel à une fonction en assembleur est réalisé avec l'instruction `CALL`, qui pousse l'adresse de retour (l'adresse suivante dans le code après l'appel) sur la pile et transfère le contrôle à l'adresse de la fonction. Le retour de la fonction est géré par l'instruction `RET`, qui pop l'adresse de retour de la pile et transfère le contrôle à cette adresse.
 
-Un pointeur est une variable qui stocke l'adresse mémoire d'une autre variable. Ils sont utilisés pour accéder à la mémoire et manipuler des données à différents endroits du programme. Les pointeurs sont puissants mais doivent être utilisés avec prudence pour éviter des bugs difficiles à tracer comme les fuites de mémoire ou les violations d'accès.
+**Gestion de la pile pour passer des arguments** :
+Les arguments peuvent être passés à la fonction en les empilant avant d'appeler la fonction. Après l'appel, il est courant que la fonction ou le code appelant nettoie la pile en ajustant le pointeur de pile (`esp`).
 
-```cpp
-#include <iostream>
+**Exemple en code** (NASM, architecture x86) :
+```assembly
+section .text
+global _start
 
-int main() {
-    int var = 8;  // Déclaration d'une variable entière
-    int* ptr = &var;  // Pointeur sur entier, initialisé avec l'adresse de var
+; Fonction pour multiplier deux nombres
+multiply:
+    mov eax, [esp+4]  ; Charge le premier argument dans eax
+    imul eax, [esp+8] ; Multiplie eax par le deuxième argument
+    ret               ; Retourne avec le résultat dans eax
 
-    std::cout << "Valeur de var: " << var << std::endl;
-    std::cout << "Adresse de var: " << ptr << std::endl;
-    std::cout << "Valeur pointée par ptr: " << *ptr << std::endl;  // Déréférencement
+_start:
+    push 10           ; Pousse le deuxième argument
+    push 5            ; Pousse le premier argument
+    call multiply     ; Appelle la fonction multiply
+    add esp, 8        ; Nettoie la pile après l'appel
 
-    *ptr = 10;  // Modification de la valeur de var via le pointeur
-    std::cout << "Nouvelle valeur de var: " << var << std::endl;
-
-    return 0;
-}
+    ; Terminaison du programme (Linux)
+    mov eax, 1        ; syscall pour terminer le programme
+    int 0x80
 ```
 
-Dans cet exemple, `ptr` est un pointeur sur un entier (`int*`). Il est initialisé avec l'adresse de `var` (`&var`). L'opérateur `*` est utilisé pour accéder ou modifier la valeur de la variable pointée.
+Dans cet exemple, une fonction `multiply` multiplie deux nombres passés en arguments sur la pile. L'instruction `imul` est utilisée pour la multiplication, et `ret` renvoie au point d'appel. Après l'appel à `multiply`, le code appelant nettoie la pile en ajustant `esp`.
 
-## 8.2 Références
 
-Les références en C++ sont des alias pour d'autres variables. Contrairement aux pointeurs, une fois qu'une référence est initialisée à une variable, elle ne peut plus être changée pour référencer une autre variable. Les références sont plus faciles et plus sûres à utiliser que les pointeurs car elles ne nécessitent pas d'opérations de gestion de la mémoire ni de déréférencement explicite.
+# 6) Gestion de la mémoire
 
-```cpp
-#include <iostream>
+## 6.1 Allocation
 
-void increment(int& n) {  // La fonction prend une référence à un entier
-    n++;
-}
+En assembleur, l'allocation de mémoire statique est réalisée en réservant explicitement de l'espace dans la mémoire lors de la compilation. Les directives comme `DB` (Define Byte), `DW` (Define Word), `DD` (Define Doubleword), et `DQ` (Define Quadword) sont utilisées pour déclarer des variables de différentes tailles dans les sections de données du programme.
+- **DB** : Réserve un ou plusieurs bytes.
+- **DW** : Réserve un ou plusieurs mots de 16 bits.
+- **DD** : Réserve un ou plusieurs double mots de 32 bits.
+- **DQ** : Réserve un ou plusieurs quad mots de 64 bits.
 
-int main() {
-    int var = 5;
-    increment(var);  // Appel de fonction avec var comme référence
-    std::cout << "Valeur de var après incrementation: " << var << std::endl;
-    return 0;
-}
+**Exemple en code** (NASM) :
+```assembly
+section .data
+    monByte db 0xFF                 ; Réserve un byte
+    monMot dw 0xFFFF                ; Réserve un mot (2 bytes)
+    monDoubleMot dd 0xFFFFFFFF      ; Réserve un double mot (4 bytes)
+    monQuadMot dq 0xFFFFFFFFFFFFFFFF; Réserve un quad mot (8 bytes)
+
+section .bss
+    buffer resb 64                  ; Réserve 64 bytes sans initialisation
 ```
 
-Dans cet exemple, `var` est incrémentée via la fonction `increment`, qui prend un argument par référence. Cela signifie que les modifications apportées à `n` dans la fonction affectent directement `var`.
+Dans cet exemple, différentes tailles de variables sont déclarées et réservées dans la section `.data` pour les données initialisées et `.bss` pour les données non initialisées.
 
-**Comparaison et utilisation** :
-- **Pointeurs** : utiles pour l'allocation dynamique de mémoire, l'implémentation de structures de données complexes comme les listes liées, et pour les interfaces de programmation bas niveau avec des systèmes ou des bibliothèques.
-- **Références** : préférées pour les cas où la simplicité et la sécurité sont prioritaires, comme les passages d'arguments à des fonctions sans copie et les retours de fonction complexes.
+## 6.2 Accès mémoire
 
-Ces concepts fondamentaux de pointeurs et de références sont essentiels pour la programmation efficace en C++, offrant des outils puissants pour la gestion de la mémoire et la manipulation de données complexes.
+L'accès à la mémoire en assembleur se fait principalement par des instructions qui permettent de lire ou d'écrire dans la mémoire à des adresses spécifiques. Les opérations les plus courantes sont réalisées à l'aide des instructions `MOV`, qui transfèrent les données entre la mémoire et les registres, ainsi que d'autres instructions qui manipulent directement les adresses mémoire.
+- **MOV** : Transfère les données entre les registres et la mémoire.
+- **LEA** (Load Effective Address) : Charge l'adresse effective d'une variable dans un registre.
+- **PUSH** et **POP** : Utilisés pour empiler et dépiler des données sur la pile du processeur.
 
+**Exemple en code** (NASM, architecture x86) :
+```assembly
+section .data
+    valeur dd 12345678h
 
-# 9) Programmation orientée objet en C++
+section .text
+global _start
 
-## 9.1 Classes et objets
+_start:
+    mov eax, [valeur]  ; Charge le contenu de 'valeur' dans eax
+    mov ebx, valeur    ; Charge l'adresse de 'valeur' dans ebx
+    lea ecx, [valeur]  ; Charge l'adresse effective de 'valeur' dans ecx
 
-Les classes sont des structures de données qui encapsulent les données (attributs) et les méthodes (fonctions) qui opèrent sur ces données. Un objet est une instance d'une classe. Les classes définissent le type de données, et les objets sont les instances réelles qui sont manipulées dans le programme.
+    ; Manipulation des données
+    add eax, 1         ; Incrémente la valeur dans eax
+    mov [valeur], eax  ; Met à jour la mémoire avec la nouvelle valeur
 
-```cpp
-#include <iostream>
-using namespace std;
-
-class Voiture {
-public:
-    string marque;
-    int annee;
-    
-    void demarrer() {
-        cout << "La voiture " << marque << " démarre!" << endl;
-    }
-};
-
-int main() {
-    Voiture maVoiture;  // Création d'un objet de la classe Voiture
-    maVoiture.marque = "Toyota";
-    maVoiture.annee = 2021;
-    maVoiture.demarrer();
-
-    return 0;
-}
+    ; Terminaison du programme (Linux)
+    mov eax, 1         ; syscall pour terminer le programme
+    xor ebx, ebx       ; status 0
+    int 0x80
 ```
 
-## 9.2 Encapsulation
+Dans cet exemple, `eax` est utilisé pour lire la valeur depuis la mémoire, et `ebx` est utilisé pour stocker l'adresse de la variable. `LEA` est utilisé pour obtenir l'adresse effective d'une variable, ce qui est utile pour des calculs d'adresse plus complexes ou pour passer des adresses à des fonctions.
 
-L'encapsulation est un concept fondamental qui consiste à restreindre l'accès direct aux composants d'une classe. Cela est réalisé en utilisant des modificateurs d'accès comme `private`, `public`, et `protected`. 
+# 7) Entrées et sorties
 
-```cpp
-class CompteBancaire {
-private:
-    double solde;  // Accès restreint de l'extérieur de la classe
+## 7.1 Accès aux périphériques
 
-public:
-    void deposer(double montant) {
-        if (montant > 0) {
-            solde += montant;
-        }
-    }
+En assembleur, l'accès direct aux périphériques se fait souvent par la manipulation des ports d'entrée/sortie et des interruptions matérielles. Chaque périphérique connecté à l'ordinateur, comme le clavier ou la souris, est accessible via des ports spécifiques. Les instructions `IN` et `OUT` sont utilisées pour lire et écrire des données à ces ports.
+- **IN** : Lit des données du port d'entrée/sortie spécifié dans un registre.
+- **OUT** : Envoie des données à un port d'entrée/sortie spécifié à partir d'un registre.
 
-    void retirer(double montant) {
-        if (montant <= solde) {
-            solde -= montant;
-        }
-    }
+**Exemple en code** (NASM, architecture x86) :
+```assembly
+section .text
+global _start
 
-    double getSolde() {
-        return solde;
-    }
-};
+_start:
+    mov dx, 0x60    ; Port du clavier (port de données)
+    in al, dx       ; Lit un byte du clavier et le stocke dans al
+
+    mov dx, 0x64    ; Port de commande du clavier
+    out dx, al      ; Envoie le byte lu précédemment au port de commande
+
+    ; Terminaison du programme (Linux)
+    mov eax, 1      ; syscall pour terminer le programme
+    xor ebx, ebx    ; status 0
+    int 0x80
 ```
 
-## 9.3 Héritage
+## 7.2 Utilisation des interruptions systèmes
 
-L'héritage permet à une classe de hériter des attributs et méthodes d'une autre classe. La classe qui hérite est appelée classe dérivée, et la classe dont elle hérite est appelée classe de base.
+Les interruptions systèmes sont des mécanismes par lesquels le logiciel peut interrompre le flux normal du processeur pour exécuter un code spécifique, souvent pour gérer les entrées/sorties comme les lectures de disque, écritures d'écran, etc. Cela inclut l'utilisation d'interruptions logicielles pour invoquer les services du système d'exploitation.
+- **INT** : Déclenche une interruption logicielle spécifique, qui est gérée par le système d'exploitation pour effectuer diverses tâches système.
 
-```cpp
-class Vehicule {
-public:
-    string marque;
-    void klaxonner() {
-        cout << "Tut tut!" << endl;
-    }
-};
+**Exemple en code** (NASM, architecture x86 pour Linux) :
+```assembly
+section .text
+global _start
 
-class Camion : public Vehicule {  // Héritage
-public:
-    double capaciteChargement;
-};
+_start:
+    mov eax, 4      ; syscall numéro pour sys_write
+    mov ebx, 1      ; descripteur de fichier (1 pour stdout)
+    mov ecx, msg    ; adresse du message à écrire
+    mov edx, len    ; longueur du message à écrire
+    int 0x80        ; exécute le syscall
 
-int main() {
-    Camion monCamion;
-    monCamion.marque = "Volvo";
-    monCamion.capaciteChargement = 5000;
-    monCamion.klaxonner();  // Appel de la méthode héritée
-}
+    mov eax, 1      ; syscall numéro pour sys_exit
+    xor ebx, ebx    ; code de sortie
+    int 0x80        ; exécute le syscall
+
+section .data
+    msg db 'Bonjour, monde!', 0xA
+    len equ $ - msg
 ```
 
-## 9.4 Polymorphisme
-
-Le polymorphisme permet aux classes de définir des méthodes qui ont le même nom mais qui se comportent différemment selon l'objet qui les appelle. Le polymorphisme peut être implémenté via le surchargement de méthodes et la redéfinition de méthodes (override).
-
-```cpp
-class Animal {
-public:
-    virtual void parler() {
-        cout << "Un son d'animal!" << endl;
-    }
-};
-
-class Chien : public Animal {
-public:
-    void parler() override {  // Redéfinition
-        cout << "Woof!" << endl;
-    }
-};
-
-void faireParler(Animal& a) {
-    a.parler();
-}
-
-int main() {
-    Animal a;
-    Chien c;
-    faireParler(a);  // Polymorphisme
-    faireParler(c);
-}
-```
-
-## 9.5 Abstraction
-
-L'abstraction est un principe par lequel une classe ne révèle que les opérations nécessaires à l'utilisation d'un objet, en masquant les détails de mise en œuvre. Elle est souvent mise en œuvre à l'aide de classes abstraites ou d'interfaces.
-
-```cpp
-class Instrument {
-public:
-    virtual void jouerNote(int note) = 0;  // Méthode abstraite
-};
-
-class Piano : public Instrument {
-public:
-    void jouerNote(int note) override {
-        cout << "Jouer la note " << note << " sur le piano." << endl;
-    }
-};
-
-int main() {
-    Piano p;
-    p.jouerNote(60);  // Implémentation concrète
-}
-```
-
-# 10) Gestion de la mémoire en C++
-
-## 10.1 Allocation dynamique de mémoire
-
-L'allocation dynamique de mémoire permet à un programme de demander de la mémoire pendant son exécution. En C++, cela est réalisé principalement via les opérateurs `new` et `delete`. L'utilisation de `new` alloue de la mémoire pour une variable ou un tableau de variables, tandis que `delete` libère cette mémoire. La gestion correcte de cette mémoire est cruciale pour éviter les fuites de mémoire et autres problèmes de ressources.
-
-```cpp
-#include <iostream>
-
-int main() {
-    int* ptr = new int(10);  // Allocation de mémoire pour un entier, initialisation à 10
-    std::cout << "Valeur allouée: " << *ptr << std::endl;
-
-    delete ptr;  // Libération de la mémoire allouée à ptr
-    ptr = nullptr;  // Bonne pratique pour éviter les pointeurs pendouillants
-
-    // Allocation pour un tableau
-    int* arr = new int[5];  // Allocation de mémoire pour un tableau de 5 entiers
-    for (int i = 0; i < 5; i++) {
-        arr[i] = i * 2;  // Initialisation des éléments du tableau
-    }
-
-    for (int i = 0; i < 5; i++) {
-        std::cout << "arr[" << i << "] = " << arr[i] << std::endl;
-    }
-
-    delete[] arr;  // Libération de la mémoire allouée pour le tableau
-    arr = nullptr;  // Éviter les pointeurs pendouillants
-
-    return 0;
-}
-```
-
-## 10.2 Gestionnaire de ressources
-
-En C++, la gestion des ressources traite de la gestion correcte des ressources telles que la mémoire, les descripteurs de fichiers, les connexions réseau, etc. Les smart pointers (pointeurs intelligents) sont des wrappers template qui prennent en charge la gestion automatique de la mémoire en utilisant le concept de RAII (Resource Acquisition Is Initialization). Ces pointeurs s'assurent que les objets alloués sont correctement supprimés lorsque le smart pointer sort de la portée, prévenant ainsi les fuites de mémoire.
-
-- **`std::unique_ptr`** : gère une ressource qui ne doit pas être partagée avec un autre pointer. Lorsque le `unique_ptr` sort de la portée, il détruit automatiquement l'objet pointé.
-- **`std::shared_ptr`** : maintient un compteur de référence pour gérer la propriété partagée d'un objet. L'objet est détruit uniquement lorsque le dernier `shared_ptr` est détruit ou réaffecté.
-- **`std::weak_ptr`** : permet de référencer un objet géré par `shared_ptr` sans augmenter le compteur de référence, utile pour éviter les cycles de référence qui peuvent mener à des fuites de mémoire.
-
-```cpp
-#include <iostream>
-#include <memory>  // Bibliothèque pour les smart pointers
-
-int main() {
-    std::unique_ptr<int> pUnique(new int(42));  // unique_ptr gérant un entier
-    std::cout << "Valeur unique_ptr: " << *pUnique << std::endl;
-
-    std::shared_ptr<int> pShared1(new int(100));  // shared_ptr gérant un entier
-    std::shared_ptr<int> pShared2 = pShared1;  // pShared2 partage la propriété de l'entier
-    std::cout << "Valeur shared_ptr: " << *pShared1 << " (ref count: " << pShared1.use_count() << ")" << std::endl;
-
-    // pUnique et pShared sont automatiquement désalloués à la fin de la portée
-    return 0;
-}
-```
-
-Dans ces exemples, les smart pointers facilitent la gestion de la mémoire en automatisant la libération des ressources, ce qui aide à prévenir les problèmes communs liés à l'allocation dynamique de mémoire, tels que les fuites de mémoire et les erreurs de segmentation.
-
-# 11) Collections de données en C++
-
-## 11.1 Tableaux
-
-Les tableaux en C++ sont des collections de données de même type stockées contiguëment en mémoire. Ils peuvent être statiques ou dynamiques, et leur taille doit être connue au moment de la compilation pour les tableaux statiques. L'indexation des éléments commence à zéro.
-
-```cpp
-#include <iostream>
-
-int main() {
-    int tableau[5] = {1, 2, 3, 4, 5};  // Déclaration d'un tableau statique de 5 entiers
-
-    // Affichage des éléments du tableau
-    for(int i = 0; i < 5; ++i) {
-        std::cout << "tableau[" << i << "] = " << tableau[i] << std::endl;
-    }
-
-    return 0;
-}
-```
-
-## 11.2 Chaînes de caractères
-
-En C++, les chaînes de caractères peuvent être manipulées de manière basique via des tableaux de `char` terminés par un caractère nul (`\0`), ou plus commodément à l'aide de l'objet `std::string` de la bibliothèque standard qui offre une gestion flexible des chaînes avec la manipulation dynamique de la mémoire.
-
-```cpp
-#include <iostream>
-#include <string>  // Inclusion pour std::string
-
-int main() {
-    char chaineC[] = "Bonjour";  // Chaîne de caractères style C
-    std::string str = "Bonjour le monde!";  // Chaîne de caractères style C++
-
-    std::cout << "Chaîne C: " << chaineC << std::endl;
-    std::cout << "Chaîne C++: " << str << std::endl;
-
-    // Ajout à la chaîne
-    str += " avec C++";
-    std::cout << "Chaîne modifiée: " << str << std::endl;
-
-    return 0;
-}
-```
-
-## 11.3 Structures de données standard
-
-C++ offre une riche bibliothèque de structures de données, `Standard Template Library` (STL), qui comprend des conteneurs comme `vector`, `map`, `set`, et beaucoup d'autres qui gèrent dynamiquement la mémoire et offrent une variété de fonctions pour manipuler ces données.
-
-```cpp
-#include <iostream>
-#include <vector>
-#include <map>
-#include <set>
-
-int main() {
-    std::vector<int> vecteur = {1, 2, 3, 4, 5};  // Vector pour un accès dynamique et efficace
-    std::map<std::string, int> notes = {{"Alice", 92}, {"Bob", 85}};  // Map pour une relation clé-valeur
-    std::set<int> ensemble = {1, 2, 3, 3, 4, 4, 5};  // Set pour un ensemble unique d'éléments
-
-    // Affichage du vecteur
-    std::cout << "Vecteur:";
-    for(auto& v : vecteur) {
-        std::cout << " " << v;
-    }
-    std::cout << std::endl;
-
-    // Affichage des notes
-    std::cout << "Notes:";
-    for(auto& pair : notes) {
-        std::cout << " " << pair.first << "->" << pair.second;
-    }
-    std::cout << std::endl;
-
-    // Affichage de l'ensemble
-    std::cout << "Ensemble:";
-    for(auto& e : ensemble) {
-        std::cout << " " << e;
-    }
-    std::cout << std::endl;
-
-    return 0;
-}
-```
-
-
-# 12) Entrées et sorties en C++
-
-## 12.1 Entrées/sorties standard
-
-Les entrées et sorties standard (IO) en C++ sont gérées principalement à travers les objets `std::cin`, `std::cout`, et `std::cerr` de la bibliothèque iostream. `std::cout` est utilisé pour l'affichage à l'écran, `std::cin` pour la lecture de l'entrée clavier, et `std::cerr` pour les messages d'erreur.
-- `std::cout` pour écrire sur la sortie standard (écran).
-- `std::cin` pour lire depuis l'entrée standard (clavier).
-- `std::cerr` pour les erreurs, s'affiche aussi à l'écran mais peut être redirigé séparément.
-
-```cpp
-#include <iostream>
-#include <string>
-
-int main() {
-    std::string nom;
-    std::cout << "Entrez votre nom: ";
-    std::cin >> nom;  // Lecture d'une chaîne depuis l'entrée standard
-    std::cout << "Bonjour, " << nom << "!" << std::endl;
-
-    int age;
-    std::cout << "Entrez votre age: ";
-    std::cin >> age;
-    std::cout << "Vous avez " << age << " ans." << std::endl;
-
-    return 0;
-}
-```
-
-## 12.2 Fichiers
-
-Pour la manipulation de fichiers, C++ utilise les classes `ifstream` pour la lecture de fichiers, `ofstream` pour l'écriture, et `fstream` qui peut faire les deux. Ces classes sont également incluses dans la bibliothèque iostream et fonctionnent de manière similaire aux objets de flux standard mais sont liées à des fichiers.
-
-```cpp
-#include <fstream>
-#include <iostream>
-#include <string>
-
-int main() {
-    std::string filename = "exemple.txt";
-
-    // Écriture dans un fichier
-    std::ofstream outfile(filename);  // Crée ou ouvre le fichier pour l'écriture
-    if (outfile.is_open()) {
-        outfile << "Bonjour le monde!" << std::endl;
-        outfile << "Ceci est un test d'écriture de fichier." << std::endl;
-        outfile.close();
-    } else {
-        std::cerr << "Impossible d'ouvrir le fichier pour l'écriture." << std::endl;
-    }
-
-    // Lecture d'un fichier
-    std::ifstream infile(filename);
-    if (infile.is_open()) {
-        std::string line;
-        while (getline(infile, line)) {  // Lire ligne par ligne
-            std::cout << line << std::endl;
-        }
-        infile.close();
-    } else {
-        std::cerr << "Impossible d'ouvrir le fichier pour la lecture." << std::endl;
-    }
-
-    return 0;
-}
-```
-
-Dans cet exemple, `ofstream` est utilisé pour écrire dans un fichier texte, et `ifstream` est utilisé pour le lire. La gestion des erreurs est importante pour s'assurer que les fichiers sont bien ouverts avant d'essayer de lire ou écrire, pour éviter les erreurs d'exécution.
-
-
-# 13) Exceptions
-
-## 13.1 Gestion des exceptions
-
-La gestion des exceptions en C++ permet de répondre à des conditions d'erreur exceptionnelles (comme des erreurs de programmation ou des problèmes d'exécution) de manière contrôlée. Une exception est un problème qui survient pendant l'exécution du programme et qui interrompt le flux normal des instructions. En C++, les exceptions sont gérées par trois mots-clés : `try`, `catch`, et `throw`.
-- **`try`** : Bloc de code où les exceptions peuvent être levées.
-- **`throw`** : Instruction utilisée pour lancer une exception.
-- **`catch`** : Bloc de code qui traite une exception spécifique.
-
-Les exceptions peuvent être de n'importe quel type (intégré, objet, etc.), mais il est plus commun d'utiliser des objets dérivés de la classe `std::exception`.
-
-```cpp
-#include <iostream>
-#include <stdexcept>  // Pour std::runtime_error
-
-int diviser(int num, int denom) {
-    if (denom == 0) {
-        throw std::runtime_error("Division par zéro!");  // Lancer une exception de type runtime_error
-    }
-    return num / denom;
-}
-
-int main() {
-    int x = 10, y = 0;
-    try {
-        int resultat = diviser(x, y);
-        std::cout << "Résultat: " << resultat << std::endl;
-    } catch (const std::runtime_error& e) {  // Attraper les exceptions spécifiques
-        std::cerr << "Exception capturée: " << e.what() << std::endl;
-    }
-
-    return 0;
-}
-```
-
-Dans cet exemple, la fonction `diviser` lance une exception `std::runtime_error` si le dénominateur est zéro. Le bloc `try` dans `main` appelle `diviser`, et le bloc `catch` intercepte et gère l'exception.
-
-**Avantages de la gestion des exceptions** :
-- **Séparation du code de gestion des erreurs du code principal** : Cela rend le code plus propre et plus facile à maintenir.
-- **Propagation des erreurs** : Les exceptions peuvent être propagées depuis la fonction où elles sont survenues jusqu'au contexte qui est capable de les gérer, sans nécessiter de multiples vérifications de retour d'erreur.
-- **Gestion des erreurs inattendues** : Permet de gérer des erreurs qui n'ont pas été directement prévues par les conditions de retour normales.
-
-
-# 14) Modèles (Templates)
-
-## 14.1 Templates de fonction et de classe
-
-Les templates en C++ sont un puissant outil de métaprogrammation qui permet de créer des fonctions et des classes génériques. Les templates permettent aux développeurs de programmer des structures génériques qui fonctionnent avec n'importe quel type de données. Cela aide à éviter la duplication de code pour des types différents et améliore la maintenabilité du code.
-- **Templates de fonction** : Permettent d'écrire une fonction qui peut accepter n'importe quel type de données.
-- **Templates de classe** : Permettent de définir des classes telles que les conteneurs qui peuvent gérer n'importe quel type de données.
-
-```cpp
-#include <iostream>
-
-// Template de fonction
-template <typename T>
-T max(T a, T b) {
-    return (a > b) ? a : b;
-}
-
-// Template de classe
-template <class T>
-class Boite {
-public:
-    T contenu;
-    Boite(T contenu) : contenu(contenu) {}
-    void afficher() const {
-        std::cout << "Contenu: " << contenu << std::endl;
-    }
-};
-
-int main() {
-    // Utilisation du template de fonction
-    int i = max(5, 10);
-    double d = max(5.5, 10.1);
-    std::cout << "Le plus grand int est : " << i << std::endl;
-    std::cout << "Le plus grand double est : " << d << std::endl;
-
-    // Utilisation du template de classe
-    Boite<int> boite1(123);
-    Boite<std::string> boite2("Hello World");
-    boite1.afficher();
-    boite2.afficher();
-
-    return 0;
-}
-```
-
-Dans cet exemple, la fonction `max` est un template qui peut comparer deux éléments de n'importe quel type (tant que le type supporte l'opérateur `>`). De même, la classe `Boite` est un template qui peut stocker et afficher un contenu de n'importe quel type.
-
-**Avantages des templates** :
-- **Flexibilité** : Les templates permettent aux développeurs de créer des fonctions et des classes flexibles qui ne sont pas liées à des types de données spécifiques.
-- **Réutilisation du code** : Les templates aident à réduire la duplication en gérant de multiples types de données avec une seule définition de fonction ou de classe.
-- **Performance** : Contrairement aux fonctions polymorphes à l'exécution, les templates sont résolus à la compilation, ce qui élimine le coût d'exécution du polymorphisme.
+Dans cet exemple, les interruptions système `int 0x80` sont utilisées pour appeler les fonctions du système d'exploitation Linux pour écrire sur la sortie standard et terminer le programme. Le premier appel à `int 0x80` utilise le syscall `sys_write` pour écrire le message "Bonjour, monde!" sur la console, et le second utilise `sys_exit` pour terminer le programme.

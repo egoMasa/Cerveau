@@ -90,35 +90,81 @@ int main() { // Fonction principale d'entrée du programme
 ## 4.2 Variables et types de données 
 * En C++, les variables doivent être déclarées avec un type spécifique qui détermine la taille et le layout de la mémoire de la variable. Les types de données de base incluent `int` (entiers), `double` (nombres à virgule flottante), `char` (caractères), et `bool` (booléens).
 **Variations possibles** :
-- **Types simples** : `int`, `float`, `double`, `char`, `bool`
-- **Types modifiés** : `unsigned int`, `long int`, `short int`
-- **Types non primitifs** : structures, unions, classes
-```cpp
-int age = 25; // Déclaration d'une variable entière
-double prix = 99.99; // Déclaration d'une variable à virgule flottante
-char lettre = 'A'; // Déclaration d'un caractère
-bool estConnecte = true; // Déclaration d'une variable booléenne
 
+| Catégorie              | Type                    | Description                                                                                   |
+|------------------------|-------------------------|-----------------------------------------------------------------------------------------------|
+| **Types simples**      | `int`                   | Entier de taille standard, généralement 32 bits sur la plupart des systèmes.                  |
+|                        | `float`                 | Nombre à virgule flottante à simple précision, typiquement 32 bits.                           |
+|                        | `double`                | Nombre à virgule flottante à double précision, typiquement 64 bits.                           |
+|                        | `char`                  | Caractère unique, typiquement 8 bits.                                                         |
+|                        | `bool`                  | Valeur booléenne, `true` ou `false`.                                                          |
+| **Types modifiés**     | `unsigned int`          | Version non signée de `int`, peut stocker seulement des valeurs positives.                    |
+|                        | `long int`              | Version longue de `int`, permettant une plus grande plage de valeurs.                         |
+|                        | `short int`             | Version courte de `int`, utilisée pour économiser de la mémoire, plage de valeurs réduite.    |
+| **Types non primitifs**| Structures              | Collections de données de types potentiellement différents, regroupées sous un même nom.      |
+|                        | Unions                  | Types où différentes données sont stockées dans la même position de mémoire.                  |
+|                        | Classes                 | Types avancés permettant d'encapsuler données et fonctions, supports principaux de la POO.    |
+
+```cpp
+int a = 5; 
+float b = 3.14; 
+double c = 2.71828; 
+char d = 'A'; 
+bool e = true;
+unsigned int f = 4000000000;
+long int g = 1234567890123;
+short int h = 32767;
+struct Person {
+  string name;
+  int age;
+};
+union Data {
+  int i;
+  float f;
+  char str[20];
+};
+class Car {
+  public:
+    void drive() {
+      // Code to drive the car
+    }
+};
 ```
 ## 4.3 Opérateurs
 Les opérateurs permettent de réaliser des opérations mathématiques, de comparaison ou logiques sur des variables. Ils incluent les opérateurs arithmétiques (`+`, `-`, `*`, `/`, `%`), les opérateurs de comparaison (`==`, `!=`, `<`, `>`, `<=`, `>=`), et les opérateurs logiques (`&&`, `||`, `!`).
 
 **Variations possibles** :
-- **Opérateurs arithmétiques** : utilisés pour les calculs mathématiques simples.
-- **Opérateurs de comparaison** : utilisés pour comparer deux valeurs.
-- **Opérateurs logiques** : utilisés pour combiner des conditions booléennes.
-- **Opérateurs d'assignation** : `=`, `+=`, `-=`, `*=`, `/=`
-- **Opérateurs d'incrémentation/décrémentation** : `++`, `--` (préfixe et suffixe)
+
+| Catégorie                              | Opérateurs                                | Description                                               | Exemple                                   |
+|----------------------------------------|-------------------------------------------|-----------------------------------------------------------|-------------------------------------------|
+| **Opérateurs arithmétiques**           | `+`, `-`, `*`, `/`, `%`                   | Utilisés pour les calculs mathématiques simples.           | `int a = 5 + 3; // a vaut 8`              |
+|                                        |                                           |                                                           | `int b = a % 2; // b vaut 0`              |
+| **Opérateurs de comparaison**          | `==`, `!=`, `<`, `>`, `<=`, `>=`          | Utilisés pour comparer deux valeurs.                       | `if (a == 8)`                             |
+|                                        |                                           |                                                           | `if (b > 1)`                              |
+| **Opérateurs logiques**                | `&&`, `\|\|`, `!`                         | Utilisés pour combiner des conditions booléennes.          | `if (a == 8 && b == 0)`                   |
+| **Opérateurs d'assignation**           | `=`, `+=`, `-=`, `*=`, `/=`               | Utilisés pour assigner des valeurs aux variables.          | `a += 2; // a vaut maintenant 10`         |
+|                                        |                                           |                                                           | `b *= 3; // b vaut maintenant 0`          |
+| **Opérateurs d'incrémentation/décrémentation** | `++`, `--` (préfixe et suffixe)   | Utilisés pour augmenter ou diminuer une valeur de un.      | `a++; // a vaut maintenant 11`            |
+|                                        |                                           |                                                           | `--b; // b vaut maintenant -1`            |
 
 ```cpp
-int x = 10;
-int y = 20;
-int z = x + y; // Utilisation d'un opérateur arithmétique
-bool isEqual = (x == y); // Utilisation d'un opérateur de comparaison
-bool isBothTrue = (x < y) && (z > x); // Utilisation d'opérateurs logiques
-x += 5; // Utilisation d'un opérateur d'assignation
-y++; // Incrémentation de y
+int result = 10 / 3; // result vaut 3 
+int remainder = 10 % 3; // remainder vaut 1
 
+if (result != remainder) {
+    cout << "Les valeurs sont différentes." << endl;
+}
+
+bool isAdult = true;
+int age = 20;
+if (isAdult && age >= 18) {
+    cout << "Vous êtes un adulte." << endl;
+}
+
+int x = 10; 
+x += 5; // x est maintenant 15
+
+for (int i = 0; i < 10; i++) { cout << i << " "; } // Affiche 0 1 2 3 4 5 6 7 8 9
 ```
 
 # 5) Contrôle de flux
@@ -128,36 +174,56 @@ y++; // Incrémentation de y
 Les instructions conditionnelles permettent d'exécuter des blocs de code selon que certaines conditions sont vraies ou fausses. Elles sont essentielles pour diriger le flux du programme en fonction des données d'entrée ou des résultats intermédiaires.
 
 **Variations possibles** :
-- **`if`** : Exécute un bloc de code si une condition est vraie.
-- **`else`** : Exécute un bloc de code si la condition précédente `if` est fausse.
-- **`else if`** : Fournit une nouvelle condition à tester si les précédentes conditions `if` ou `else if` sont fausses.
-- **`switch`** : Permet de tester une variable contre une série de valeurs et exécuter différents blocs de code en fonction de ces valeurs.
 
-```cpp
-int score = 85;
-
-if (score > 90) {
-    std::cout << "Excellent!";
-} else if (score > 75) {
-    std::cout << "Bien fait!";
-} else {
-    std::cout << "Vous pouvez faire mieux.";
-}
-
-char grade = 'B';
-
-switch (grade) {
-    case 'A':
-        std::cout << "Parfait!";
+| Instruction   | Description                                                                                        | Exemple                                            |
+| ------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| **`if`**      | Exécute un bloc de code si une condition spécifiée est vraie.                                      | `if (a > b) { cout << "a est plus grand que b"; }` |
+| **`else`**    | Exécute un bloc de code si la condition de l'instruction `if` précédente est fausse.               | `else { cout << "a n'est pas plus grand que b"; }` |
+| **`else if`** | Fournit une condition supplémentaire si les conditions précédentes `if` ou `else if` sont fausses. | `else if (a == b) { cout << "a est égal à b"; }`   |
+| **`switch`**  | Teste une variable par rapport à une série de valeurs pour exécuter différents blocs de code.      | ```cpp                                             |
+switch (x) {
+    case 1:
+        cout << "x est 1";
         break;
-    case 'B':
-    case 'C':
-        std::cout << "Bien!";
+    case 2:
+        cout << "x est 2";
         break;
     default:
-        std::cout << "Médiocre!";
-        break;
+        cout << "x n'est ni 1 ni 2";
 }
+```cpp
+int a = 10, b = 20;
+if (a < b) {
+  cout << "b est plus grand.";
+}
+
+if (a > b) {
+    cout << "a est plus grand.";
+} else {
+    cout << "a n'est pas plus grand.";
+}
+
+if (a > b) {
+    cout << "a est plus grand.";
+} else if (a == b) {
+    cout << "a et b sont égaux.";
+} else {
+    cout << "b est plus grand.";
+}
+
+
+int x = 2;
+switch (x) {
+    case 1:
+        cout << "x est 1";
+        break;
+    case 2:
+        cout << "x est 2";
+        break;
+    default:
+        cout << "x n'est ni 1 ni 2";
+}
+
 ```
 
 ## 5.2 Boucles
@@ -168,6 +234,13 @@ Les boucles permettent de répéter l'exécution d'un bloc de code tant que cert
 - **`for`** : Exécute un bloc de code un nombre prédéterminé de fois, avec une variable de boucle qui s'incrémente ou se décrémente à chaque itération.
 - **`while`** : Continue à exécuter un bloc de code tant que la condition est vraie.
 - **`do-while`** : Similaire à `while`, mais garantit l'exécution du bloc de code au moins une fois avant de vérifier la condition.
+
+| Instruction    | Description                                                                                                                              |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **`for`**      | Exécute un bloc de code un nombre prédéterminé de fois, avec une variable de boucle qui s'incrémente ou se décrémente à chaque itération |
+| **`while`**    | Continue à exécuter un bloc de code tant que la condition est vraie.                                                                     |
+| **`do-while`** | Similaire à `while`, mais garantit l'exécution du bloc de code au moins une fois avant de vérifier la condition.                         |
+
 ```cpp
 // Exemple de boucle for
 for (int i = 0; i < 5; i++) {
@@ -821,8 +894,8 @@ Dans cet exemple, la fonction `max` est un template qui peut comparer deux élé
 - **Réutilisation du code** : Les templates aident à réduire la duplication en gérant de multiples types de données avec une seule définition de fonction ou de classe.
 - **Performance** : Contrairement aux fonctions polymorphes à l'exécution, les templates sont résolus à la compilation, ce qui élimine le coût d'exécution du polymorphisme.
 
-# 15) Mots-clés C++
-## 15.1 Tableau récapitulatif
+# 15) Mots-clés et fonctions standard 
+## 15.1 Tableau récapitulatif Mots-clés
 
 | Mot-clé     | Description                                                                                       | Particularités                             |
 |-------------|---------------------------------------------------------------------------------------------------|--------------------------------------------|
@@ -881,3 +954,35 @@ Dans cet exemple, la fonction `max` est un template qui peut comparer deux élé
 | `void`      | Indique l'absence de type.                                                                       |                                            |
 | `volatile`  | Indique que la valeur d'une variable peut changer à tout moment sans action du code environnant. | Souvent utilisé en programmation embarquée.|
 | `wchar_t`   | Type de caractère large.                                                                         | Utilisé pour les caractères Unicode.       |
+## 15.2 Tableau récapitulatif fonctions standard 
+
+| Fonction           | En-tête Inclus         | Description                                                                 | Exemple                                 |
+|--------------------|------------------------|-----------------------------------------------------------------------------|-----------------------------------------|
+| `std::cout`        | `<iostream>`           | Utilisé pour l'affichage de sortie.                                         | `std::cout << "Hello, world!";`         |
+| `std::cin`         | `<iostream>`           | Utilisé pour l'entrée standard.                                             | `int num; std::cin >> num;`             |
+| `std::getline()`   | `<string>`             | Lit une ligne de texte depuis un flux d'entrée standard.                    | `std::string line; std::getline(std::cin, line);` |
+| `std::sort()`      | `<algorithm>`          | Trie les éléments dans un conteneur.                                        | `std::sort(vec.begin(), vec.end());`    |
+| `std::max()`       | `<algorithm>`          | Retourne le plus grand des éléments fournis.                                | `std::max(5, 10);`                      |
+| `std::min()`       | `<algorithm>`          | Retourne le plus petit des éléments fournis.                                | `std::min(5, 10);`                      |
+| `std::abs()`       | `<cstdlib>`            | Calcule la valeur absolue d'un nombre.                                      | `std::abs(-5);`                         |
+| `std::sqrt()`      | `<cmath>`              | Calcule la racine carrée d'un nombre.                                       | `std::sqrt(25);`                        |
+| `std::pow()`       | `<cmath>`              | Élève un nombre à la puissance spécifiée.                                   | `std::pow(2, 3);`                       |
+| `std::swap()`      | `<utility>`            | Échange les valeurs de deux variables.                                      | `std::swap(a, b);`                      |
+| `std::reverse()`   | `<algorithm>`          | Inverse l'ordre des éléments dans un conteneur.                             | `std::reverse(vec.begin(), vec.end());` |
+| `std::stoi()`      | `<string>`             | Convertit une chaîne en un entier.                                          | `std::stoi("42");`                      |
+| `std::stod()`      | `<string>`             | Convertit une chaîne en un double.                                          | `std::stod("42.0");`                    |
+| `std::string()`    | `<string>`             | Convertit des valeurs en chaîne de caractères.                              | `std::string str = std::to_string(42);` |
+| `std::setprecision()` | `<iomanip>`          | Définit la précision numérique pour le flux de sortie.                      | `std::cout << std::setprecision(4) << 3.14159;` |
+
+### Détails supplémentaires et exemples de code
+
+- **Manipulation d'entrée/sortie**
+  ```cpp
+  #include <iostream>
+  int main() {
+      int age;
+      std::cout << "Enter your age: ";
+      std::cin >> age;
+      std::cout << "You are " << age << " years old.";
+      return 0;
+  }

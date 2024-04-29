@@ -1076,8 +1076,8 @@ Dans cet exemple, la docstring explique clairement ce que fait la fonction `addi
 
 
 
-# 13) Mots-clés python
-## 13.1 Tableau récapitulatif
+# 13) Mots-clés et built-in functions
+## 13.1 Tableau récapitulatif mots-clés
 Voici un tableau Markdown qui décrit les mots-clés en Python et leur utilisation respective. Ce tableau couvre les mots-clés les plus communs et explique brièvement la fonction de chaque mot.
 
 | Mot-clé    | Description                                                                                             | Particularités                               |
@@ -1118,3 +1118,41 @@ Voici un tableau Markdown qui décrit les mots-clés en Python et leur utilisati
 | `with`     | Simplifie l'utilisation des ressources qui nécessitent des opérations de nettoyage.                     |                                              |
 | `yield`    | Utilisé pour transformer une fonction en générateur.                                                    | Renvoie une valeur et pause l'exécution de la fonction. |
 
+## 13.2 Tableau récapitulatif built-in functions
+
+| Fonction      | Description                                                                   | Exemple                                           |
+|---------------|-------------------------------------------------------------------------------|---------------------------------------------------|
+| `abs()`       | Retourne la valeur absolue d'un nombre.                                       | `abs(-5)` donne `5`                               |
+| `all()`       | Retourne `True` si tous les éléments d'un itérable sont vrais.                | `all([True, True, True])` donne `True`            |
+| `any()`       | Retourne `True` si un élément d'un itérable est vrai.                         | `any([False, True, False])` donne `True`          |
+| `bool()`      | Convertit une valeur en booléen.                                              | `bool(0)` donne `False`                           |
+| `chr()`       | Retourne le caractère qui correspond à un entier ASCII.                       | `chr(97)` donne `'a'`                             |
+| `dir()`       | Liste les attributs et méthodes d'un objet sans les valeurs.                  | `dir([])` liste les méthodes de liste             |
+| `divmod()`    | Retourne le quotient et le reste de la division entière de deux nombres.      | `divmod(9, 4)` donne `(2, 1)`                     |
+| `enumerate()` | Retourne un objet énuméré.                                                    | `list(enumerate(['a', 'b']))` donne `[(0, 'a'), (1, 'b')]` |
+| `filter()`    | Filtre les éléments d'un itérable.                                            | `list(filter(lambda x: x > 0, [-1, 0, 1]))` donne `[1]` |
+| `float()`     | Convertit une chaîne ou un nombre en un nombre à virgule flottante.           | `float('3.14')` donne `3.14`                      |
+| `getattr()`   | Retourne la valeur de l'attribut d'un objet.                                  | `getattr(obj, 'attribut')`                        |
+| `hasattr()`   | Vérifie si un objet possède un attribut spécifié.                             | `hasattr(obj, 'attribut')` donne `True` ou `False`|
+| `hash()`      | Retourne la valeur de hachage d'un objet.                                     | `hash('test')`                                    |
+| `help()`      | Appelle le système d'aide intégré.                                            | `help(str)`                                       |
+| `hex()`       | Convertit un entier en une chaîne hexadécimale.                               | `hex(255)` donne `'0xff'`                         |
+| `id()`        | Retourne l'identifiant « identité » d'un objet.                               | `id(obj)`                                         |
+| `input()`     | Permet à l'utilisateur de saisir une chaîne.                                  | `nom = input('Entrez votre nom: ')`               |
+| `int()`       | Convertit une chaîne ou un nombre en un entier.                               | `int('10')` donne `10`                            |
+| `isinstance()`| Vérifie si un objet est une instance d'une classe ou d'un tuple de classes.   | `isinstance(5, int)` donne `True`                 |
+| `len()`       | Retourne le nombre d'éléments dans un objet.                                  | `len([1, 2, 3])` donne `3`                        |
+| `list()`      | Convertit un itérable en liste.                                               | `list('abc')` donne `['a', 'b', 'c']`              |
+| `map()`       | Applique une fonction à tous les éléments d'un itérable.                      | `list(map(lambda x: x * 2, [1, 2, 3]))` donne `[2, 4, 6]` |
+| `max()`       | Retourne le plus grand élément dans un itérable.                              | `max([1, 2, 3])` donne `3`                        |
+| `min()`       | Retourne le plus petit élément dans un itérable.                              | `min([1, 2, 3])` donne `1`                        |
+| `ord()`       | Convertit un caractère en son code ASCII correspondant.                       | `ord('a')` donne `97`                             |
+| `print()`     | Affiche des arguments avec une séparation et une fin de ligne spécifiées.     | `print('Hello, world!')`                          |
+| `range()`     | Génère une séquence de nombres.                                               | `list(range(5))` donne `[0, 1, 2, 3, 4]`          |
+| `round()`     | Arrondit un nombre à virgule flottante à un certain nombre de décimales.      | `round(3.14159, 2)` donne `3.14`                  |
+| `set()`       | Crée un nouvel ensemble, une collection non ordonnée d'éléments uniques.      | `set([1, 2, 2, 3])` donne `{1, 2, 3}`             |
+| `sorted()`    | Retourne une nouvelle liste triée à partir des éléments d'un itérable.        | `sorted([3, 1, 2])` donne `[1, 2, 3]`             |
+| `str()`       | Convertit un objet en chaîne de caractères.                                   | `str(10)` donne `'10'`                            |
+| `sum()`       | Somme tous les éléments d'un itérable.                                        | `sum([1, 2, 3])` donne `6`                        |
+| `type()`      | Retourne le type de l'objet.                                                  | `type('Hello')` donne `<class 'str'>`             |
+| `zip()`       | Agrège les éléments de deux ou plusieurs itérables.                           | `list(zip([1, 2], ['a', 'b']))` donne `[(1, 'a'), (2, 'b')]` |

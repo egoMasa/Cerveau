@@ -176,6 +176,53 @@ message = "Bonjour"  # Une chaîne de caractères
 actif = True       # Un booléen
 ```
 
+| str.method()                                                                   | Description                                                                                   |
+| ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| [capitalize()](https://www.w3schools.com/python/ref_string_capitalize.asp)     | Converts the first character to upper case                                                    |
+| [casefold()](https://www.w3schools.com/python/ref_string_casefold.asp)         | Converts string into lower case                                                               |
+| [center()](https://www.w3schools.com/python/ref_string_center.asp)             | Returns a centered string                                                                     |
+| [count()](https://www.w3schools.com/python/ref_string_count.asp)               | Returns the number of times a specified value occurs in a string                              |
+| [encode()](https://www.w3schools.com/python/ref_string_encode.asp)             | Returns an encoded version of the string                                                      |
+| [endswith()](https://www.w3schools.com/python/ref_string_endswith.asp)         | Returns true if the string ends with the specified value                                      |
+| [expandtabs()](https://www.w3schools.com/python/ref_string_expandtabs.asp)     | Sets the tab size of the string                                                               |
+| [find()](https://www.w3schools.com/python/ref_string_find.asp)                 | Searches the string for a specified value and returns the position of where it was found      |
+| [format()](https://www.w3schools.com/python/ref_string_format.asp)             | Formats specified values in a string                                                          |
+| format_map()                                                                   | Formats specified values in a string                                                          |
+| [index()](https://www.w3schools.com/python/ref_string_index.asp)               | Searches the string for a specified value and returns the position of where it was found      |
+| [isalnum()](https://www.w3schools.com/python/ref_string_isalnum.asp)           | Returns True if all characters in the string are alphanumeric                                 |
+| [isalpha()](https://www.w3schools.com/python/ref_string_isalpha.asp)           | Returns True if all characters in the string are in the alphabet                              |
+| [isascii()](https://www.w3schools.com/python/ref_string_isascii.asp)           | Returns True if all characters in the string are ascii characters                             |
+| [isdecimal()](https://www.w3schools.com/python/ref_string_isdecimal.asp)       | Returns True if all characters in the string are decimals                                     |
+| [isdigit()](https://www.w3schools.com/python/ref_string_isdigit.asp)           | Returns True if all characters in the string are digits                                       |
+| [isidentifier()](https://www.w3schools.com/python/ref_string_isidentifier.asp) | Returns True if the string is an identifier                                                   |
+| [islower()](https://www.w3schools.com/python/ref_string_islower.asp)           | Returns True if all characters in the string are lower case                                   |
+| [isnumeric()](https://www.w3schools.com/python/ref_string_isnumeric.asp)       | Returns True if all characters in the string are numeric                                      |
+| [isprintable()](https://www.w3schools.com/python/ref_string_isprintable.asp)   | Returns True if all characters in the string are printable                                    |
+| [isspace()](https://www.w3schools.com/python/ref_string_isspace.asp)           | Returns True if all characters in the string are whitespaces                                  |
+| [istitle()](https://www.w3schools.com/python/ref_string_istitle.asp)           | Returns True if the string follows the rules of a title                                       |
+| [isupper()](https://www.w3schools.com/python/ref_string_isupper.asp)           | Returns True if all characters in the string are upper case                                   |
+| [join()](https://www.w3schools.com/python/ref_string_join.asp)                 | Converts the elements of an iterable into a string                                            |
+| [ljust()](https://www.w3schools.com/python/ref_string_ljust.asp)               | Returns a left justified version of the string                                                |
+| [lower()](https://www.w3schools.com/python/ref_string_lower.asp)               | Converts a string into lower case                                                             |
+| [lstrip()](https://www.w3schools.com/python/ref_string_lstrip.asp)             | Returns a left trim version of the string                                                     |
+| [maketrans()](https://www.w3schools.com/python/ref_string_maketrans.asp)       | Returns a translation table to be used in translations                                        |
+| [partition()](https://www.w3schools.com/python/ref_string_partition.asp)       | Returns a tuple where the string is parted into three parts                                   |
+| [replace()](https://www.w3schools.com/python/ref_string_replace.asp)           | Returns a string where a specified value is replaced with a specified value                   |
+| [rfind()](https://www.w3schools.com/python/ref_string_rfind.asp)               | Searches the string for a specified value and returns the last position of where it was found |
+| [rindex()](https://www.w3schools.com/python/ref_string_rindex.asp)             | Searches the string for a specified value and returns the last position of where it was found |
+| [rjust()](https://www.w3schools.com/python/ref_string_rjust.asp)               | Returns a right justified version of the string                                               |
+| [rpartition()](https://www.w3schools.com/python/ref_string_rpartition.asp)     | Returns a tuple where the string is parted into three parts                                   |
+| [rsplit()](https://www.w3schools.com/python/ref_string_rsplit.asp)             | Splits the string at the specified separator, and returns a list                              |
+| [rstrip()](https://www.w3schools.com/python/ref_string_rstrip.asp)             | Returns a right trim version of the string                                                    |
+| [split()](https://www.w3schools.com/python/ref_string_split.asp)               | Splits the string at the specified separator, and returns a list                              |
+| [splitlines()](https://www.w3schools.com/python/ref_string_splitlines.asp)     | Splits the string at line breaks and returns a list                                           |
+| [startswith()](https://www.w3schools.com/python/ref_string_startswith.asp)     | Returns true if the string starts with the specified value                                    |
+| [strip()](https://www.w3schools.com/python/ref_string_strip.asp)               | Returns a trimmed version of the string                                                       |
+| [swapcase()](https://www.w3schools.com/python/ref_string_swapcase.asp)         | Swaps cases, lower case becomes upper case and vice versa                                     |
+| [title()](https://www.w3schools.com/python/ref_string_title.asp)               | Converts the first character of each word to upper case                                       |
+| [translate()](https://www.w3schools.com/python/ref_string_translate.asp)       | Returns a translated string                                                                   |
+| [upper()](https://www.w3schools.com/python/ref_string_upper.asp)               | Converts a string into upper case                                                             |
+| [zfill()](https://www.w3schools.com/python/ref_string_zfill.asp)               | Fills the string with a specified number of 0 values at the beginning                         |
 ## 2.3 Opérateurs
 
 Python offre une gamme complète d'opérateurs pour effectuer des calculs arithmétiques, des comparaisons et des opérations logiques. Ces opérateurs comprennent :
@@ -336,21 +383,19 @@ Les listes en Python sont des collections ordonnées et modifiables qui peuvent 
 - **Création** : Utilisation de crochets `[]` pour créer une liste.
 - **Accès aux éléments** : Utilisation de l'indexation, commençant à zéro.
 
-| Méthode             | Description                                                                                     |
-|---------------------|-------------------------------------------------------------------------------------------------|
-| **Création**        | `liste = []` Utilisation de crochets pour créer une liste vide.                                 |
-| **Accès aux éléments** | `liste[index]` Accès aux éléments par leur index, où l'indexation commence à zéro.              |
-| **append(x)**       | Ajoute un élément `x` à la fin de la liste.                                                     |
-| **extend(iterable)**| Étend la liste en ajoutant tous les éléments de l'itérable à la fin.                            |
-| **insert(index, x)**| Insère un élément `x` à la position donnée `index`.                                             |
-| **remove(x)**       | Supprime le premier élément dont la valeur est `x`. Lève une ValueError si l'élément n'existe pas.|
-| **pop(index=-1)**   | Supprime l'élément à la position donnée et le retourne. Par défaut, supprime et retourne le dernier élément. |
-| **clear()**         | Supprime tous les éléments de la liste.                                                         |
-| **index(x, start=0, end=len(list))** | Retourne l'index du premier élément dont la valeur est `x`. Lève une ValueError si non trouvé. |
-| **count(x)**        | Retourne le nombre de fois que `x` apparaît dans la liste.                                      |
-| **sort(key=None, reverse=False)** | Trie les éléments de la liste in situ (les modifications sont appliquées sur la liste originale).|
-| **reverse()**       | Inverse les éléments de la liste in situ.                                                       |
-| **copy()**          | Retourne une copie superficielle de la liste.                                                   |
+| Method                                                             | Description                                                                  |
+| ------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| [append()](https://www.w3schools.com/python/ref_list_append.asp)   | Adds an element at the end of the list                                       |
+| [clear()](https://www.w3schools.com/python/ref_list_clear.asp)     | Removes all the elements from the list                                       |
+| [copy()](https://www.w3schools.com/python/ref_list_copy.asp)       | Returns a copy of the list                                                   |
+| [count()](https://www.w3schools.com/python/ref_list_count.asp)     | Returns the number of elements with the specified value                      |
+| [extend()](https://www.w3schools.com/python/ref_list_extend.asp)   | Add the elements of a list (or any iterable), to the end of the current list |
+| [index()](https://www.w3schools.com/python/ref_list_index.asp)     | Returns the index of the first element with the specified value              |
+| [insert()](https://www.w3schools.com/python/ref_list_insert.asp)   | Adds an element at the specified position                                    |
+| [pop()](https://www.w3schools.com/python/ref_list_pop.asp)         | Removes the element at the specified position                                |
+| [remove()](https://www.w3schools.com/python/ref_list_remove.asp)   | Removes the first item with the specified value                              |
+| [reverse()](https://www.w3schools.com/python/ref_list_reverse.asp) | Reverses the order of the list                                               |
+| [sort()](https://www.w3schools.com/python/ref_list_sort.asp)       | Sorts the list                                                               |
 
 ### Exemples d'utilisation
 
@@ -421,17 +466,10 @@ print(fruits)  # ['banane', 'orange', 'pomme']
 
 Les tuples sont des collections qui sont très similaires aux listes, mais immuables. Une fois créé, un tuple ne peut pas être modifié. Cela les rend utiles pour stocker des ensembles de valeurs qui ne doivent pas changer au cours de l'exécution du programme.
 
-| Opération / Méthode  | Description                                                                                         |
-|----------------------|-----------------------------------------------------------------------------------------------------|
-| **Création**         | `mon_tuple = (1, 2, 3)` Utilisation de parenthèses pour créer un tuple.                             |
-| **Accès aux éléments** | `mon_tuple[index]` Accès aux éléments par leur index, où l'indexation commence à zéro.              |
-| **count(x)**         | Compte le nombre d'occurrences de `x` dans le tuple.                                                |
-| **index(x)**         | Trouve la première occurrence de `x` dans le tuple et retourne son index.                           |
-| **Concaténation**    | `tuple1 + tuple2` Concatène deux tuples pour en former un nouveau.                                  |
-| **Répétition**       | `tuple1 * 3` Crée un nouveau tuple qui répète les éléments de `tuple1` trois fois.                  |
-| **Longueur**         | `len(tuple1)` Retourne le nombre d'éléments dans le tuple.                                          |
-| **Min/Max**          | `min(tuple1)`, `max(tuple1)` Retourne les valeurs minimales et maximales dans le tuple.             |
-| **Immuabilité**      | Les tuples ne peuvent pas être modifiés après leur création (pas de méthodes `append`, `remove`).   |
+| Method                                                          | Description                                                                             |
+| --------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [count()](https://www.w3schools.com/python/ref_tuple_count.asp) | Returns the number of times a specified value occurs in a tuple                         |
+| [index()](https://www.w3schools.com/python/ref_tuple_index.asp) | Searches the tuple for a specified value and returns the position of where it was found |
 
 ### Exemples d'utilisation
 
@@ -472,19 +510,19 @@ Les dictionnaires en Python sont des collections non ordonnées de paires clé-v
 - **Création** : Utilisation de `{}` ou `dict()`.
 - **Accès aux éléments** : Accès via les clés.
 
-| Méthode / Opération   | Description                                                                                                 |
-|-----------------------|-------------------------------------------------------------------------------------------------------------|
-| **Création**          | `mon_dict = {'cle1': 'valeur1', 'cle2': 'valeur2'}` Crée un dictionnaire avec des paires clé-valeur.        |
-| **Accès aux éléments**| `mon_dict['cle1']` Accède à l'élément par la clé. Si la clé n'existe pas, lève une `KeyError`.               |
-| **get(key, default=None)** | Retourne la valeur pour une clé donnée. Retourne `default` si la clé n'existe pas.                         |
-| **setdefault(key, default=None)** | Retourne la valeur de la clé si elle existe, sinon ajoute la clé avec la valeur `default`.              |
-| **update({key: value})** | Ajoute plusieurs paires clé-valeur à partir d'un autre dictionnaire ou d'un iterable de paires.           |
-| **keys()**            | Retourne un nouvel affichage des clés dans le dictionnaire.                                                  |
-| **values()**          | Retourne un nouvel affichage des valeurs dans le dictionnaire.                                               |
-| **items()**           | Retourne un nouvel affichage des paires clé-valeur sous forme de tuples.                                      |
-| **pop(key)**          | Supprime la clé et retourne la valeur associée. Si la clé n'est pas trouvée, lève une `KeyError`.            |
-| **popitem()**         | Supprime et retourne une paire (clé, valeur) arbitraire. Lève une `KeyError` si le dictionnaire est vide.    |
-| **clear()**           | Supprime tous les éléments du dictionnaire.                                                                  |
+| Method                                                                         | Description                                                                                                 |
+| ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| [clear()](https://www.w3schools.com/python/ref_dictionary_clear.asp)           | Removes all the elements from the dictionary                                                                |
+| [copy()](https://www.w3schools.com/python/ref_dictionary_copy.asp)             | Returns a copy of the dictionary                                                                            |
+| [fromkeys()](https://www.w3schools.com/python/ref_dictionary_fromkeys.asp)     | Returns a dictionary with the specified keys and value                                                      |
+| [get()](https://www.w3schools.com/python/ref_dictionary_get.asp)               | Returns the value of the specified key                                                                      |
+| [items()](https://www.w3schools.com/python/ref_dictionary_items.asp)           | Returns a list containing a tuple for each key value pair                                                   |
+| [keys()](https://www.w3schools.com/python/ref_dictionary_keys.asp)             | Returns a list containing the dictionary's keys                                                             |
+| [pop()](https://www.w3schools.com/python/ref_dictionary_pop.asp)               | Removes the element with the specified key                                                                  |
+| [popitem()](https://www.w3schools.com/python/ref_dictionary_popitem.asp)       | Removes the last inserted key-value pair                                                                    |
+| [setdefault()](https://www.w3schools.com/python/ref_dictionary_setdefault.asp) | Returns the value of the specified key. If the key does not exist: insert the key, with the specified value |
+| [update()](https://www.w3schools.com/python/ref_dictionary_update.asp)         | Updates the dictionary with the specified key-value pairs                                                   |
+| [values()](https://www.w3schools.com/python/ref_dictionary_values.asp)         | Returns a list of all the values in the dictionary                                                          |
 
 ### Exemples d'utilisation
 
@@ -535,26 +573,31 @@ for cle, valeur in personne.items():
     print(f"{cle}: {valeur}")
 ```
 
-## 5.4 Ensembles
+## 5.4 Ensembles (set)
 
 Les ensembles sont des collections non ordonnées de valeurs uniques. Ils sont utilisés pour stocker des éléments sans doublons et pour effectuer des opérations mathématiques comme des unions, intersections, et différences.
 
-| Méthode / Opération   | Description                                                                                              |
-|-----------------------|----------------------------------------------------------------------------------------------------------|
-| **Création**          | `mon_ensemble = {1, 2, 3}` Crée un ensemble. Les doublons sont automatiquement éliminés.                 |
-| **add(x)**            | Ajoute un élément `x` à l'ensemble, si `x` n'est pas déjà présent.                                       |
-| **update([x, y, ...])** | Ajoute plusieurs éléments à l'ensemble.                                                                 |
-| **remove(x)**         | Supprime `x` de l'ensemble. Lève une `KeyError` si `x` n'est pas trouvé.                                |
-| **discard(x)**        | Supprime `x` de l'ensemble si présent. Ne lève pas d'erreur si `x` n'est pas trouvé.                     |
-| **pop()**             | Supprime et retourne un élément arbitraire de l'ensemble. Lève une `KeyError` si l'ensemble est vide.    |
-| **clear()**           | Supprime tous les éléments de l'ensemble.                                                                |
-| **union(\*others)**   | Retourne un nouvel ensemble contenant tous les éléments de l'ensemble et de tous les `others`.           |
-| **intersection(\*others)** | Retourne un nouvel ensemble avec les éléments communs à l'ensemble et à tous les `others`.            |
-| **difference(\*others)** | Retourne un nouvel ensemble avec les éléments de l'ensemble qui ne sont pas dans les `others`.       |
-| **symmetric_difference(other)** | Retourne un nouvel ensemble avec les éléments qui sont dans l'un des ensembles mais pas dans les deux. |
-| **issubset(other)**   | Retourne `True` si l'ensemble est un sous-ensemble de `other`, sinon `False`.                            |
-| **issuperset(other)** | Retourne `True` si l'ensemble est un sur-ensemble de `other`, sinon `False`.                             |
-| **isdisjoint(other)** | Retourne `True` si l'ensemble n'a aucun élément en commun avec `other`, sinon `False`.                   |
+| Method                                                                                                    | Description                                                                    |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| [add()](https://www.w3schools.com/python/ref_set_add.asp)                                                 | Adds an element to the set                                                     |
+| [clear()](https://www.w3schools.com/python/ref_set_clear.asp)                                             | Removes all the elements from the set                                          |
+| [copy()](https://www.w3schools.com/python/ref_set_copy.asp)                                               | Returns a copy of the set                                                      |
+| [difference()](https://www.w3schools.com/python/ref_set_difference.asp)                                   | Returns a set containing the difference between two or more sets               |
+| [difference_update()](https://www.w3schools.com/python/ref_set_difference_update.asp)                     | Removes the items in this set that are also included in another, specified set |
+| [discard()](https://www.w3schools.com/python/ref_set_discard.asp)                                         | Remove the specified item                                                      |
+| [intersection()](https://www.w3schools.com/python/ref_set_intersection.asp)                               | Returns a set, that is the intersection of two other sets                      |
+| [intersection_update()](https://www.w3schools.com/python/ref_set_intersection_update.asp)                 | Removes the items in this set that are not present in other, specified set(s)  |
+| [isdisjoint()](https://www.w3schools.com/python/ref_set_isdisjoint.asp)                                   | Returns whether two sets have a intersection or not                            |
+| [issubset()](https://www.w3schools.com/python/ref_set_issubset.asp)                                       | Returns whether another set contains this set or not                           |
+|                                                                                                           | Returns whether all items in this set is present in other, specified set(s)    |
+| [issuperset()](https://www.w3schools.com/python/ref_set_issuperset.asp)                                   | Returns whether this set contains another set or not                           |
+|                                                                                                           | Returns whether all items in other, specified set(s) is present in this set    |
+| [pop()](https://www.w3schools.com/python/ref_set_pop.asp)                                                 | Removes an element from the set                                                |
+| [remove()](https://www.w3schools.com/python/ref_set_remove.asp)                                           | Removes the specified element                                                  |
+| [symmetric_difference()](https://www.w3schools.com/python/ref_set_symmetric_difference.asp)               | Returns a set with the symmetric differences of two sets                       |
+| [symmetric_difference_update()](https://www.w3schools.com/python/ref_set_symmetric_difference_update.asp) | Inserts the symmetric differences from this set and another                    |
+| [union()](https://www.w3schools.com/python/ref_set_union.asp)                                             | Return a set containing the union of sets                                      |
+| [update()](https://www.w3schools.com/python/ref_set_update.asp)                                           | Update the set with the union of this set and others                           |
 
 ### Exemples d'utilisation
 
@@ -594,17 +637,24 @@ print({1, 2}.issubset(mon_ensemble))  # True
 
 La manipulation de fichiers en Python est une compétence essentielle, permettant aux programmes de lire des données depuis des fichiers et d'y écrire des données. Python simplifie la gestion des fichiers grâce à des fonctions intégrées comme
 
-| Méthode                    | Description                                                                                             |
-| -------------------------- | ------------------------------------------------------------------------------------------------------- |
-| **read(size=-1)**          | Lit et retourne jusqu'à `size` caractères du fichier. Lit jusqu'à la fin si `size` est omis ou négatif. |
-| **readline(size=-1)**      | Lit la ligne suivante du fichier, jusqu'à `size` caractères.                                            |
-| **readlines(hint=-1)**     | Lit et retourne une liste de lignes du fichier. `hint` peut limiter le nombre de lignes retournées.     |
-| **write(string)**          | Écrit la chaîne `string` dans le fichier et retourne le nombre de caractères écrits.                    |
-| **writelines(lines)**      | Écrit une liste de `lines` dans le fichier (ne rajoute pas automatiquement de nouvelles lignes).        |
-| **seek(offset, whence=0)** | Déplace le curseur à la position `offset` relative à `whence` (0: début, 1: position actuelle, 2: fin). |
-| **tell()**                 | Retourne la position actuelle du curseur dans le fichier.                                               |
-| **flush()**                | Rafraîchit le tampon d'écriture du fichier.                                                             |
-| **close()**                | Ferme le fichier. Note : pas nécessaire avec `with`, car la fermeture est automatique.                  |
+| Method                                                                   | Description                                                                          |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| [close()](https://www.w3schools.com/python/ref_file_close.asp)           | Closes the file                                                                      |
+| detach()                                                                 | Returns the separated raw stream from the buffer                                     |
+| [fileno()](https://www.w3schools.com/python/ref_file_fileno.asp)         | Returns a number that represents the stream, from the operating system's perspective |
+| [flush()](https://www.w3schools.com/python/ref_file_flush.asp)           | Flushes the internal buffer                                                          |
+| [isatty()](https://www.w3schools.com/python/ref_file_isatty.asp)         | Returns whether the file stream is interactive or not                                |
+| [read()](https://www.w3schools.com/python/ref_file_read.asp)             | Returns the file content                                                             |
+| [readable()](https://www.w3schools.com/python/ref_file_readable.asp)     | Returns whether the file stream can be read or not                                   |
+| [readline()](https://www.w3schools.com/python/ref_file_readline.asp)     | Returns one line from the file                                                       |
+| [readlines()](https://www.w3schools.com/python/ref_file_readlines.asp)   | Returns a list of lines from the file                                                |
+| [seek()](https://www.w3schools.com/python/ref_file_seek.asp)             | Change the file position                                                             |
+| [seekable()](https://www.w3schools.com/python/ref_file_seekable.asp)     | Returns whether the file allows us to change the file position                       |
+| [tell()](https://www.w3schools.com/python/ref_file_tell.asp)             | Returns the current file position                                                    |
+| [truncate()](https://www.w3schools.com/python/ref_file_truncate.asp)     | Resizes the file to a specified size                                                 |
+| [writable()](https://www.w3schools.com/python/ref_file_writable.asp)     | Returns whether the file can be written to or not                                    |
+| [write()](https://www.w3schools.com/python/ref_file_write.asp)           | Writes the specified string to the file                                              |
+| [writelines()](https://www.w3schools.com/python/ref_file_writelines.asp) | Writes a list of strings to the file                                                 |
 ## Exemples d'utilisation
 
 ```python
@@ -654,6 +704,41 @@ Les exceptions en Python sont des événements qui peuvent modifier le flux norm
 - **`else`** : Si le code dans le bloc `try` ne génère pas d'erreur, le code dans le bloc `else` est exécuté.
 - **`finally`** : Ce bloc vous permet d'exécuter du code, indépendamment du résultat des blocs `try` et `except`. Ce code est souvent utilisé pour des actions de nettoyage.
 
+| Exception             | Description                                                                       |
+| --------------------- | --------------------------------------------------------------------------------- |
+| ArithmeticError       | Raised when an error occurs in numeric calculations                               |
+| AssertionError        | Raised when an assert statement fails                                             |
+| AttributeError        | Raised when attribute reference or assignment fails                               |
+| Exception             | Base class for all exceptions                                                     |
+| EOFError              | Raised when the input() method hits an "end of file" condition (EOF)              |
+| FloatingPointError    | Raised when a floating point calculation fails                                    |
+| GeneratorExit         | Raised when a generator is closed (with the close() method)                       |
+| ImportError           | Raised when an imported module does not exist                                     |
+| IndentationError      | Raised when indentation is not correct                                            |
+| IndexError            | Raised when an index of a sequence does not exist                                 |
+| KeyError              | Raised when a key does not exist in a dictionary                                  |
+| KeyboardInterrupt     | Raised when the user presses Ctrl+c, Ctrl+z or Delete                             |
+| LookupError           | Raised when errors raised cant be found                                           |
+| MemoryError           | Raised when a program runs out of memory                                          |
+| NameError             | Raised when a variable does not exist                                             |
+| NotImplementedError   | Raised when an abstract method requires an inherited class to override the method |
+| OSError               | Raised when a system related operation causes an error                            |
+| OverflowError         | Raised when the result of a numeric calculation is too large                      |
+| ReferenceError        | Raised when a weak reference object does not exist                                |
+| RuntimeError          | Raised when an error occurs that do not belong to any specific exceptions         |
+| StopIteration         | Raised when the next() method of an iterator has no further values                |
+| SyntaxError           | Raised when a syntax error occurs                                                 |
+| TabError              | Raised when indentation consists of tabs or spaces                                |
+| SystemError           | Raised when a system error occurs                                                 |
+| SystemExit            | Raised when the sys.exit() function is called                                     |
+| TypeError             | Raised when two different types are combined                                      |
+| UnboundLocalError     | Raised when a local variable is referenced before assignment                      |
+| UnicodeError          | Raised when a unicode problem occurs                                              |
+| UnicodeEncodeError    | Raised when a unicode encoding problem occurs                                     |
+| UnicodeDecodeError    | Raised when a unicode decoding problem occurs                                     |
+| UnicodeTranslateError | Raised when a unicode translation problem occurs                                  |
+| ValueError            | Raised when there is a wrong value in a specified data type                       |
+| ZeroDivisionError     | Raised when the second operator in a division is zero                             |
 #### Exemple en code :
 
 **Gestion simple d'exception** :
@@ -1108,7 +1193,7 @@ Dans cet exemple, la docstring explique clairement ce que fait la fonction `addi
 
 
 # 13) Mots-clés et built-in functions
-## 13.1 Tableau récapitulatif mots-clés
+## 13.1 Tableau récapitulatif keyword
 Voici un tableau Markdown qui décrit les mots-clés en Python et leur utilisation respective. Ce tableau couvre les mots-clés les plus communs et explique brièvement la fonction de chaque mot.
 
 | Mot-clé    | Description                                                                                             | Particularités                               |
@@ -1151,39 +1236,72 @@ Voici un tableau Markdown qui décrit les mots-clés en Python et leur utilisati
 
 ## 13.2 Tableau récapitulatif built-in functions
 
-| Fonction      | Description                                                                   | Exemple                                           |
-|---------------|-------------------------------------------------------------------------------|---------------------------------------------------|
-| `abs()`       | Retourne la valeur absolue d'un nombre.                                       | `abs(-5)` donne `5`                               |
-| `all()`       | Retourne `True` si tous les éléments d'un itérable sont vrais.                | `all([True, True, True])` donne `True`            |
-| `any()`       | Retourne `True` si un élément d'un itérable est vrai.                         | `any([False, True, False])` donne `True`          |
-| `bool()`      | Convertit une valeur en booléen.                                              | `bool(0)` donne `False`                           |
-| `chr()`       | Retourne le caractère qui correspond à un entier ASCII.                       | `chr(97)` donne `'a'`                             |
-| `dir()`       | Liste les attributs et méthodes d'un objet sans les valeurs.                  | `dir([])` liste les méthodes de liste             |
-| `divmod()`    | Retourne le quotient et le reste de la division entière de deux nombres.      | `divmod(9, 4)` donne `(2, 1)`                     |
-| `enumerate()` | Retourne un objet énuméré.                                                    | `list(enumerate(['a', 'b']))` donne `[(0, 'a'), (1, 'b')]` |
-| `filter()`    | Filtre les éléments d'un itérable.                                            | `list(filter(lambda x: x > 0, [-1, 0, 1]))` donne `[1]` |
-| `float()`     | Convertit une chaîne ou un nombre en un nombre à virgule flottante.           | `float('3.14')` donne `3.14`                      |
-| `getattr()`   | Retourne la valeur de l'attribut d'un objet.                                  | `getattr(obj, 'attribut')`                        |
-| `hasattr()`   | Vérifie si un objet possède un attribut spécifié.                             | `hasattr(obj, 'attribut')` donne `True` ou `False`|
-| `hash()`      | Retourne la valeur de hachage d'un objet.                                     | `hash('test')`                                    |
-| `help()`      | Appelle le système d'aide intégré.                                            | `help(str)`                                       |
-| `hex()`       | Convertit un entier en une chaîne hexadécimale.                               | `hex(255)` donne `'0xff'`                         |
-| `id()`        | Retourne l'identifiant « identité » d'un objet.                               | `id(obj)`                                         |
-| `input()`     | Permet à l'utilisateur de saisir une chaîne.                                  | `nom = input('Entrez votre nom: ')`               |
-| `int()`       | Convertit une chaîne ou un nombre en un entier.                               | `int('10')` donne `10`                            |
-| `isinstance()`| Vérifie si un objet est une instance d'une classe ou d'un tuple de classes.   | `isinstance(5, int)` donne `True`                 |
-| `len()`       | Retourne le nombre d'éléments dans un objet.                                  | `len([1, 2, 3])` donne `3`                        |
-| `list()`      | Convertit un itérable en liste.                                               | `list('abc')` donne `['a', 'b', 'c']`              |
-| `map()`       | Applique une fonction à tous les éléments d'un itérable.                      | `list(map(lambda x: x * 2, [1, 2, 3]))` donne `[2, 4, 6]` |
-| `max()`       | Retourne le plus grand élément dans un itérable.                              | `max([1, 2, 3])` donne `3`                        |
-| `min()`       | Retourne le plus petit élément dans un itérable.                              | `min([1, 2, 3])` donne `1`                        |
-| `ord()`       | Convertit un caractère en son code ASCII correspondant.                       | `ord('a')` donne `97`                             |
-| `print()`     | Affiche des arguments avec une séparation et une fin de ligne spécifiées.     | `print('Hello, world!')`                          |
-| `range()`     | Génère une séquence de nombres.                                               | `list(range(5))` donne `[0, 1, 2, 3, 4]`          |
-| `round()`     | Arrondit un nombre à virgule flottante à un certain nombre de décimales.      | `round(3.14159, 2)` donne `3.14`                  |
-| `set()`       | Crée un nouvel ensemble, une collection non ordonnée d'éléments uniques.      | `set([1, 2, 2, 3])` donne `{1, 2, 3}`             |
-| `sorted()`    | Retourne une nouvelle liste triée à partir des éléments d'un itérable.        | `sorted([3, 1, 2])` donne `[1, 2, 3]`             |
-| `str()`       | Convertit un objet en chaîne de caractères.                                   | `str(10)` donne `'10'`                            |
-| `sum()`       | Somme tous les éléments d'un itérable.                                        | `sum([1, 2, 3])` donne `6`                        |
-| `type()`      | Retourne le type de l'objet.                                                  | `type('Hello')` donne `<class 'str'>`             |
-| `zip()`       | Agrège les éléments de deux ou plusieurs itérables.                           | `list(zip([1, 2], ['a', 'b']))` donne `[(1, 'a'), (2, 'b')]` |
+|Function|Description|
+|---|---|
+|[abs()](https://www.w3schools.com/python/ref_func_abs.asp)|Returns the absolute value of a number|
+|[all()](https://www.w3schools.com/python/ref_func_all.asp)|Returns True if all items in an iterable object are true|
+|[any()](https://www.w3schools.com/python/ref_func_any.asp)|Returns True if any item in an iterable object is true|
+|[ascii()](https://www.w3schools.com/python/ref_func_ascii.asp)|Returns a readable version of an object. Replaces none-ascii characters with escape character|
+|[bin()](https://www.w3schools.com/python/ref_func_bin.asp)|Returns the binary version of a number|
+|[bool()](https://www.w3schools.com/python/ref_func_bool.asp)|Returns the boolean value of the specified object|
+|[bytearray()](https://www.w3schools.com/python/ref_func_bytearray.asp)|Returns an array of bytes|
+|[bytes()](https://www.w3schools.com/python/ref_func_bytes.asp)|Returns a bytes object|
+|[callable()](https://www.w3schools.com/python/ref_func_callable.asp)|Returns True if the specified object is callable, otherwise False|
+|[chr()](https://www.w3schools.com/python/ref_func_chr.asp)|Returns a character from the specified Unicode code.|
+|classmethod()|Converts a method into a class method|
+|[compile()](https://www.w3schools.com/python/ref_func_compile.asp)|Returns the specified source as an object, ready to be executed|
+|[complex()](https://www.w3schools.com/python/ref_func_complex.asp)|Returns a complex number|
+|[delattr()](https://www.w3schools.com/python/ref_func_delattr.asp)|Deletes the specified attribute (property or method) from the specified object|
+|[dict()](https://www.w3schools.com/python/ref_func_dict.asp)|Returns a dictionary (Array)|
+|[dir()](https://www.w3schools.com/python/ref_func_dir.asp)|Returns a list of the specified object's properties and methods|
+|[divmod()](https://www.w3schools.com/python/ref_func_divmod.asp)|Returns the quotient and the remainder when argument1 is divided by argument2|
+|[enumerate()](https://www.w3schools.com/python/ref_func_enumerate.asp)|Takes a collection (e.g. a tuple) and returns it as an enumerate object|
+|[eval()](https://www.w3schools.com/python/ref_func_eval.asp)|Evaluates and executes an expression|
+|[exec()](https://www.w3schools.com/python/ref_func_exec.asp)|Executes the specified code (or object)|
+|[filter()](https://www.w3schools.com/python/ref_func_filter.asp)|Use a filter function to exclude items in an iterable object|
+|[float()](https://www.w3schools.com/python/ref_func_float.asp)|Returns a floating point number|
+|[format()](https://www.w3schools.com/python/ref_func_format.asp)|Formats a specified value|
+|[frozenset()](https://www.w3schools.com/python/ref_func_frozenset.asp)|Returns a frozenset object|
+|[getattr()](https://www.w3schools.com/python/ref_func_getattr.asp)|Returns the value of the specified attribute (property or method)|
+|[globals()](https://www.w3schools.com/python/ref_func_globals.asp)|Returns the current global symbol table as a dictionary|
+|[hasattr()](https://www.w3schools.com/python/ref_func_hasattr.asp)|Returns True if the specified object has the specified attribute (property/method)|
+|hash()|Returns the hash value of a specified object|
+|help()|Executes the built-in help system|
+|[hex()](https://www.w3schools.com/python/ref_func_hex.asp)|Converts a number into a hexadecimal value|
+|[id()](https://www.w3schools.com/python/ref_func_id.asp)|Returns the id of an object|
+|[input()](https://www.w3schools.com/python/ref_func_input.asp)|Allowing user input|
+|[int()](https://www.w3schools.com/python/ref_func_int.asp)|Returns an integer number|
+|[isinstance()](https://www.w3schools.com/python/ref_func_isinstance.asp)|Returns True if a specified object is an instance of a specified object|
+|[issubclass()](https://www.w3schools.com/python/ref_func_issubclass.asp)|Returns True if a specified class is a subclass of a specified object|
+|[iter()](https://www.w3schools.com/python/ref_func_iter.asp)|Returns an iterator object|
+|[len()](https://www.w3schools.com/python/ref_func_len.asp)|Returns the length of an object|
+|[list()](https://www.w3schools.com/python/ref_func_list.asp)|Returns a list|
+|[locals()](https://www.w3schools.com/python/ref_func_locals.asp)|Returns an updated dictionary of the current local symbol table|
+|[map()](https://www.w3schools.com/python/ref_func_map.asp)|Returns the specified iterator with the specified function applied to each item|
+|[max()](https://www.w3schools.com/python/ref_func_max.asp)|Returns the largest item in an iterable|
+|[memoryview()](https://www.w3schools.com/python/ref_func_memoryview.asp)|Returns a memory view object|
+|[min()](https://www.w3schools.com/python/ref_func_min.asp)|Returns the smallest item in an iterable|
+|[next()](https://www.w3schools.com/python/ref_func_next.asp)|Returns the next item in an iterable|
+|[object()](https://www.w3schools.com/python/ref_func_object.asp)|Returns a new object|
+|[oct()](https://www.w3schools.com/python/ref_func_oct.asp)|Converts a number into an octal|
+|[open()](https://www.w3schools.com/python/ref_func_open.asp)|Opens a file and returns a file object|
+|[ord()](https://www.w3schools.com/python/ref_func_ord.asp)|Convert an integer representing the Unicode of the specified character|
+|[pow()](https://www.w3schools.com/python/ref_func_pow.asp)|Returns the value of x to the power of y|
+|[print()](https://www.w3schools.com/python/ref_func_print.asp)|Prints to the standard output device|
+|property()|Gets, sets, deletes a property|
+|[range()](https://www.w3schools.com/python/ref_func_range.asp)|Returns a sequence of numbers, starting from 0 and increments by 1 (by default)|
+|repr()|Returns a readable version of an object|
+|[reversed()](https://www.w3schools.com/python/ref_func_reversed.asp)|Returns a reversed iterator|
+|[round()](https://www.w3schools.com/python/ref_func_round.asp)|Rounds a numbers|
+|[set()](https://www.w3schools.com/python/ref_func_set.asp)|Returns a new set object|
+|[setattr()](https://www.w3schools.com/python/ref_func_setattr.asp)|Sets an attribute (property/method) of an object|
+|[slice()](https://www.w3schools.com/python/ref_func_slice.asp)|Returns a slice object|
+|[sorted()](https://www.w3schools.com/python/ref_func_sorted.asp)|Returns a sorted list|
+|staticmethod()|Converts a method into a static method|
+|[str()](https://www.w3schools.com/python/ref_func_str.asp)|Returns a string object|
+|[sum()](https://www.w3schools.com/python/ref_func_sum.asp)|Sums the items of an iterator|
+|[super()](https://www.w3schools.com/python/ref_func_super.asp)|Returns an object that represents the parent class|
+|[tuple()](https://www.w3schools.com/python/ref_func_tuple.asp)|Returns a tuple|
+|[type()](https://www.w3schools.com/python/ref_func_type.asp)|Returns the type of an object|
+|[vars()](https://www.w3schools.com/python/ref_func_vars.asp)|Returns the __dict__ property of an object|
+|[zip()](https://www.w3schools.com/python/ref_func_zip.asp)|Returns an iterator, from two or more iterators|

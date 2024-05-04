@@ -90,6 +90,37 @@ Installer Python et configurer un environnement de développement sont les premi
    - Vérifiez que Python est correctement installé en exécutant : `python --version`
    - Vérifiez que pip (gestionnaire de paquets Python) fonctionne : `pip --version`
 
+
+## 1.3 Fonctionnement du langage
+### Composants du langage Python :
+1. **Langage Python** : Python est un langage de programmation de haut niveau, conçu pour être simple à lire et à écrire. Il offre une syntaxe claire et expressive qui facilite le développement de logiciels.
+2. **Interpréteur Python** : L'interpréteur Python est le programme responsable de l'exécution du code Python. Il comprend la syntaxe et les règles du langage Python, et traduit ces instructions en actions exécutables par l'ordinateur. L'interpréteur Python analyse le code source, le compile en bytecode et l'exécute ligne par ligne.
+3. **Bytecode** : Le bytecode Python est un langage intermédiaire qui est généré par l'interpréteur Python à partir du code source Python. Il s'agit d'un ensemble d'instructions bas niveau spécifiques à la machine virtuelle Python (PVM). Le bytecode est portable et indépendant de la plate-forme, ce qui signifie qu'il peut être exécuté sur n'importe quelle plate-forme prenant en charge la PVM.
+4. **Machine Virtuelle Python (PVM)** : La PVM est le composant responsable de l'exécution du bytecode Python. Elle agit comme une couche d'abstraction entre le code Python et le système d'exploitation sous-jacent. La PVM prend en charge l'exécution des instructions bytecode et les traduit en instructions machine spécifiques à la plate-forme sur laquelle elle s'exécute. La PVM offre également des fonctionnalités telles que la gestion de la mémoire, la gestion des exceptions et l'interaction avec le système d'exploitation.
+### Fonctionnement de l'exécution d'un programme Python :
+1. **Analyse du code source** : Lorsque tu exécutes un programme Python, l'interpréteur Python commence par analyser le code source pour détecter d'éventuelles erreurs de syntaxe.
+2. **Compilation en bytecode** : Une fois que le code source est analysé avec succès, l'interpréteur Python compile le code en bytecode. Chaque ligne du code source est transformée en instructions bytecode, qui sont plus proches du langage machine, mais toujours indépendantes de la plate-forme.
+3. **Exécution du bytecode par la PVM** : Le bytecode ainsi généré est ensuite exécuté par la machine virtuelle Python (PVM). La PVM prend en charge l'exécution des instructions bytecode et les traduit en instructions machine spécifiques à la plate-forme sur laquelle elle s'exécute.
+4. **Gestion de la mémoire et des ressources** : Pendant l'exécution du programme, la PVM gère la mémoire et les ressources nécessaires à son fonctionnement. Elle alloue de la mémoire pour stocker les variables et les objets, et libère automatiquement la mémoire non utilisée grâce à un processus appelé ramasse-miettes (garbage collection).
+5. **Interaction avec le système d'exploitation** : La PVM interagit également avec le système d'exploitation sous-jacent pour effectuer des opérations telles que la lecture et l'écriture de fichiers, l'accès au réseau et l'exécution de processus.
+### Chronologie détaillée des étapes :
+
+1. **Analyse lexicale et syntaxique** :
+   L'interpréteur Python commence par analyser le code source du script Python pour détecter d'éventuelles erreurs de syntaxe. Cette étape consiste à décomposer le code en tokens (mots-clés, identificateurs, opérateurs, etc.) et à vérifier que la structure du code est correcte selon les règles de la syntaxe Python.
+2. **Compilation en bytecode** :
+   Une fois que le code source a été analysé avec succès, l'interpréteur Python compile le code en bytecode. Chaque ligne du code source est transformée en instructions bytecode, qui sont stockées dans un fichier `.pyc` (fichier de bytecode compilé) ou dans la mémoire si l'optimisation est activée.
+3. **Chargement du bytecode** :
+   L'interpréteur Python charge le bytecode compilé en mémoire. Si un fichier `.pyc` correspondant au script Python existe déjà et est à jour, l'interpréteur peut utiliser ce bytecode plutôt que de le recompiler à chaque exécution du script, ce qui peut accélérer le processus d'exécution.
+4. **Initialisation de la PVM (Python Virtual Machine)** :
+   La machine virtuelle Python (PVM) est initialisée pour exécuter le bytecode. Cela implique l'allocation de ressources mémoire nécessaires à l'exécution du programme, ainsi que l'initialisation de divers composants de la PVM tels que la pile d'exécution, le gestionnaire d'exceptions, etc.
+5. **Exécution du bytecode** :
+   La PVM commence à exécuter le bytecode ligne par ligne. Chaque instruction bytecode est récupérée, décodée et exécutée par la PVM. Les opérations courantes incluent l'assignation de variables, les appels de fonctions, les boucles, les conditions, etc.
+6. **Gestion de la mémoire** :
+   Pendant l'exécution du programme, la PVM gère la mémoire en allouant de l'espace pour stocker les variables, les objets et les données temporaires. La gestion de la mémoire comprend également la collecte des déchets (garbage collection), qui consiste à libérer la mémoire occupée par les objets qui ne sont plus utilisés.
+7. **Interaction avec le système d'exploitation** :
+   Pendant l'exécution du script, la PVM peut interagir avec le système d'exploitation sous-jacent pour effectuer des opérations telles que la lecture et l'écriture de fichiers, l'accès au réseau, l'exécution de processus externes, etc.
+8. **Fin de l'exécution** :
+   Lorsque le programme atteint la fin du script Python, ou lorsqu'une instruction `return` est rencontrée, l'exécution du programme se termine. La PVM nettoie les ressources utilisées par le programme et libère la mémoire avant de se terminer.
 # 2) Bases du langage Python
 
 ## 2.1 Syntaxe de base

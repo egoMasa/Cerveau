@@ -75,6 +75,101 @@
 |**Utilisation typique**|Scripting, Web, Data Science|Systèmes embarqués, OS|Applications système, jeux vidéo, simulations|
 
 Python est excellent pour les débutants et les projets nécessitant un développement rapide, tandis que C et C++ sont préférés pour les applications nécessitant une optimisation maximale et une gestion directe de la mémoire. Les différences de paradigmes, de vitesse, et d’utilisation entre ces langages montrent bien leur diversité d’application.
+
+# 3) Setup de l'environnement (Windows/Unix)
+
+## Windows
+
+### 1. Installer un compilateur :
+
+MinGW (Minimalist GNU for Windows) est un ensemble d'outils GNU pour Windows, y compris le compilateur GCC (GNU Compiler Collection), qui est nécessaire pour compiler des programmes C++ sous Windows.
+1. Télécharge le gestionnaire d'installation de MinGW depuis le site officiel
+2. Lance le fichier d'installation téléchargé (`mingw-get-setup.exe`).
+3. Pendant l'installation, tu seras invité à sélectionner les composants à installer. Assure-toi de sélectionner au moins le package `mingw32-base`, qui inclut le compilateur GCC pour la compilation de programmes C++.
+4. Choisis un répertoire d'installation pour MinGW. Le répertoire par défaut est généralement `C:\MinGW`.
+5. Termine l'installation en suivant les instructions à l'écran.
+### 2. Ajouter le compilateur à la variable PATH :
+
+Une fois que MinGW est installé, tu dois ajouter son chemin d'accès au répertoire `bin` à la variable d'environnement PATH de ton système. Cela permettra à Windows de trouver les outils de MinGW lorsqu'ils sont utilisés dans la ligne de commande.
+1. Recherche "***Variables d'environnement système***" dans la barre de recherche
+4. Dans "***Variables d'environnement***", recherche la variable "***PATH***" double clique
+5. Ajoute le chemin d'accès au répertoire`C:\MinGW\bin`.
+6. Clique sur "OK" pour enregistrer les modifications et ferme toutes les fenêtres.
+7. Vérifier que la commande gcc est accessible dans le CMD `gcc --version`
+
+Maintenant, le compilateur GCC de MinGW devrait être accessible depuis n'importe quel emplacement dans la ligne de commande.
+### 3. Installer l'extension C++ sur VSCode :
+1. Ouvre Visual Studio Code.
+2. Clique sur l'icône des extensions dans la barre latérale ou utilise le raccourci `Ctrl+Shift+X`.
+3. Dans la barre de recherche, tape "C++".
+4. Sélectionne l'extension "C/C++" proposée par Microsoft
+5. Une fois l'installation terminée, l'extension est prête à être utilisée.
+
+Maintenant, tu es prêt à écrire, compiler et exécuter des programmes C++ dans Visual Studio Code sur Windows, en utilisant le compilateur GCC fourni par MinGW.
+### 4. Sélectionner le compilateur dans VSCode :
+
+Lorsque tu installes l'extension C++ dans Visual Studio Code, elle tente généralement de détecter automatiquement les compilateurs disponibles sur ton système, y compris g++, le compilateur C++ de GNU fourni par MinGW sur Windows. Si la détection automatique ne fonctionne pas ou si tu souhaites spécifier manuellement le compilateur, tu peux le faire en suivant ces étapes :
+1. Ouvre un fichier C++ (.cpp) dans Visual Studio Code.
+2. Va dans "Affichage" > "Palette de commandes" ou utilise `Ctrl+Shift+P`.
+3. Tape "C/C++: Sélect IntelliSense Configuration" et choisir g++.
+### 5. Compiler le script :
+
+Après avoir sélectionné le compilateur, tu peux compiler ton script en suivant ces étapes :
+1. Ouvre le fichier C++ que tu veux compiler dans Visual Studio Code.
+2. Utilise la commande de build en appuyant sur `Ctrl+Shift+B` ou en allant dans "Exécution" > "Tâches" > "Exécuter la tâche de build".
+3. Sélectionne l'option de compilation (par exemple, "g++.exe build active file") dans la liste des tâches disponibles. Cette tâche utilisera le compilateur g++ que tu as sélectionné précédemment pour compiler le fichier actif.
+
+Visual Studio Code générera un fichier exécutable (.exe) à partir de ton script C++ si la compilation réussit.
+### 6. Exécuter le programme :
+1. Tape le nom du fichier exécutable (par exemple, ./nom_du_fichier.exe) dans le terminal et appuie sur Entrée pour exécuter le programme.
+
+## Unix
+### 1. Installer un compilateur :
+
+Sur Debian, le compilateur GCC (GNU Compiler Collection) est souvent déjà installé par défaut. Cependant, pour être sûr que tu as toutes les dépendances nécessaires pour le développement C++, tu peux installer le paquet `build-essential` qui inclut GCC ainsi que d'autres outils de compilation :
+
+```bash
+sudo apt update
+sudo apt install build-essential
+```
+
+Cette commande met à jour les informations sur les paquets disponibles et installe ensuite le paquet `build-essential`, qui contient GCC et d'autres outils nécessaires pour la compilation de programmes C++.
+
+### 2. Installer l'extension C++ sur VSCode :
+
+L'installation de l'extension C++ dans Visual Studio Code est similaire à celle sur Windows :
+
+1. Ouvre Visual Studio Code.
+2. Clique sur l'icône des extensions dans la barre latérale ou utilise le raccourci `Ctrl+Shift+X`.
+3. Dans la barre de recherche, tape "C++".
+4. Sélectionne l'extension "C/C++" proposée par Microsoft.
+5. Clique sur "Installer".
+
+Une fois l'installation terminée, l'extension est prête à être utilisée.
+
+### 3. Sélectionner le compilateur dans VSCode :
+
+L'extension C++ de Visual Studio Code devrait automatiquement détecter GCC installé sur Debian. Si elle ne le fait pas, tu peux spécifier manuellement le compilateur en suivant ces étapes :
+
+1. Ouvre un fichier C++ (.cpp) dans Visual Studio Code.
+2. Va dans "Affichage" > "Palette de commandes" ou utilise `Ctrl+Shift+P`.
+3. Tape "C/C++: Sélect IntelliSense Configuration" et choisis GCC.
+
+### 4. Compiler le script :
+
+Après avoir sélectionné le compilateur, tu peux compiler ton script en suivant ces étapes :
+
+1. Ouvre le fichier C++ que tu veux compiler dans Visual Studio Code.
+2. Utilise la commande de build en appuyant sur `Ctrl+Shift+B` ou en allant dans "Exécution" > "Tâches" > "Exécuter la tâche de build".
+3. Sélectionne l'option de compilation dans la liste des tâches disponibles. Cette tâche utilisera le compilateur GCC que tu as sélectionné précédemment pour compiler le fichier actif.
+
+Visual Studio Code générera un fichier exécutable à partir de ton script C++ si la compilation réussit.
+### 5. Exécuter le programme :
+
+1. Une fois que ton programme a été compilé avec succès, tu peux exécuter le fichier exécutable en ouvrant un terminal dans Visual Studio Code et en naviguant jusqu'au répertoire où se trouve le fichier exécutable.
+2. Tape le nom du fichier exécutable dans le terminal et appuie sur Entrée pour exécuter le programme.
+
+Ces étapes te permettront de configurer un environnement de développement C++ sur Debian, d'écrire, de compiler et d'exécuter des programmes C++ dans Visual Studio Code.
 # 4) Bases du langage 
 ## 4.1 Syntaxe de base 
 * La syntaxe de base de C++ inclut la structure des déclarations de fonction, la définition de variables, le corps des fonctions, les points-virgules en fin d'instruction, et les blocs de code encapsulés entre accolades `{}`.

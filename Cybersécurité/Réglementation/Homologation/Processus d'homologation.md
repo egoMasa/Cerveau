@@ -55,7 +55,7 @@
 	6. audits éventuels sur les composants du système (techniques ou organisationnels), logiciels plates-formes matérielles, interfaces réseaux 
 	7. homologation du système 
 	8. mise en service du système.
-- [ ] Créer référentiel documentaire nécessaire détaillé en fonction du service
+- [ ] Créer référentiel documentaire nécessaire détaillé en fonction du service : ***Référentiel documentaire.xls***
 - [ ] Envoyer la liste des documentations nécessaires aux équipes responsables du service
 - [ ] Faire des retours sur les documentations manquantes en fonction de leur importance
 * ***2 - Document final à remplir*** : [Stratégie homologation](https://cyber.gouv.fr/sites/default/files/document/Strat%C3%A9gie-Homologation-propostion.doc)

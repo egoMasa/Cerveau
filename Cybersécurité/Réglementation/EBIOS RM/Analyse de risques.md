@@ -25,7 +25,8 @@ Un bien support désigne les équipements, logiciels, infrastructures, et autres
 | Bien support X {Liste bien support} | Nom              | Valeur métier       | Vulnérabilité X {Liste vulnérabilités} | Mesure X {Liste mesures}  <br>Mesure X {Liste mesures} |
 
 ### 1.4) Parties prenantes
-
+Lister les clients, partenaires et prestataires intervenant sur l'entreprise à tout les niveaux (ménage, hébergeur, etc...)
+Garder les parties prenantes avec un niveau de menaces à partir de zone de danger, zone de controle (4-16)
 
 | **Catégorie partie prenante**               | **Partie prenante** | **Dépendance**                                                                                                                                | **Pénétration**                                                                                                                                    | **Maturité**                                                                                                                                    | **Confiance**                                                                                                                                          | **Niveau de menace**                                                                                                                                     |
 | ------------------------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -34,6 +35,7 @@ Un bien support désigne les équipements, logiciels, infrastructures, et autres
 ## 2) Modélisation de la menace
 
 ### 2.1) Couples SR/OV
+Définir les personnes ou groupes de menances potentielles qui pourrait s'en prendre au SI et à ses valeurs métiers, déduire leur motivation et selectionner le plus pertinents
 
 | **Catégorie d’acteur**                                                                                                                                                    | **Acteur de risque** | **Catégorie d’objectif**                                                                                                                    | **Objectif visé**   | **Motivation**                                                                                                                                     | **Ressources**                                                                                                                                                                 | **Activité**                                                                                                                            | **Pertinence**                     | **Retenu** |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ---------- |
@@ -42,29 +44,14 @@ Un bien support désigne les équipements, logiciels, infrastructures, et autres
 ## 3) Scénarios
 
 ### 3.1) Evènements redoutés
+Définir les évènements redoutés par l'entreprise concernant les valeurs métiers listées
 
-| **Évènements redoutés** | **Valeurs métiers** | **Objectifs visés**            |
-| ----------------------- | ------------------- | ------------------------------ |
-| Vol                     | Valeur métier       | Espionnage                     |
-| Perte                   | Valeur métier       | Pré-positionnement stratégique |
-| Destruction             | Valeur métier       | Influence                      |
-| Contamination           | Valeur métier       | Entrave au fonctionnement      |
-| Corruption              | Valeur métier       | Lucratif                       |
-| Divulgation             | Valeur métier       | Défi, amusement                |
-| Piratage                | Valeur métier       |                                |
-| Usurpation              | Valeur métier       |                                |
-| Blocage                 | Valeur métier       |                                |
-| Fuite                   | Valeur métier       |                                |
-| Infiltration            | Valeur métier       |                                |
-| Détérioration           | Valeur métier       |                                |
-| Explosion               | Valeur métier       |                                |
-| Surchauffe              | Valeur métier       |                                |
-| Engorgement             | Valeur métier       |                                |
-| Violation               | Valeur métier       |                                |
-| Inondation              | Valeur métier       |                                |
-| Séisme                  | Valeur métier       |                                |
-| Sabotage                | Valeur métier       |                                |
+| **Évènements redoutés**                                                                                                                                                                                                                                                | **Valeurs métiers** | Gravité                                                       |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ------------------------------------------------------------- |
+| Vol<br>Perte<br>Destruction<br>Contamination<br>Corruption<br>Divulgation<br>Revente<br>Piratage<br>Usurpation<br>Blocage<br>Fuite<br>Infiltration<br>Détérioration<br>Explosion<br>Surchauffe<br>Engorgement<br>Violation<br>Inondation<br>Séisme<br>Sabotage<br><br> | Valeur métier       | 1 - Mineure<br>2 - Significative<br>3 - Grave<br>4 - Critique |
+
 ### 3.2) Scénarios de risque
+Définir les scénarios de risque rassemblant la menace qui par un moyen va atteindre une valeur métier pour faire une action précise et trier en fonction du niveau de risque réel
 
 | Identifiant | **Scénario**                     | **Chemin d’attaque**  | **Évènements redoutés**                                 | **Gravité actuelle**                                                | **Vraisemblance**                                              | Risque                    |
 | ----------- | -------------------------------- | --------------------- | ------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------- |
@@ -74,15 +61,18 @@ Un bien support désigne les équipements, logiciels, infrastructures, et autres
 ## 4) Socle et traitement 
 
 ### 4.1) Normes 
+Lister l'ensemble des normes pouvant s'appliquer et offrant un ensemble de mesures afin de sécuriser le SI et les données concernées
+
 | **Norme**                  | **Description** |
 | -------------------------- | --------------- |
 | - ISO<br>- ANSSI<br>- RGPD | Description     |
 
 ### 4.2) Mesures de sécurité pour réduction des risques
+Calculer le nouveau niveau de risques afin de réduire ou combler la vulnérabilités déterminée et exploité par les sources de menaces.
 
-| Scénario | Rique initial | **Mesures de sécurité** | **Gravité résiduelle** | **Vraisemblance résiduelle** | **Risque résiduel** |
-| -------- | ------------- | ----------------------- | ---------------------- | ---------------------------- | ------------------- |
-| S1       |               |                         |                        |                              |                     |
+| Scénario | Rique initial | Vulnérabilité exploitée | **Mesures de sécurité** | **Gravité résiduelle** | **Vraisemblance résiduelle** | **Risque résiduel** |
+| -------- | ------------- | ----------------------- | ----------------------- | ---------------------- | ---------------------------- | ------------------- |
+| S1       |               |                         |                         |                        |                              |                     |
 
 ## 5) Document final à produire
 

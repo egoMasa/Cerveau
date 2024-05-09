@@ -20,7 +20,7 @@ Une valeur métier peut être des données spécifiques, ou un processus qui est
 ### 1.3) Biens supports
 Un bien support désigne les équipements, logiciels, infrastructures, et autres ressources matérielles ou immatérielles sur lesquelles reposent le fonctionnement des valeurs métiers. Les biens supports sont les composants physiques ou logiciels nécessaires pour que les fonctions, les données et les processus (valeurs métier) puissent opérer efficacement. Ils incluent tout ce qui est utilisé pour stocker, traiter, transmettre, et gérer les informations.
 
-| **Bien supports**                   | **Responsables** | **Valeurs métiers** | **Vulnérabilités**                     | **Mesures**                                            |
+| **Bien supports**                   | **Responsables** | **Valeurs métiers** | **Vulnérabilités**                     | **Mesures actuelles**                                  |
 | ----------------------------------- | ---------------- | ------------------- | -------------------------------------- | ------------------------------------------------------ |
 | Bien support X {Liste bien support} | Nom              | Valeur métier       | Vulnérabilité X {Liste vulnérabilités} | Mesure X {Liste mesures}  <br>Mesure X {Liste mesures} |
 
@@ -70,9 +70,9 @@ Lister l'ensemble des normes pouvant s'appliquer et offrant un ensemble de mesur
 ### 4.2) Mesures de sécurité pour réduction des risques
 Calculer le nouveau niveau de risques afin de réduire ou combler la vulnérabilité déterminée et exploitée par les sources de menaces.
 
-| Scénario | Rique initial | Vulnérabilité exploitée | **Mesures de sécurité applicable** | **Gravité résiduelle** | **Vraisemblance résiduelle** | **Risque résiduel** |
-| -------- | ------------- | ----------------------- | ---------------------------------- | ---------------------- | ---------------------------- | ------------------- |
-| S1       |               |                         |                                    |                        |                              |                     |
+| Scénario | Risque initial | Vulnérabilité exploitée | **Mesures de sécurité applicable** | **Gravité résiduelle** | **Vraisemblance résiduelle** | **Risque résiduel** |
+| -------- | -------------- | ----------------------- | ---------------------------------- | ---------------------- | ---------------------------- | ------------------- |
+| S1       |                |                         |                                    |                        |                              |                     |
 
 ## 5) Document final à produire
 

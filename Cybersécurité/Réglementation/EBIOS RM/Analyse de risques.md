@@ -1,207 +1,149 @@
-# EBIOS RM 
+# Chronologie d'analyse de risques libre
 
-# 0) Présentation méthode EBIOS RM
-* Il s'agit d'une méthode de gestion des risques en sécurité de l'information
-* Permet d’identifier, d’analyser et de traiter les risques liés à la sécurité de l’information au sein d’une organisation
-* La méthode EBIOS RM est composé de 5 étapes différentes 
-	1. Cadrage/socle de sécurité
-		1. Identifie l'objet de l'étude
-		2. Identifie les participants 
-		3. Recenser les missions, valeurs métiers et bien supports
-		4. Identifier les événements redoutés et l'impact des dégâts
-		5. Définir le socle de sécurité et les écarts avec la réalité 
-	2. Sources de risque
-	3. Scénarios stratégiques
-	4. Scénarios opérationnels
-	5. Traitement du risque
-		1. Synthétiser les scénarios à risque
-		2. Définir stratégie de traitement du risques et les mesures déployer
-		3. Evaluer et documenter les risques résiduels
-		4. Mettre en place un cadre et suivi des risques
-# 1) Cadrage et socle de sécurité
-## Objectifs
-1. Identifie l'objet de l'étude
-2. Identifie les participants 
-3. Recenser les missions, valeurs métiers et bien supports
-4. Identifier les événements redoutés et leur niveau de gravité
-5. Définir le socle de sécurité et les écarts avec la réalité 
-## Terminologie 
-* **Participants** : Personnes impliqués dans l'étude (employé, responsable)
-* **Missions** : Objectifs et fonctions du système étudié
-- **Valeurs métiers** : Informations et processus essentiels qui définissent le cœur de l'activité d'une entreprise et qu'il est impératif de protéger. En gros tout ce qui a de la valeur pour un organisme
-	- **Exemple** : Service spécifique, type de données, résultats de travaux, stratégie de développement ... 
-- **Biens supports** : Actifs qui soutiennent et permettent la réalisation des missions et la protection des valeurs métier de l'entreprise
-* **Socle de sécurité et écarts** : Ecart entre les mesures de sécurité nécessaires (ou souhaitées) et la réalité du SI actuel.
-## Eléments à produire 
-1. Cadrage de l'étude
-	* Participants avec matrice RACI
-	* Périmètre métier : Les métiers et personnes qui dépendent de ce SI
-	* Périmètre technique : L'architecture, technologies, flux
-2. Evènements redoutés et leur niveau de gravité
-3. Socle de sécurité : 
-	* Mesures de sécurité applicables pour limiter les risques
-	* Etat du SI
-	* Identification des écarts
-## Etape 1 : Cadrage de l'étude 
+## 1) Système étudié
+### 1.1) Propriétaires et responsable
+Lister les personnes responsables et interagissant avec le système étudié (développement, opérationnel, Technique)
 
-### Périmètre métier et technique 
-| MISSIONS                                        | MISSION 1         |
-|-------------------------------------------------|-------------------|
-| DÉNOMINATION DE LA VALEUR MÉTIER                | DEPARTEMENT,SI,Objectifs   |            |
-| NATURE DE LA VALEUR MÉTIER  |              PROCESSES/INFORMATION
-| DESCRIPTION                                     |OBJECTIFS VALEUR METIER (listing)                   |                 |                  |
-| ENTITÉ OU PERSONNE RESPONSABLE (INTERNE / EXTERNE)  | RESPONSABLE MISSION             |                 |                  |
-| DÉNOMINATION DU / DES BIEN(S) SUPPORT(S) ASSOCIÉ(S) | SERVEUR/SYSTEME |
-| DESCRIPTION                                     | UTILITE DU BIEN SUPPORT DANS MISSION                  |                 |                  |
-| ENTITÉ OU PERSONNE RESPONSABLE (INTERNE / EXTERNE)  | RESPONSABLE BIEN SUPPORT              |                 |                  |
+| Nom         | Rôle        | Service | Mail                | Numéro         |
+| ----------- | ----------- | ------- | ------------------- | -------------- |
+| Toto Dupont | Responsable |         | totodupont@toto.com | 06 XX XX XX XX |
+| Toto Dupont | Responsable |         | totodupont@toto.com | 06 XX XX XX XX |
+### 1.2) Valeurs métiers
+Une valeur métier peut être des données spécifiques, ou un processus qui est crucial pour le système d'information (SI) et pour l'ensemble de l'entreprise : 
+- ***Processus*** : Processus interne ou applicatif de l'entreprise ou des produits
+- ***Données*** : Ensemble des données collectés et que possède ou génère l'entreprise
 
-### Questions à poser 
-1. A quoi sert l'objet de l'étude dans l'organisme
-2. Quels sont les processus et informations permettant à l'objet d'étude de fonctionner
-3. Quels sont les services/applications/réseaux/structures/personnes qui permettent de mener à bien le processus de l'objet d'étude
-## Etape 2 : Evènements redoutés et leur niveau de gravité
+| **Famille**                           | **Valeur métier** | **Description** | **Données à caractère personnelles** |
+| ------------------------------------- | ----------------- | --------------- | ------------------------------------ |
+| - Données/Informations<br>- Processus | Exemple 1         |                 | Oui/Non                              |
 
-### Echelles de gravité 
+### 1.3) Biens supports
+Un bien support désigne les équipements, logiciels, infrastructures, et autres ressources matérielles ou immatérielles sur lesquelles reposent le fonctionnement des valeurs métiers. Les biens supports sont les composants physiques ou logiciels nécessaires pour que les fonctions, les données et les processus (valeurs métier) puissent opérer efficacement. Ils incluent tout ce qui est utilisé pour stocker, traiter, transmettre, et gérer les informations.
 
-| Niveau de Gravité | Capacité opérationnelle | Performances de l'activité | Sécurité des personnes et des biens | Facilité de surmontabilité | Dégradation du fonctionnement |
-|-------------------|-------------------------|----------------------------|------------------------------------|-----------------------------|-------------------------------|
-| CRITIQUE (4)      | Incapacité              | Impacts majeurs           | Impacts majeurs                    | Difficilement surmontable   | Forte dégradation             |
-| GRAVE (3)         | Assurée avec impacts    | Forte dégradation         | Éventuels impacts                  | Surmontable                 | Dégradation                   |
-| SIGNIFICATIVE (2) | Assurée                | Dégradation               | Aucun impact                       | Quelques difficultés        | Fonctionnement dégradé        |
-| MINEURE (1)       | Assurée                | Aucun impact              | Aucun impact                       | Sans grandes difficultés    | Aucune dégradation            |
+| **Bien supports**                   | **Responsables** | **Valeurs métiers** | **Vulnérabilités**                     | **Mesures**                                            |
+| ----------------------------------- | ---------------- | ------------------- | -------------------------------------- | ------------------------------------------------------ |
+| Bien support X {Liste bien support} | Nom              | Valeur métier       | Vulnérabilité X {Liste vulnérabilités} | Mesure X {Liste mesures}  <br>Mesure X {Liste mesures} |
 
-1. **Capacité opérationnelle de la société** : Capacité de la société à continuer à fonctionner normalement ou à assurer son activité.
-2. **Performances de l'activité** : Niveau de performance ou d'efficacité de l'activité de l'entreprise.
-3. **Sécurité des personnes et des biens** : Sécurité physique des individus et des propriétés matérielles.
-4. **Facilité de surmontabilité** : Facilité avec laquelle la société peut surmonter la situation ou les défis présentés.
-5. **Dégradation du fonctionnement** : Façon dont le fonctionnement normal de la société est affecté, que ce soit légèrement ou gravement.
-
-### Catégories d'impact 
-
-| Catégorie d'impact                                       | Conséquences types                                                                                                                                      | Exemples |
-|------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| Impacts sur les missions et services de l'organismes | Conséquences sur la réalisation des missions et services.      | Incapacité à fournir un service, dégradation de performances opérationnelles, retards, etc. |
-| Impacts sur la capacité de développement ou de décision | Conséquences sur la liberté de décider.                         | Perte de souveraineté, limitation de l'indépendance de jugement, etc. |
-| Impacts sur le lien social interne                   | Conséquences sur la qualité des liens sociaux.                          | Perte de confiance des employés, exacerbation de tensions, etc. |
-| Impacts sur le patrimoine intellectuel ou culturel   | Conséquences sur les connaissances non-explicites.                  | Perte de mémoire de l'entreprise, perte de savoir-faire, etc. |
-| Impacts sur la sécurité ou sur la santé des personnes | Conséquences sur l'intégrité physique de personnes.                                        | Accident du travail, maladie professionnelle, etc. |
-| Impacts matériels                                    | Dégâts matériels ou destruction de biens supports.                        | Destruction de locaux, endommagement de moyens de production, etc. |
-| Impacts sur l'environnement                          | Conséquences écologiques.                                        | Contamination radiologique, rejet de polluants, etc. |
-| Impacts financiers                                   | Conséquences pécuniaires.                                                                 | Perte de chiffre d'affaire, dépenses imprévues, etc. |
-| Impacts juridiques                                   | Conséquences suite à une non-conformité.                                                     | Procès, amende, condamnation d'un dirigeant, etc. |
-| Impacts sur l'image et la confiance                  | Conséquences sur l'image de l’organisation.                                        | Publication d’articles négatifs, perte de crédibilité, etc. |
+### 1.4) Parties prenantes
 
 
-### Evénements redoutés 
-| Valeurs Métier          | Événements Redoutés                | Catégorie d'impacts       | Gravité  |
-|-------------------------|------------------------------------|----------------------------|----------|
-| Base de données clients | Altération des informations                | Sécurité ou la santé des personnes            | 1   |
-| Site Web                | Fuite d'informations                       | Image et confiance              | 2  |
-| Processus de facturation| Perte/Destruction d'informations | Financier               | 3   |
-| R&D                     | Interruption des services    | Missions et services de l'organismes            | 4 |
-| Système de paiement     | Fraude                             | Coûts de developpement                  | 4 |
-| Système de paiement     | Fraude                             | Juridiques                  | 4 |
+| **Catégorie partie prenante**               | **Partie prenante** | **Dépendance**                                                                                                                                | **Pénétration**                                                                                                                                    | **Maturité**                                                                                                                                    | **Confiance**                                                                                                                                          | **Niveau de menace**                                                                                                                                     |
+| ------------------------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Clients  -Partenaires  <br>- Prestataires | Nom                 | La relation avec cette partie prenante est-elle vitale pour mon activité ?  <br>1 - Insignifiant  <br>2 – Faible  <br>3 – Moyen  <br>4 – Fort | Dans quelle mesure la partie prenante accède-t-elle à mes ressources internes ?  <br>1 - Insignifiant  <br>2 – Faible  <br>3 – Moyen  <br>4 – Fort | Quelles sont les capacités de la partie prenante en matière de sécurité ?  <br>1 - Insuffisante  <br>2 – Faible  <br>3 – Moyenne  <br>4 – Bonne | Les intentions ou les intérêts de la partie prenante sont-ils favorables aux miens ?  <br>1 - Faible  <br>2 – Moyenne  <br>3 – Forte  <br>4 – Maximale | (Dépendance*Pénétration)/(Maturité*Confiance)  <br>0-1 : Hors périmètre  <br>1-3 : Zone de veille  <br>4-5 : Zone de contrôle  <br>5-16 : Zone de danger |
 
-### Tableau final 
-| VALEUR MÉTIER | ÉVÉNEMENT REDOUTÉ | CATÉGORIES D'IMPACT | GRAVITÉ |
-|---------------|-------------------|---------------------|---------|
-| **Département**      | Description de l'événement 1 | - Impact type 1<br>- Impact type 2<br>- Impact type 3 | X |
-| **Système cible**      | Description de l'événement 2 | - Impact type 4<br>- Impact type 5 | X |
-| **Type d'informations**      | Description de l'événement 3 | - Impact type 6<br>- Impact type 7 | X |
-| **Objectifs**      | Description de l'événement 4 | - Impact type 6<br>- Impact type 5 | X |
+## 2) Modélisation de la menace
 
-## Etape 3 : Déterminer socle de sécurité 
+### 2.1) Couples SR/OV
 
-### Pyramide du risque numérique 
-1. Lister les principes de base et hygiène
-	* [Recommandation ANSSI](https://www.ssi.gouv.fr/administration/bonnes-pratiques/)
-	* Règles sécurité interne à l'organisation
-1. Lister les mesures réglementaire et normatif
-	* Normes ISO 27000
-	* [NIS2](https://www.ssi.gouv.fr/directive-nis-2/)
-	* [RGPD](https://www.ssi.gouv.fr/administration/reglementation/rgpd-renforcer-la-securite-des-donnees-a-caractere-personnel/)
-1. Lister les mesures de sécurité à mettre en place spécifiques à l'objet de l'étude et aux scénarios redoutés
-### Tableau socle de sécurité 
-| TYPE DE RÉFÉRENTIEL | NOM DU RÉFÉRENTIEL | ÉTAT D'APPLICATION | ÉCARTS | JUSTIFICATION DES ÉCARTS |
-|--------------------|-------------------|-------------------|-------|-------------------------|
-| Règles d'hygiène informatique et bonnes pratiques | Guide d'hygiène informatique de l'ANSSI | Appliqué avec restrictions | - Règle 8 : Identifier nommément chaque personne accédant au système et distinguer les rôles<br>- Règle 37 : définir et appliquer une politique de sauvegarde des composants critiques | - Existence d'un compte admin non nommément pour l'administration de l'ERP (solution propriétaire ne permettant pas l'administration par un autre compte)<br>- Politique de sauvegarde en cours de rédaction par un groupe de travail |
+| **Catégorie d’acteur**                                                                                                                                                    | **Acteur de risque** | **Catégorie d’objectif**                                                                                                                    | **Objectif visé**   | **Motivation**                                                                                                                                     | **Ressources**                                                                                                                                                                 | **Activité**                                                                                                                            | **Pertinence**                     | **Retenu** |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ---------- |
+| - Étatique  <br>- Crime organisé  <br>- Terroriste  <br>- Activiste idéologique  <br>- Officine spécialisée  <br>- Amateur  <br>- Vengeur  <br>- Malveillant pathologique | Nom                  | - Espionnage  <br>- Pré-positionnement stratégique  <br>- Influence  <br>- Entrave au fonctionnement  <br>- Lucratif  <br>- Défi, amusement | Description précise | Quelle est la motivation de la source de risque pour atteindre son objectif ?  <br>1 – Minimale  <br>2 – Faible  <br>3 – Moyenne  <br>4 - Maximale | Quelles sont les ressources (financières, compétences, infrastructure d'attaque) de la source de risque ?  <br>1 – Minimale  <br>2 – Faible  <br>3 – Moyenne  <br>4 – Maximale | La source de risque est-elle active dans le périmètre de l'étude ?  <br>1 – Minimale  <br>2 – Faible  <br>3 – Moyenne  <br>4 – Maximale | (Motivation+Ressources+Activité)/3 | Oui/Non    |
 
-# 5) Traitement du risque 
-## Objectifs
-1. Synthétiser les scénarios à risques et les décisions de traitement avec les mesures
-2. Evaluer et documenter les risques résiduels
-3. Mettre en place un cadre et suivi des risques
-## Etape 1 : Synthétiser les scénarios à risques et les décisions de traitement avec les mesures
+## 3) Scénarios
 
-### Niveaux de risques et les actions relier 
+### 3.1) Evènements redoutés
 
-| NIVEAU DE RISQUE | ACCEPTABILITÉ DU RISQUE       | INTITULÉ DES DÉCISIONS ET DES ACTIONS                                                                 |
-|------------------|-------------------------------|-------------------------------------------------------------------------------------------------------|
-| Faible           | Acceptable en l'état          | Aucune action n'est à entreprendre                                                                     |
-| Moyen            | Tolérable sous contrôle      | Un suivi en termes de gestion du risque est à mener et des actions sont à mettre en place dans le cadre d'une amélioration continue sur le moyen et long terme |
-| Élevé            | Inacceptable                  | Des mesures de réduction du risque doivent impérativement être prises à court terme. Dans le cas contraire, tout ou partie de l'activité sera refusé          |
+| **Évènements redoutés** | **Valeurs métiers** | **Objectifs visés**            |
+| ----------------------- | ------------------- | ------------------------------ |
+| Vol                     | Valeur métier       | Espionnage                     |
+| Perte                   | Valeur métier       | Pré-positionnement stratégique |
+| Destruction             | Valeur métier       | Influence                      |
+| Contamination           | Valeur métier       | Entrave au fonctionnement      |
+| Corruption              | Valeur métier       | Lucratif                       |
+| Divulgation             | Valeur métier       | Défi, amusement                |
+| Piratage                | Valeur métier       |                                |
+| Usurpation              | Valeur métier       |                                |
+| Blocage                 | Valeur métier       |                                |
+| Fuite                   | Valeur métier       |                                |
+| Infiltration            | Valeur métier       |                                |
+| Détérioration           | Valeur métier       |                                |
+| Explosion               | Valeur métier       |                                |
+| Surchauffe              | Valeur métier       |                                |
+| Engorgement             | Valeur métier       |                                |
+| Violation               | Valeur métier       |                                |
+| Inondation              | Valeur métier       |                                |
+| Séisme                  | Valeur métier       |                                |
+| Sabotage                | Valeur métier       |                                |
+### 3.2) Scénarios de risque
 
-### Scénarios de risques 
-* Représenter sur un graphique différents scénarios en fonction de 2 échelles : gravité et vraisemblance
-* Ajouter le niveau de risques par couleurs (vert, orange, rouge) au tableau de synthèse des scénarios de risque
-
-| GRAVITÉ \ VRAISEMBLANCE | 1 | 2 | 3 | 4 |
-|-------------------------|---|---|---|---|
-| 4                       |   |   | R4| R5|
-| 3                       | R2| R1| R3|   |
-| 2                       |   |   |   |   |
-| 1                       |   |   |   |   |
-* **R1** : Description d'un scénario 
-* **R2** : Description d'un scénario 
-* **R3** : Description d'un scénario 
-* **R4** : Description d'un scénario 
-* **R5** : Description d'un scénario 
-### Plan d’amélioration continue de la sécurité (PACS)
-
-* Produire 3 tableau différents 
-	* Mesures de sécurité concernant la gouvernance
-	* Mesures de sécurité concernant la protection
-	* Mesures de sécurité concernant la défense
-	* Mesures de sécurité concernant la résilience
-
-| MESURE DE SÉCURITÉ                                                                                   | SCÉNARIOS DE RISQUES ASSOCIÉS | RESPONSABLE       | FREINS ET DIFFICULTÉS DE MISE EN ŒUVRE                                   | COÛT / COMPLEXITÉ | ÉCHEANCE | STATUT    |
-|------------------------------------------------------------------------------------------------------|-------------------------------|--------------------|------------------------------------------------------------------------|------------------|----------|-----------|
-| Mesure 1                            | R1                           | RSSI              | FREINS POSSIBLES                                        | + - +++             | 6 mois   | {En cours| Terminé |A lancer}  |
+| Identifiant | **Scénario**                     | **Chemin d’attaque**  | **Évènements redoutés**                                 | **Gravité actuelle**                                                | **Vraisemblance**                                              | Risque                    |
+| ----------- | -------------------------------- | --------------------- | ------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------- |
+| SX          | Acteur de risque + Objectif visé | Via quel moyen/acteur | **Évènements redoutés + {Bien support, Valeur métier}** | 1 – Mineure  <br>2 – Significative  <br>3 – Grave  <br>4 - Critique | 1 – Minimale  <br>2 – Moyenne  <br>3 – Forte  <br>4 – Maximale | (Gravité * Vraisemblance) |
 
 
-## Etape 2 : Evaluer et documenter les risques résiduels
+## 4) Socle et traitement 
 
-### Résumé du risque résiduel:
+### 4.1) Normes 
+| **Norme**                  | **Description** |
+| -------------------------- | --------------- |
+| - ISO<br>- ANSSI<br>- RGPD | Description     |
 
-| Catégories                                                    | Éléments                                                                                         |
-|---------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| **Description et analyse du risque résiduel**                 | - **Description sommaire (dont impacts à craindre)**<br>- **Vulnérabilités résiduelles susceptibles d'être exploitées par la source de risque**<br>- **Autres causes ou facteurs aggravants (négligence, erreur, concours de circonstance, etc.)** |
-| **Événements redoutés concernés**                             | - Événement redouté 1<br>- Événement redouté 2                                                    |
-| **Mesures de traitement du risque existantes et complémentaires** | - Mesure 1<br>- Mesure 2                                                                           |
-| **Gestion du risque résiduel**                                | - Mesures particulières de suivi et de contrôle du risque résiduel.                                |
+### 4.2) Mesures de sécurité pour réduction des risques
 
-### Évaluation du risque résiduel:
+| Scénario | Rique initial | **Mesures de sécurité** | **Gravité résiduelle** | **Vraisemblance résiduelle** | **Risque résiduel** |
+| -------- | ------------- | ----------------------- | ---------------------- | ---------------------------- | ------------------- |
+| S1       |               |                         |                        |                              |                     |
 
-|                          | Initiale | Résiduelle |
-|--------------------------|:--------:|:----------:|
-| **Gravité**              |          |            |
-| **Vraisemblance**        |          |            |
-| **Niveau de risque**     |          |            |
+## 5) Document final à produire
 
-# Résume des informations à collecter 
+### 5.1) Tableau des scénarios et niveau de risques
 
-| Étape | Informations à Collecter |
-|-------|--------------------------|
-| 1. Définir les Responsables et Acteurs du Service | - Noms et fonctions des responsables (fonctionnel, technique).<br>- Contacts des acteurs clés (DSI, administrateurs de sécurité, utilisateurs principaux).<br>- Rôles et responsabilités spécifiques dans le projet. |
-| 2. Définir le Périmètre d'Analyse | - Nom et description des applications et systèmes impliqués.<br>- Nombre et nature des interconnexions avec d'autres systèmes.<br>- Thèmes et domaines fonctionnels couverts.<br>- Limites claires de l'analyse. |
-| 3. Collecter les Documentations du Système | - Plans architecturaux du système (logiques et physiques).<br>- Diagrammes des flux de données.<br>- Architecture réseau et topologie.<br>- Détails sur les applications déployées sur les serveurs.<br>- Logique de fonctionnement et séquence des processus. |
-| 4. Définir pour Chaque Système les Serveurs, Logiciels, Type de Données, Type d'Utilisateur | - Liste des serveurs (physiques et virtuels) utilisés.<br>- Détails des logiciels et applications (versions, configurations).<br>- Types de données traitées.<br>- Catégories d'utilisateurs. |
-| 5. Identifier les Menaces Potentielles et les Vulnérabilités Type du Système | - Inventaire des menaces potentielles.<br>- Liste des vulnérabilités connues ou suspectées.<br>- Historique des incidents de sécurité antérieurs. |
-| 6. Identifier les Types d'Attaques Susceptibles d'Affecter le Système | - Types d'attaques courantes dans des environnements similaires.<br>- Méthodes d'exploitation des vulnérabilités spécifiques.<br>- Rapports d'analyses de sécurité ou d'incidents précédents. |
-| 7. Classer par Ordre de Gravité les Événements Redoutés et les Probabilités | - Liste des événements redoutés avec estimation de leur gravité et probabilité.<br>- Critères d'évaluation pour la gravité et la probabilité. |
-| 8. Lister et Examiner les Mesures de Sécurité Actuelles | - Inventaire des mesures de sécurité en place.<br>- Politiques de sécurité et procédures opérationnelles.<br>- Résultats des derniers audits de sécurité. |
-| 9. Proposer des Mesures en Fonction des Vulnérabilités Non Couvertes par les Mesures Actuelles | - Analyse des lacunes dans les mesures existantes.<br>- Suggestions de mesures de sécurité complémentaires.<br>- Évaluation des coûts et de la faisabilité pour chaque mesure. |
-| 10. Définir un Responsable d'Application pour Intégrer les Mesures de Façon Progressive | - Nomination d'un responsable de projet.<br>- Planification détaillée pour l'intégration des mesures.<br>- Mécanismes de reporting et de suivi pour le responsable. |
-| 11. Définir l'Ensemble des Mesures de Sécurité Manquantes et à Déployer | - Liste complète des mesures de sécurité à mettre en place.<br>- Calendrier de déploiement.<br>- Plan de formation et de sensibilisation pour les utilisateurs. |
-| 12. Analyser la Réduction de la Probabilité des Risques avec les Nouvelles Mesures | - Méthodologie pour évaluer l'efficacité des mesures.<br>- Critères pour mesurer la réduction des risques.<br>- Plan pour le suivi continu et l'évaluation des risques résiduels. |
+| **Scénarios de menaces** | **Gravité initiale** | **Vraisemblance initiale** | **Risque inital** | **Évitement** | **Réduction** | **Prise** | **Transfert** | **Mesures de sécurité** | **Gravité résiduelle** | **Vraisemblance résiduelle** | **Risque résiduel** | **Évitement** | **Réduction** | **Prise** | **Transfert** |
+| ------------------------ | -------------------- | -------------------------- | ----------------- | ------------- | ------------- | --------- | ------------- | ----------------------- | ---------------------- | ---------------------------- | ------------------- | ------------- | ------------- | --------- | ------------- |
+|                          |                      |                            |                   | Oui/Non       | Oui/Non       | Oui/Non   | Oui/Non       |                         |                        |                              |                     | Oui/Non       | Oui/Non       | Oui/Non   | Oui/Non       |
+# Chronologie par ateliers
 
+## 1) Cadre et socle de sécurité
+
+### 1.1) Cadre du système
+Renseigner les informations clés du système
+### 1.2) Cadre des participants et acteurs
+Renseigner les participants et acteurs clés du système
+### 1.3) Paramètre valeurs métier
+Renseigner les valeurs métier
+### 1.4)Paramètre biens supports
+Renseigner les biens support
+### 1.5) Vulnérabilités
+Définir les vulnérabilités qui affectent les biens supports
+### 1.6) Socle de sécurité
+Déterminer le socle de sécurité
+### 1.7) Normes
+Déterminer les normes applicables
+
+## 2) Source de risque
+
+### 2.1) Source de risque
+Identifier les sources de risque
+### 2.2) Objectifs visés
+Identifier les objectifs visés
+### 2.3) Couples SR / OV
+Evaluer les couples SR / OV
+Sélectionner les couples SR / OV retenues
+
+## 3) Scénarios stratégiques
+
+### 3.1) Parties prenantes
+Définir les parties prenantes interne/externes au SI (client, prestataires, propriétaire)
+Définir critère de confiance pour chaque parties prenantes
+Evaluer les parties prenantes internes et externes
+### 3.2) Scénarios stratégiques
+Elaborer les scénarios stratégiques
+Définir les mesures mises en place de l'écosystème
+
+## 4) Scénarios opérationnels
+
+### 4.1) Scénarios opérationnels
+Elaborer lesscénarios opérationnels
+Evaluer la vraisemblance des scénarios opérationnels
+
+## 5) Traitement du risque
+
+### 5.1) Scénarios de risque
+Synthèse des scénarios de risques
+Décider de la stratégie de traitement de risques
+### 5.2) Mesures
+Définir les mesures de sécurité pour réduire les scénarios de risques
+### 5.3) Plan de traitement
+Définir un plan de traitement 
+### 5.4) Rapport
+Documenter les risques résiduels

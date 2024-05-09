@@ -68,11 +68,11 @@ Lister l'ensemble des normes pouvant s'appliquer et offrant un ensemble de mesur
 | - ISO<br>- ANSSI<br>- RGPD | Description     |
 
 ### 4.2) Mesures de sécurité pour réduction des risques
-Calculer le nouveau niveau de risques afin de réduire ou combler la vulnérabilités déterminée et exploité par les sources de menaces.
+Calculer le nouveau niveau de risques afin de réduire ou combler la vulnérabilité déterminée et exploitée par les sources de menaces.
 
-| Scénario | Rique initial | Vulnérabilité exploitée | **Mesures de sécurité** | **Gravité résiduelle** | **Vraisemblance résiduelle** | **Risque résiduel** |
-| -------- | ------------- | ----------------------- | ----------------------- | ---------------------- | ---------------------------- | ------------------- |
-| S1       |               |                         |                         |                        |                              |                     |
+| Scénario | Rique initial | Vulnérabilité exploitée | **Mesures de sécurité applicable** | **Gravité résiduelle** | **Vraisemblance résiduelle** | **Risque résiduel** |
+| -------- | ------------- | ----------------------- | ---------------------------------- | ---------------------- | ---------------------------- | ------------------- |
+| S1       |               |                         |                                    |                        |                              |                     |
 
 ## 5) Document final à produire
 

@@ -10,7 +10,7 @@ Lister les personnes responsables et interagissant avec le système étudié (d�
 | Toto Dupont | Responsable |         | totodupont@toto.com | 06 XX XX XX XX |
 ### 1.2) Valeurs métiers
 Une valeur métier peut être des données spécifiques, ou un processus qui est crucial pour le système d'information (SI) et pour l'ensemble de l'entreprise : 
-- ***Processus*** : Quelles taches est censé faire et rend possible le SI etudié
+- ***Processus*** : Quelles taches est censé faire et rend possible le SI etudié ? Que permet t'il de faire (étape de son fonctionnement)
 - ***Données*** : Ensemble des données collectés ou générées par le SI etudié
 
 | **Famille**                           | **Valeur métier** | **Description** | **Données à caractère personnelles** |

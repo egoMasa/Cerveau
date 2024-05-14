@@ -1,4 +1,0 @@
-- Cloud privé
-- Cloud public
-- Cloud hybride
-- Cloud communautaire

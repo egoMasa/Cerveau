@@ -1,3 +1,0 @@
-- Services AWS (par exemple, EC2, Lambda, S3)
-- Services Azure (par exemple, Azure VMs, Azure Functions)
-- Services Google Cloud (par exemple, Compute Engine, Cloud Functions)

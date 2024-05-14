@@ -1,3 +1,0 @@
-- Kubernetes
-- Docker Swarm
-- OpenShift

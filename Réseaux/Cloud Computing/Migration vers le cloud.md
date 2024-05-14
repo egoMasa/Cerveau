@@ -1,3 +1,0 @@
-- Évaluation et planification
-- Outils de migration
-- Stratégies post-migration

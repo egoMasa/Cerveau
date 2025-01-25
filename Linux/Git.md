@@ -176,7 +176,3 @@ git push origin main
 # Tirer les modifications
 git pull origin main
 ```
-
----
-
-Avec ce guide, vous devriez être en mesure de gérer efficacement votre dépôt Git tout en gardant certains fichiers ou répertoires locaux privés. Si vous avez besoin d’aide supplémentaire, n’hésitez pas à demander !

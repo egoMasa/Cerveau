@@ -76,25 +76,20 @@ Une entreprise ayant plusieurs sites géographiques peut configurer une VRF spé
 
 # LDP et Interaction entre OSPF, VRF, LDP et LFIB 
 
-Un routeur LER dans un réseau MPLS fonctionne avec plusieurs composants essentiels qui interagissent : 
+Un routeur **LER dans un réseau MPLS** fonctionne avec plusieurs composants essentiels qui interagissent.
+## **OSPF et la Table de Routage FIB**
+- Le **LER est intégré dans une zone OSPF** pour apprendre les **routes IP** de son réseau.
+- Il remplit sa **table de routage FIB** avec ces routes.
+- **LDP utilise cette FIB** pour distribuer des labels.
 
-## OSPF et la Table de Routage FIB 
-- Le LER est intégré dans une zone OSPF pour apprendre les routes IP de son réseau. 
-- Il remplit sa table de routage FIB avec ces routes. 
+## **VRF (Virtual Routing and Forwarding)**
+- **Des instances VRF sont créées** pour isoler les routes des entreprises clientes.
+- Chaque entreprise possède sa **propre table de routage spécifique**.
 
-## VRF (Virtual Routing and Forwarding) 
-- Des instances VRF sont créées pour isoler les routes des entreprises clientes. 
-- Chaque entreprise possède sa propre table de routage spécifique. 
-
-## LDP et la Génération de la Table LFIB 
-- LDP (Label Distribution Protocol) est utilisé pour associer des labels aux routes IP. 
-- Chaque routeur MPLS du backbone établit une session LDP (TCP 646) avec son voisin. 
-- LDP échange les labels entre routeurs et remplit automatiquement la table LFIB. 
-    
-## LFIB et la Transmission des Paquets 
-- Une fois que le client choisit une destination (via sa VRF), le LER consulte la LFIB pour voir quel label attribuer. 
-- La LFIB, créée grâce aux échanges LDP qui utilisent la FIB OSPF, permet de commuter le paquet MPLS jusqu'à sa destination. 
-
+## **LDP et la Génération de la Table LFIB**
+- **LDP (Label Distribution Protocol) est utilisé** pour associer des **labels aux routes IP**.
+- Chaque routeur MPLS du backbone établit une **session LDP (TCP 646) avec son voisin**.
+- LDP échange les **labels** entre routeurs et **remplit automatiquement la table LFIB**.
 ## Récapitulatif 
 
 | Composant  | Rôle                                         |
@@ -225,7 +220,6 @@ Côté CE (Client) 
 - Le PE MPLS gère la VRF de l’entreprise et assure la communication entre succursales via MPLS. 
 - Le PE Internet gère le routage vers Internet via BGP. 
 - Le client a la main sur son NAT/PAT et peut externaliser ses services comme il veut. 
-
 
 # Solutions existantes pour un client avec un seul lien MPLS 
 

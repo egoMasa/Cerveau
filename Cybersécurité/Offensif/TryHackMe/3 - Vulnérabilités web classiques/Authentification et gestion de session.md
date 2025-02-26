@@ -1,0 +1,5 @@
+- **Enumeration & Brute Force** (Forcer l'accès par dictionnaire)
+- **Session Management** (Problèmes liés à la gestion de session)
+- **JWT Security** (Attaquer les tokens JWT)
+- **OAuth Vulnerabilities** (Failles dans l’authentification OAuth)
+- **Multi-Factor Authentication Bypass** (Contourner la MFA)
